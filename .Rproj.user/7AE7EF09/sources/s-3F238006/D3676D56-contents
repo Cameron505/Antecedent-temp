@@ -13,8 +13,7 @@ library(pracma)
 cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 theme_CKM <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
-    theme(legend.title = element_blank(),
-          legend.text = element_text(size = 12),
+    theme(legend.text = element_text(size = 12),
           legend.key.size = unit(1.5, 'lines'),
           legend.background = element_rect(colour = NA),
           panel.border = element_rect(color="black",size=1.5, fill = NA),
