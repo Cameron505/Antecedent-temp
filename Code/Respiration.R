@@ -15,8 +15,9 @@ PRes<-ggplot(A, aes(x=Inc.temp, y=Res, color=pre.inc))+
   theme_light()+
   scale_colour_manual(values=cbPalette)+
   scale_fill_manual(values=cbPalette)+
-  ylab(expression(paste( " ",mu,"g-C",Hr^-1)))+
-  xlab("Date")+
+  ylab(expression(paste( "Respiration (",mu,"g-C",Hr^-1, ")")))+
+  xlab("incubation temperature")+
+  labs(color='pre.inc temp') +
   theme_CKM()+
   ggtitle("Soil Respiration")
 
