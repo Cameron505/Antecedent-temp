@@ -1,0 +1,56 @@
+# Created by use_targets().
+# Follow the comments below to fill in this target script.
+# Then follow the manual to check and run the pipeline:
+#   https://books.ropensci.org/targets/walkthrough.html#inspect-the-pipeline # nolint
+
+# Load packages required to define the pipeline:
+library(targets)
+library(tarchetypes) # Load other packages as needed. # nolint
+
+# Set target options:
+tar_option_set(
+  packages = c("tibble", "tidyverse"), # packages that your targets need to run
+  format = "rds" # default storage format
+  # Set other options as needed.
+)
+
+# tar_make_clustermq() configuration (okay to leave alone):
+
+# tar_make_future() configuration (okay to leave alone):
+# Install packages {{future}}, {{future.callr}}, and {{future.batchtools}} to allow use_targets() to configure tar_make_future() options.
+
+# Load the R scripts with your custom functions:
+source("Code/0-packages.R")
+source("Code/1-functions.R")
+source("Code/1-analysis.R")
+#source("Code/Respiration.R")
+source("Code/fticr/a-functions_processing.R")
+source("Code/fticr/b-functions_analysis.R")
+source("Code/fticr/c1-workflow_processing.R")
+source("Code/fticr/c2-workflow_analysis.R")
+
+# source("other_functions.R") # Source other scripts as needed. # nolint
+
+# Replace the target list below with your own:
+list(
+  
+  # sample metadata
+  tar_target(sample_key_data, "Data/Sample_key_AntecedentTemp.csv", format = "file"),
+  #tar_target(sample_key, read.csv(sample_key_data)),
+  
+  
+  # data files
+  tar_target(respiration_data, read.csv("Data/Respiration_Antecedent_temp.csv")),
+  tar_target(respiration_processed, process_respiration(respiration_data)),
+  
+  # analysis - graphs
+  ## tar_target(gg_moisture, plot_moisture(moisture_processed, sample_key)),
+
+  
+  # combined data
+ 
+  
+  # report  
+
+  
+)
