@@ -32,10 +32,11 @@ list(
   
   # sample metadata
   tar_target(sample_key_data, "Data/Sample_key_AntecedentTemp.csv", format = "file"),
-  #tar_target(sample_key, read.csv(sample_key_data)),
+  tar_target(sample_key, read.csv(sample_key_data)),
   
   
   # data files
+  #tar_target()
   tar_target(respiration_data, read.csv("Data/Respiration_Antecedent_temp.csv")),
   tar_target(respiration_processed, process_respiration(respiration_data)),
   

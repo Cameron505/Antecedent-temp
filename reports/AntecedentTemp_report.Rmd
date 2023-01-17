@@ -8,20 +8,22 @@ output:
 ```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE,
-                      warning = FALSE)
+                      warning = FALSE
+                      )
 ```
-
-##Antecedent temperature experiment
-
 
 ## sample summary
 
 <details>
   <summary>click to open</summary>
 
-```{r analyte-completion}
-tar_read("Data/Sample_key_AntecedentTemp.csv") %>% knitr::kable()
+```{r analyte-completion, eval= TRUE}
+tar_read(sample_key) %>% knitr::kable()
 ```
+
+</details>
+
+---
 
 ## Respiration results
 
@@ -29,12 +31,12 @@ tar_read("Data/Sample_key_AntecedentTemp.csv") %>% knitr::kable()
   <summary>click to open</summary>
   
 ```{r , fig.height=6, fig.width=6}
-tar_read(gg_res)
+tar_read(gg_respiration)
 ```
 
-```{r overall-pca, fig.height=6, fig.width=6}
-tar_read(gg_cumres)
-```
+
+
+</details>
 
 ---
 
