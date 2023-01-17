@@ -3,6 +3,8 @@ library(vegan) # for PERMANOVA analysis
 library(ggbiplot) #for PCA biplots
 library(reshape2)
 library(pracma)
+library(janitor)
+
 # to install {ggbiplot}:
 # library(devtools)
 # install_github("vqv/ggbiplot")

@@ -52,6 +52,6 @@ list(
  
   
   # report  
-
+  tar_render(report, path = "reports/AntecedentTemp_report.Rmd")
   
 )
