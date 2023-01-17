@@ -23,12 +23,7 @@ tar_option_set(
 source("Code/0-packages.R")
 source("Code/a-processing_functions.R")
 source("Code/b-analysis_functions.R")
-source("Code/1-workflow.R")
-#source("Code/Respiration.R")
-source("Code/fticr/a-functions_processing.R")
-source("Code/fticr/b-functions_analysis.R")
-source("Code/fticr/c1-workflow_processing.R")
-source("Code/fticr/c2-workflow_analysis.R")
+
 
 # source("other_functions.R") # Source other scripts as needed. # nolint
 
