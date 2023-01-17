@@ -21,8 +21,9 @@ tar_option_set(
 
 # Load the R scripts with your custom functions:
 source("Code/0-packages.R")
-source("Code/1-functions.R")
-source("Code/1-analysis.R")
+source("Code/a-processing_functions.R")
+source("Code/b-analysis_functions.R")
+source("Code/1-workflow.R")
 #source("Code/Respiration.R")
 source("Code/fticr/a-functions_processing.R")
 source("Code/fticr/b-functions_analysis.R")
