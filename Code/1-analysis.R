@@ -16,4 +16,7 @@ plot_respiration = function(respiration_processed){
     labs(y = "Cumulative Respiration, %")+
     scale_color_manual(values = cbPalette)
   
+  list(gg_res = gg_res,
+       gg_cumres=gg_cumres)
+  
 }

@@ -44,7 +44,7 @@ list(
   tar_target(respiration_processed, process_respiration(respiration_data)),
   
   # analysis - graphs
-  ## tar_target(gg_moisture, plot_moisture(moisture_processed, sample_key)),
+  tar_target(gg_respiration, plot_respiration(respiration_processed)),
 
   
   # combined data
