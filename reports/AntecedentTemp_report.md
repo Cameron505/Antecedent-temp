@@ -79,58 +79,54 @@ click to open
 Session Info
 </summary>
 
-Date run: 2023-01-17
+Date run: 2023-01-18
 
-    ## R version 4.2.2 (2022-10-31 ucrt)
-    ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 19042)
+    ## R version 4.2.1 (2022-06-23)
+    ## Platform: x86_64-apple-darwin17.0 (64-bit)
+    ## Running under: macOS Big Sur ... 10.16
     ## 
     ## Matrix products: default
+    ## BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+    ## LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
     ## 
     ## locale:
-    ## [1] LC_COLLATE=English_United States.utf8 
-    ## [2] LC_CTYPE=English_United States.utf8   
-    ## [3] LC_MONETARY=English_United States.utf8
-    ## [4] LC_NUMERIC=C                          
-    ## [5] LC_TIME=English_United States.utf8    
+    ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
     ## 
     ## attached base packages:
-    ## [1] grid      stats     graphics  grDevices utils     datasets  methods  
-    ## [8] base     
+    ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
     ##  [1] janitor_2.1.0     pracma_2.4.2      reshape2_1.4.4    ggbiplot_0.55    
-    ##  [5] scales_1.2.1      plyr_1.8.8        vegan_2.6-4       lattice_0.20-45  
-    ##  [9] permute_0.9-7     forcats_0.5.2     stringr_1.5.0     dplyr_1.0.10     
-    ## [13] purrr_1.0.0       readr_2.1.3       tidyr_1.2.1       tibble_3.1.8     
-    ## [17] ggplot2_3.4.0     tidyverse_1.3.2   tarchetypes_0.7.4 targets_0.14.2   
+    ##  [5] vegan_2.6-4       lattice_0.20-45   permute_0.9-7     forcats_0.5.2    
+    ##  [9] stringr_1.4.1     dplyr_1.0.10      purrr_0.3.4       readr_2.1.3      
+    ## [13] tidyr_1.2.1       tibble_3.1.8      ggplot2_3.3.6     tidyverse_1.3.2  
+    ## [17] tarchetypes_0.7.2 targets_0.14.0   
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] nlme_3.1-160        fs_1.5.2            lubridate_1.9.0    
-    ##  [4] httr_1.4.4          future.callr_0.8.1  tools_4.2.2        
-    ##  [7] backports_1.4.1     utf8_1.2.2          R6_2.5.1           
-    ## [10] DBI_1.1.3           mgcv_1.8-41         colorspace_2.0-3   
-    ## [13] withr_2.5.0         tidyselect_1.2.0    processx_3.8.0     
-    ## [16] compiler_4.2.2      cli_3.6.0           rvest_1.0.3        
-    ## [19] xml2_1.3.3          labeling_0.4.2      callr_3.7.3        
-    ## [22] digest_0.6.31       rmarkdown_2.19      htmltools_0.5.4    
-    ## [25] pkgconfig_2.0.3     parallelly_1.34.0   highr_0.10         
-    ## [28] fastmap_1.1.0       dbplyr_2.2.1        rlang_1.0.6        
-    ## [31] readxl_1.4.1        rstudioapi_0.14     farver_2.1.1       
-    ## [34] generics_0.1.3      jsonlite_1.8.4      googlesheets4_1.0.1
-    ## [37] magrittr_2.0.3      Matrix_1.5-1        Rcpp_1.0.9         
-    ## [40] munsell_0.5.0       fansi_1.0.3         lifecycle_1.0.3    
-    ## [43] furrr_0.3.1         stringi_1.7.8       yaml_2.3.6         
-    ## [46] snakecase_0.11.0    MASS_7.3-58.1       parallel_4.2.2     
-    ## [49] listenv_0.9.0       crayon_1.5.2        haven_2.5.1        
-    ## [52] splines_4.2.2       hms_1.1.2           knitr_1.41         
-    ## [55] ps_1.7.2            pillar_1.8.1        igraph_1.3.5       
-    ## [58] base64url_1.4       codetools_0.2-18    reprex_2.0.2       
-    ## [61] glue_1.6.2          evaluate_0.19       data.table_1.14.6  
-    ## [64] modelr_0.1.10       vctrs_0.5.1         tzdb_0.3.0         
-    ## [67] cellranger_1.1.0    gtable_0.3.1        future_1.30.0      
-    ## [70] assertthat_0.2.1    xfun_0.36           broom_1.0.2        
-    ## [73] googledrive_2.0.0   gargle_1.2.1        cluster_2.1.4      
-    ## [76] timechange_0.1.1    globals_0.16.2      ellipsis_0.3.2
+    ##  [1] httr_1.4.4          jsonlite_1.8.0      splines_4.2.1      
+    ##  [4] modelr_0.1.9        assertthat_0.2.1    highr_0.9          
+    ##  [7] base64url_1.4       googlesheets4_1.0.1 cellranger_1.1.0   
+    ## [10] yaml_2.3.5          pillar_1.8.1        backports_1.4.1    
+    ## [13] glue_1.6.2          digest_0.6.29       rvest_1.0.3        
+    ## [16] snakecase_0.11.0    colorspace_2.0-3    htmltools_0.5.3    
+    ## [19] Matrix_1.5-1        plyr_1.8.7          pkgconfig_2.0.3    
+    ## [22] broom_1.0.0         haven_2.5.1         scales_1.2.1       
+    ## [25] processx_3.7.0      tzdb_0.3.0          googledrive_2.0.0  
+    ## [28] mgcv_1.8-40         farver_2.1.1        generics_0.1.3     
+    ## [31] ellipsis_0.3.2      withr_2.5.0         cli_3.3.0          
+    ## [34] magrittr_2.0.3      crayon_1.5.1        readxl_1.4.1       
+    ## [37] evaluate_0.16       ps_1.7.1            fs_1.5.2           
+    ## [40] fansi_1.0.3         nlme_3.1-160        MASS_7.3-57        
+    ## [43] xml2_1.3.3          tools_4.2.1         data.table_1.14.4  
+    ## [46] hms_1.1.2           gargle_1.2.0        lifecycle_1.0.1    
+    ## [49] munsell_0.5.0       reprex_2.0.2        cluster_2.1.3      
+    ## [52] callr_3.7.2         compiler_4.2.1      rlang_1.0.5        
+    ## [55] grid_4.2.1          rstudioapi_0.14     igraph_1.3.4       
+    ## [58] labeling_0.4.2      rmarkdown_2.16      gtable_0.3.0       
+    ## [61] codetools_0.2-18    DBI_1.1.3           R6_2.5.1           
+    ## [64] lubridate_1.8.0     knitr_1.40          fastmap_1.1.0      
+    ## [67] utf8_1.2.2          stringi_1.7.8       parallel_4.2.1     
+    ## [70] Rcpp_1.0.9          vctrs_0.4.1         dbplyr_2.2.1       
+    ## [73] tidyselect_1.1.2    xfun_0.32
 
 </details>
