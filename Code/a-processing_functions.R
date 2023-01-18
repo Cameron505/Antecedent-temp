@@ -10,11 +10,11 @@ import_respiration= function(FILEPATH){
 }
 
 process_respiration = function(respiration_data){
-  respiration_data %>%
+  respiration_processed = respiration_data %>%
     mutate(Datemdy = lubridate::mdy(Date),
            JD = strftime(Datemdy, format = "%j"),
            JD2 = as.numeric(JD)) %>%
     group_by(Sample_ID,Inc_temp,pre_inc) %>%
-    summarize(val=cumtrapz(JD2,Res))
-  
+    summarize(val=cumtrapz(JD2,Res), JD2, Res)
+
 }
