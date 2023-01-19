@@ -15,6 +15,6 @@ process_respiration = function(respiration_data){
            JD = strftime(Datemdy, format = "%j"),
            JD2 = as.numeric(JD)) %>%
     group_by(Sample_ID,Inc_temp,pre_inc) %>%
-    summarize(val=cumtrapz(JD2,Res), JD2, Res)
+    dplyr::summarise(val=cumtrapz(JD2,Res),Res, JD2)
 
 }
