@@ -13,8 +13,24 @@ process_respiration = function(respiration_data){
   respiration_processed = respiration_data %>%
     mutate(Datemdy = lubridate::mdy(Date),
            JD = strftime(Datemdy, format = "%j"),
-           JD2 = as.numeric(JD)) %>%
+           JD2 = as.numeric(JD),
+           Res2=Res*24) %>%
     group_by(Sample_ID,Inc_temp,pre_inc) %>%
     dplyr::summarise(val=cumtrapz(JD2,Res),Res, JD2)
 
+}
+
+import_nutrients= function(FILEPATH){
+  # import data file
+  filePaths_nutrients <- list.files(FILEPATH, pattern = "csv", full.names = TRUE, recursive = TRUE)
+  nutrients_data <- read.csv(FILEPATH, header = TRUE) %>% mutate(Date = lubridate::mdy(Date), pre.inc = as.factor(pre.inc) ,
+                                                                   Inc.temp = as.factor(Inc.temp)) %>% janitor::clean_names()
+  nutrients_data = respiration_data %>% mutate(source = basename(FILEPATH))
+  nutrients_data
+  list(nutrient_data = nutrient_data)
+}
+
+process_nutrients = function(nutrients_data){
+  nutrients_processed = nutrients_data %>%
+    mutate(Datemdy = lubridate::mdy(Date))
 }

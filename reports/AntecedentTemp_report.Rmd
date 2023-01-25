@@ -1,5 +1,5 @@
 ---
-title: "Antecedent temperature"
+title: "Antecedent temperature experiment"
 output: 
   github_document:
   html_preview: True
@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 <details>
   <summary>click to open</summary>
+Soils from northwest Alaska were homogenized and pre-incubated at -2 and -6 degrees Celsius for three months after which they were incubated at 2,4,6,8,10 degrees Celsius for one week. After the week long incubation soils were extracted using 0.5M K2SO4, and chloroform extracted to measure microbial biomass and nutrient concentrations. Sub-samples were also sent to PNNL for more comprehensive analysis of organic matter using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also performed to ascertain if there were any significant shifts lipids.
 
 ```{r analyte-completion, eval= TRUE}
 tar_read(sample_key) %>% knitr::kable()
@@ -29,13 +30,21 @@ tar_read(sample_key) %>% knitr::kable()
 
 <details>
   <summary>click to open</summary>
-  
-```{r , fig.height=6, fig.width=6}
+Respiration measurements were taken daily during the incubation using a Li-850 bench top respiration unit. Below are the respiration rates for each sample, as well as the calculates accumulative respiration rates.   
+
+```{r , fig.height=6, fig.width=6, results='hide'}
 tar_read(gg_respiration)
 ```
 
+</details>
 
-
+## Soil Nutrients
+<details>
+  <summary>click to open</summary>
+Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data   
+```{r , fig.height=6, fig.width=6, results='hide'}
+#tar_read(gg_nutrients)
+```
 </details>
 
 ---

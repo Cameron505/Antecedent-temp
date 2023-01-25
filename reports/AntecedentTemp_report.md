@@ -1,4 +1,4 @@
-Antecedent temperature
+Antecedent temperature experiment
 ================
 
 ## sample summary
@@ -7,6 +7,15 @@ Antecedent temperature
 <summary>
 click to open
 </summary>
+
+Soils from northwest Alaska were homogenized and pre-incubated at -2 and
+-6 degrees Celsius for three months after which they were incubated at
+2,4,6,8,10 degrees Celsius for one week. After the week long incubation
+soils were extracted using 0.5M K2SO4, and chloroform extracted to
+measure microbial biomass and nutrient concentrations. Sub-samples were
+also sent to PNNL for more comprehensive analysis of organic matter
+using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also
+performed to ascertain if there were any significant shifts lipids.
 
 | Replicate | Pre.incubation | Incubation.ID | Incubation.temperauture | ID              | UUID                                 | X   |
 |----------:|---------------:|:--------------|------------------------:|:----------------|:-------------------------------------|:----|
@@ -59,14 +68,24 @@ click to open
 click to open
 </summary>
 
-    ## $gg_res
+Respiration measurements were taken daily during the incubation using a
+Li-850 bench top respiration unit. Below are the respiration rates for
+each sample, as well as the calculates accumulative respiration rates.
 
-![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-3.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-4.png)<!-- -->
 
-    ## 
-    ## $gg_cumres
+</details>
 
-![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->
+## Soil Nutrients
+
+<details>
+<summary>
+click to open
+</summary>
+
+Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
+free primary amines, phosphate, Total reducing sugars. Below is the
+concentration data
 
 </details>
 
@@ -79,7 +98,7 @@ click to open
 Session Info
 </summary>
 
-Date run: 2023-01-18
+Date run: 2023-01-23
 
     ## R version 4.2.2 (2022-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
