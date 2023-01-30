@@ -38,12 +38,28 @@ tar_read(gg_respiration)
 
 </details>
 
+
+---
+
 ## Soil Nutrients
 <details>
   <summary>click to open</summary>
-Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data   
+Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data.
+
 ```{r , fig.height=6, fig.width=6, results='hide'}
-#tar_read(gg_nutrients)
+tar_read(gg_nutrients)
+```
+</details>
+
+---
+
+## Microbial biomass
+<details>
+  <summary>click to open</summary>
+Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data.
+
+```{r , fig.height=6, fig.width=6, results='hide'}
+tar_read(gg_MicrobialBiomass)
 ```
 </details>
 

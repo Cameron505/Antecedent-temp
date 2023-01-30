@@ -77,6 +77,128 @@ plot_respiration = function(respiration_processed){
   
 }
 
-plot_nutrients = function(nutrients_processed){
+plot_nutrients = function(nutrients_data){
+  
+  gg_NH4 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Ammonium ('*mu*'g '*NH[4]^"+"~-N~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Ammonium")
+  
+  gg_NO3 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=NO3, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Nitrate")
+  
+  gg_TFPA =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=TFPA, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Total free primary amines-Leucine equiv. (nMol' ~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("TFPA")
+  
+  gg_TRS =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=TRS, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("TRS")
+  
+  gg_PO4 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=PO4, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Phosphate")
+  
+  
+  list("Ammonium" = gg_NH4,
+       "Nitrate" = gg_NO3,
+       "Total free primary amines" = gg_TFPA,
+       "Phosphate" = gg_PO4,
+       "Total reducing sugars" = gg_TRS
+  )
+  
+}
+
+plot_MicrobialBiomass = function(nutrients_data){
+  
+  gg_MBC =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=MBC, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Microbial biomass ('*mu*'g C'~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Microbial biomass carbon")
+  
+  gg_MBN =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=MBN, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Microbial biomass ('*mu*'g N'~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Microbial biomass Nitrogen")
+  
+  list("Microbial biomass carbon" = gg_MBC,
+       "Microbial biomass nitrogen" = gg_MBN
+       
+  )
   
 }

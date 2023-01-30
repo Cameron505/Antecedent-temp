@@ -23,14 +23,9 @@ process_respiration = function(respiration_data){
 import_nutrients= function(FILEPATH){
   # import data file
   filePaths_nutrients <- list.files(FILEPATH, pattern = "csv", full.names = TRUE, recursive = TRUE)
-  nutrients_data <- read.csv(FILEPATH, header = TRUE) %>% mutate(Date = lubridate::mdy(Date), pre.inc = as.factor(pre.inc) ,
-                                                                   Inc.temp = as.factor(Inc.temp)) %>% janitor::clean_names()
-  nutrients_data = respiration_data %>% mutate(source = basename(FILEPATH))
+  nutrients_data <- read.csv(FILEPATH, header = TRUE) %>% mutate(Date = lubridate::mdy(Date)) %>% janitor::clean_names()
+  nutrients_data = nutrients_data %>% mutate(source = basename(FILEPATH))
   nutrients_data
   list(nutrient_data = nutrient_data)
 }
 
-process_nutrients = function(nutrients_data){
-  nutrients_processed = nutrients_data %>%
-    mutate(Datemdy = lubridate::mdy(Date))
-}

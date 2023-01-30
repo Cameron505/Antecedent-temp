@@ -37,15 +37,16 @@ list(
   
   # data files
   #tar_target()
-  tar_target(respiration_data_read,"Data/Respiration_Antecedent_temp.csv"),
+  tar_target(respiration_data_read,"Data/Respiration_Antecedent_temp.csv", format="file"),
   tar_target(respiration_data, read.csv(respiration_data_read)),
   tar_target(respiration_processed, process_respiration(respiration_data)),
-  #tar_targets(nutrients_data_read,"Data/nutrients_Antecedent_temp.csv"),
-  #tar_target(nutrients_data, read.csv(nutrients_data_read)),
-  #tar_target(nutrients_processed, process_nutrients(nutrients_data)),
+  tar_target(nutrients_data_read,"Data/Nutrients_MicrobialBiomass_AntecedentTemp.csv", format="file"),
+  tar_target(nutrients_data, read.csv(nutrients_data_read)),
   
   # analysis - graphs
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
+  tar_target(gg_nutrients, plot_nutrients(nutrients_data)),
+  tar_target(gg_MicrobialBiomass, plot_MicrobialBiomass(nutrients_data)),
 
   
   # combined data
