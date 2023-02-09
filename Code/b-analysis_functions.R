@@ -202,3 +202,52 @@ plot_MicrobialBiomass = function(nutrients_data){
   )
   
 }
+
+
+
+
+do_stats_nutrients(){
+  library(tidyverse)
+  ## do aov for NH4 data
+  a = aov(NH4 ~ pre_inc, data = nutrients_data)
+  summary(a)
+  broom::tidy(a)
+  
+  fit_aov = function(dat){
+    
+    a = aov(NH4 ~ pre_inc, data = dat)
+    broom::tidy(a) %>% 
+      filter(term == "pre_inc") %>% 
+      dplyr::select(`p.value`) %>% 
+      mutate(asterisk = case_when(`p.value` >= 0.05 ~ "ns"))
+    
+  }
+  
+  nutrients_data_long = ...
+  
+  all_aov = 
+    nutrients_data_long %>% 
+    group_by(analyte, Inc_temp) %>% 
+    do(fit_aov(.)) %>% 
+    mutate(pre_inc = "-2") %>% 
+    # factor the Inc_temp so they can line up in the graph
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")))
+  
+  ## NOTE: can we also bring the column NH4, etc into the function???
+  
+  nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
+    geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk))+
+    theme_light()+
+    #scale_colour_manual(values=cbPalette)+
+    #scale_fill_manual(values=cbPalette)+
+    labs(x = "Incubation temperature", 
+         y = bquote('Ammonium ('*mu*'g '*NH[4]^"+"~-N~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Ammonium")
+  
+}
