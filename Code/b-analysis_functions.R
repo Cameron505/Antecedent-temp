@@ -23,8 +23,8 @@ plot_respiration = function(respiration_processed){
     geom_point(position = position_dodge(width = 0.4),
                size = 2)+
     stat_smooth(method= "lm")+
-    stat_cor(label.y=c(90,100), size=3)+
-    stat_regline_equation(label.y=c(110,120), size=3)+
+    stat_cor(label.y=c(90,100), size=2)+
+    stat_regline_equation(label.y=c(110,120), size=2)+
     #geom_text(data = res_lm , aes(y = 300, label = p.value))+
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     facet_wrap(~Inc_temp)+
@@ -44,8 +44,8 @@ plot_respiration = function(respiration_processed){
     geom_point(position = position_dodge(width = 0.4),
                size = 2)+
     stat_smooth(method= "lm")+
-    stat_cor(label.y=c(320,345), size=3)+
-    stat_regline_equation(label.y=c(370,395), size=3)+
+    stat_cor(label.y=c(285,305), size=2)+
+    stat_regline_equation(label.y=c(245,265), size=2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     facet_wrap(~Inc_temp)+
     theme_light()+
@@ -64,8 +64,8 @@ plot_respiration = function(respiration_processed){
     stat_summary(fun = mean,geom = "point",size = 2) +
     stat_summary(fun.data = mean_se, geom = "errorbar")+
     stat_smooth(method= "lm")+
-    stat_cor(label.y=c(90,100), size=3)+
-    stat_regline_equation(label.y=c(110,120), size=3)+
+    stat_cor(label.y=c(90,100), size=2)+
+    stat_regline_equation(label.y=c(110,120), size=2)+
     facet_wrap(~Inc_temp)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
@@ -83,8 +83,8 @@ plot_respiration = function(respiration_processed){
     stat_summary(fun = mean,geom = "point",size = 2) +
     stat_summary(fun.data = mean_se, geom = "errorbar")+
     stat_smooth(method= "lm")+
-    stat_cor(label.y=c(320,345), size=3)+
-    stat_regline_equation(label.y=c(370,395), size=3)+
+    stat_cor(label.y=c(285,305), size=2)+
+    stat_regline_equation(label.y=c(245,265), size=2)+
     facet_wrap(~Inc_temp)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
