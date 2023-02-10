@@ -4,6 +4,7 @@ library(ggbiplot) #for PCA biplots
 library(reshape2)
 library(pracma)
 library(janitor)
+library(ggpubr)
 
 # to install {ggbiplot}:
 # library(devtools)
