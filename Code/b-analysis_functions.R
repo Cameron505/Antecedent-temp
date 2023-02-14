@@ -121,6 +121,7 @@ nutrients_data_long = nutrients_data %>%
   all_aov = 
     nutrients_data_long %>% 
     group_by(analyte, Inc_temp) %>% 
+    filter(pre_inc!="none")%>%
     do(fit_aov(.)) %>% 
     mutate(pre_inc = "-2") %>% 
     # factor the Inc_temp so they can line up in the graph
@@ -129,8 +130,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_NH4 =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
@@ -145,8 +146,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_NO3 =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NO3, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
@@ -161,8 +162,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_TFPA =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TFPA, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
@@ -177,8 +178,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_TRS =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TRS, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
@@ -193,8 +194,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_PO4 =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=PO4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
@@ -236,6 +237,7 @@ plot_MicrobialBiomass = function(nutrients_data){
   all_aov = 
     nutrients_data_long %>% 
     group_by(analyte, Inc_temp) %>% 
+    filter(pre_inc!="none")%>%
     do(fit_aov(.)) %>% 
     mutate(pre_inc = "-2") %>% 
     # factor the Inc_temp so they can line up in the graph
@@ -244,8 +246,8 @@ plot_MicrobialBiomass = function(nutrients_data){
   
    gg_MBC =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+     mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBC, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
@@ -260,8 +262,8 @@ plot_MicrobialBiomass = function(nutrients_data){
   
   gg_MBN =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBN, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
