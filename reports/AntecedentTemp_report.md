@@ -70,7 +70,9 @@ click to open
 
 Respiration measurements were taken daily during the incubation using a
 Li-850 bench top respiration unit. Below are the respiration rates for
-each sample, as well as the calculates accumulative respiration rates.
+each sample, as well as the calculates accumulative respiration
+rates.linear models are also drawn in represented color, with 95%
+confidence interval.
 
 ![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-3.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-1-4.png)<!-- -->
 
@@ -86,8 +88,9 @@ click to open
 </summary>
 
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
-free primary amines, phosphate, Total reducing sugars. Below is the
-concentration data.
+free primary amines, phosphate, Total reducing sugars. Below are the
+concentration data. An asterisks indicates a significant (p\<= 0.05)
+difference in pre-incubation temperature.
 
 ![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-4.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-5.png)<!-- -->
 </details>
@@ -103,7 +106,8 @@ click to open
 
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
 free primary amines, phosphate, Total reducing sugars. Below is the
-concentration data.
+concentration data.An asterisks indicates a significant (p\<= 0.05)
+difference in pre-incubation temperature.
 
 ![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
 </details>
