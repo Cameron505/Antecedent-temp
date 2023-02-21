@@ -92,7 +92,7 @@ free primary amines, phosphate, Total reducing sugars. Below are the
 concentration data. An asterisks indicates a significant (p\<= 0.05)
 difference in pre-incubation temperature.
 
-![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-4.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-5.png)<!-- -->
+![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-4.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-5.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-6.png)<!-- -->
 </details>
 
 ------------------------------------------------------------------------
@@ -109,7 +109,7 @@ free primary amines, phosphate, Total reducing sugars. Below is the
 concentration data.An asterisks indicates a significant (p\<= 0.05)
 difference in pre-incubation temperature.
 
-![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
+![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
 </details>
 
 ------------------------------------------------------------------------
@@ -121,7 +121,7 @@ difference in pre-incubation temperature.
 Session Info
 </summary>
 
-Date run: 2023-02-14
+Date run: 2023-02-20
 
     ## R version 4.2.2 (2022-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -141,12 +141,12 @@ Date run: 2023-02-14
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] ggpubr_0.5.0      janitor_2.1.0     pracma_2.4.2      reshape2_1.4.4   
-    ##  [5] ggbiplot_0.55     scales_1.2.1      plyr_1.8.8        vegan_2.6-4      
-    ##  [9] lattice_0.20-45   permute_0.9-7     forcats_0.5.2     stringr_1.5.0    
-    ## [13] dplyr_1.0.10      purrr_1.0.0       readr_2.1.3       tidyr_1.2.1      
-    ## [17] tibble_3.1.8      ggplot2_3.4.0     tidyverse_1.3.2   tarchetypes_0.7.4
-    ## [21] targets_0.14.2   
+    ##  [1] cowplot_1.1.1     ggpubr_0.5.0      janitor_2.1.0     pracma_2.4.2     
+    ##  [5] reshape2_1.4.4    ggbiplot_0.55     scales_1.2.1      plyr_1.8.8       
+    ##  [9] vegan_2.6-4       lattice_0.20-45   permute_0.9-7     forcats_0.5.2    
+    ## [13] stringr_1.5.0     dplyr_1.0.10      purrr_1.0.0       readr_2.1.3      
+    ## [17] tidyr_1.2.1       tibble_3.1.8      ggplot2_3.4.0     tidyverse_1.3.2  
+    ## [21] tarchetypes_0.7.4 targets_0.14.2   
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] nlme_3.1-160        fs_1.5.2            lubridate_1.9.0    

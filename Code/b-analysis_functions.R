@@ -28,8 +28,8 @@ plot_respiration = function(respiration_processed){
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     facet_wrap(~Inc_temp)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette2)+
+    scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
@@ -48,8 +48,8 @@ plot_respiration = function(respiration_processed){
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     facet_wrap(~Inc_temp)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette2)+
+    scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
@@ -67,8 +67,8 @@ plot_respiration = function(respiration_processed){
     stat_regline_equation(label.y=c(110,120), size=2)+
     facet_wrap(~Inc_temp)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette2)+
+    scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
@@ -86,8 +86,8 @@ plot_respiration = function(respiration_processed){
     stat_regline_equation(label.y=c(245,265), size=2)+
     facet_wrap(~Inc_temp)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette2)+
+    scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
@@ -139,7 +139,7 @@ nutrients_data_long = nutrients_data %>%
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Ammonium ('*mu*'g '*NH[4]^"+"~-N~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Ammonium")
@@ -155,7 +155,7 @@ nutrients_data_long = nutrients_data %>%
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Nitrate")
@@ -171,7 +171,7 @@ nutrients_data_long = nutrients_data %>%
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Total free primary amines-Leucine equiv. (nMol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("TFPA")
@@ -187,7 +187,7 @@ nutrients_data_long = nutrients_data %>%
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("TRS")
@@ -203,17 +203,30 @@ nutrients_data_long = nutrients_data %>%
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Phosphate")
   
+  Nutrient_legend = get_legend(gg_NH4+ guides(color = guide_legend(nrow = 1)) +
+                                 theme(legend.position = "bottom"))
+  gg_Ncombine= plot_grid(
+    gg_NH4 + theme(legend.position="none", axis.title.x = element_blank()),
+    gg_NO3 + theme(legend.position="none"),
+    gg_TFPA + theme(legend.position="none",axis.title.x = element_blank()),
+    align = 'vh',
+    labels = c("A", "B", "C"),
+    hjust = -1,
+    nrow = 1
+  )
+gg_N_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.1))
   
   list("Ammonium" = gg_NH4,
        "Nitrate" = gg_NO3,
        "Total free primary amines" = gg_TFPA,
        "Phosphate" = gg_PO4,
-       "Total reducing sugars" = gg_TRS
+       "Total reducing sugars" = gg_TRS,
+       "N combined"=gg_N_Legend
   )
   
 }
@@ -255,7 +268,7 @@ plot_MicrobialBiomass = function(nutrients_data){
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Microbial biomass ('*mu*'g C'~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Microbial biomass carbon")
@@ -271,13 +284,28 @@ plot_MicrobialBiomass = function(nutrients_data){
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation temperature", 
+    labs(x = "Incubation Temp.", 
          y = bquote('Microbial biomass ('*mu*'g N'~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Microbial biomass Nitrogen")
   
+  
+  
+  biomass_legend = get_legend(gg_MBC+ guides(color = guide_legend(nrow = 1)) +
+                                 theme(legend.position = "bottom"))
+  gg_Biomasscombine= plot_grid(
+    gg_MBC + theme(legend.position="none"),
+    gg_MBN + theme(legend.position="none"),
+    align = 'vh',
+    labels = c("A", "B", "C"),
+    hjust = -1,
+    nrow = 1
+  )
+  gg_Biomass_Legend=plot_grid(gg_Biomasscombine,biomass_legend, ncol=1, rel_heights =c(1,0.1))
+  
   list("Microbial biomass carbon" = gg_MBC,
-       "Microbial biomass nitrogen" = gg_MBN
+       "Microbial biomass nitrogen" = gg_MBN,
+       "Total Biomass"=gg_Biomass_Legend
        
   )
   

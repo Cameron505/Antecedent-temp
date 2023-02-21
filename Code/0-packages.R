@@ -5,6 +5,7 @@ library(reshape2)
 library(pracma)
 library(janitor)
 library(ggpubr)
+library(cowplot)
 
 # to install {ggbiplot}:
 # library(devtools)
@@ -13,7 +14,10 @@ library(ggpubr)
 
 
 # custom ggplot theme
-cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+cbPalette <- c("#888888","#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", 
+                        "#44AA99", "#999933", "#882255", "#661100", "#6699CC")
+cbPalette2 <- c("#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", 
+                         "#44AA99", "#999933", "#882255", "#661100", "#6699CC", "#888888")
 theme_CKM <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 12),
