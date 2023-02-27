@@ -1,18 +1,5 @@
 plot_respiration = function(respiration_processed){
   
-  fit_lm = function(dat){
-    
-    a = lm(val ~ JD2, data = dat)
-    broom::tidy(a) %>% 
-      dplyr::select(`p.value`) %>% 
-      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
-    
-  }
-  res_lm = 
-    respiration_processed %>% 
-    group_by(Inc_temp,pre_inc) %>% 
-    do(fit_lm(.)) #Not used
-  
   
   gg_res =
     respiration_processed %>%

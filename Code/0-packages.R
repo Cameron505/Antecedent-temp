@@ -8,7 +8,7 @@ library(ggpubr)
 library(cowplot)
 library(kableExtra)
 library(nlme)
-library(xtable)
+
 
 # to install {ggbiplot}:
 # library(devtools)
