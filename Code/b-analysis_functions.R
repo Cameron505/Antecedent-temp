@@ -375,7 +375,22 @@ Print_stats= function(nutrients_data,respiration_processed){
 
 all_aov2
 
-  list("ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2
+
+
+
+
+all_aov3 = 
+  nutrients_data_long %>% 
+  group_by(analyte) %>% 
+  filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
+  do(fit_aov2(.)) %>%
+  kableExtra::kbl() %>% 
+  kable_material(c("striped", "hover"))
+
+all_aov3
+
+  list("ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2,
+       "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)#2" = all_aov3
        
   )
   
