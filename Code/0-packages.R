@@ -6,7 +6,6 @@ library(pracma)
 library(janitor)
 library(ggpubr)
 library(cowplot)
-library(kableExtra)
 library(nlme)
 
 
