@@ -48,6 +48,7 @@ list(
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
   tar_target(gg_nutrients, plot_nutrients(nutrients_data)),
   tar_target(gg_MicrobialBiomass, plot_MicrobialBiomass(nutrients_data)),
+  tar_target(Stats_Table, Print_stats(nutrients_data)),
 
   
   # combined data

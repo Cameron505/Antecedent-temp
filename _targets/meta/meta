@@ -1,26 +1,29 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-cbPalette|object|c46ddba77d0ef5d8|||||||||||||||
-cbPalette2|object|2b775d58db2eda5e|||||||||||||||
+cbPalette|object|ef8d8f62c21b6cbc|||||||||||||||
+cbPalette2|object|a517436a4a56dfef|||||||||||||||
 def|function|eac81c64ce7ff8a3|||||||||||||||
 fit_aov|function|ecb438fe1ae4f8fa|||||||||||||||
-gg_MicrobialBiomass|stem|12d6913f25af6556|5b56faccb73189de|a6652fe436db4907|-440370533||t19408.8564670257s|c5dfa6e9b8b9d56f|395196|rds|local|vector|||2.1|1m22mRemoved 5 rows containing missing values geom_text.. 1m22mRemoved 5 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.|
-gg_nutrients|stem|6aa796cfb57f9891|29b10dcd439e7d8b|6681f3df13b2ab41|797690733||t19408.8564395584s|dad1ac38548cf477|538416|rds|local|vector|||2.64|1m22mUsing size aesthetic for lines was deprecated in ggplot2 3.4.0.36mℹ39m Please use linewidth instead.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.|
-gg_respiration|stem|d80405f1793fea68|4bd06ee6452ad87f|147fec0f52e3c99e|340829705||t19408.7022036178s|e08d5dd4bc3c5216|179765|rds|local|vector|||0.37||
+gg_MicrobialBiomass|stem|cc140f11122e2658|5b56faccb73189de|93fa2a8321386d92|-440370533||t19415.8405944258s|ad1d475c98d8fe12|398961|rds|local|vector|||3.13|1m22mUsing size aesthetic for lines was deprecated in ggplot2 3.4.0.36mℹ39m Please use linewidth instead.. 1m22mRemoved 5 rows containing missing values geom_text.. 1m22mRemoved 5 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.|
+gg_nutrients|stem|b8cf0ce2113acb13|29b10dcd439e7d8b|7d55c9a84c448ac4|797690733||t19415.8226232376s|52e636e6f6500759|655428|rds|local|vector|||2.74|1m22mUsing size aesthetic for lines was deprecated in ggplot2 3.4.0.36mℹ39m Please use linewidth instead.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.. 1m22mRemoved 6 rows containing missing values geom_text.|
+gg_respiration|stem|e2a8ccb018a3004a|4bd06ee6452ad87f|06f83e365d67d2c0|340829705||t19415.8092284887s|bd50e97628751bc6|179764|rds|local|vector|||0.34||
 import_nutrients|function|db0a41c9198fe338|||||||||||||||
 import_respiration|function|e27b6597b6a1f11b|||||||||||||||
 Nutrient_stats|function|5c04fb5911565444|||||||||||||||
 nutrients_data|stem|c696fb6eb42b2ea6|894ebbe673e63961|e8378494c597a236|-443847480||t19402.6761267054s|2b7d0039b9c2a96f|3730|rds|local|vector|||0.02||
 nutrients_data_read|stem|08d2ac786fa72dcb|8106894bf80bf1b3|ef46db3751d8e999|-1484156108|Data/Nutrients_MicrobialBiomass_AntecedentTemp.csv|t19402.6744278706s|970626f7c1260bea|5239|file|local|vector|||0||
 nutrients_processed|stem|501edbbc1e8c0ff1|c174f8f7168597c1|519f9727ebb1dd80|824399719||t19387.8977627628s|960341741f316ed7|3551|rds|local|vector|||0||
-plot_MicrobialBiomass|function|e984606c04ba4ed9|||||||||||||||
-plot_nutrients|function|78da3743b9cce264|||||||||||||||
-plot_respiration|function|c3a03b5b4b48b666|||||||||||||||
+plot_MicrobialBiomass|function|cc052ecced11373a|||||||||||||||
+plot_nutrients|function|401634abf09524a9|||||||||||||||
+plot_respiration|function|ac10c7e0371f2fc5|||||||||||||||
+Print_stats|function|33de9f389a686229|||||||||||||||
 process_nutrients|function|0fbf5706cf2c5ef3|||||||||||||||
 process_respiration|function|3b8ffe8e0fc54cc0|||||||||||||||
-report|stem|b8b60338cee642f8|9ede7f1697c9e150|54948d1f995f3117|-237041703|reports/AntecedentTemp_report.md*reports/AntecedentTemp_report.Rmd*reports/AntecedentTemp_report_files|t19408.8566538936s|e051c85f9ed32540|201477|file|local|vector|||16.35||
+report|stem|63ad27d78abd6dff|fcbf9feb54aa92b3|b0cf845736d418b8|-237041703|reports/AntecedentTemp_report.md*reports/AntecedentTemp_report.Rmd*reports/AntecedentTemp_report_files|t19415.9086577917s|350c52aabc04afc4|215174|file|local|vector|||14.69||
 respiration_data|stem|03a804da4731b578|8774235604dda00d|b916844bcb82b69f|206047441||t19387.905329632s|e04f7a2999f9f3b3|1904|rds|local|vector|||0.02||
 respiration_data_read|stem|8bd9231b5afccb3d|51d6680e3fd18710|ef46db3751d8e999|-2144014979|Data/Respiration_Antecedent_temp.csv|t19387.9051629817s|ac061bdf8fbe2654|7442|file|local|vector|||0||
 respiration_processed|stem|04700d2888ea87ab|a64576d46df64d99|cf044a309751b7ec|431738530||t19398.7114184011s|fe5bf8bc8c2f83f8|3656|rds|local|vector|||0.11||
 sample_key|stem|4099b40d8a2d1268|5076e0a710a22685|d06d58b7f8b66fc7|-878288691||t19374.8909506727s|9d0b71d7308478d8|1268|rds|local|vector|||0||
 sample_key_data|stem|63a3ea44ab68fb04|2e01e3951f3c0c84|ef46db3751d8e999|992213652|Data/Sample_key_AntecedentTemp.csv|t19374.639758903s|79ee3a5a17bc381d|2112|file|local|vector|||0||
+stats_Table|stem|d08811788e490bcd|5f4808474932cd0f|5fe2664494d9b443|1488054355||t19415.8406152048s|29b57f5d06cebe62|1872|rds|local|vector|||1.78||
+Stats_Table|stem|b8129037d5b0826b|5f4808474932cd0f|edf9d18efc4256a1|-574949933||t19415.9084846812s|3ae6f7e89cf53b45|1491|rds|local|vector|||1.55||
 theme_CKM|function|b2cbc9a280be3baf|||||||||||||||

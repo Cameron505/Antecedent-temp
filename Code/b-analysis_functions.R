@@ -134,8 +134,8 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -150,8 +150,8 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NO3, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -166,8 +166,8 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TFPA, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 130, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 130, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -182,8 +182,8 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TRS, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.5, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.5, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -198,8 +198,8 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=PO4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.58, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.58, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -212,12 +212,13 @@ nutrients_data_long = nutrients_data %>%
                                  theme(legend.position = "bottom"))
   gg_Ncombine= plot_grid(
     gg_NH4 + theme(legend.position="none", axis.title.x = element_blank()),
-    gg_NO3 + theme(legend.position="none"),
+    gg_NO3 + theme(legend.position="none",axis.title.x = element_blank()),
     gg_TFPA + theme(legend.position="none",axis.title.x = element_blank()),
+    gg_PO4 + theme(legend.position="none",axis.title.x = element_blank()),
     align = 'vh',
-    labels = c("A", "B", "C"),
+    labels = c("A", "B", "C", "D"),
     hjust = -1,
-    nrow = 1
+    nrow = 2
   )
 gg_N_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.1))
   
@@ -256,6 +257,24 @@ plot_MicrobialBiomass = function(nutrients_data){
     # factor the Inc_temp so they can line up in the graph
     mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")))
   
+  fit_aov2 = function(nutrients_data){
+    a = aov(conc ~ pre_inc*Inc_temp, data = nutrients_data)
+    broom::tidy(a) %>%
+      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
+    
+  }  
+  
+  
+  all_aov2 = 
+    nutrients_data_long %>% 
+    group_by(analyte) %>% 
+    filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
+    do(fit_aov2(.)) 
+    
+  
+
+  
+  
   
    gg_MBC =
     nutrients_data %>%
@@ -263,8 +282,8 @@ plot_MicrobialBiomass = function(nutrients_data){
             pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBC, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 875, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 875, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -279,15 +298,15 @@ plot_MicrobialBiomass = function(nutrients_data){
            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBN, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= "dodge")+
-    geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk))+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
     labs(x = "Incubation Temp.", 
          y = bquote('Microbial biomass ('*mu*'g N'~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass Nitrogen")
+    ggtitle("Microbial biomass nitrogen")
   
   
   
@@ -306,6 +325,70 @@ plot_MicrobialBiomass = function(nutrients_data){
   list("Microbial biomass carbon" = gg_MBC,
        "Microbial biomass nitrogen" = gg_MBN,
        "Total Biomass"=gg_Biomass_Legend
+       
+  )
+  
+}
+
+
+Print_stats= function(nutrients_data,respiration_processed){
+ 
+ 
+  a = respiration_processed %>%
+    lme(Res ~ JD2 + Inc_temp+ pre_inc+~1|Sample_ID)
+    
+  anova(a)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   fit_aov = function(nutrients_data){
+    
+    a = aov(conc ~ pre_inc, data = nutrients_data)
+    broom::tidy(a) %>% 
+      filter(term == "pre_inc") %>% 
+      dplyr::select(`p.value`) %>% 
+      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
+    
+  }
+  
+  nutrients_data_long = nutrients_data %>%
+    pivot_longer(cols= NH4:MBN,
+                 names_to= "analyte",
+                 values_to= "conc")
+  
+  all_aov = 
+    nutrients_data_long %>% 
+    group_by(analyte, Inc_temp) %>% 
+    filter(pre_inc!="none")%>%
+    do(fit_aov(.)) %>% 
+    mutate(pre_inc = "-2") %>% 
+    # factor the Inc_temp so they can line up in the graph
+    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")))
+  
+  fit_aov2 = function(nutrients_data){
+    a = aov(conc ~ pre_inc*Inc_temp, data = nutrients_data)
+    broom::tidy(a) %>%
+      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
+    
+  } 
+  
+  all_aov2 = 
+    nutrients_data_long %>% 
+    group_by(analyte) %>% 
+    filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
+    do(fit_aov2(.)) %>%
+    kable("simple")
+
+all_aov2
+
+  list("ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2
        
   )
   

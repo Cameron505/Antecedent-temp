@@ -6,18 +6,22 @@ library(pracma)
 library(janitor)
 library(ggpubr)
 library(cowplot)
+library(kableExtra)
+library(nlme)
+library(xtable)
 
 # to install {ggbiplot}:
 # library(devtools)
 # install_github("vqv/ggbiplot")
+#install_github("haozhu233/kableExtra")
 
 
 
 # custom ggplot theme
-cbPalette <- c("#888888","#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", 
-                        "#44AA99", "#999933", "#882255", "#661100", "#6699CC")
-cbPalette2 <- c("#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", 
-                         "#44AA99", "#999933", "#882255", "#661100", "#6699CC", "#888888")
+cbPalette <- c("#888888","#88CCEE", "#999933" , "#117733", "#332288", "#AA4499", 
+                        "#44AA99", "#882255", "#661100", "#6699CC","#DDCC77")
+cbPalette2 <- c("#88CCEE", "#999933", "#117733", "#332288", "#AA4499", 
+                         "#44AA99", "#882255", "#661100", "#6699CC", "#DDCC77", "#888888")
 theme_CKM <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 12),

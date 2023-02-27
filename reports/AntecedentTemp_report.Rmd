@@ -65,6 +65,18 @@ tar_read(gg_MicrobialBiomass)
 
 ---
 
+## Stats Table
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=6, fig.width=6}
+tar_read(Stats_Table)
+```
+</details>
+
+---
+
 ## Session Info 
 
 <details>
