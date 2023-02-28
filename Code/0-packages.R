@@ -7,7 +7,8 @@ library(janitor)
 library(ggpubr)
 library(cowplot)
 library(nlme)
-
+library(knitr)
+library(agricolae)
 
 # to install {ggbiplot}:
 # library(devtools)

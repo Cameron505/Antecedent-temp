@@ -17,885 +17,46 @@ also sent to PNNL for more comprehensive analysis of organic matter
 using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also
 performed to ascertain if there were any significant shifts lipids.
 
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-Replicate
-</th>
-<th style="text-align:right;">
-Pre.incubation
-</th>
-<th style="text-align:left;">
-Incubation.ID
-</th>
-<th style="text-align:right;">
-Incubation.temperauture
-</th>
-<th style="text-align:left;">
-ID
-</th>
-<th style="text-align:left;">
-UUID
-</th>
-<th style="text-align:left;">
-X
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A-2-1
-</td>
-<td style="text-align:left;">
-8656c258-a0e4-4755-81ed-f1d862112621
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A-2-2
-</td>
-<td style="text-align:left;">
-04cbe581-cd60-44ff-8322-e3c9d0f83b9b
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A-2-3
-</td>
-<td style="text-align:left;">
-5476356e-c64f-4057-80c1-f75c811fd36e
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A-6-1
-</td>
-<td style="text-align:left;">
-23e00139-06b9-4e24-9999-02f36c313389
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A-6-2
-</td>
-<td style="text-align:left;">
-0377bae3-d808-4dde-a8a3-9b68d5ef26de
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A-6-3
-</td>
-<td style="text-align:left;">
-537028bc-b721-4650-9b07-7e9a120a86d5
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-B-2-1
-</td>
-<td style="text-align:left;">
-440dba45-293d-4a1b-bd7e-25ab39357fa2
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-B-2-2
-</td>
-<td style="text-align:left;">
-8245ad28-be7f-4252-a46d-5fd861c420f5
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-B-2-3
-</td>
-<td style="text-align:left;">
-1d3baff5-e4c8-4a89-a6c1-8cff831fec47
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-B-6-1
-</td>
-<td style="text-align:left;">
-a045cdb7-4657-4366-ab08-a49b9c9780ae
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-B-6-2
-</td>
-<td style="text-align:left;">
-ed8616cf-0423-43c6-a1dd-ec97431309c9
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-B-6-3
-</td>
-<td style="text-align:left;">
-44e660ac-df81-410a-b264-e345291f1872
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-C-2-1
-</td>
-<td style="text-align:left;">
-dd528c4e-3d60-40c8-b3a6-accce911cbf9
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-C-2-2
-</td>
-<td style="text-align:left;">
-3efde34c-2e51-4560-bfcb-164de36e563e
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-C-2-3
-</td>
-<td style="text-align:left;">
-96d60bed-37ab-4d96-818d-e43353b81425
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-C-6-1
-</td>
-<td style="text-align:left;">
-d8d73f99-589b-4559-97b6-107d71c0688c
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-C-6-2
-</td>
-<td style="text-align:left;">
-fce12027-06e4-41d8-9c98-645c90cdf058
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-C-6-3
-</td>
-<td style="text-align:left;">
-580e2f97-ae86-4b45-ae91-5f8be28d57f1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-D-2-1
-</td>
-<td style="text-align:left;">
-a3edfe91-4286-4ded-9d74-6e59008a0f0b
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-D-2-2
-</td>
-<td style="text-align:left;">
-587708ea-5a51-49ee-b7b2-aaff43016145
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-D-2-3
-</td>
-<td style="text-align:left;">
-571d8331-5027-49c6-9ee0-362ed7654dc5
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-D-6-1
-</td>
-<td style="text-align:left;">
-48c5aae9-6684-4f19-bea2-28698eed6d5b
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-D-6-2
-</td>
-<td style="text-align:left;">
-dc8d0e75-f57d-4236-9ef5-523c6bd7e2e1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-D-6-3
-</td>
-<td style="text-align:left;">
-da4b7b0d-51ea-43e9-9db0-768352f0dc52
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-E-2-1
-</td>
-<td style="text-align:left;">
-51bdcfb0-b98e-4b6d-9271-f857553c99ee
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-E-2-2
-</td>
-<td style="text-align:left;">
-1c00ea1c-ab85-41b9-9713-7f74f1aaa2fb
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-E-2-3
-</td>
-<td style="text-align:left;">
-4270be4e-67fc-4f42-811c-bb85d271bf86
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-E-6-1
-</td>
-<td style="text-align:left;">
-a5f82baa-555e-48ef-bc79-8febae160345
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-E-6-2
-</td>
-<td style="text-align:left;">
-3bac6092-7564-4731-8411-8b5f2df33f3f
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-E-6-3
-</td>
-<td style="text-align:left;">
-cefe1d73-c95e-430f-a38a-130e61f11fc9
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-Pre
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-Pre-2-1
-</td>
-<td style="text-align:left;">
-0301b210-e061-4847-8236-55b4604e86b9
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-Pre
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-Pre-2-2
-</td>
-<td style="text-align:left;">
-d07b9001-0b93-4a1a-92b7-70b238a58a2c
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-Pre
-</td>
-<td style="text-align:right;">
--2
-</td>
-<td style="text-align:left;">
-Pre-2-3
-</td>
-<td style="text-align:left;">
-392fb7a7-e664-482e-90e7-87a2b5fbaa6e
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-Pre
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-Pre-6-1
-</td>
-<td style="text-align:left;">
-504ecbd1-d7bc-4c8f-9ec9-1d345bff218d
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-Pre
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-Pre-6-2
-</td>
-<td style="text-align:left;">
-a389c91b-9593-4b0f-84e7-b911e099c3e3
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-Pre
-</td>
-<td style="text-align:right;">
--6
-</td>
-<td style="text-align:left;">
-Pre-6-3
-</td>
-<td style="text-align:left;">
-dec78bde-1a26-4368-a537-5b480888b90b
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Source material
-</td>
-<td style="text-align:left;">
-e6b98a07-c63b-47a7-b872-e99320205b34
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
+| Replicate | Pre.incubation | Incubation.ID | Incubation.temperauture | ID              | UUID                                 | X   |
+|----------:|---------------:|:--------------|------------------------:|:----------------|:-------------------------------------|:----|
+|         1 |             -2 | A             |                       2 | A-2-1           | 8656c258-a0e4-4755-81ed-f1d862112621 | NA  |
+|         2 |             -2 | A             |                       2 | A-2-2           | 04cbe581-cd60-44ff-8322-e3c9d0f83b9b | NA  |
+|         3 |             -2 | A             |                       2 | A-2-3           | 5476356e-c64f-4057-80c1-f75c811fd36e | NA  |
+|         1 |             -6 | A             |                       2 | A-6-1           | 23e00139-06b9-4e24-9999-02f36c313389 | NA  |
+|         2 |             -6 | A             |                       2 | A-6-2           | 0377bae3-d808-4dde-a8a3-9b68d5ef26de | NA  |
+|         3 |             -6 | A             |                       2 | A-6-3           | 537028bc-b721-4650-9b07-7e9a120a86d5 | NA  |
+|         1 |             -2 | B             |                       4 | B-2-1           | 440dba45-293d-4a1b-bd7e-25ab39357fa2 | NA  |
+|         2 |             -2 | B             |                       4 | B-2-2           | 8245ad28-be7f-4252-a46d-5fd861c420f5 | NA  |
+|         3 |             -2 | B             |                       4 | B-2-3           | 1d3baff5-e4c8-4a89-a6c1-8cff831fec47 | NA  |
+|         1 |             -6 | B             |                       4 | B-6-1           | a045cdb7-4657-4366-ab08-a49b9c9780ae | NA  |
+|         2 |             -6 | B             |                       4 | B-6-2           | ed8616cf-0423-43c6-a1dd-ec97431309c9 | NA  |
+|         3 |             -6 | B             |                       4 | B-6-3           | 44e660ac-df81-410a-b264-e345291f1872 | NA  |
+|         1 |             -2 | C             |                       6 | C-2-1           | dd528c4e-3d60-40c8-b3a6-accce911cbf9 | NA  |
+|         2 |             -2 | C             |                       6 | C-2-2           | 3efde34c-2e51-4560-bfcb-164de36e563e | NA  |
+|         3 |             -2 | C             |                       6 | C-2-3           | 96d60bed-37ab-4d96-818d-e43353b81425 | NA  |
+|         1 |             -6 | C             |                       6 | C-6-1           | d8d73f99-589b-4559-97b6-107d71c0688c | NA  |
+|         2 |             -6 | C             |                       6 | C-6-2           | fce12027-06e4-41d8-9c98-645c90cdf058 | NA  |
+|         3 |             -6 | C             |                       6 | C-6-3           | 580e2f97-ae86-4b45-ae91-5f8be28d57f1 | NA  |
+|         1 |             -2 | D             |                       8 | D-2-1           | a3edfe91-4286-4ded-9d74-6e59008a0f0b | NA  |
+|         2 |             -2 | D             |                       8 | D-2-2           | 587708ea-5a51-49ee-b7b2-aaff43016145 | NA  |
+|         3 |             -2 | D             |                       8 | D-2-3           | 571d8331-5027-49c6-9ee0-362ed7654dc5 | NA  |
+|         1 |             -6 | D             |                       8 | D-6-1           | 48c5aae9-6684-4f19-bea2-28698eed6d5b | NA  |
+|         2 |             -6 | D             |                       8 | D-6-2           | dc8d0e75-f57d-4236-9ef5-523c6bd7e2e1 | NA  |
+|         3 |             -6 | D             |                       8 | D-6-3           | da4b7b0d-51ea-43e9-9db0-768352f0dc52 | NA  |
+|         1 |             -2 | E             |                      10 | E-2-1           | 51bdcfb0-b98e-4b6d-9271-f857553c99ee | NA  |
+|         2 |             -2 | E             |                      10 | E-2-2           | 1c00ea1c-ab85-41b9-9713-7f74f1aaa2fb | NA  |
+|         3 |             -2 | E             |                      10 | E-2-3           | 4270be4e-67fc-4f42-811c-bb85d271bf86 | NA  |
+|         1 |             -6 | E             |                      10 | E-6-1           | a5f82baa-555e-48ef-bc79-8febae160345 | NA  |
+|         2 |             -6 | E             |                      10 | E-6-2           | 3bac6092-7564-4731-8411-8b5f2df33f3f | NA  |
+|         3 |             -6 | E             |                      10 | E-6-3           | cefe1d73-c95e-430f-a38a-130e61f11fc9 | NA  |
+|         1 |             -2 | Pre           |                      -2 | Pre-2-1         | 0301b210-e061-4847-8236-55b4604e86b9 | NA  |
+|         2 |             -2 | Pre           |                      -2 | Pre-2-2         | d07b9001-0b93-4a1a-92b7-70b238a58a2c | NA  |
+|         3 |             -2 | Pre           |                      -2 | Pre-2-3         | 392fb7a7-e664-482e-90e7-87a2b5fbaa6e | NA  |
+|         1 |             -6 | Pre           |                      -6 | Pre-6-1         | 504ecbd1-d7bc-4c8f-9ec9-1d345bff218d | NA  |
+|         2 |             -6 | Pre           |                      -6 | Pre-6-2         | a389c91b-9593-4b0f-84e7-b911e099c3e3 | NA  |
+|         3 |             -6 | Pre           |                      -6 | Pre-6-3         | dec78bde-1a26-4368-a537-5b480888b90b | NA  |
+|        NA |             NA |               |                      NA | Source material | e6b98a07-c63b-47a7-b872-e99320205b34 | NA  |
+
 </details>
 
 ------------------------------------------------------------------------
@@ -960,6 +121,27 @@ difference in pre-incubation temperature.
 click to open
 </summary>
 
+Respiration rates were assessed using a Linear Mixed-Effects Models (lme
+function from package nlme). Incubation day, incubation temperature, and
+preincubation temperature were all shown to be significant. See table
+below for p-values. Microbial biomass, TRS, and nutrients from terminal
+extractions were assessed for incubation temperatures using an anova
+analysis with interaction effects. TRS showed significant variation with
+Incubation temperature, pre-incubation temperature, and interaction.
+Microbial biomass carbon also showed significant variation with
+pre-incubation temperature, but not incubation temperature. All
+nutrients had no significant variation.
+
+    ## $`Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))`
+    ## 
+    ## 
+    ##                numDF   denDF      F-value     p-value
+    ## ------------  ------  ------  -----------  ----------
+    ## (Intercept)        1     149   673.355930   0.0000000
+    ## JD2                1     149    40.135389   0.0000000
+    ## Inc_temp           1      27    91.448720   0.0000000
+    ## pre_inc            1      27     6.956082   0.0136884
+    ## 
     ## $`ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)`
     ## 
     ## 
@@ -1021,7 +203,7 @@ click to open
 Session Info
 </summary>
 
-Date run: 2023-02-27
+Date run: 2023-02-28
 
     ## R version 4.2.2 (2022-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -1041,7 +223,7 @@ Date run: 2023-02-27
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] xtable_1.8-4      nlme_3.1-162      kableExtra_1.3.4  cowplot_1.1.1    
+    ##  [1] agricolae_1.3-5   knitr_1.41        nlme_3.1-162      cowplot_1.1.1    
     ##  [5] ggpubr_0.5.0      janitor_2.1.0     pracma_2.4.2      reshape2_1.4.4   
     ##  [9] ggbiplot_0.55     scales_1.2.1      plyr_1.8.8        vegan_2.6-4      
     ## [13] lattice_0.20-45   permute_0.9-7     forcats_0.5.2     stringr_1.5.0    
@@ -1050,34 +232,40 @@ Date run: 2023-02-27
     ## [25] targets_0.14.2   
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] googledrive_2.0.0   colorspace_2.0-3    ggsignif_0.6.4     
-    ##  [4] ellipsis_0.3.2      snakecase_0.11.0    fs_1.5.2           
-    ##  [7] rstudioapi_0.14     farver_2.1.1        listenv_0.9.0      
-    ## [10] furrr_0.3.1         fansi_1.0.3         lubridate_1.9.0    
-    ## [13] xml2_1.3.3          codetools_0.2-18    splines_4.2.2      
-    ## [16] knitr_1.41          polynom_1.4-1       jsonlite_1.8.4     
-    ## [19] broom_1.0.2         cluster_2.1.4       dbplyr_2.2.1       
-    ## [22] compiler_4.2.2      httr_1.4.4          backports_1.4.1    
-    ## [25] assertthat_0.2.1    Matrix_1.5-1        fastmap_1.1.0      
-    ## [28] gargle_1.2.1        cli_3.6.0           htmltools_0.5.4    
-    ## [31] tools_4.2.2         igraph_1.3.5        gtable_0.3.1       
-    ## [34] glue_1.6.2          Rcpp_1.0.9          carData_3.0-5      
-    ## [37] cellranger_1.1.0    vctrs_0.5.1         svglite_2.1.1      
-    ## [40] xfun_0.36           globals_0.16.2      ps_1.7.2           
-    ## [43] rvest_1.0.3         timechange_0.1.1    lifecycle_1.0.3    
-    ## [46] rstatix_0.7.2       googlesheets4_1.0.1 future_1.30.0      
-    ## [49] MASS_7.3-58.1       hms_1.1.2           parallel_4.2.2     
-    ## [52] yaml_2.3.6          stringi_1.7.8       highr_0.10         
-    ## [55] rlang_1.0.6         pkgconfig_2.0.3     systemfonts_1.0.4  
-    ## [58] evaluate_0.19       labeling_0.4.2      processx_3.8.0     
-    ## [61] tidyselect_1.2.0    parallelly_1.34.0   magrittr_2.0.3     
-    ## [64] R6_2.5.1            generics_0.1.3      base64url_1.4      
-    ## [67] DBI_1.1.3           pillar_1.8.1        haven_2.5.1        
-    ## [70] withr_2.5.0         mgcv_1.8-41         abind_1.4-5        
-    ## [73] modelr_0.1.10       crayon_1.5.2        car_3.1-1          
-    ## [76] utf8_1.2.2          tzdb_0.3.0          rmarkdown_2.19     
-    ## [79] future.callr_0.8.1  readxl_1.4.1        data.table_1.14.6  
-    ## [82] callr_3.7.3         reprex_2.0.2        digest_0.6.31      
-    ## [85] webshot_0.5.4       munsell_0.5.0       viridisLite_0.4.1
+    ##   [1] googledrive_2.0.0   colorspace_2.0-3    ggsignif_0.6.4     
+    ##   [4] class_7.3-20        ellipsis_0.3.2      snakecase_0.11.0   
+    ##   [7] fs_1.5.2            gld_2.6.6           proxy_0.4-27       
+    ##  [10] rstudioapi_0.14     farver_2.1.1        listenv_0.9.0      
+    ##  [13] furrr_0.3.1         mvtnorm_1.1-3       fansi_1.0.3        
+    ##  [16] lubridate_1.9.0     xml2_1.3.3          codetools_0.2-18   
+    ##  [19] splines_4.2.2       rootSolve_1.8.2.3   polynom_1.4-1      
+    ##  [22] jsonlite_1.8.4      broom_1.0.2         cluster_2.1.4      
+    ##  [25] dbplyr_2.2.1        shiny_1.7.4         compiler_4.2.2     
+    ##  [28] httr_1.4.4          backports_1.4.1     assertthat_0.2.1   
+    ##  [31] Matrix_1.5-1        fastmap_1.1.0       gargle_1.2.1       
+    ##  [34] cli_3.6.0           later_1.3.0         htmltools_0.5.4    
+    ##  [37] tools_4.2.2         igraph_1.3.5        lmom_2.9           
+    ##  [40] gtable_0.3.1        glue_1.6.2          Rcpp_1.0.9         
+    ##  [43] carData_3.0-5       cellranger_1.1.0    vctrs_0.5.1        
+    ##  [46] xfun_0.36           globals_0.16.2      ps_1.7.2           
+    ##  [49] rvest_1.0.3         mime_0.12           timechange_0.1.1   
+    ##  [52] miniUI_0.1.1.1      lifecycle_1.0.3     rstatix_0.7.2      
+    ##  [55] googlesheets4_1.0.1 future_1.30.0       MASS_7.3-58.1      
+    ##  [58] hms_1.1.2           promises_1.2.0.1    parallel_4.2.2     
+    ##  [61] expm_0.999-7        Exact_3.2           yaml_2.3.6         
+    ##  [64] labelled_2.10.0     stringi_1.7.8       AlgDesign_1.2.1    
+    ##  [67] highr_0.10          klaR_1.7-1          e1071_1.7-13       
+    ##  [70] boot_1.3-28         rlang_1.0.6         pkgconfig_2.0.3    
+    ##  [73] evaluate_0.19       labeling_0.4.2      processx_3.8.0     
+    ##  [76] tidyselect_1.2.0    parallelly_1.34.0   magrittr_2.0.3     
+    ##  [79] R6_2.5.1            DescTools_0.99.48   generics_0.1.3     
+    ##  [82] base64url_1.4       combinat_0.0-8      DBI_1.1.3          
+    ##  [85] pillar_1.8.1        haven_2.5.1         withr_2.5.0        
+    ##  [88] mgcv_1.8-41         abind_1.4-5         modelr_0.1.10      
+    ##  [91] crayon_1.5.2        car_3.1-1           questionr_0.7.8    
+    ##  [94] utf8_1.2.2          rmarkdown_2.19      tzdb_0.3.0         
+    ##  [97] future.callr_0.8.1  readxl_1.4.1        data.table_1.14.6  
+    ## [100] callr_3.7.3         reprex_2.0.2        digest_0.6.31      
+    ## [103] xtable_1.8-4        httpuv_1.6.7        munsell_0.5.0
 
 </details>

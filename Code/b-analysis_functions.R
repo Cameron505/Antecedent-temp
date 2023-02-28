@@ -89,7 +89,8 @@ plot_respiration = function(respiration_processed){
 
 plot_nutrients = function(nutrients_data){
 
-    
+  ####
+  #Significance between pre-incubation temps across incubation (Marked with asterisk)
     fit_aov = function(nutrients_data){
       
       a = aov(conc ~ pre_inc, data = nutrients_data)
@@ -114,6 +115,76 @@ nutrients_data_long = nutrients_data %>%
     # factor the Inc_temp so they can line up in the graph
     mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")))
   
+ #### 
+  
+  ####
+  #doing abc anova analysis comparing incubation temperatures
+  #Yields all "a's for everything except for TRS
+  
+  fit_hsd = function(dat){
+    a = aov(conc ~ Inc_temp, data = nutrients_data_long)
+    h = HSD.test(a, "Inc_temp")
+    h$groups %>% mutate(Inc_temp = row.names(.)) %>%
+      dplyr::rename(label = groups) %>%  
+      dplyr::select(Inc_temp, label)
+  }
+  
+  hsd_label = 
+    nutrients_data_long %>%
+    filter(pre_inc != "none")%>%
+    group_by(analyte,pre_inc) %>% 
+    do(fit_hsd(.))
+  
+  hsd_label2 = 
+    nutrients_data_long %>%
+    group_by(analyte) %>% 
+    do(fit_hsd(.)) %>%
+    mutate(pre_inc= "-2")
+  ####
+  
+  
+  #### Setting up DunnettTest Yields no significant values
+  
+  
+  dunnett_soil <- function(dat) {
+    d <-DescTools::DunnettTest(conc~Incubation.ID, control = c("Pre-Pre","Pre"), data = nutrients_data_long)
+    #create a tibble with one column for each treatment
+    # column 4 has the pvalue
+    t = tibble(`2-Tzero` = d$`Pre-Pre`["A-Pre-Pre",4], 
+               `4-Tzero` = d$`Pre-Pre`["B-Pre-Pre",4], 
+               `6-Tzero` = d$`Pre-Pre`["C-Pre-Pre",4], 
+               `8-Tzero` = d$`Pre-Pre`["D-Pre-Pre",4], 
+               `10-Tzero` = d$`Pre-Pre`["E-Pre-Pre",4],
+               `2-Pre` = d$`Pre`["A-Pre",4], 
+               `4-Pre` = d$`Pre`["B-Pre",4], 
+               `6-Pre` = d$`Pre`["C-Pre",4], 
+               `8-Pre` = d$`Pre`["D-Pre",4], 
+               `10-Pre` = d$`Pre`["E-Pre",4]
+               )
+    # we need to convert significant p values to asterisks
+    # since the values are in a single row, it is tricky
+    t %>% 
+      # first, gather all p-values into a single column, pval
+      gather(trt, pval, 1:10) %>% 
+      # conditionally replace all significant pvalues (p<0.05) with asterisks and the rest remain blank
+      mutate(p = if_else(pval<0.05, "*","")) %>% 
+      # remove the pval column
+      dplyr::select(-pval) %>% 
+      # spread the p (asterisks) column bnack into the three columns
+      spread(trt, p)  ->
+      t
+  }
+  
+  dunnett_label = 
+    nutrients_data_long %>%
+    group_by(analyte,pre_inc) %>% 
+    do(dunnett_soil(.))
+  
+  ####
+  
+  #Graphs commented out geom_text is for abc labels
+  
+  
   
   gg_NH4 =
     nutrients_data %>%
@@ -122,6 +193,8 @@ nutrients_data_long = nutrients_data %>%
     ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    #geom_text(data = hsd_label2 %>% filter(analyte == "NH4"), aes(y = 5, label = label))+
+    #geom_text(data = hsd_label %>% filter(analyte == "NH4"), aes(y = 6, label = label),position= position_dodge(width = 1))+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
@@ -138,6 +211,8 @@ nutrients_data_long = nutrients_data %>%
     ggplot(aes(x=Inc_temp, y=NO3, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    #geom_text(data = hsd_label2 %>% filter(analyte == "NO3"), aes(y = 30, label = label))+
+    #geom_text(data = hsd_label %>% filter(analyte == "NO3"), aes(y = 33, label = label),position= position_dodge(width = 1))+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
@@ -154,7 +229,9 @@ nutrients_data_long = nutrients_data %>%
     ggplot(aes(x=Inc_temp, y=TFPA, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
-    geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 130, label = asterisk), size=10)+
+    #geom_text(data = hsd_label2 %>% filter(analyte == "TFPA"), aes(y = 130, label = label))+
+    #geom_text(data = hsd_label %>% filter(analyte == "TFPA"), aes(y = 138, label = label),position= position_dodge(width = 1))+
+    geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -170,7 +247,9 @@ nutrients_data_long = nutrients_data %>%
     ggplot(aes(x=Inc_temp, y=TRS, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
-    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.5, label = asterisk), size=10)+
+    #geom_text(data = hsd_label2 %>% filter(analyte == "TRS"), aes(y = 0.8, label = label))+
+    #geom_text(data = hsd_label %>% filter(analyte == "TRS"), aes(y = 0.9, label = label),position= position_dodge(width = 1))+
+    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.8, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -187,6 +266,8 @@ nutrients_data_long = nutrients_data %>%
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.58, label = asterisk), size=10)+
+    #geom_text(data = hsd_label2 %>% filter(analyte == "PO4"), aes(y = 0.58, label = label))+
+    #geom_text(data = hsd_label %>% filter(analyte == "PO4"), aes(y = 0.68, label = label),position= position_dodge(width = 1))+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -270,6 +351,8 @@ plot_MicrobialBiomass = function(nutrients_data){
     ggplot(aes(x=Inc_temp, y=MBC, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+     #geom_text(data = hsd_label2 %>% filter(analyte == "MBC"), aes(y = 875, label = label))+
+     #geom_text(data = hsd_label %>% filter(analyte == "MBC"), aes(y = 885, label = label),position= position_dodge(width = 1))+
     geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 875, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
@@ -286,7 +369,9 @@ plot_MicrobialBiomass = function(nutrients_data){
     ggplot(aes(x=Inc_temp, y=MBN, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
-    geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=10)+
+    #geom_text(data = hsd_label2 %>% filter(analyte == "MBN"), aes(y = 125, label = label))+
+    #geom_text(data = hsd_label %>% filter(analyte == "MBN"), aes(y = 135, label = label),position= position_dodge(width = 1))+
+    #geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
@@ -317,7 +402,6 @@ plot_MicrobialBiomass = function(nutrients_data){
   
 }
 
-
 Print_stats= function(nutrients_data,respiration_processed){
  
  
@@ -325,15 +409,8 @@ Print_stats= function(nutrients_data,respiration_processed){
                 random = ~1|Sample_ID,
                 data = respiration_processed)
     
-  aanova<-anova(a)
-  
-  emmeans(aanova, list(pairwise~Inc_temp), adjust="tukey")
-  
-  
-  
-  
-  
-  
+  aanova<-anova(a) %>%
+    knitr::kable("simple")
   
   
    fit_aov = function(nutrients_data){
@@ -372,12 +449,17 @@ Print_stats= function(nutrients_data,respiration_processed){
     group_by(analyte) %>% 
     filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
     do(fit_aov2(.)) %>%
-    kable("simple")
-
-all_aov2
+    knitr::kable("simple")
 
 
-  list("ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2
+  aanova
+  
+  all_aov2
+
+
+  list("Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"= aanova,
+       "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2
+       
        
   )
   

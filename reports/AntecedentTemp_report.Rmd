@@ -68,7 +68,9 @@ tar_read(gg_MicrobialBiomass)
 ## Stats Table
 <details>
   <summary>click to open</summary>
-
+  
+  Respiration rates were assessed using a Linear Mixed-Effects Models (lme function from package nlme). Incubation day, incubation temperature, and preincubation temperature were all shown to be significant. See table below for p-values. 
+  Microbial biomass, TRS, and nutrients from terminal extractions were assessed for incubation temperatures using an anova analysis with interaction effects. TRS showed significant variation with Incubation temperature, pre-incubation temperature, and interaction. Microbial biomass carbon also showed significant variation with pre-incubation temperature, but not incubation temperature. All nutrients had no significant variation. 
 
 ```{r , fig.height=6, fig.width=6}
 tar_read(Stats_Table)
