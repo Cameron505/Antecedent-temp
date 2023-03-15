@@ -190,7 +190,20 @@ nutrients had no significant variation.
     ## TRS       pre_inc              2   1.448907e-01   7.244540e-02   42.0381109   0.0000000  *        
     ## TRS       Inc_temp             5   1.822171e-01   3.644340e-02   21.1471412   0.0000001  *        
     ## TRS       pre_inc:Inc_temp     5   1.165281e-01   2.330560e-02   13.5236326   0.0000033  *        
-    ## TRS       Residuals           23   3.963650e-02   1.723300e-03           NA          NA  NA
+    ## TRS       Residuals           23   3.963650e-02   1.723300e-03           NA          NA  NA       
+    ## 
+    ## $diffres
+    ## 
+    ## 
+    ## Table: Difference in cumulative respiration between pre incubation temperatures
+    ## 
+    ##  Inc_temp         -6          -2       Diff
+    ## ---------  ---------  ----------  ---------
+    ##         2   105.8210    90.26896   15.55202
+    ##         4   148.5354   131.09775   17.43764
+    ##         6   184.5535   146.32651   38.22700
+    ##         8   233.7851   188.78486   45.00021
+    ##        10   333.6863   261.20783   72.47846
 
 </details>
 
@@ -203,7 +216,7 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-02-28
+Date run: 2023-03-15
 
     ## R version 4.2.2 (2022-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

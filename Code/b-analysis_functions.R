@@ -88,7 +88,7 @@ plot_respiration = function(respiration_processed){
 }
 
 plot_nutrients = function(nutrients_data){
-
+  
   ####
   #Significance between pre-incubation temps across incubation (Marked with asterisk)
     fit_aov = function(nutrients_data){
@@ -105,7 +105,7 @@ nutrients_data_long = nutrients_data %>%
     pivot_longer(cols= NH4:MBN,
                  names_to= "analyte",
                  values_to= "conc")
-  
+
   all_aov = 
     nutrients_data_long %>% 
     group_by(analyte, Inc_temp) %>% 
@@ -175,12 +175,12 @@ nutrients_data_long = nutrients_data %>%
   
   #Graphs commented out geom_text is for abc labels
   
-  
+  nutrients_data[nutrients_data == "none"] <- "T0"
   
   gg_NH4 =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -197,8 +197,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_NO3 =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NO3, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -215,8 +215,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_TFPA =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TFPA, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -227,14 +227,14 @@ nutrients_data_long = nutrients_data %>%
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette)+
     labs(x = "Incubation Temp.", 
-         y = bquote('Total free primary amines-Leucine equiv. (nMol' ~g^-1 ~ dry ~ soil*')'))+
+         y = bquote(atop('Total free primary amines-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
     ggtitle("TFPA")
   
   gg_TRS =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TRS, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -251,8 +251,8 @@ nutrients_data_long = nutrients_data %>%
   
   gg_PO4 =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=PO4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -276,6 +276,7 @@ nutrients_data_long = nutrients_data %>%
     gg_PO4 + theme(legend.position="none",axis.title.x = element_blank()),
     align = 'vh',
     labels = c("A", "B", "C", "D"),
+    label_x= 0.1,
     hjust = -1,
     nrow = 2
   )
@@ -292,7 +293,10 @@ gg_N_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.1)
 }
 
 plot_MicrobialBiomass = function(nutrients_data){
-  fit_aov = function(nutrients_data){
+
+  
+  
+   fit_aov = function(nutrients_data){
     
     a = aov(conc ~ pre_inc, data = nutrients_data)
     broom::tidy(a) %>% 
@@ -333,12 +337,12 @@ plot_MicrobialBiomass = function(nutrients_data){
   
 
   
-  
+  nutrients_data[nutrients_data == "none"] <- "T0"  
   
    gg_MBC =
     nutrients_data %>%
-     mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-            pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+     mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+            pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBC, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -355,8 +359,8 @@ plot_MicrobialBiomass = function(nutrients_data){
   
   gg_MBN =
     nutrients_data %>%
-    mutate(Inc_temp = factor(Inc_temp, levels=c("none","Pre","-2","-6","2","4","6","8","10")),
-           pre_inc = factor(pre_inc,levels=c("none","-2","-6"))) %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBN, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
@@ -394,6 +398,23 @@ plot_MicrobialBiomass = function(nutrients_data){
 }
 
 Print_stats= function(nutrients_data,respiration_processed){
+  
+  diffres<- respiration_processed %>%
+    filter(JD2==5)%>%
+    group_by(Inc_temp,pre_inc) %>%
+    select(-c(Sample_ID,Res))%>%
+    dplyr::summarize(Mean = mean(val, na.rm=TRUE))%>%
+    pivot_wider(names_from = pre_inc, values_from = Mean)%>%
+    unnest() %>%
+    ungroup%>%
+    mutate(Diff= `-6` - `-2`) %>%
+    knitr::kable("simple", caption= "Difference in cumulative respiration between pre incubation temperatures")
+  
+  
+ LASTRES<- respiration_processed %>%
+   filter(JD2==5)
+ 
+   summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
  
  
   a = nlme::lme(Res ~ JD2 + Inc_temp + pre_inc,
@@ -446,11 +467,13 @@ Print_stats= function(nutrients_data,respiration_processed){
   aanova
   
   all_aov2
+  
+  diffres
 
 
   list("Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"= aanova,
-       "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2
-       
+       "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2,
+       diffres = diffres
        
   )
   
