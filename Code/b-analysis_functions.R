@@ -165,14 +165,55 @@ nutrients_data_long = nutrients_data %>%
     
   }
   
+  dunnett_prepre <- function(nutrients_data_long) {
+    
+    nutrients_data_long = nutrients_data_long %>% mutate(`Incubation.ID` = as.factor(`Incubation.ID`))
+    
+    d <- DescTools::DunnettTest(conc ~ `Incubation.ID`, control = "Pre-Pre", data = nutrients_data_long)
+    t = 
+      d$Pre %>% 
+      as.data.frame() %>% 
+      rownames_to_column("comparison") %>% 
+      dplyr::select(comparison, pval) %>% 
+      mutate(T0 = if_else(pval<0.05, "*","")) %>% 
+      # remove the pval column
+      dplyr::select(-pval) %>% 
+      separate(comparison, sep = "-", into = "Incubation.ID")
+    
+    t
+    
+  }
+  
+ 
+    
+  #### pre vs incubated
   dunnett_label = 
     nutrients_data_long %>%
     filter(`Incubation.ID` != "Pre-Pre") %>% 
     group_by(analyte, pre_inc) %>% 
     do(dunnett_soil(.))
-    
-  ####
   
+  #### Dunnett test 2 (-2) prepre vs incubated
+  
+  dunnett_label2 = 
+    nutrients_data_long %>%
+    filter(`Incubation.ID` != "-6") %>% 
+    group_by(analyte) %>% 
+    do(dunnett_prepre(.)) %>%
+    mutate(pre_inc= "-2")
+  
+  
+  #### Dunnett test 3 (-6)
+  
+  dunnett_label3 = 
+    nutrients_data_long %>%
+    filter(`Incubation.ID` != "-2") %>% 
+    group_by(analyte) %>% 
+    do(dunnett_prepre(.)) %>%
+    mutate(pre_inc= "-6")
+  
+  
+  Dunnett_label_prepre<- rbind(dunnett_label2,dunnett_label3)
   #Graphs commented out geom_text is for abc labels
   
   nutrients_data[nutrients_data == "none"] <- "T0"
@@ -462,18 +503,94 @@ Print_stats= function(nutrients_data,respiration_processed){
     filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
     do(fit_aov2(.)) %>%
     knitr::kable("simple")
-
+#### Dunnett tests
+  dunnett_soil <- function(nutrients_data_long) {
+    
+    nutrients_data_long = nutrients_data_long %>% mutate(`Incubation.ID` = as.factor(`Incubation.ID`))
+    
+    d <- DescTools::DunnettTest(conc ~ `Incubation.ID`, control = "Pre", data = nutrients_data_long)
+    t = 
+      d$Pre %>% 
+      as.data.frame() %>% 
+      rownames_to_column("comparison") %>% 
+      dplyr::select(comparison, pval) %>% 
+      mutate(pre = if_else(pval<0.05, "*","")) %>% 
+      # remove the pval column
+      dplyr::select(-pval) %>% 
+      separate(comparison, sep = "-", into = "Incubation.ID")
+    
+    t
+    
+  }
+  
+  dunnett_prepre <- function(nutrients_data_long) {
+    
+    nutrients_data_long = nutrients_data_long %>% mutate(`Incubation.ID` = as.factor(`Incubation.ID`))
+    
+    d <- DescTools::DunnettTest(conc ~ `Incubation.ID`, control = "Pre-Pre", data = nutrients_data_long)
+    t = 
+      d$Pre %>% 
+      as.data.frame() %>% 
+      rownames_to_column("comparison") %>% 
+      dplyr::select(comparison, pval) %>% 
+      mutate(pre = if_else(pval<0.05, "*","")) %>% 
+      # remove the pval column
+      dplyr::select(-pval) %>% 
+      separate(comparison, sep = "-", into = "Incubation.ID")
+    
+    t
+    
+  }
+  
+  
+  
+  #### pre vs incubated
+  dunnett_label = 
+    nutrients_data_long %>%
+    filter(`Incubation.ID` != "Pre-Pre") %>% 
+    group_by(analyte, pre_inc) %>% 
+    do(dunnett_soil(.))
+  
+  
+  #### Dunnett test 2 (-2) prepre vs incubated
+  
+  dunnett_label2 = 
+    nutrients_data_long %>%
+    filter(`Incubation.ID` != "-6") %>% 
+    group_by(analyte) %>% 
+    do(dunnett_prepre(.)) %>%
+    mutate(pre_inc= "-2 vs T0")
+  
+  
+  #### Dunnett test 3 (-6)
+  
+  dunnett_label3 = 
+    nutrients_data_long %>%
+    filter(`Incubation.ID` != "-2") %>% 
+    group_by(analyte) %>% 
+    do(dunnett_prepre(.)) %>%
+    mutate(pre_inc= "-6 vs T0")
+  
+  
+  Dunnett_label_all<- rbind(dunnett_label,dunnett_label2,dunnett_label3)%>%
+    mutate(pre_inc = ifelse(pre_inc == "-2", "-2 vs pre", as.character(pre_inc))) %>%
+    mutate(pre_inc = ifelse(pre_inc == "-6", "-6 vs pre", as.character(pre_inc))) %>%
+    knitr::kable("simple", caption= "Dunnett test results comparing T0 group to all")
+  ####
 
   aanova
   
   all_aov2
   
   diffres
+  
+  Dunnett_label_all
 
 
   list("Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"= aanova,
        "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2,
-       diffres = diffres
+       diffres = diffres,
+       Dunnett_label_all=Dunnett_label_all
        
   )
   
