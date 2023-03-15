@@ -146,40 +146,31 @@ nutrients_data_long = nutrients_data %>%
   #### Setting up DunnettTest Yields no significant values
   
   
-  dunnett_soil <- function(dat) {
-    d <-DescTools::DunnettTest(conc~Incubation.ID, control = c("Pre-Pre","Pre"), data = nutrients_data_long)
-    #create a tibble with one column for each treatment
-    # column 4 has the pvalue
-    t = tibble(`2-Tzero` = d$`Pre-Pre`["A-Pre-Pre",4], 
-               `4-Tzero` = d$`Pre-Pre`["B-Pre-Pre",4], 
-               `6-Tzero` = d$`Pre-Pre`["C-Pre-Pre",4], 
-               `8-Tzero` = d$`Pre-Pre`["D-Pre-Pre",4], 
-               `10-Tzero` = d$`Pre-Pre`["E-Pre-Pre",4],
-               `2-Pre` = d$`Pre`["A-Pre",4], 
-               `4-Pre` = d$`Pre`["B-Pre",4], 
-               `6-Pre` = d$`Pre`["C-Pre",4], 
-               `8-Pre` = d$`Pre`["D-Pre",4], 
-               `10-Pre` = d$`Pre`["E-Pre",4]
-               )
-    # we need to convert significant p values to asterisks
-    # since the values are in a single row, it is tricky
-    t %>% 
-      # first, gather all p-values into a single column, pval
-      gather(trt, pval, 1:10) %>% 
-      # conditionally replace all significant pvalues (p<0.05) with asterisks and the rest remain blank
-      mutate(p = if_else(pval<0.05, "*","")) %>% 
+  dunnett_soil <- function(nutrients_data_long) {
+    
+    nutrients_data_long = nutrients_data_long %>% mutate(`Incubation.ID` = as.factor(`Incubation.ID`))
+      
+    d <- DescTools::DunnettTest(conc ~ `Incubation.ID`, control = "Pre", data = nutrients_data_long)
+    t = 
+      d$Pre %>% 
+      as.data.frame() %>% 
+      rownames_to_column("comparison") %>% 
+      dplyr::select(comparison, pval) %>% 
+      mutate(pre = if_else(pval<0.05, "*","")) %>% 
       # remove the pval column
       dplyr::select(-pval) %>% 
-      # spread the p (asterisks) column bnack into the three columns
-      spread(trt, p)  ->
-      t
+      separate(comparison, sep = "-", into = "Incubation.ID")
+    
+    t
+    
   }
   
   dunnett_label = 
     nutrients_data_long %>%
-    group_by(analyte,pre_inc) %>% 
+    filter(`Incubation.ID` != "Pre-Pre") %>% 
+    group_by(analyte, pre_inc) %>% 
     do(dunnett_soil(.))
-  
+    
   ####
   
   #Graphs commented out geom_text is for abc labels
