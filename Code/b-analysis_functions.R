@@ -575,7 +575,8 @@ Print_stats= function(nutrients_data,respiration_processed){
   Dunnett_label_all<- rbind(dunnett_label,dunnett_label2,dunnett_label3)%>%
     mutate(pre_inc = ifelse(pre_inc == "-2", "-2 vs pre", as.character(pre_inc))) %>%
     mutate(pre_inc = ifelse(pre_inc == "-6", "-6 vs pre", as.character(pre_inc))) %>%
-    knitr::kable("simple", caption= "Dunnett test results comparing T0 group to all")
+    mutate(Inc_temp = ifelse(Incubation.ID == c("A","B","C","D","E"), c("2","4","6","8","10"), as.character(Incubation.ID))) %>%
+    knitr::kable("simple", caption= "Dunnett test results comparing T0 and pre incubations to all")
   ####
 
   aanova
