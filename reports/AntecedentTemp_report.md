@@ -210,250 +210,250 @@ nutrients had no significant variation.
     ## 
     ## Table: Dunnett test results comparing T0 and pre incubations to all
     ## 
-    ## analyte   pre_inc     Incubation.ID   pre   Inc_temp 
-    ## --------  ----------  --------------  ----  ---------
-    ## FTN       -2 vs pre   A                     2        
-    ## FTN       -2 vs pre   B                     4        
-    ## FTN       -2 vs pre   C                     6        
-    ## FTN       -2 vs pre   D                     8        
-    ## FTN       -2 vs pre   E                     10       
-    ## FTN       -6 vs pre   A                     2        
-    ## FTN       -6 vs pre   B                     4        
-    ## FTN       -6 vs pre   C                     6        
-    ## FTN       -6 vs pre   D                     8        
-    ## FTN       -6 vs pre   E                     10       
-    ## FTOC      -2 vs pre   A                     2        
-    ## FTOC      -2 vs pre   B                     4        
-    ## FTOC      -2 vs pre   C               *     6        
-    ## FTOC      -2 vs pre   D                     8        
-    ## FTOC      -2 vs pre   E                     10       
-    ## FTOC      -6 vs pre   A                     2        
-    ## FTOC      -6 vs pre   B                     4        
-    ## FTOC      -6 vs pre   C                     6        
-    ## FTOC      -6 vs pre   D                     8        
-    ## FTOC      -6 vs pre   E                     10       
-    ## MBC       -2 vs pre   A                     2        
-    ## MBC       -2 vs pre   B                     4        
-    ## MBC       -2 vs pre   C                     6        
-    ## MBC       -2 vs pre   D                     8        
-    ## MBC       -2 vs pre   E                     10       
-    ## MBC       -6 vs pre   A                     2        
-    ## MBC       -6 vs pre   B                     4        
-    ## MBC       -6 vs pre   C                     6        
-    ## MBC       -6 vs pre   D                     8        
-    ## MBC       -6 vs pre   E                     10       
-    ## MBN       -2 vs pre   A                     2        
-    ## MBN       -2 vs pre   B                     4        
-    ## MBN       -2 vs pre   C                     6        
-    ## MBN       -2 vs pre   D                     8        
-    ## MBN       -2 vs pre   E                     10       
-    ## MBN       -6 vs pre   A                     2        
-    ## MBN       -6 vs pre   B                     4        
-    ## MBN       -6 vs pre   C                     6        
-    ## MBN       -6 vs pre   D                     8        
-    ## MBN       -6 vs pre   E                     10       
-    ## NH4       -2 vs pre   A                     2        
-    ## NH4       -2 vs pre   B                     4        
-    ## NH4       -2 vs pre   C                     6        
-    ## NH4       -2 vs pre   D                     8        
-    ## NH4       -2 vs pre   E                     10       
-    ## NH4       -6 vs pre   A                     2        
-    ## NH4       -6 vs pre   B                     4        
-    ## NH4       -6 vs pre   C                     6        
-    ## NH4       -6 vs pre   D                     8        
-    ## NH4       -6 vs pre   E                     10       
-    ## NO3       -2 vs pre   A                     2        
-    ## NO3       -2 vs pre   B                     4        
-    ## NO3       -2 vs pre   C                     6        
-    ## NO3       -2 vs pre   D                     8        
-    ## NO3       -2 vs pre   E                     10       
-    ## NO3       -6 vs pre   A                     2        
-    ## NO3       -6 vs pre   B                     4        
-    ## NO3       -6 vs pre   C                     6        
-    ## NO3       -6 vs pre   D                     8        
-    ## NO3       -6 vs pre   E                     10       
-    ## PO4       -2 vs pre   A                     2        
-    ## PO4       -2 vs pre   B                     4        
-    ## PO4       -2 vs pre   C                     6        
-    ## PO4       -2 vs pre   D                     8        
-    ## PO4       -2 vs pre   E                     10       
-    ## PO4       -6 vs pre   A                     2        
-    ## PO4       -6 vs pre   B                     4        
-    ## PO4       -6 vs pre   C                     6        
-    ## PO4       -6 vs pre   D                     8        
-    ## PO4       -6 vs pre   E                     10       
-    ## TFPA      -2 vs pre   A                     2        
-    ## TFPA      -2 vs pre   B                     4        
-    ## TFPA      -2 vs pre   C                     6        
-    ## TFPA      -2 vs pre   D                     8        
-    ## TFPA      -2 vs pre   E                     10       
-    ## TFPA      -6 vs pre   A                     2        
-    ## TFPA      -6 vs pre   B                     4        
-    ## TFPA      -6 vs pre   C                     6        
-    ## TFPA      -6 vs pre   D                     8        
-    ## TFPA      -6 vs pre   E                     10       
-    ## TN        -2 vs pre   A                     2        
-    ## TN        -2 vs pre   B                     4        
-    ## TN        -2 vs pre   C                     6        
-    ## TN        -2 vs pre   D                     8        
-    ## TN        -2 vs pre   E                     10       
-    ## TN        -6 vs pre   A                     2        
-    ## TN        -6 vs pre   B                     4        
-    ## TN        -6 vs pre   C                     6        
-    ## TN        -6 vs pre   D                     8        
-    ## TN        -6 vs pre   E                     10       
-    ## TOC       -2 vs pre   A                     2        
-    ## TOC       -2 vs pre   B                     4        
-    ## TOC       -2 vs pre   C                     6        
-    ## TOC       -2 vs pre   D                     8        
-    ## TOC       -2 vs pre   E                     10       
-    ## TOC       -6 vs pre   A                     2        
-    ## TOC       -6 vs pre   B                     4        
-    ## TOC       -6 vs pre   C                     6        
-    ## TOC       -6 vs pre   D                     8        
-    ## TOC       -6 vs pre   E                     10       
-    ## TRS       -2 vs pre   A                     2        
-    ## TRS       -2 vs pre   B                     4        
-    ## TRS       -2 vs pre   C                     6        
-    ## TRS       -2 vs pre   D                     8        
-    ## TRS       -2 vs pre   E                     10       
-    ## TRS       -6 vs pre   A               *     2        
-    ## TRS       -6 vs pre   B               *     4        
-    ## TRS       -6 vs pre   C               *     6        
-    ## TRS       -6 vs pre   D               *     8        
-    ## TRS       -6 vs pre   E               *     10       
-    ## FTN       -2 vs T0    A               *     2        
-    ## FTN       -2 vs T0    B               *     4        
-    ## FTN       -2 vs T0    C               *     6        
-    ## FTN       -2 vs T0    D               *     8        
-    ## FTN       -2 vs T0    E               *     10       
-    ## FTN       -2 vs T0    Pre             *     Pre      
-    ## FTOC      -2 vs T0    A                     2        
-    ## FTOC      -2 vs T0    B                     4        
-    ## FTOC      -2 vs T0    C                     6        
-    ## FTOC      -2 vs T0    D                     8        
-    ## FTOC      -2 vs T0    E                     10       
-    ## FTOC      -2 vs T0    Pre                   Pre      
-    ## MBC       -2 vs T0    A                     2        
-    ## MBC       -2 vs T0    B                     4        
-    ## MBC       -2 vs T0    C                     6        
-    ## MBC       -2 vs T0    D                     8        
-    ## MBC       -2 vs T0    E                     10       
-    ## MBC       -2 vs T0    Pre                   Pre      
-    ## MBN       -2 vs T0    A                     2        
-    ## MBN       -2 vs T0    B                     4        
-    ## MBN       -2 vs T0    C                     6        
-    ## MBN       -2 vs T0    D                     8        
-    ## MBN       -2 vs T0    E                     10       
-    ## MBN       -2 vs T0    Pre                   Pre      
-    ## NH4       -2 vs T0    A                     2        
-    ## NH4       -2 vs T0    B                     4        
-    ## NH4       -2 vs T0    C                     6        
-    ## NH4       -2 vs T0    D                     8        
-    ## NH4       -2 vs T0    E                     10       
-    ## NH4       -2 vs T0    Pre                   Pre      
-    ## NO3       -2 vs T0    A                     2        
-    ## NO3       -2 vs T0    B                     4        
-    ## NO3       -2 vs T0    C                     6        
-    ## NO3       -2 vs T0    D                     8        
-    ## NO3       -2 vs T0    E                     10       
-    ## NO3       -2 vs T0    Pre                   Pre      
-    ## PO4       -2 vs T0    A                     2        
-    ## PO4       -2 vs T0    B                     4        
-    ## PO4       -2 vs T0    C                     6        
-    ## PO4       -2 vs T0    D                     8        
-    ## PO4       -2 vs T0    E                     10       
-    ## PO4       -2 vs T0    Pre                   Pre      
-    ## TFPA      -2 vs T0    A                     2        
-    ## TFPA      -2 vs T0    B                     4        
-    ## TFPA      -2 vs T0    C                     6        
-    ## TFPA      -2 vs T0    D                     8        
-    ## TFPA      -2 vs T0    E                     10       
-    ## TFPA      -2 vs T0    Pre                   Pre      
-    ## TN        -2 vs T0    A               *     2        
-    ## TN        -2 vs T0    B               *     4        
-    ## TN        -2 vs T0    C               *     6        
-    ## TN        -2 vs T0    D               *     8        
-    ## TN        -2 vs T0    E               *     10       
-    ## TN        -2 vs T0    Pre             *     Pre      
-    ## TOC       -2 vs T0    A                     2        
-    ## TOC       -2 vs T0    B                     4        
-    ## TOC       -2 vs T0    C                     6        
-    ## TOC       -2 vs T0    D                     8        
-    ## TOC       -2 vs T0    E                     10       
-    ## TOC       -2 vs T0    Pre                   Pre      
-    ## TRS       -2 vs T0    A               *     2        
-    ## TRS       -2 vs T0    B               *     4        
-    ## TRS       -2 vs T0    C               *     6        
-    ## TRS       -2 vs T0    D               *     8        
-    ## TRS       -2 vs T0    E               *     10       
-    ## TRS       -2 vs T0    Pre                   Pre      
-    ## FTN       -6 vs T0    A               *     2        
-    ## FTN       -6 vs T0    B               *     4        
-    ## FTN       -6 vs T0    C               *     6        
-    ## FTN       -6 vs T0    D               *     8        
-    ## FTN       -6 vs T0    E               *     10       
-    ## FTN       -6 vs T0    Pre             *     Pre      
-    ## FTOC      -6 vs T0    A                     2        
-    ## FTOC      -6 vs T0    B                     4        
-    ## FTOC      -6 vs T0    C                     6        
-    ## FTOC      -6 vs T0    D                     8        
-    ## FTOC      -6 vs T0    E                     10       
-    ## FTOC      -6 vs T0    Pre                   Pre      
-    ## MBC       -6 vs T0    A                     2        
-    ## MBC       -6 vs T0    B                     4        
-    ## MBC       -6 vs T0    C                     6        
-    ## MBC       -6 vs T0    D                     8        
-    ## MBC       -6 vs T0    E                     10       
-    ## MBC       -6 vs T0    Pre                   Pre      
-    ## MBN       -6 vs T0    A                     2        
-    ## MBN       -6 vs T0    B                     4        
-    ## MBN       -6 vs T0    C                     6        
-    ## MBN       -6 vs T0    D                     8        
-    ## MBN       -6 vs T0    E                     10       
-    ## MBN       -6 vs T0    Pre                   Pre      
-    ## NH4       -6 vs T0    A                     2        
-    ## NH4       -6 vs T0    B                     4        
-    ## NH4       -6 vs T0    C                     6        
-    ## NH4       -6 vs T0    D                     8        
-    ## NH4       -6 vs T0    E                     10       
-    ## NH4       -6 vs T0    Pre                   Pre      
-    ## NO3       -6 vs T0    A                     2        
-    ## NO3       -6 vs T0    B                     4        
-    ## NO3       -6 vs T0    C                     6        
-    ## NO3       -6 vs T0    D                     8        
-    ## NO3       -6 vs T0    E                     10       
-    ## NO3       -6 vs T0    Pre                   Pre      
-    ## PO4       -6 vs T0    A                     2        
-    ## PO4       -6 vs T0    B                     4        
-    ## PO4       -6 vs T0    C                     6        
-    ## PO4       -6 vs T0    D                     8        
-    ## PO4       -6 vs T0    E                     10       
-    ## PO4       -6 vs T0    Pre                   Pre      
-    ## TFPA      -6 vs T0    A                     2        
-    ## TFPA      -6 vs T0    B                     4        
-    ## TFPA      -6 vs T0    C                     6        
-    ## TFPA      -6 vs T0    D                     8        
-    ## TFPA      -6 vs T0    E                     10       
-    ## TFPA      -6 vs T0    Pre                   Pre      
-    ## TN        -6 vs T0    A               *     2        
-    ## TN        -6 vs T0    B               *     4        
-    ## TN        -6 vs T0    C               *     6        
-    ## TN        -6 vs T0    D               *     8        
-    ## TN        -6 vs T0    E               *     10       
-    ## TN        -6 vs T0    Pre             *     Pre      
-    ## TOC       -6 vs T0    A                     2        
-    ## TOC       -6 vs T0    B                     4        
-    ## TOC       -6 vs T0    C                     6        
-    ## TOC       -6 vs T0    D                     8        
-    ## TOC       -6 vs T0    E                     10       
-    ## TOC       -6 vs T0    Pre                   Pre      
-    ## TRS       -6 vs T0    A               *     2        
-    ## TRS       -6 vs T0    B               *     4        
-    ## TRS       -6 vs T0    C               *     6        
-    ## TRS       -6 vs T0    D               *     8        
-    ## TRS       -6 vs T0    E               *     10       
-    ## TRS       -6 vs T0    Pre                   Pre
+    ## analyte   pre_inc     Incubation.ID         pval  pre   Inc_temp 
+    ## --------  ----------  --------------  ----------  ----  ---------
+    ## FTN       -2 vs pre   A                0.9979413        2        
+    ## FTN       -2 vs pre   B                0.7681905        4        
+    ## FTN       -2 vs pre   C                0.6760819        6        
+    ## FTN       -2 vs pre   D                0.9965021        8        
+    ## FTN       -2 vs pre   E                0.9980328        10       
+    ## FTN       -6 vs pre   A                0.6560239        2        
+    ## FTN       -6 vs pre   B                0.3715264        4        
+    ## FTN       -6 vs pre   C                0.5832674        6        
+    ## FTN       -6 vs pre   D                0.4015405        8        
+    ## FTN       -6 vs pre   E                0.9914342        10       
+    ## FTOC      -2 vs pre   A                0.7962177        2        
+    ## FTOC      -2 vs pre   B                0.8238421        4        
+    ## FTOC      -2 vs pre   C                0.0440257  *     6        
+    ## FTOC      -2 vs pre   D                0.1579983        8        
+    ## FTOC      -2 vs pre   E                0.9916722        10       
+    ## FTOC      -6 vs pre   A                0.9987342        2        
+    ## FTOC      -6 vs pre   B                0.3868210        4        
+    ## FTOC      -6 vs pre   C                0.9369373        6        
+    ## FTOC      -6 vs pre   D                0.7574021        8        
+    ## FTOC      -6 vs pre   E                0.7739932        10       
+    ## MBC       -2 vs pre   A                0.7994171        2        
+    ## MBC       -2 vs pre   B                0.5890417        4        
+    ## MBC       -2 vs pre   C                0.1497852        6        
+    ## MBC       -2 vs pre   D                0.0716158        8        
+    ## MBC       -2 vs pre   E                0.9972871        10       
+    ## MBC       -6 vs pre   A                1.0000000        2        
+    ## MBC       -6 vs pre   B                0.7529607        4        
+    ## MBC       -6 vs pre   C                0.9976522        6        
+    ## MBC       -6 vs pre   D                0.9946301        8        
+    ## MBC       -6 vs pre   E                0.8993364        10       
+    ## MBN       -2 vs pre   A                0.9603288        2        
+    ## MBN       -2 vs pre   B                0.9438618        4        
+    ## MBN       -2 vs pre   C                0.7635565        6        
+    ## MBN       -2 vs pre   D                0.9987577        8        
+    ## MBN       -2 vs pre   E                0.9999821        10       
+    ## MBN       -6 vs pre   A                0.9424309        2        
+    ## MBN       -6 vs pre   B                0.6471013        4        
+    ## MBN       -6 vs pre   C                0.8185986        6        
+    ## MBN       -6 vs pre   D                0.4536713        8        
+    ## MBN       -6 vs pre   E                0.9842675        10       
+    ## NH4       -2 vs pre   A                0.9995384        2        
+    ## NH4       -2 vs pre   B                0.9581902        4        
+    ## NH4       -2 vs pre   C                0.9999902        6        
+    ## NH4       -2 vs pre   D                0.9942139        8        
+    ## NH4       -2 vs pre   E                0.7215188        10       
+    ## NH4       -6 vs pre   A                0.9948835        2        
+    ## NH4       -6 vs pre   B                0.7334408        4        
+    ## NH4       -6 vs pre   C                0.9988618        6        
+    ## NH4       -6 vs pre   D                0.8326838        8        
+    ## NH4       -6 vs pre   E                0.5844485        10       
+    ## NO3       -2 vs pre   A                0.9962806        2        
+    ## NO3       -2 vs pre   B                0.9779561        4        
+    ## NO3       -2 vs pre   C                0.9033214        6        
+    ## NO3       -2 vs pre   D                0.9714382        8        
+    ## NO3       -2 vs pre   E                0.7132988        10       
+    ## NO3       -6 vs pre   A                0.9998735        2        
+    ## NO3       -6 vs pre   B                0.7489561        4        
+    ## NO3       -6 vs pre   C                0.8231929        6        
+    ## NO3       -6 vs pre   D                0.9486330        8        
+    ## NO3       -6 vs pre   E                0.5939799        10       
+    ## PO4       -2 vs pre   A                0.9598565        2        
+    ## PO4       -2 vs pre   B                0.9577298        4        
+    ## PO4       -2 vs pre   C                0.9999999        6        
+    ## PO4       -2 vs pre   D                0.9962457        8        
+    ## PO4       -2 vs pre   E                0.9040593        10       
+    ## PO4       -6 vs pre   A                0.9896203        2        
+    ## PO4       -6 vs pre   B                0.4902208        4        
+    ## PO4       -6 vs pre   C                0.8111585        6        
+    ## PO4       -6 vs pre   D                0.9164301        8        
+    ## PO4       -6 vs pre   E                0.9771024        10       
+    ## TFPA      -2 vs pre   A                0.6773760        2        
+    ## TFPA      -2 vs pre   B                0.9748824        4        
+    ## TFPA      -2 vs pre   C                0.6027642        6        
+    ## TFPA      -2 vs pre   D                0.9379049        8        
+    ## TFPA      -2 vs pre   E                0.4642096        10       
+    ## TFPA      -6 vs pre   A                0.5750847        2        
+    ## TFPA      -6 vs pre   B                0.9694025        4        
+    ## TFPA      -6 vs pre   C                0.8846922        6        
+    ## TFPA      -6 vs pre   D                0.9999960        8        
+    ## TFPA      -6 vs pre   E                0.4214289        10       
+    ## TN        -2 vs pre   A                0.9259280        2        
+    ## TN        -2 vs pre   B                0.9209413        4        
+    ## TN        -2 vs pre   C                0.9997501        6        
+    ## TN        -2 vs pre   D                0.5477260        8        
+    ## TN        -2 vs pre   E                0.9931486        10       
+    ## TN        -6 vs pre   A                0.5232559        2        
+    ## TN        -6 vs pre   B                0.7784432        4        
+    ## TN        -6 vs pre   C                0.8763919        6        
+    ## TN        -6 vs pre   D                0.9994300        8        
+    ## TN        -6 vs pre   E                0.9958018        10       
+    ## TOC       -2 vs pre   A                0.9813098        2        
+    ## TOC       -2 vs pre   B                0.5937603        4        
+    ## TOC       -2 vs pre   C                1.0000000        6        
+    ## TOC       -2 vs pre   D                0.1714814        8        
+    ## TOC       -2 vs pre   E                1.0000000        10       
+    ## TOC       -6 vs pre   A                0.9874485        2        
+    ## TOC       -6 vs pre   B                0.9344477        4        
+    ## TOC       -6 vs pre   C                0.9792103        6        
+    ## TOC       -6 vs pre   D                0.7923686        8        
+    ## TOC       -6 vs pre   E                0.9998896        10       
+    ## TRS       -2 vs pre   A                0.9999005        2        
+    ## TRS       -2 vs pre   B                0.9999962        4        
+    ## TRS       -2 vs pre   C                0.9970319        6        
+    ## TRS       -2 vs pre   D                0.3957445        8        
+    ## TRS       -2 vs pre   E                0.0646227        10       
+    ## TRS       -6 vs pre   A                0.0000222  *     2        
+    ## TRS       -6 vs pre   B                0.0000685  *     4        
+    ## TRS       -6 vs pre   C                0.0000028  *     6        
+    ## TRS       -6 vs pre   D                0.0000001  *     8        
+    ## TRS       -6 vs pre   E                0.0000000  *     10       
+    ## FTN       -2 vs T0    A                0.0011579  *     2        
+    ## FTN       -2 vs T0    B                0.0001090  *     4        
+    ## FTN       -2 vs T0    C                0.0001265  *     6        
+    ## FTN       -2 vs T0    D                0.0005455  *     8        
+    ## FTN       -2 vs T0    E                0.0043965  *     10       
+    ## FTN       -2 vs T0    Pre              0.0153008  *     Pre      
+    ## FTOC      -2 vs T0    A                0.7717669        2        
+    ## FTOC      -2 vs T0    B                0.2918679        4        
+    ## FTOC      -2 vs T0    C                0.0793810        6        
+    ## FTOC      -2 vs T0    D                0.1314621        8        
+    ## FTOC      -2 vs T0    E                1.0000000        10       
+    ## FTOC      -2 vs T0    Pre              0.9994284        Pre      
+    ## MBC       -2 vs T0    A                0.9736075        2        
+    ## MBC       -2 vs T0    B                0.5470266        4        
+    ## MBC       -2 vs T0    C                0.4042268        6        
+    ## MBC       -2 vs T0    D                0.2480643        8        
+    ## MBC       -2 vs T0    E                0.9998140        10       
+    ## MBC       -2 vs T0    Pre              1.0000000        Pre      
+    ## MBN       -2 vs T0    A                0.4547279        2        
+    ## MBN       -2 vs T0    B                0.2636467        4        
+    ## MBN       -2 vs T0    C                0.2357440        6        
+    ## MBN       -2 vs T0    D                0.4766521        8        
+    ## MBN       -2 vs T0    E                0.7313977        10       
+    ## MBN       -2 vs T0    Pre              0.9286402        Pre      
+    ## NH4       -2 vs T0    A                0.3653934        2        
+    ## NH4       -2 vs T0    B                0.8657237        4        
+    ## NH4       -2 vs T0    C                0.2262959        6        
+    ## NH4       -2 vs T0    D                0.3523098        8        
+    ## NH4       -2 vs T0    E                0.9973346        10       
+    ## NH4       -2 vs T0    Pre              0.1816059        Pre      
+    ## NO3       -2 vs T0    A                0.9995940        2        
+    ## NO3       -2 vs T0    B                0.3616761        4        
+    ## NO3       -2 vs T0    C                0.9353890        6        
+    ## NO3       -2 vs T0    D                0.5144187        8        
+    ## NO3       -2 vs T0    E                0.1398577        10       
+    ## NO3       -2 vs T0    Pre              0.9690962        Pre      
+    ## PO4       -2 vs T0    A                0.8712547        2        
+    ## PO4       -2 vs T0    B                0.9999761        4        
+    ## PO4       -2 vs T0    C                0.7960811        6        
+    ## PO4       -2 vs T0    D                0.5392562        8        
+    ## PO4       -2 vs T0    E                0.9486926        10       
+    ## PO4       -2 vs T0    Pre              0.3888164        Pre      
+    ## TFPA      -2 vs T0    A                0.1496490        2        
+    ## TFPA      -2 vs T0    B                0.6860061        4        
+    ## TFPA      -2 vs T0    C                0.2578813        6        
+    ## TFPA      -2 vs T0    D                0.9163924        8        
+    ## TFPA      -2 vs T0    E                0.0619437        10       
+    ## TFPA      -2 vs T0    Pre              0.9980040        Pre      
+    ## TN        -2 vs T0    A                0.0010009  *     2        
+    ## TN        -2 vs T0    B                0.0001245  *     4        
+    ## TN        -2 vs T0    C                0.0003673  *     6        
+    ## TN        -2 vs T0    D                0.0001178  *     8        
+    ## TN        -2 vs T0    E                0.0009335  *     10       
+    ## TN        -2 vs T0    Pre              0.0012234  *     Pre      
+    ## TOC       -2 vs T0    A                0.9924591        2        
+    ## TOC       -2 vs T0    B                0.9999973        4        
+    ## TOC       -2 vs T0    C                0.9138902        6        
+    ## TOC       -2 vs T0    D                0.9996461        8        
+    ## TOC       -2 vs T0    E                0.9966912        10       
+    ## TOC       -2 vs T0    Pre              0.9884523        Pre      
+    ## TRS       -2 vs T0    A                0.0063099  *     2        
+    ## TRS       -2 vs T0    B                0.0063384  *     4        
+    ## TRS       -2 vs T0    C                0.0010625  *     6        
+    ## TRS       -2 vs T0    D                0.0000725  *     8        
+    ## TRS       -2 vs T0    E                0.0000011  *     10       
+    ## TRS       -2 vs T0    Pre              0.4923386        Pre      
+    ## FTN       -6 vs T0    A                0.0010798  *     2        
+    ## FTN       -6 vs T0    B                0.0001303  *     4        
+    ## FTN       -6 vs T0    C                0.0001549  *     6        
+    ## FTN       -6 vs T0    D                0.0004764  *     8        
+    ## FTN       -6 vs T0    E                0.0044290  *     10       
+    ## FTN       -6 vs T0    Pre              0.0153128  *     Pre      
+    ## FTOC      -6 vs T0    A                0.7717901        2        
+    ## FTOC      -6 vs T0    B                0.2922484        4        
+    ## FTOC      -6 vs T0    C                0.0793801        6        
+    ## FTOC      -6 vs T0    D                0.1314310        8        
+    ## FTOC      -6 vs T0    E                1.0000000        10       
+    ## FTOC      -6 vs T0    Pre              0.9994286        Pre      
+    ## MBC       -6 vs T0    A                0.9736156        2        
+    ## MBC       -6 vs T0    B                0.5469190        4        
+    ## MBC       -6 vs T0    C                0.4043105        6        
+    ## MBC       -6 vs T0    D                0.2483009        8        
+    ## MBC       -6 vs T0    E                0.9998143        10       
+    ## MBC       -6 vs T0    Pre              1.0000000        Pre      
+    ## MBN       -6 vs T0    A                0.4547370        2        
+    ## MBN       -6 vs T0    B                0.2639751        4        
+    ## MBN       -6 vs T0    C                0.2359799        6        
+    ## MBN       -6 vs T0    D                0.4765882        8        
+    ## MBN       -6 vs T0    E                0.7314265        10       
+    ## MBN       -6 vs T0    Pre              0.9286234        Pre      
+    ## NH4       -6 vs T0    A                0.3657852        2        
+    ## NH4       -6 vs T0    B                0.8657226        4        
+    ## NH4       -6 vs T0    C                0.2262874        6        
+    ## NH4       -6 vs T0    D                0.3523428        8        
+    ## NH4       -6 vs T0    E                0.9973352        10       
+    ## NH4       -6 vs T0    Pre              0.1816166        Pre      
+    ## NO3       -6 vs T0    A                0.9995935        2        
+    ## NO3       -6 vs T0    B                0.3614356        4        
+    ## NO3       -6 vs T0    C                0.9353961        6        
+    ## NO3       -6 vs T0    D                0.5143105        8        
+    ## NO3       -6 vs T0    E                0.1399355        10       
+    ## NO3       -6 vs T0    Pre              0.9690942        Pre      
+    ## PO4       -6 vs T0    A                0.8711275        2        
+    ## PO4       -6 vs T0    B                0.9999761        4        
+    ## PO4       -6 vs T0    C                0.7961329        6        
+    ## PO4       -6 vs T0    D                0.5390815        8        
+    ## PO4       -6 vs T0    E                0.9486882        10       
+    ## PO4       -6 vs T0    Pre              0.3891995        Pre      
+    ## TFPA      -6 vs T0    A                0.1496100        2        
+    ## TFPA      -6 vs T0    B                0.6860304        4        
+    ## TFPA      -6 vs T0    C                0.2580943        6        
+    ## TFPA      -6 vs T0    D                0.9163631        8        
+    ## TFPA      -6 vs T0    E                0.0619279        10       
+    ## TFPA      -6 vs T0    Pre              0.9980049        Pre      
+    ## TN        -6 vs T0    A                0.0008672  *     2        
+    ## TN        -6 vs T0    B                0.0001464  *     4        
+    ## TN        -6 vs T0    C                0.0003350  *     6        
+    ## TN        -6 vs T0    D                0.0002123  *     8        
+    ## TN        -6 vs T0    E                0.0011472  *     10       
+    ## TN        -6 vs T0    Pre              0.0011630  *     Pre      
+    ## TOC       -6 vs T0    A                0.9924580        2        
+    ## TOC       -6 vs T0    B                0.9999973        4        
+    ## TOC       -6 vs T0    C                0.9138572        6        
+    ## TOC       -6 vs T0    D                0.9996463        8        
+    ## TOC       -6 vs T0    E                0.9966866        10       
+    ## TOC       -6 vs T0    Pre              0.9884551        Pre      
+    ## TRS       -6 vs T0    A                0.0062211  *     2        
+    ## TRS       -6 vs T0    B                0.0065978  *     4        
+    ## TRS       -6 vs T0    C                0.0010270  *     6        
+    ## TRS       -6 vs T0    D                0.0000558  *     8        
+    ## TRS       -6 vs T0    E                0.0000007  *     10       
+    ## TRS       -6 vs T0    Pre              0.4925597        Pre
 
 </details>
 
@@ -466,9 +466,9 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-03-16
+Date run: 2023-03-17
 
-    ## R version 4.2.2 (2022-10-31 ucrt)
+    ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
     ## Running under: Windows 10 x64 (build 19045)
     ## 
@@ -486,49 +486,37 @@ Date run: 2023-03-16
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] agricolae_1.3-5   knitr_1.41        nlme_3.1-162      cowplot_1.1.1    
-    ##  [5] ggpubr_0.5.0      janitor_2.1.0     pracma_2.4.2      reshape2_1.4.4   
+    ##  [1] agricolae_1.3-5   knitr_1.42        nlme_3.1-162      cowplot_1.1.1    
+    ##  [5] ggpubr_0.6.0      janitor_2.2.0     pracma_2.4.2      reshape2_1.4.4   
     ##  [9] ggbiplot_0.55     scales_1.2.1      plyr_1.8.8        vegan_2.6-4      
-    ## [13] lattice_0.20-45   permute_0.9-7     forcats_0.5.2     stringr_1.5.0    
-    ## [17] dplyr_1.0.10      purrr_1.0.0       readr_2.1.3       tidyr_1.2.1      
-    ## [21] tibble_3.1.8      ggplot2_3.4.0     tidyverse_1.3.2   tarchetypes_0.7.4
-    ## [25] targets_0.14.2   
+    ## [13] lattice_0.20-45   permute_0.9-7     lubridate_1.9.2   forcats_1.0.0    
+    ## [17] stringr_1.5.0     dplyr_1.1.0       purrr_1.0.1       readr_2.1.4      
+    ## [21] tidyr_1.3.0       tibble_3.2.0      ggplot2_3.4.1     tidyverse_2.0.0  
+    ## [25] tarchetypes_0.7.5 targets_0.14.3   
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] googledrive_2.0.0   colorspace_2.0-3    ggsignif_0.6.4     
-    ##   [4] class_7.3-20        ellipsis_0.3.2      snakecase_0.11.0   
-    ##   [7] fs_1.5.2            gld_2.6.6           proxy_0.4-27       
-    ##  [10] rstudioapi_0.14     farver_2.1.1        listenv_0.9.0      
-    ##  [13] furrr_0.3.1         mvtnorm_1.1-3       fansi_1.0.3        
-    ##  [16] lubridate_1.9.0     xml2_1.3.3          codetools_0.2-18   
-    ##  [19] splines_4.2.2       rootSolve_1.8.2.3   polynom_1.4-1      
-    ##  [22] jsonlite_1.8.4      broom_1.0.2         cluster_2.1.4      
-    ##  [25] dbplyr_2.2.1        shiny_1.7.4         compiler_4.2.2     
-    ##  [28] httr_1.4.4          backports_1.4.1     assertthat_0.2.1   
-    ##  [31] Matrix_1.5-1        fastmap_1.1.0       gargle_1.2.1       
-    ##  [34] cli_3.6.0           later_1.3.0         htmltools_0.5.4    
-    ##  [37] tools_4.2.2         igraph_1.3.5        lmom_2.9           
-    ##  [40] gtable_0.3.1        glue_1.6.2          Rcpp_1.0.9         
-    ##  [43] carData_3.0-5       cellranger_1.1.0    vctrs_0.5.1        
-    ##  [46] xfun_0.36           globals_0.16.2      ps_1.7.2           
-    ##  [49] rvest_1.0.3         mime_0.12           timechange_0.1.1   
-    ##  [52] miniUI_0.1.1.1      lifecycle_1.0.3     rstatix_0.7.2      
-    ##  [55] googlesheets4_1.0.1 future_1.30.0       MASS_7.3-58.1      
-    ##  [58] hms_1.1.2           promises_1.2.0.1    parallel_4.2.2     
-    ##  [61] expm_0.999-7        Exact_3.2           yaml_2.3.6         
-    ##  [64] labelled_2.10.0     stringi_1.7.8       AlgDesign_1.2.1    
-    ##  [67] highr_0.10          klaR_1.7-1          e1071_1.7-13       
-    ##  [70] boot_1.3-28         rlang_1.0.6         pkgconfig_2.0.3    
-    ##  [73] evaluate_0.19       labeling_0.4.2      processx_3.8.0     
-    ##  [76] tidyselect_1.2.0    parallelly_1.34.0   magrittr_2.0.3     
-    ##  [79] R6_2.5.1            DescTools_0.99.48   generics_0.1.3     
-    ##  [82] base64url_1.4       combinat_0.0-8      DBI_1.1.3          
-    ##  [85] pillar_1.8.1        haven_2.5.1         withr_2.5.0        
-    ##  [88] mgcv_1.8-41         abind_1.4-5         modelr_0.1.10      
-    ##  [91] crayon_1.5.2        car_3.1-1           questionr_0.7.8    
-    ##  [94] utf8_1.2.2          rmarkdown_2.19      tzdb_0.3.0         
-    ##  [97] future.callr_0.8.1  readxl_1.4.1        data.table_1.14.6  
-    ## [100] callr_3.7.3         reprex_2.0.2        digest_0.6.31      
-    ## [103] xtable_1.8-4        httpuv_1.6.7        munsell_0.5.0
+    ##  [1] colorspace_2.1-0   ggsignif_0.6.4     class_7.3-21       ellipsis_0.3.2    
+    ##  [5] snakecase_0.11.0   fs_1.6.1           gld_2.6.6          rstudioapi_0.14   
+    ##  [9] proxy_0.4-27       farver_2.1.1       listenv_0.9.0      furrr_0.3.1       
+    ## [13] fansi_1.0.4        mvtnorm_1.1-3      codetools_0.2-19   splines_4.2.3     
+    ## [17] rootSolve_1.8.2.3  polynom_1.4-1      broom_1.0.4        cluster_2.1.4     
+    ## [21] shiny_1.7.4        httr_1.4.5         compiler_4.2.3     backports_1.4.1   
+    ## [25] Matrix_1.5-3       fastmap_1.1.1      cli_3.6.0          later_1.3.0       
+    ## [29] htmltools_0.5.4    tools_4.2.3        igraph_1.4.1       gtable_0.3.1      
+    ## [33] glue_1.6.2         lmom_2.9           Rcpp_1.0.10        carData_3.0-5     
+    ## [37] cellranger_1.1.0   vctrs_0.6.0        xfun_0.37          globals_0.16.2    
+    ## [41] ps_1.7.2           timechange_0.2.0   mime_0.12          miniUI_0.1.1.1    
+    ## [45] lifecycle_1.0.3    rstatix_0.7.2      future_1.32.0      MASS_7.3-58.2     
+    ## [49] hms_1.1.2          promises_1.2.0.1   parallel_4.2.3     expm_0.999-7      
+    ## [53] Exact_3.2          yaml_2.3.7         labelled_2.10.0    stringi_1.7.12    
+    ## [57] highr_0.10         klaR_1.7-1         AlgDesign_1.2.1    e1071_1.7-13      
+    ## [61] boot_1.3-28.1      rlang_1.1.0        pkgconfig_2.0.3    evaluate_0.20     
+    ## [65] labeling_0.4.2     processx_3.8.0     tidyselect_1.2.0   parallelly_1.34.0 
+    ## [69] magrittr_2.0.3     R6_2.5.1           DescTools_0.99.48  generics_0.1.3    
+    ## [73] base64url_1.4      combinat_0.0-8     pillar_1.8.1       haven_2.5.2       
+    ## [77] withr_2.5.0        mgcv_1.8-42        abind_1.4-5        car_3.1-1         
+    ## [81] questionr_0.7.8    utf8_1.2.3         tzdb_0.3.0         rmarkdown_2.20    
+    ## [85] future.callr_0.8.1 readxl_1.4.2       data.table_1.14.8  callr_3.7.3       
+    ## [89] digest_0.6.31      xtable_1.8-4       httpuv_1.6.9       munsell_0.5.0
 
 </details>

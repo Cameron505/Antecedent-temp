@@ -516,7 +516,7 @@ Print_stats= function(nutrients_data,respiration_processed){
       dplyr::select(comparison, pval) %>% 
       mutate(pre = if_else(pval<0.05, "*","")) %>% 
       # remove the pval column
-      dplyr::select(-pval) %>% 
+      #dplyr::select(-pval) %>% 
       separate(comparison, sep = "-", into = "Incubation.ID")
     
     t
@@ -535,7 +535,7 @@ Print_stats= function(nutrients_data,respiration_processed){
       dplyr::select(comparison, pval) %>% 
       mutate(pre = if_else(pval<0.05, "*","")) %>% 
       # remove the pval column
-      dplyr::select(-pval) %>% 
+      #dplyr::select(-pval) %>% 
       separate(comparison, sep = "-", into = "Incubation.ID")
     
     t
@@ -576,6 +576,7 @@ Print_stats= function(nutrients_data,respiration_processed){
     mutate(pre_inc = ifelse(pre_inc == "-2", "-2 vs pre", as.character(pre_inc))) %>%
     mutate(pre_inc = ifelse(pre_inc == "-6", "-6 vs pre", as.character(pre_inc))) %>%
     mutate(Inc_temp = ifelse(Incubation.ID == c("A","B","C","D","E"), c("2","4","6","8","10"), as.character(Incubation.ID))) %>%
+    group_by(analyte)%>%
     knitr::kable("simple", caption= "Dunnett test results comparing T0 and pre incubations to all")
   ####
 
