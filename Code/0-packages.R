@@ -18,9 +18,9 @@ library(agricolae)
 
 
 # custom ggplot theme
-cbPalette <- c("#888888","#88CCEE", "#999933" , "#117733", "#332288", "#AA4499", 
+cbPalette <- c("#888888","#FF1493","#00FFFF" , "#117733", "#332288", "#AA4499", 
                         "#44AA99", "#882255", "#661100", "#6699CC","#DDCC77")
-cbPalette2 <- c("#88CCEE", "#999933", "#117733", "#332288", "#AA4499", 
+cbPalette2 <- c("#FF1493","#00FFFF", "#117733", "#332288", "#AA4499", 
                          "#44AA99", "#882255", "#661100", "#6699CC", "#DDCC77", "#888888")
 theme_CKM <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%

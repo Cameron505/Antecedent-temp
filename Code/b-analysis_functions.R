@@ -1,6 +1,7 @@
 plot_respiration = function(respiration_processed){
   
-  
+inc.lab<-c("2 °C","4 °C","6 °C","8 °C","10 °C")
+names(inc.lab) <- c("2","4","6","8","10")
   gg_res =
     respiration_processed %>%
     mutate(Inc_temp = factor(Inc_temp, levels=c("2","4","6","8","10")),
@@ -8,12 +9,13 @@ plot_respiration = function(respiration_processed){
     ggplot(aes(x = JD2, y = Res, color = pre_inc))+
     geom_point(position = position_dodge(width = 0.4),
                size = 2)+
-    stat_smooth(method= "lm")+
-    stat_cor(label.y=c(90,100), size=2)+
-    stat_regline_equation(label.y=c(110,120), size=2)+
+    geom_smooth(se=F)+
+    #stat_smooth(method= "lm")+
+    #stat_cor(label.y=c(90,100), size=2)+
+    #stat_regline_equation(label.y=c(110,120), size=2)+
     #geom_text(data = res_lm , aes(y = 300, label = p.value))+
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
-    facet_wrap(~Inc_temp)+
+    facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     scale_fill_manual(values=cbPalette2)+
@@ -33,7 +35,7 @@ plot_respiration = function(respiration_processed){
     stat_cor(label.y=c(285,305), size=2)+
     stat_regline_equation(label.y=c(245,265), size=2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
-    facet_wrap(~Inc_temp)+
+    facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     scale_fill_manual(values=cbPalette2)+
@@ -52,7 +54,7 @@ plot_respiration = function(respiration_processed){
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(90,100), size=2)+
     stat_regline_equation(label.y=c(110,120), size=2)+
-    facet_wrap(~Inc_temp)+
+    facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     scale_fill_manual(values=cbPalette2)+
@@ -71,7 +73,7 @@ plot_respiration = function(respiration_processed){
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(285,305), size=2)+
     stat_regline_equation(label.y=c(245,265), size=2)+
-    facet_wrap(~Inc_temp)+
+    facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     scale_fill_manual(values=cbPalette2)+
@@ -80,15 +82,76 @@ plot_respiration = function(respiration_processed){
     labs(color='pre_inc temp') +
     ggtitle("Average Cumulative Soil Respiration")
   
-  list("Respiration" = gg_res,
+  
+  
+  LASTRES<- respiration_processed %>%
+    filter(JD2==5)
+  fit_aov = function(LASTRES){
+    
+    a = aov(val ~ pre_inc, data = LASTRES)
+    broom::tidy(a) %>% 
+      filter(term == "pre_inc") %>% 
+      dplyr::select(`p.value`) %>% 
+      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
+    
+  }  
+  
+  rescum_aov = 
+    LASTRES %>% 
+    group_by(Inc_temp) %>% 
+    filter(pre_inc!="none")%>%
+    do(fit_aov(.)) %>% 
+    mutate(pre_inc = "-2") %>% 
+    # factor the Inc_temp so they can line up in the graph
+    mutate(Inc_temp = factor(Inc_temp, levels=c("2","4","6","8","10")))
+  
+  
+  gg_CumresLastday =
+    LASTRES %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x=Inc_temp, y=val, fill=pre_inc))+
+    stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
+    scale_y_continuous(expand=c(0,0),limits=c(0,370))+
+    geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=4)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    scale_fill_manual(values=cbPalette2,labels=c('-2 °C', '-6 °C'))+
+    ylab(expression(paste( "Total respired C (",mu,"g-C)")))+
+    xlab("Incubation Temp. (°C)")+
+    labs(color='pre-incubation temp') +
+    guides(fill=guide_legend(title="Pre-Incubation (°C)"))+
+    ggtitle("Cumulative respiration")
+  
+  respiration_legend = get_legend(gg_CumresLastday+ guides(color = guide_legend(nrow = 1)) +
+                                 theme(legend.position = "bottom"))
+  gg_Ncombine= plot_grid(
+    gg_res + theme(legend.position="none"),
+    gg_CumresLastday + theme(legend.position="none"),
+    labels = c("A", "B"),
+    #label_x= 0.1,
+    hjust = -1,
+    ncol = 1
+  )
+  
+  gg_N_Legend=plot_grid(gg_Ncombine,respiration_legend, ncol=1, rel_heights =c(1,0.08))
+  
+  
+  list(#"Respiration" = gg_res,
+        gg_N_Legend=gg_N_Legend,
        "Average Respiration" = gg_Avgres,
        "Cumulative Respiration" = gg_cumres,
-       "Average Cumulative Respiration" = gg_Avgcumres)
+       "Average Cumulative Respiration" = gg_Avgcumres
+       )
   
 }
 
 plot_nutrients = function(nutrients_data){
   
+  
+  inc.lab<-c("2 °C","4 °C","6 °C","8 °C","10 °C")
+  names(inc.lab) <- c("2","4","6","8","10")
   ####
   #Significance between pre-incubation temps across incubation (Marked with asterisk)
     fit_aov = function(nutrients_data){
@@ -224,17 +287,23 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NH4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
+    scale_y_continuous(expand=c(0,0),limits=c(0,5.2))+
     #geom_text(data = hsd_label2 %>% filter(analyte == "NH4"), aes(y = 5, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "NH4"), aes(y = 6, label = label),position= position_dodge(width = 1))+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote('Ammonium ('*mu*'g '*NH[4]^"+"~-N~g^-1 ~ dry ~ soil*')'))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
+    guides(fill=guide_legend(title="Pre-Incubation"))+
     ggtitle("Ammonium")
+ # y = bquote('Ammonium ('*mu*'g '*NH[4]^"+"~-N~g^-1 ~ dry ~ soil*')'))+
+  
+  
   
   gg_NO3 =
     nutrients_data %>%
@@ -242,17 +311,23 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=NO3, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+       
+    scale_y_continuous(expand=c(0,0),limits=c(0,32))+
     #geom_text(data = hsd_label2 %>% filter(analyte == "NO3"), aes(y = 30, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "NO3"), aes(y = 33, label = label),position= position_dodge(width = 1))+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
+    guides(fill=guide_legend(title="Pre-Incubation"))+
     ggtitle("Nitrate")
+  #y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
+  
+  
   
   gg_TFPA =
     nutrients_data %>%
@@ -260,17 +335,23 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TFPA, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
+    scale_y_continuous(expand=c(0,0),limits=c(0,135))+
     #geom_text(data = hsd_label2 %>% filter(analyte == "TFPA"), aes(y = 130, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "TFPA"), aes(y = 138, label = label),position= position_dodge(width = 1))+
     geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote(atop('Total free primary amines-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("TFPA")
+    guides(fill=guide_legend(title="Pre-Incubation"))+
+    ggtitle("Total free primary amines")
+  #y = bquote(atop('Total free primary amines-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
+  
+  
   
   gg_TRS =
     nutrients_data %>%
@@ -278,17 +359,21 @@ nutrients_data_long = nutrients_data %>%
            pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=TRS, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
+    scale_y_continuous(expand=c(0,0),limits=c(0,0.6))+
     #geom_text(data = hsd_label2 %>% filter(analyte == "TRS"), aes(y = 0.8, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "TRS"), aes(y = 0.9, label = label),position= position_dodge(width = 1))+
-    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.8, label = asterisk), size=10)+
+    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=4)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("TRS")
+    guides(fill=guide_legend(title="Pre-Incubation"))+
+    ggtitle("Total reducing sugars")
+  #y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
   
   gg_PO4 =
     nutrients_data %>%
@@ -297,24 +382,30 @@ nutrients_data_long = nutrients_data %>%
     ggplot(aes(x=Inc_temp, y=PO4, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    scale_y_continuous(expand=c(0,0),limits=c(0,0.62))+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.58, label = asterisk), size=10)+
     #geom_text(data = hsd_label2 %>% filter(analyte == "PO4"), aes(y = 0.58, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "PO4"), aes(y = 0.68, label = label),position= position_dodge(width = 1))+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
+    guides(fill=guide_legend(title="Pre-Incubation"))+
     ggtitle("Phosphate")
+  #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
+  
+  
   
   Nutrient_legend = get_legend(gg_NH4+ guides(color = guide_legend(nrow = 1)) +
                                  theme(legend.position = "bottom"))
   gg_Ncombine= plot_grid(
     gg_NH4 + theme(legend.position="none", axis.title.x = element_blank()),
     gg_NO3 + theme(legend.position="none",axis.title.x = element_blank()),
-    gg_TFPA + theme(legend.position="none",axis.title.x = element_blank()),
-    gg_PO4 + theme(legend.position="none",axis.title.x = element_blank()),
+    gg_TFPA + theme(legend.position="none"),
+    gg_PO4 + theme(legend.position="none"),
     align = 'vh',
     labels = c("A", "B", "C", "D"),
     label_x= 0.1,
@@ -323,19 +414,20 @@ nutrients_data_long = nutrients_data %>%
   )
 gg_N_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.1))
   
-  list("Ammonium" = gg_NH4,
-       "Nitrate" = gg_NO3,
-       "Total free primary amines" = gg_TFPA,
-       "Phosphate" = gg_PO4,
+  list(#"Ammonium" = gg_NH4,
+       #"Nitrate" = gg_NO3,
+       #"Total free primary amines" = gg_TFPA,
+       #"Phosphate" = gg_PO4,
        "Total reducing sugars" = gg_TRS,
-       "N combined"=gg_N_Legend
+       "Nutrient combined"=gg_N_Legend
   )
   
 }
 
 plot_MicrobialBiomass = function(nutrients_data){
 
-  
+  inc.lab<-c("2 °C","4 °C","6 °C","8 °C","10 °C")
+  names(inc.lab) <- c("2","4","6","8","10")
   
    fit_aov = function(nutrients_data){
     
@@ -376,8 +468,6 @@ plot_MicrobialBiomass = function(nutrients_data){
     do(fit_aov2(.)) 
     
   
-
-  
   nutrients_data[nutrients_data == "none"] <- "T0"  
   
    gg_MBC =
@@ -386,36 +476,46 @@ plot_MicrobialBiomass = function(nutrients_data){
             pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBC, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
+     scale_y_continuous(expand=c(0,0),limits=c(0,865))+
      #geom_text(data = hsd_label2 %>% filter(analyte == "MBC"), aes(y = 875, label = label))+
      #geom_text(data = hsd_label %>% filter(analyte == "MBC"), aes(y = 885, label = label),position= position_dodge(width = 1))+
-    geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 875, label = asterisk), size=10)+
+    geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 775, label = asterisk), size=4)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote('Microbial biomass ('*mu*'g C'~g^-1 ~ dry ~ soil*')'))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass carbon")
-  
+     guides(fill=guide_legend(title="Pre-Incubation"))+
+    ggtitle("Microbial biomass C")
+   #y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1 ~ dry ~ soil*')'))))+
+   
+   
+   
+   
+   
+   
   gg_MBN =
     nutrients_data %>%
     mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
            pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
     ggplot(aes(x=Inc_temp, y=MBN, fill=pre_inc))+
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
-    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+
+    stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
+    scale_y_continuous(expand=c(0,0),limits=c(0,130))+
     #geom_text(data = hsd_label2 %>% filter(analyte == "MBN"), aes(y = 125, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "MBN"), aes(y = 135, label = label),position= position_dodge(width = 1))+
-    #geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=10)+
+    geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=10)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
-    scale_fill_manual(values=cbPalette)+
-    labs(x = "Incubation Temp.", 
-         y = bquote('Microbial biomass ('*mu*'g N'~g^-1 ~ dry ~ soil*')'))+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass nitrogen")
-  
+    guides(fill=guide_legend(title="Pre-Incubation"))+
+    ggtitle("Microbial biomass N")
+  #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
   
   
   biomass_legend = get_legend(gg_MBC+ guides(color = guide_legend(nrow = 1)) +
@@ -425,6 +525,7 @@ plot_MicrobialBiomass = function(nutrients_data){
     gg_MBN + theme(legend.position="none"),
     align = 'vh',
     labels = c("A", "B", "C"),
+    label_x= 0.1,
     hjust = -1,
     nrow = 1
   )
@@ -455,7 +556,7 @@ Print_stats= function(nutrients_data,respiration_processed){
  LASTRES<- respiration_processed %>%
    filter(JD2==5)
  
-   summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
+LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
  
  
   a = nlme::lme(Res ~ JD2 + Inc_temp + pre_inc,
@@ -471,7 +572,6 @@ Print_stats= function(nutrients_data,respiration_processed){
     a = aov(conc ~ pre_inc, data = nutrients_data)
     broom::tidy(a) %>% 
       filter(term == "pre_inc") %>% 
-      dplyr::select(`p.value`) %>% 
       mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
     
   }
@@ -488,7 +588,8 @@ Print_stats= function(nutrients_data,respiration_processed){
     do(fit_aov(.)) %>% 
     mutate(pre_inc = "-2") %>% 
     # factor the Inc_temp so they can line up in the graph
-    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")))
+    mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")))%>%
+    knitr::kable("simple")
   
   fit_aov2 = function(nutrients_data){
     a = aov(conc ~ pre_inc*Inc_temp, data = nutrients_data)
@@ -576,22 +677,28 @@ Print_stats= function(nutrients_data,respiration_processed){
     mutate(pre_inc = ifelse(pre_inc == "-2", "-2 vs pre", as.character(pre_inc))) %>%
     mutate(pre_inc = ifelse(pre_inc == "-6", "-6 vs pre", as.character(pre_inc))) %>%
     mutate(Inc_temp = ifelse(Incubation.ID == c("A","B","C","D","E"), c("2","4","6","8","10"), as.character(Incubation.ID))) %>%
-    group_by(analyte)%>%
+    arrange(analyte)%>%
     knitr::kable("simple", caption= "Dunnett test results comparing T0 and pre incubations to all")
   ####
 
   aanova
   
-  all_aov2
-  
   diffres
+  
+  LastRES_aov
+  
+  all_aov
+  
+  all_aov2
   
   Dunnett_label_all
 
 
   list("Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"= aanova,
-       "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2,
        diffres = diffres,
+       LastRES_aov=LastRES_aov,
+       "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2,
+       all_aov=all_aov,
        Dunnett_label_all=Dunnett_label_all
        
   )

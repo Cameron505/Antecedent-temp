@@ -92,7 +92,7 @@ free primary amines, phosphate, Total reducing sugars. Below are the
 concentration data. An asterisks indicates a significant (p\<= 0.05)
 difference in pre-incubation temperature.
 
-![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-4.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-5.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-6.png)<!-- -->
+![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](AntecedentTemp_report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
 </details>
 
 ------------------------------------------------------------------------
@@ -141,6 +141,27 @@ nutrients had no significant variation.
     ## JD2                1     149    40.135389   0.0000000
     ## Inc_temp           1      27    91.448720   0.0000000
     ## pre_inc            1      27     6.956082   0.0136884
+    ## 
+    ## $diffres
+    ## 
+    ## 
+    ## Table: Difference in cumulative respiration between pre incubation temperatures
+    ## 
+    ##  Inc_temp         -6          -2       Diff
+    ## ---------  ---------  ----------  ---------
+    ##         2   105.8210    90.26896   15.55202
+    ##         4   148.5354   131.09775   17.43764
+    ##         6   184.5535   146.32651   38.22700
+    ##         8   233.7851   188.78486   45.00021
+    ##        10   333.6863   261.20783   72.47846
+    ## 
+    ## $LastRES_aov
+    ##             Df Sum Sq Mean Sq F value   Pr(>F)    
+    ## pre_inc      1  10682   10682   22.84 5.51e-05 ***
+    ## Inc_temp     1 132694  132694  283.75 7.53e-16 ***
+    ## Residuals   27  12627     468                     
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
     ## $`ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)`
     ## 
@@ -192,18 +213,77 @@ nutrients had no significant variation.
     ## TRS       pre_inc:Inc_temp     5   1.165281e-01   2.330560e-02   13.5236326   0.0000033  *        
     ## TRS       Residuals           23   3.963650e-02   1.723300e-03           NA          NA  NA       
     ## 
-    ## $diffres
+    ## $all_aov
     ## 
     ## 
-    ## Table: Difference in cumulative respiration between pre incubation temperatures
-    ## 
-    ##  Inc_temp         -6          -2       Diff
-    ## ---------  ---------  ----------  ---------
-    ##         2   105.8210    90.26896   15.55202
-    ##         4   148.5354   131.09775   17.43764
-    ##         6   184.5535   146.32651   38.22700
-    ##         8   233.7851   188.78486   45.00021
-    ##        10   333.6863   261.20783   72.47846
+    ## analyte   Inc_temp   term       df          sumsq         meansq    statistic     p.value  asterisk   pre_inc 
+    ## --------  ---------  --------  ---  -------------  -------------  -----------  ----------  ---------  --------
+    ## FTN       10         pre_inc     1   9.704188e+02   9.704188e+02    1.0086673   0.3720485  NA         -2      
+    ## FTN       2          pre_inc     1   5.529072e+01   5.529072e+01    0.0396834   0.8518172  NA         -2      
+    ## FTN       4          pre_inc     1   2.986152e+02   2.986152e+02    0.2928154   0.6171500  NA         -2      
+    ## FTN       6          pre_inc     1   1.113389e+03   1.113389e+03    1.1433392   0.3451813  NA         -2      
+    ## FTN       8          pre_inc     1   1.696253e+01   1.696253e+01    0.0109344   0.9217523  NA         -2      
+    ## FTN       Pre        pre_inc     1   1.127396e+03   1.127396e+03    2.3056970   0.2035151  NA         -2      
+    ## FTOC      10         pre_inc     1   1.920856e+04   1.920856e+04    5.4031229   0.0807406  NA         -2      
+    ## FTOC      2          pre_inc     1   6.554433e+03   6.554433e+03    3.2794098   0.1443938  NA         -2      
+    ## FTOC      4          pre_inc     1   1.325938e+03   1.325938e+03    0.0680030   0.8071419  NA         -2      
+    ## FTOC      6          pre_inc     1   4.974039e+04   4.974039e+04   15.9326006   0.0162437  *          -2      
+    ## FTOC      8          pre_inc     1   1.637648e+04   1.637648e+04    1.1453960   0.3447969  NA         -2      
+    ## FTOC      Pre        pre_inc     1   3.756575e+02   3.756575e+02    0.2937685   0.6165971  NA         -2      
+    ## MBC       10         pre_inc     1   1.389823e+04   1.389823e+04    1.9848722   0.2316627  NA         -2      
+    ## MBC       2          pre_inc     1   1.363457e+04   1.363457e+04    1.1527277   0.3434327  NA         -2      
+    ## MBC       4          pre_inc     1   2.841043e+03   2.841043e+03    0.1145369   0.7520553  NA         -2      
+    ## MBC       6          pre_inc     1   5.573124e+04   5.573124e+04   29.6434496   0.0055263  *          -2      
+    ## MBC       8          pre_inc     1   7.862607e+04   7.862607e+04    3.8526903   0.1211613  NA         -2      
+    ## MBC       Pre        pre_inc     1   3.431506e+01   3.431506e+01    0.0123831   0.9167550  NA         -2      
+    ## MBN       10         pre_inc     1   1.233809e+03   1.233809e+03    1.2071428   0.3335874  NA         -2      
+    ## MBN       2          pre_inc     1   2.139296e+03   2.139296e+03    1.2370392   0.3283795  NA         -2      
+    ## MBN       4          pre_inc     1   8.822089e+02   8.822089e+02    1.2989685   0.3180166  NA         -2      
+    ## MBN       6          pre_inc     1   2.730024e+03   2.730024e+03    4.7993456   0.0936146  NA         -2      
+    ## MBN       8          pre_inc     1   1.983172e+02   1.983172e+02    0.1055512   0.7615490  NA         -2      
+    ## MBN       Pre        pre_inc     1   2.234213e+03   2.234213e+03    1.4646347   0.2928175  NA         -2      
+    ## NH4       10         pre_inc     1   5.683342e-01   5.683342e-01    0.2529979   0.6414052  NA         -2      
+    ## NH4       2          pre_inc     1   7.612635e-01   7.612635e-01    1.5405192   0.2823559  NA         -2      
+    ## NH4       4          pre_inc     1   2.492229e-01   2.492229e-01    0.2016086   0.6766778  NA         -2      
+    ## NH4       6          pre_inc     1   4.177801e-01   4.177801e-01    0.3469364   0.5875093  NA         -2      
+    ## NH4       8          pre_inc     1   1.263096e-01   1.263096e-01    0.1111304   0.7556028  NA         -2      
+    ## NH4       Pre        pre_inc     1   1.099181e+00   1.099181e+00    1.4060443   0.3013391  NA         -2      
+    ## NO3       10         pre_inc     1   1.141018e+01   1.141018e+01    0.4077239   0.5578544  NA         -2      
+    ## NO3       2          pre_inc     1   1.038974e+01   1.038974e+01    0.2907553   0.6183494  NA         -2      
+    ## NO3       4          pre_inc     1   2.983945e+01   2.983945e+01    0.6729559   0.4580939  NA         -2      
+    ## NO3       6          pre_inc     1   1.554907e+02   1.554907e+02    1.8269956   0.2478633  NA         -2      
+    ## NO3       8          pre_inc     1   7.607999e+00   7.607999e+00    0.4375319   0.5444752  NA         -2      
+    ## NO3       Pre        pre_inc     1   4.723382e+00   4.723382e+00    0.3050063   0.6101664  NA         -2      
+    ## PO4       10         pre_inc     1   1.171390e-02   1.171390e-02    0.3990182   0.5618972  NA         -2      
+    ## PO4       2          pre_inc     1   9.147100e-03   9.147100e-03    0.2682536   0.6318337  NA         -2      
+    ## PO4       4          pre_inc     1   2.241500e-03   2.241500e-03    0.2457036   0.6461146  NA         -2      
+    ## PO4       6          pre_inc     1   5.686900e-03   5.686900e-03    0.4691925   0.5309901  NA         -2      
+    ## PO4       8          pre_inc     1   8.714200e-03   8.714200e-03    0.2531989   0.6412767  NA         -2      
+    ## PO4       Pre        pre_inc     1   4.029000e-03   4.029000e-03    0.2752604   0.6275571  NA         -2      
+    ## TFPA      10         pre_inc     1   1.002549e+02   1.002549e+02    0.1521958   0.7163292  NA         -2      
+    ## TFPA      2          pre_inc     1   1.354703e+02   1.354703e+02    0.3576545   0.5820257  NA         -2      
+    ## TFPA      4          pre_inc     1   5.460927e+01   5.460927e+01    0.1153671   0.7511998  NA         -2      
+    ## TFPA      6          pre_inc     1   1.749194e+01   1.749194e+01    0.0150410   0.9083058  NA         -2      
+    ## TFPA      8          pre_inc     1   1.527346e+02   1.527346e+02    0.7731629   0.4288928  NA         -2      
+    ## TFPA      Pre        pre_inc     1   3.533799e+01   3.533799e+01    0.0420384   0.8475575  NA         -2      
+    ## TN        10         pre_inc     1   1.579319e+01   1.579319e+01    0.1152980   0.7512709  NA         -2      
+    ## TN        2          pre_inc     1   1.506740e+03   1.506740e+03   48.1175133   0.0022680  *          -2      
+    ## TN        4          pre_inc     1   1.542940e+02   1.542940e+02    1.8952615   0.2406422  NA         -2      
+    ## TN        6          pre_inc     1   3.565357e+02   3.565357e+02    0.9268975   0.3901903  NA         -2      
+    ## TN        8          pre_inc     1   9.928019e+01   9.928019e+01    1.1578896   0.3424777  NA         -2      
+    ## TN        Pre        pre_inc     1   1.874366e+02   1.874366e+02    0.5665436   0.4935086  NA         -2      
+    ## TOC       10         pre_inc     1   4.286625e+02   4.286625e+02    0.1547583   0.7140965  NA         -2      
+    ## TOC       2          pre_inc     1   1.282193e+03   1.282193e+03    0.2382082   0.6510487  NA         -2      
+    ## TOC       4          pre_inc     1   8.048758e+03   8.048758e+03    3.0385624   0.1562622  NA         -2      
+    ## TOC       6          pre_inc     1   1.702795e+02   1.702795e+02    0.0639856   0.8127719  NA         -2      
+    ## TOC       8          pre_inc     1   2.323575e+04   2.323575e+04   12.0526479   0.0255442  *          -2      
+    ## TOC       Pre        pre_inc     1   1.828979e+02   1.828979e+02    0.1837768   0.6902250  NA         -2      
+    ## TRS       10         pre_inc     1   2.307700e-03   2.307700e-03    3.5962040   0.1307860  NA         -2      
+    ## TRS       2          pre_inc     1   4.489800e-03   4.489800e-03    3.6300889   0.1294484  NA         -2      
+    ## TRS       4          pre_inc     1   9.825300e-03   9.825300e-03    1.7912618   0.2517831  NA         -2      
+    ## TRS       6          pre_inc     1   1.962000e-03   1.962000e-03    3.2171051   0.1473268  NA         -2      
+    ## TRS       8          pre_inc     1   3.718600e-03   3.718600e-03    3.3399134   0.1416310  NA         -2      
+    ## TRS       Pre        pre_inc     1   1.403133e-01   1.403133e-01   18.1841703   0.0130091  *          -2      
     ## 
     ## $Dunnett_label_all
     ## 
@@ -222,6 +302,18 @@ nutrients had no significant variation.
     ## FTN       -6 vs pre   C                0.5832674        6        
     ## FTN       -6 vs pre   D                0.4015405        8        
     ## FTN       -6 vs pre   E                0.9914342        10       
+    ## FTN       -2 vs T0    A                0.0011579  *     2        
+    ## FTN       -2 vs T0    B                0.0001090  *     4        
+    ## FTN       -2 vs T0    C                0.0001265  *     6        
+    ## FTN       -2 vs T0    D                0.0005455  *     8        
+    ## FTN       -2 vs T0    E                0.0043965  *     10       
+    ## FTN       -2 vs T0    Pre              0.0153008  *     Pre      
+    ## FTN       -6 vs T0    A                0.0010798  *     2        
+    ## FTN       -6 vs T0    B                0.0001303  *     4        
+    ## FTN       -6 vs T0    C                0.0001549  *     6        
+    ## FTN       -6 vs T0    D                0.0004764  *     8        
+    ## FTN       -6 vs T0    E                0.0044290  *     10       
+    ## FTN       -6 vs T0    Pre              0.0153128  *     Pre      
     ## FTOC      -2 vs pre   A                0.7962177        2        
     ## FTOC      -2 vs pre   B                0.8238421        4        
     ## FTOC      -2 vs pre   C                0.0440257  *     6        
@@ -232,6 +324,18 @@ nutrients had no significant variation.
     ## FTOC      -6 vs pre   C                0.9369373        6        
     ## FTOC      -6 vs pre   D                0.7574021        8        
     ## FTOC      -6 vs pre   E                0.7739932        10       
+    ## FTOC      -2 vs T0    A                0.7717669        2        
+    ## FTOC      -2 vs T0    B                0.2918679        4        
+    ## FTOC      -2 vs T0    C                0.0793810        6        
+    ## FTOC      -2 vs T0    D                0.1314621        8        
+    ## FTOC      -2 vs T0    E                1.0000000        10       
+    ## FTOC      -2 vs T0    Pre              0.9994284        Pre      
+    ## FTOC      -6 vs T0    A                0.7717901        2        
+    ## FTOC      -6 vs T0    B                0.2922484        4        
+    ## FTOC      -6 vs T0    C                0.0793801        6        
+    ## FTOC      -6 vs T0    D                0.1314310        8        
+    ## FTOC      -6 vs T0    E                1.0000000        10       
+    ## FTOC      -6 vs T0    Pre              0.9994286        Pre      
     ## MBC       -2 vs pre   A                0.7994171        2        
     ## MBC       -2 vs pre   B                0.5890417        4        
     ## MBC       -2 vs pre   C                0.1497852        6        
@@ -242,6 +346,18 @@ nutrients had no significant variation.
     ## MBC       -6 vs pre   C                0.9976522        6        
     ## MBC       -6 vs pre   D                0.9946301        8        
     ## MBC       -6 vs pre   E                0.8993364        10       
+    ## MBC       -2 vs T0    A                0.9736075        2        
+    ## MBC       -2 vs T0    B                0.5470266        4        
+    ## MBC       -2 vs T0    C                0.4042268        6        
+    ## MBC       -2 vs T0    D                0.2480643        8        
+    ## MBC       -2 vs T0    E                0.9998140        10       
+    ## MBC       -2 vs T0    Pre              1.0000000        Pre      
+    ## MBC       -6 vs T0    A                0.9736156        2        
+    ## MBC       -6 vs T0    B                0.5469190        4        
+    ## MBC       -6 vs T0    C                0.4043105        6        
+    ## MBC       -6 vs T0    D                0.2483009        8        
+    ## MBC       -6 vs T0    E                0.9998143        10       
+    ## MBC       -6 vs T0    Pre              1.0000000        Pre      
     ## MBN       -2 vs pre   A                0.9603288        2        
     ## MBN       -2 vs pre   B                0.9438618        4        
     ## MBN       -2 vs pre   C                0.7635565        6        
@@ -252,6 +368,18 @@ nutrients had no significant variation.
     ## MBN       -6 vs pre   C                0.8185986        6        
     ## MBN       -6 vs pre   D                0.4536713        8        
     ## MBN       -6 vs pre   E                0.9842675        10       
+    ## MBN       -2 vs T0    A                0.4547279        2        
+    ## MBN       -2 vs T0    B                0.2636467        4        
+    ## MBN       -2 vs T0    C                0.2357440        6        
+    ## MBN       -2 vs T0    D                0.4766521        8        
+    ## MBN       -2 vs T0    E                0.7313977        10       
+    ## MBN       -2 vs T0    Pre              0.9286402        Pre      
+    ## MBN       -6 vs T0    A                0.4547370        2        
+    ## MBN       -6 vs T0    B                0.2639751        4        
+    ## MBN       -6 vs T0    C                0.2359799        6        
+    ## MBN       -6 vs T0    D                0.4765882        8        
+    ## MBN       -6 vs T0    E                0.7314265        10       
+    ## MBN       -6 vs T0    Pre              0.9286234        Pre      
     ## NH4       -2 vs pre   A                0.9995384        2        
     ## NH4       -2 vs pre   B                0.9581902        4        
     ## NH4       -2 vs pre   C                0.9999902        6        
@@ -262,6 +390,18 @@ nutrients had no significant variation.
     ## NH4       -6 vs pre   C                0.9988618        6        
     ## NH4       -6 vs pre   D                0.8326838        8        
     ## NH4       -6 vs pre   E                0.5844485        10       
+    ## NH4       -2 vs T0    A                0.3653934        2        
+    ## NH4       -2 vs T0    B                0.8657237        4        
+    ## NH4       -2 vs T0    C                0.2262959        6        
+    ## NH4       -2 vs T0    D                0.3523098        8        
+    ## NH4       -2 vs T0    E                0.9973346        10       
+    ## NH4       -2 vs T0    Pre              0.1816059        Pre      
+    ## NH4       -6 vs T0    A                0.3657852        2        
+    ## NH4       -6 vs T0    B                0.8657226        4        
+    ## NH4       -6 vs T0    C                0.2262874        6        
+    ## NH4       -6 vs T0    D                0.3523428        8        
+    ## NH4       -6 vs T0    E                0.9973352        10       
+    ## NH4       -6 vs T0    Pre              0.1816166        Pre      
     ## NO3       -2 vs pre   A                0.9962806        2        
     ## NO3       -2 vs pre   B                0.9779561        4        
     ## NO3       -2 vs pre   C                0.9033214        6        
@@ -272,6 +412,18 @@ nutrients had no significant variation.
     ## NO3       -6 vs pre   C                0.8231929        6        
     ## NO3       -6 vs pre   D                0.9486330        8        
     ## NO3       -6 vs pre   E                0.5939799        10       
+    ## NO3       -2 vs T0    A                0.9995940        2        
+    ## NO3       -2 vs T0    B                0.3616761        4        
+    ## NO3       -2 vs T0    C                0.9353890        6        
+    ## NO3       -2 vs T0    D                0.5144187        8        
+    ## NO3       -2 vs T0    E                0.1398577        10       
+    ## NO3       -2 vs T0    Pre              0.9690962        Pre      
+    ## NO3       -6 vs T0    A                0.9995935        2        
+    ## NO3       -6 vs T0    B                0.3614356        4        
+    ## NO3       -6 vs T0    C                0.9353961        6        
+    ## NO3       -6 vs T0    D                0.5143105        8        
+    ## NO3       -6 vs T0    E                0.1399355        10       
+    ## NO3       -6 vs T0    Pre              0.9690942        Pre      
     ## PO4       -2 vs pre   A                0.9598565        2        
     ## PO4       -2 vs pre   B                0.9577298        4        
     ## PO4       -2 vs pre   C                0.9999999        6        
@@ -282,6 +434,18 @@ nutrients had no significant variation.
     ## PO4       -6 vs pre   C                0.8111585        6        
     ## PO4       -6 vs pre   D                0.9164301        8        
     ## PO4       -6 vs pre   E                0.9771024        10       
+    ## PO4       -2 vs T0    A                0.8712547        2        
+    ## PO4       -2 vs T0    B                0.9999761        4        
+    ## PO4       -2 vs T0    C                0.7960811        6        
+    ## PO4       -2 vs T0    D                0.5392562        8        
+    ## PO4       -2 vs T0    E                0.9486926        10       
+    ## PO4       -2 vs T0    Pre              0.3888164        Pre      
+    ## PO4       -6 vs T0    A                0.8711275        2        
+    ## PO4       -6 vs T0    B                0.9999761        4        
+    ## PO4       -6 vs T0    C                0.7961329        6        
+    ## PO4       -6 vs T0    D                0.5390815        8        
+    ## PO4       -6 vs T0    E                0.9486882        10       
+    ## PO4       -6 vs T0    Pre              0.3891995        Pre      
     ## TFPA      -2 vs pre   A                0.6773760        2        
     ## TFPA      -2 vs pre   B                0.9748824        4        
     ## TFPA      -2 vs pre   C                0.6027642        6        
@@ -292,6 +456,18 @@ nutrients had no significant variation.
     ## TFPA      -6 vs pre   C                0.8846922        6        
     ## TFPA      -6 vs pre   D                0.9999960        8        
     ## TFPA      -6 vs pre   E                0.4214289        10       
+    ## TFPA      -2 vs T0    A                0.1496490        2        
+    ## TFPA      -2 vs T0    B                0.6860061        4        
+    ## TFPA      -2 vs T0    C                0.2578813        6        
+    ## TFPA      -2 vs T0    D                0.9163924        8        
+    ## TFPA      -2 vs T0    E                0.0619437        10       
+    ## TFPA      -2 vs T0    Pre              0.9980040        Pre      
+    ## TFPA      -6 vs T0    A                0.1496100        2        
+    ## TFPA      -6 vs T0    B                0.6860304        4        
+    ## TFPA      -6 vs T0    C                0.2580943        6        
+    ## TFPA      -6 vs T0    D                0.9163631        8        
+    ## TFPA      -6 vs T0    E                0.0619279        10       
+    ## TFPA      -6 vs T0    Pre              0.9980049        Pre      
     ## TN        -2 vs pre   A                0.9259280        2        
     ## TN        -2 vs pre   B                0.9209413        4        
     ## TN        -2 vs pre   C                0.9997501        6        
@@ -302,6 +478,18 @@ nutrients had no significant variation.
     ## TN        -6 vs pre   C                0.8763919        6        
     ## TN        -6 vs pre   D                0.9994300        8        
     ## TN        -6 vs pre   E                0.9958018        10       
+    ## TN        -2 vs T0    A                0.0010009  *     2        
+    ## TN        -2 vs T0    B                0.0001245  *     4        
+    ## TN        -2 vs T0    C                0.0003673  *     6        
+    ## TN        -2 vs T0    D                0.0001178  *     8        
+    ## TN        -2 vs T0    E                0.0009335  *     10       
+    ## TN        -2 vs T0    Pre              0.0012234  *     Pre      
+    ## TN        -6 vs T0    A                0.0008672  *     2        
+    ## TN        -6 vs T0    B                0.0001464  *     4        
+    ## TN        -6 vs T0    C                0.0003350  *     6        
+    ## TN        -6 vs T0    D                0.0002123  *     8        
+    ## TN        -6 vs T0    E                0.0011472  *     10       
+    ## TN        -6 vs T0    Pre              0.0011630  *     Pre      
     ## TOC       -2 vs pre   A                0.9813098        2        
     ## TOC       -2 vs pre   B                0.5937603        4        
     ## TOC       -2 vs pre   C                1.0000000        6        
@@ -312,6 +500,18 @@ nutrients had no significant variation.
     ## TOC       -6 vs pre   C                0.9792103        6        
     ## TOC       -6 vs pre   D                0.7923686        8        
     ## TOC       -6 vs pre   E                0.9998896        10       
+    ## TOC       -2 vs T0    A                0.9924591        2        
+    ## TOC       -2 vs T0    B                0.9999973        4        
+    ## TOC       -2 vs T0    C                0.9138902        6        
+    ## TOC       -2 vs T0    D                0.9996461        8        
+    ## TOC       -2 vs T0    E                0.9966912        10       
+    ## TOC       -2 vs T0    Pre              0.9884523        Pre      
+    ## TOC       -6 vs T0    A                0.9924580        2        
+    ## TOC       -6 vs T0    B                0.9999973        4        
+    ## TOC       -6 vs T0    C                0.9138572        6        
+    ## TOC       -6 vs T0    D                0.9996463        8        
+    ## TOC       -6 vs T0    E                0.9966866        10       
+    ## TOC       -6 vs T0    Pre              0.9884551        Pre      
     ## TRS       -2 vs pre   A                0.9999005        2        
     ## TRS       -2 vs pre   B                0.9999962        4        
     ## TRS       -2 vs pre   C                0.9970319        6        
@@ -322,132 +522,12 @@ nutrients had no significant variation.
     ## TRS       -6 vs pre   C                0.0000028  *     6        
     ## TRS       -6 vs pre   D                0.0000001  *     8        
     ## TRS       -6 vs pre   E                0.0000000  *     10       
-    ## FTN       -2 vs T0    A                0.0011579  *     2        
-    ## FTN       -2 vs T0    B                0.0001090  *     4        
-    ## FTN       -2 vs T0    C                0.0001265  *     6        
-    ## FTN       -2 vs T0    D                0.0005455  *     8        
-    ## FTN       -2 vs T0    E                0.0043965  *     10       
-    ## FTN       -2 vs T0    Pre              0.0153008  *     Pre      
-    ## FTOC      -2 vs T0    A                0.7717669        2        
-    ## FTOC      -2 vs T0    B                0.2918679        4        
-    ## FTOC      -2 vs T0    C                0.0793810        6        
-    ## FTOC      -2 vs T0    D                0.1314621        8        
-    ## FTOC      -2 vs T0    E                1.0000000        10       
-    ## FTOC      -2 vs T0    Pre              0.9994284        Pre      
-    ## MBC       -2 vs T0    A                0.9736075        2        
-    ## MBC       -2 vs T0    B                0.5470266        4        
-    ## MBC       -2 vs T0    C                0.4042268        6        
-    ## MBC       -2 vs T0    D                0.2480643        8        
-    ## MBC       -2 vs T0    E                0.9998140        10       
-    ## MBC       -2 vs T0    Pre              1.0000000        Pre      
-    ## MBN       -2 vs T0    A                0.4547279        2        
-    ## MBN       -2 vs T0    B                0.2636467        4        
-    ## MBN       -2 vs T0    C                0.2357440        6        
-    ## MBN       -2 vs T0    D                0.4766521        8        
-    ## MBN       -2 vs T0    E                0.7313977        10       
-    ## MBN       -2 vs T0    Pre              0.9286402        Pre      
-    ## NH4       -2 vs T0    A                0.3653934        2        
-    ## NH4       -2 vs T0    B                0.8657237        4        
-    ## NH4       -2 vs T0    C                0.2262959        6        
-    ## NH4       -2 vs T0    D                0.3523098        8        
-    ## NH4       -2 vs T0    E                0.9973346        10       
-    ## NH4       -2 vs T0    Pre              0.1816059        Pre      
-    ## NO3       -2 vs T0    A                0.9995940        2        
-    ## NO3       -2 vs T0    B                0.3616761        4        
-    ## NO3       -2 vs T0    C                0.9353890        6        
-    ## NO3       -2 vs T0    D                0.5144187        8        
-    ## NO3       -2 vs T0    E                0.1398577        10       
-    ## NO3       -2 vs T0    Pre              0.9690962        Pre      
-    ## PO4       -2 vs T0    A                0.8712547        2        
-    ## PO4       -2 vs T0    B                0.9999761        4        
-    ## PO4       -2 vs T0    C                0.7960811        6        
-    ## PO4       -2 vs T0    D                0.5392562        8        
-    ## PO4       -2 vs T0    E                0.9486926        10       
-    ## PO4       -2 vs T0    Pre              0.3888164        Pre      
-    ## TFPA      -2 vs T0    A                0.1496490        2        
-    ## TFPA      -2 vs T0    B                0.6860061        4        
-    ## TFPA      -2 vs T0    C                0.2578813        6        
-    ## TFPA      -2 vs T0    D                0.9163924        8        
-    ## TFPA      -2 vs T0    E                0.0619437        10       
-    ## TFPA      -2 vs T0    Pre              0.9980040        Pre      
-    ## TN        -2 vs T0    A                0.0010009  *     2        
-    ## TN        -2 vs T0    B                0.0001245  *     4        
-    ## TN        -2 vs T0    C                0.0003673  *     6        
-    ## TN        -2 vs T0    D                0.0001178  *     8        
-    ## TN        -2 vs T0    E                0.0009335  *     10       
-    ## TN        -2 vs T0    Pre              0.0012234  *     Pre      
-    ## TOC       -2 vs T0    A                0.9924591        2        
-    ## TOC       -2 vs T0    B                0.9999973        4        
-    ## TOC       -2 vs T0    C                0.9138902        6        
-    ## TOC       -2 vs T0    D                0.9996461        8        
-    ## TOC       -2 vs T0    E                0.9966912        10       
-    ## TOC       -2 vs T0    Pre              0.9884523        Pre      
     ## TRS       -2 vs T0    A                0.0063099  *     2        
     ## TRS       -2 vs T0    B                0.0063384  *     4        
     ## TRS       -2 vs T0    C                0.0010625  *     6        
     ## TRS       -2 vs T0    D                0.0000725  *     8        
     ## TRS       -2 vs T0    E                0.0000011  *     10       
     ## TRS       -2 vs T0    Pre              0.4923386        Pre      
-    ## FTN       -6 vs T0    A                0.0010798  *     2        
-    ## FTN       -6 vs T0    B                0.0001303  *     4        
-    ## FTN       -6 vs T0    C                0.0001549  *     6        
-    ## FTN       -6 vs T0    D                0.0004764  *     8        
-    ## FTN       -6 vs T0    E                0.0044290  *     10       
-    ## FTN       -6 vs T0    Pre              0.0153128  *     Pre      
-    ## FTOC      -6 vs T0    A                0.7717901        2        
-    ## FTOC      -6 vs T0    B                0.2922484        4        
-    ## FTOC      -6 vs T0    C                0.0793801        6        
-    ## FTOC      -6 vs T0    D                0.1314310        8        
-    ## FTOC      -6 vs T0    E                1.0000000        10       
-    ## FTOC      -6 vs T0    Pre              0.9994286        Pre      
-    ## MBC       -6 vs T0    A                0.9736156        2        
-    ## MBC       -6 vs T0    B                0.5469190        4        
-    ## MBC       -6 vs T0    C                0.4043105        6        
-    ## MBC       -6 vs T0    D                0.2483009        8        
-    ## MBC       -6 vs T0    E                0.9998143        10       
-    ## MBC       -6 vs T0    Pre              1.0000000        Pre      
-    ## MBN       -6 vs T0    A                0.4547370        2        
-    ## MBN       -6 vs T0    B                0.2639751        4        
-    ## MBN       -6 vs T0    C                0.2359799        6        
-    ## MBN       -6 vs T0    D                0.4765882        8        
-    ## MBN       -6 vs T0    E                0.7314265        10       
-    ## MBN       -6 vs T0    Pre              0.9286234        Pre      
-    ## NH4       -6 vs T0    A                0.3657852        2        
-    ## NH4       -6 vs T0    B                0.8657226        4        
-    ## NH4       -6 vs T0    C                0.2262874        6        
-    ## NH4       -6 vs T0    D                0.3523428        8        
-    ## NH4       -6 vs T0    E                0.9973352        10       
-    ## NH4       -6 vs T0    Pre              0.1816166        Pre      
-    ## NO3       -6 vs T0    A                0.9995935        2        
-    ## NO3       -6 vs T0    B                0.3614356        4        
-    ## NO3       -6 vs T0    C                0.9353961        6        
-    ## NO3       -6 vs T0    D                0.5143105        8        
-    ## NO3       -6 vs T0    E                0.1399355        10       
-    ## NO3       -6 vs T0    Pre              0.9690942        Pre      
-    ## PO4       -6 vs T0    A                0.8711275        2        
-    ## PO4       -6 vs T0    B                0.9999761        4        
-    ## PO4       -6 vs T0    C                0.7961329        6        
-    ## PO4       -6 vs T0    D                0.5390815        8        
-    ## PO4       -6 vs T0    E                0.9486882        10       
-    ## PO4       -6 vs T0    Pre              0.3891995        Pre      
-    ## TFPA      -6 vs T0    A                0.1496100        2        
-    ## TFPA      -6 vs T0    B                0.6860304        4        
-    ## TFPA      -6 vs T0    C                0.2580943        6        
-    ## TFPA      -6 vs T0    D                0.9163631        8        
-    ## TFPA      -6 vs T0    E                0.0619279        10       
-    ## TFPA      -6 vs T0    Pre              0.9980049        Pre      
-    ## TN        -6 vs T0    A                0.0008672  *     2        
-    ## TN        -6 vs T0    B                0.0001464  *     4        
-    ## TN        -6 vs T0    C                0.0003350  *     6        
-    ## TN        -6 vs T0    D                0.0002123  *     8        
-    ## TN        -6 vs T0    E                0.0011472  *     10       
-    ## TN        -6 vs T0    Pre              0.0011630  *     Pre      
-    ## TOC       -6 vs T0    A                0.9924580        2        
-    ## TOC       -6 vs T0    B                0.9999973        4        
-    ## TOC       -6 vs T0    C                0.9138572        6        
-    ## TOC       -6 vs T0    D                0.9996463        8        
-    ## TOC       -6 vs T0    E                0.9966866        10       
-    ## TOC       -6 vs T0    Pre              0.9884551        Pre      
     ## TRS       -6 vs T0    A                0.0062211  *     2        
     ## TRS       -6 vs T0    B                0.0065978  *     4        
     ## TRS       -6 vs T0    C                0.0010270  *     6        
@@ -466,7 +546,7 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-03-17
+Date run: 2023-03-29
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

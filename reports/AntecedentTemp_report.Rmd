@@ -58,7 +58,7 @@ tar_read(gg_nutrients)
   <summary>click to open</summary>
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data.An asterisks indicates a significant (p<= 0.05) difference in pre-incubation temperature.
 
-```{r , fig.height=6, fig.width=6, results='hide'}
+```{r , fig.height=3, fig.width=6, results='hide'}
 tar_read(gg_MicrobialBiomass)
 ```
 </details>
