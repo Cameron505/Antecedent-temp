@@ -15,7 +15,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     #stat_regline_equation(label.y=c(110,120), size=2)+
     #geom_text(data = res_lm , aes(y = 300, label = p.value))+
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
-    facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
+    facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ), nrow=1)+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     scale_fill_manual(values=cbPalette2)+
@@ -114,7 +114,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_summary(fun = mean,geom = "bar",size = 2, position= "dodge") +
     stat_summary(fun.data = mean_se, geom = "errorbar", position= position_dodge(0.85), width=0.5)+        
     scale_y_continuous(expand=c(0,0),limits=c(0,370))+
-    geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=4)+
+    geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=6)+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     scale_fill_manual(values=cbPalette2,labels=c('-2 °C', '-6 °C'))+
@@ -126,9 +126,14 @@ names(inc.lab) <- c("2","4","6","8","10")
   
   respiration_legend = get_legend(gg_CumresLastday+ guides(color = guide_legend(nrow = 1)) +
                                  theme(legend.position = "bottom"))
+S<-ggplot() + theme_void()
+SS<-plot_grid(gg_CumresLastday + theme(legend.position="none"),S,
+          nrow=1)
   gg_Ncombine= plot_grid(
     gg_res + theme(legend.position="none"),
-    gg_CumresLastday + theme(legend.position="none"),
+    SS,
+    align="none",
+    rel_widths= c(2,1),
     labels = c("A", "B"),
     #label_x= 0.1,
     hjust = -1,
@@ -362,7 +367,7 @@ nutrients_data_long = nutrients_data %>%
     scale_y_continuous(expand=c(0,0),limits=c(0,0.6))+
     #geom_text(data = hsd_label2 %>% filter(analyte == "TRS"), aes(y = 0.8, label = label))+
     #geom_text(data = hsd_label %>% filter(analyte == "TRS"), aes(y = 0.9, label = label),position= position_dodge(width = 1))+
-    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=4)+
+    geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=6)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
@@ -479,7 +484,7 @@ plot_MicrobialBiomass = function(nutrients_data){
      scale_y_continuous(expand=c(0,0),limits=c(0,865))+
      #geom_text(data = hsd_label2 %>% filter(analyte == "MBC"), aes(y = 875, label = label))+
      #geom_text(data = hsd_label %>% filter(analyte == "MBC"), aes(y = 885, label = label),position= position_dodge(width = 1))+
-    geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 775, label = asterisk), size=4)+
+    geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 775, label = asterisk), size=6)+
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
