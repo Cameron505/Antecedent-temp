@@ -709,3 +709,59 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
   
 }
 
+trying_different_plot_formats = function(){
+  
+  ## scatter plot + mean, se
+  nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = MBC, color = pre_inc, group = pre_inc))+
+    
+    geom_point(position = position_dodge(width = 0.4), size = 4)+
+    
+    
+    stat_summary(fun = mean, geom = "point", size = 3, shape = 1, stroke = 1,
+                 position = position_dodge(width = 0.4), color = "black") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", 
+                 color = "black",
+                 position= position_dodge(0.4), width=0.5)+        
+    
+    
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    ylim(0, 1000)+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
+    labs(color='pre_inc temp') +
+    guides(fill=guide_legend(title="Pre-Incubation"))+
+    ggtitle("Microbial biomass C")
+  
+  
+  ## scatter plot + boxplot
+  nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    
+    ggplot(aes(x = Inc_temp, y = MBC, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    
+    
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    ylim(0, 1000)+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
+    labs(color='pre_inc temp') +
+    guides(fill=guide_legend(title="Pre-Incubation"))+
+    ggtitle("Microbial biomass C")
+  
+}
