@@ -5,10 +5,13 @@ sample_key_data|stem|sample_key_data|0|skipped
 nutrients_data|stem|nutrients_data|0|skipped
 respiration_data|stem|respiration_data|0|skipped
 sample_key|stem|sample_key|0|skipped
-gg_nutrients|stem|gg_nutrients|0|skipped
-gg_MicrobialBiomass|stem|gg_MicrobialBiomass|0|skipped
+gg_nutrients|stem|gg_nutrients|0|started
+gg_nutrients|stem|gg_nutrients|0|built
+gg_MicrobialBiomass|stem|gg_MicrobialBiomass|0|started
+gg_MicrobialBiomass|stem|gg_MicrobialBiomass|0|built
 respiration_processed|stem|respiration_processed|0|skipped
 Stats_Table|stem|Stats_Table|0|skipped
-gg_respiration|stem|gg_respiration|0|skipped
+gg_respiration|stem|gg_respiration|0|started
+gg_respiration|stem|gg_respiration|0|built
 report|stem|report|0|started
 report|stem|report|0|built
