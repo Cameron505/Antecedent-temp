@@ -546,7 +546,7 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-04-06
+Date run: 2023-04-17
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -570,8 +570,8 @@ Date run: 2023-04-06
     ##  [5] ggpubr_0.6.0      janitor_2.2.0     pracma_2.4.2      reshape2_1.4.4   
     ##  [9] ggbiplot_0.55     scales_1.2.1      plyr_1.8.8        vegan_2.6-4      
     ## [13] lattice_0.20-45   permute_0.9-7     lubridate_1.9.2   forcats_1.0.0    
-    ## [17] stringr_1.5.0     dplyr_1.1.0       purrr_1.0.1       readr_2.1.4      
-    ## [21] tidyr_1.3.0       tibble_3.2.0      ggplot2_3.4.1     tidyverse_2.0.0  
+    ## [17] stringr_1.5.0     dplyr_1.1.1       purrr_1.0.1       readr_2.1.4      
+    ## [21] tidyr_1.3.0       tibble_3.2.1      ggplot2_3.4.2     tidyverse_2.0.0  
     ## [25] tarchetypes_0.7.5 targets_0.14.3   
     ## 
     ## loaded via a namespace (and not attached):
@@ -582,20 +582,20 @@ Date run: 2023-04-06
     ## [17] rootSolve_1.8.2.3  polynom_1.4-1      broom_1.0.4        cluster_2.1.4     
     ## [21] shiny_1.7.4        httr_1.4.5         compiler_4.2.3     backports_1.4.1   
     ## [25] Matrix_1.5-3       fastmap_1.1.1      cli_3.6.0          later_1.3.0       
-    ## [29] htmltools_0.5.4    tools_4.2.3        igraph_1.4.1       gtable_0.3.1      
+    ## [29] htmltools_0.5.4    tools_4.2.3        igraph_1.4.1       gtable_0.3.3      
     ## [33] glue_1.6.2         lmom_2.9           Rcpp_1.0.10        carData_3.0-5     
-    ## [37] cellranger_1.1.0   vctrs_0.6.0        xfun_0.37          globals_0.16.2    
+    ## [37] cellranger_1.1.0   vctrs_0.6.0        xfun_0.38          globals_0.16.2    
     ## [41] ps_1.7.2           timechange_0.2.0   mime_0.12          miniUI_0.1.1.1    
     ## [45] lifecycle_1.0.3    rstatix_0.7.2      future_1.32.0      MASS_7.3-58.2     
     ## [49] hms_1.1.2          promises_1.2.0.1   parallel_4.2.3     expm_0.999-7      
     ## [53] Exact_3.2          yaml_2.3.7         labelled_2.10.0    stringi_1.7.12    
     ## [57] highr_0.10         klaR_1.7-1         AlgDesign_1.2.1    e1071_1.7-13      
     ## [61] boot_1.3-28.1      rlang_1.1.0        pkgconfig_2.0.3    evaluate_0.20     
-    ## [65] labeling_0.4.2     processx_3.8.0     tidyselect_1.2.0   parallelly_1.34.0 
+    ## [65] labeling_0.4.2     processx_3.8.0     tidyselect_1.2.0   parallelly_1.35.0 
     ## [69] magrittr_2.0.3     R6_2.5.1           DescTools_0.99.48  generics_0.1.3    
-    ## [73] base64url_1.4      combinat_0.0-8     pillar_1.8.1       haven_2.5.2       
+    ## [73] base64url_1.4      combinat_0.0-8     pillar_1.9.0       haven_2.5.2       
     ## [77] withr_2.5.0        mgcv_1.8-42        abind_1.4-5        car_3.1-1         
-    ## [81] questionr_0.7.8    utf8_1.2.3         tzdb_0.3.0         rmarkdown_2.20    
+    ## [81] questionr_0.7.8    utf8_1.2.3         tzdb_0.3.0         rmarkdown_2.21    
     ## [85] future.callr_0.8.1 readxl_1.4.2       data.table_1.14.8  callr_3.7.3       
     ## [89] digest_0.6.31      xtable_1.8-4       httpuv_1.6.9       munsell_0.5.0
 

@@ -114,10 +114,10 @@ names(inc.lab) <- c("2","4","6","8","10")
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=6, color="black")+
     theme_light()+
@@ -297,10 +297,10 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=8, color="black")+
     theme_light()+
@@ -322,10 +322,10 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=8, color="black")+
     theme_light()+
@@ -348,10 +348,10 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=8, color="black")+
     theme_light()+
@@ -373,10 +373,10 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
@@ -396,10 +396,10 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
@@ -493,10 +493,10 @@ plot_MicrobialBiomass = function(nutrients_data){
      geom_boxplot(show.legend = F, 
                   outlier.colour = NULL,
                   outlier.fill = NULL,
-                  position = position_dodge(width = 0.6), 
+                  position = position_dodge(width = 1), 
                   alpha = 0.2,
                   aes(group = interaction(Inc_temp, pre_inc)))+
-     geom_point(position = position_dodge(width = 0.6), size = 4)+
+     geom_point(position = position_dodge(width = 1), size = 3)+
      guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 850, label = asterisk), size=8, color="black")+
     theme_light()+
@@ -521,10 +521,10 @@ plot_MicrobialBiomass = function(nutrients_data){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 0.6), 
+                 position = position_dodge(width = 1), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 0.6), size = 4)+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=8, color="black")+
     theme_light()+
