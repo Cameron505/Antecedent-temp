@@ -78,3 +78,31 @@ write.csv(statResAnova, "Data/LC/stats_negLC_pre_and_inc.csv", quote = F, row.na
 StatsLCneg<-statResAnova %>%
   select(1:25,92,113,130,143,152,157,158,179,196,209,218,223)
 write.csv(StatsLCneg, "Data/LC/stats_negLC_pre_and_inc_preinc_compare_at_inc.csv", quote = F, row.names = F)
+
+
+
+
+
+
+Means<-statResAnova %>%
+  select(1, 14:25)%>%
+  pivot_longer(cols="Mean_-2_pre":"Mean_-6_10",
+               names_to="treatment",
+               values_to="mean")%>%
+  separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+  select(-fun)%>%
+  filter(!row_number() %in% c(313:2664))
+
+
+LCneg<-Means%>%
+  mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+         pre = factor(pre,levels=c("-2","-6"))) %>%
+  ggplot(aes(x = inc, y = mean, color = pre))+
+  geom_point(position = position_dodge(width = 1), size = 1)+
+  theme_light()+
+  scale_colour_manual(values=cbPalette2)+
+  facet_wrap(~Name)+
+  ggtitle("LCneg known compounds")
+
+
+ggsave(LCneg,filename="LC_neg_known_compounds.png", "Graphs/", device="png")

@@ -87,3 +87,27 @@ write.csv(StatsLCpos_all, "Data/LC/stats_posLC_pre_and_inc_compare_at_inc_NOFILT
 StatsLCpos_filt<-statResAnova %>%
   select(1:23,79,98,119,128,133,134,153,174,183,188)
 write.csv(StatsLCpos_filt, "Data/LC/stats_posLC_pre_and_inc_compare_at_inc.csv", quote = F, row.names = F)
+
+
+Means<-statResAnova2 %>%
+  select(1, 14:25)%>%
+  pivot_longer(cols="Mean_-6_pre":"Mean_-6_10",
+               names_to="treatment",
+               values_to="mean")%>%
+  separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+  select(-fun)%>%
+  filter(!row_number() %in% c(421:4140))
+
+
+LCpos<-Means%>%
+  mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+         pre = factor(pre,levels=c("-2","-6"))) %>%
+  ggplot(aes(x = inc, y = mean, color = pre))+
+  geom_point(position = position_dodge(width = 1), size = 1)+
+  facet_wrap(~Name)+
+  theme_light()+
+  scale_colour_manual(values=cbPalette2)+
+  ggtitle("LC_pos known compound means")
+
+
+ggsave(LCpos,filename="LC_pos_known_compounds.png", "Graphs/", device="png")

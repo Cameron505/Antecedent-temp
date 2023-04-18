@@ -74,3 +74,25 @@ StatsGC<-statResAnova %>%
   select(1:25,100,111,117,124,130,154,166,177,183,190,196,220)
 
 write.csv(StatsGC, "Data/GC/stats_GC_pre_and_inc_preinc_compare_at_inc.csv", quote = F, row.names = F)
+
+Means<-statResAnova %>%
+  select(1, 14:25)%>%
+  pivot_longer(cols="Mean_-2_4":"Mean_-2_2",
+               names_to="treatment",
+               values_to="mean")%>%
+  separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+  select(-fun)%>%
+  filter(!row_number() %in% c(1021:4008))
+
+
+GC<-Means%>%
+  mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+         pre = factor(pre,levels=c("-2","-6"))) %>%
+  ggplot(aes(x = inc, y = mean, color = pre))+
+  geom_point(position = position_dodge(width = 1), size = 0.5)+
+  facet_wrap(~Metabolites)+
+  theme_light()+
+  scale_colour_manual(values=cbPalette2)+
+  ggtitle("GC known compound means")
+
+ggsave(GC,filename="GC_known_compounds.png", "Graphs/", device="png")
