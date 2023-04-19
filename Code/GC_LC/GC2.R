@@ -89,10 +89,10 @@ GC<-Means%>%
   mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
          pre = factor(pre,levels=c("-2","-6"))) %>%
   ggplot(aes(x = inc, y = mean, color = pre))+
-  geom_point(position = position_dodge(width = 1), size = 0.5)+
-  facet_wrap(~Metabolites)+
+  geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+  facet_wrap(~Metabolites, scales="free")+
   theme_light()+
   scale_colour_manual(values=cbPalette2)+
   ggtitle("GC known compound means")
 
-ggsave(GC,filename="GC_known_compounds.png", "Graphs/", device="png")
+ggsave(GC,filename="GC_known_compounds.png", "Graphs/", device="png",width = 13, height = 11, units = "in")

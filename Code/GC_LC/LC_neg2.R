@@ -98,11 +98,11 @@ LCneg<-Means%>%
   mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
          pre = factor(pre,levels=c("-2","-6"))) %>%
   ggplot(aes(x = inc, y = mean, color = pre))+
-  geom_point(position = position_dodge(width = 1), size = 1)+
+  geom_point(position = position_dodge(width = 0.5), size = 1.5)+
   theme_light()+
   scale_colour_manual(values=cbPalette2)+
-  facet_wrap(~Name)+
+  facet_wrap(~Name, scales="free")+
   ggtitle("LCneg known compounds")
 
 
-ggsave(LCneg,filename="LC_neg_known_compounds.png", "Graphs/", device="png")
+ggsave(LCneg,filename="LC_neg_known_compounds.png", "Graphs/", device="png",width = 13, height = 11, units = "in")

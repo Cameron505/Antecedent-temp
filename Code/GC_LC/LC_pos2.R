@@ -103,11 +103,11 @@ LCpos<-Means%>%
   mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
          pre = factor(pre,levels=c("-2","-6"))) %>%
   ggplot(aes(x = inc, y = mean, color = pre))+
-  geom_point(position = position_dodge(width = 1), size = 1)+
-  facet_wrap(~Name)+
+  geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+  facet_wrap(~Name, scales="free")+
   theme_light()+
   scale_colour_manual(values=cbPalette2)+
   ggtitle("LC_pos known compound means")
 
 
-ggsave(LCpos,filename="LC_pos_known_compounds.png", "Graphs/", device="png")
+ggsave(LCpos,filename="LC_pos_known_compounds.png", "Graphs/", device="png",width = 13, height = 11, units = "in")
