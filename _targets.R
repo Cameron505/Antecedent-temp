@@ -42,7 +42,36 @@ list(
   tar_target(respiration_processed, process_respiration(respiration_data)),
   tar_target(nutrients_data_read,"Data/Nutrients_MicrobialBiomass_AntecedentTemp.csv", format="file"),
   tar_target(nutrients_data, read.csv(nutrients_data_read)),
+  #GC analysis
+  tar_target(GC_data_read,"Data/GC/GC_Data.csv", format="file"),
+  tar_target(GC_data, read.csv(GC_data_read)),
+  tar_target(GC_fdata_read,"Data/GC/GC_LC_fdata2.csv", format="file"),
+  tar_target(GC_fdata, read.csv(GC_fdata_read)),
+  tar_target(GC_processed, process_GC(GC_data,GC_fdata)),
   
+  tar_target(gg_GC, plot_GC(GC_processed)),
+  
+  #LC analysis
+  tar_target(LC_POS_data_read,"Data/LC/LC_pos_Data.csv", format="file"),
+  tar_target(LC_POS_data, read.csv(LC_POS_data_read)),
+  tar_target(LC_fdata_read,"Data/LC/LC_fdata.csv", format="file"),
+  tar_target(LC_fdata, read.csv(LC_fdata_read)),
+  tar_target(LC_neg_data_read,"Data/LC/LC_neg_Data.csv", format="file"),
+  tar_target(LC_neg_data, read.csv(LC_neg_data_read)),
+  tar_target(LC_processed, process_LC(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata)),
+  
+  tar_target(gg_LC, plot_LC(LC_processed)),
+  
+  #Lipid analysis
+  tar_target(Lipid_POS_data_read,"Data/lipids/Lipid_POS_data.csv", format="file"),
+  tar_target(Lipid_POS_data, read.csv(Lipid_POS_data_read)),
+  tar_target(Lipid_NEG_data_read,"Data/lipids/Lipid_NEG_data.csv", format="file"),
+  tar_target(Lipid_NEG_data, read.csv(Lipid_NEG_data_read)),
+  tar_target(Lipid_fdata_read,"Data/lipids/Lipid_metadata.csv", format="file"),
+  tar_target(Lipid_fdata, read.csv(Lipid_fdata_read)),
+  tar_target(Lipid_processed, process_Lipid(Lipid_POS_data,Lipid_NEG_data,Lipid_fdata)),
+  
+  tar_target(gg_Lipid, plot_Lipid(Lipid_processed)),
   
   # analysis - graphs
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
@@ -55,6 +84,7 @@ list(
  
   
   # report  
-  tar_render(report, path = "reports/AntecedentTemp_report.Rmd")
+  tar_render(report, path = "reports/AntecedentTemp_report.Rmd"),
+  tar_render(GC_report,path="reports/GC_LC_Lipids.Rmd")
   
 )

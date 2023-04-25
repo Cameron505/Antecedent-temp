@@ -723,3 +723,229 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
   )
   
 }
+
+
+### GC
+
+plot_GC = function(GC_processed){
+  
+  statResAnova <- imd_anova(GC_processed$metab_final, test_method = "anova")
+  
+  StatsGC<-statResAnova %>%
+    select(1:25,100,111,117,124,130,154,166,177,183,190,196,220)%>%
+    knitr::kable()
+  
+  
+  Means<-statResAnova %>%
+    select(1, 14:25)%>%
+    pivot_longer(cols="Mean_-2_4":"Mean_-2_2",
+                 names_to="treatment",
+                 values_to="mean")%>%
+    separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+    select(-fun)%>%
+    filter(!row_number() %in% c(1021:4008))
+  
+  
+  GC<-Means%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Metabolites, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("GC known compound means")
+  
+  Stat_plot<-plot(statResAnova)
+  list(Stat_plot = Stat_plot,
+       GC = GC,
+       StatsGC=StatsGC
+       
+  )
+  
+}
+
+
+###LC
+
+plot_LC = function(LC_processed){
+  
+  statResAnova <- imd_anova(LC_processed$metab_final, test_method = "anova")
+  
+  StatsLC<-statResAnova %>%
+    select(1:25,92,113,130,143,152,157,158,179,196,209,218,223)%>%
+    knitr::kable()
+  
+  
+  Means<-statResAnova %>%
+    select(1, 14:25)%>%
+    pivot_longer(cols="Mean_-2_pre":"Mean_-6_10",
+                 names_to="treatment",
+                 values_to="mean")%>%
+    separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+    separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
+    select(-fun)%>%
+    filter(!row_number() %in% c(421:4140,4477:6828))
+  
+  
+  LC_pos<-Means%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="pos")%>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Metabolite, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_pos known compound means")
+  
+  
+  
+  LC_neg<-Means%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="neg")%>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Metabolite, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_neg known compound means")
+  
+  
+  
+  Stat_plot<-plot(statResAnova)
+  
+  
+  list(Stat_plot = Stat_plot,
+       LC_pos = LC_pos,
+       LC_neg = LC_neg
+       
+  )
+  
+}
+
+
+###Lipid
+
+plot_Lipid = function(Lipid_processed){
+  
+  statResAnova <- imd_anova(Lipid_processed$metab_final, test_method = "anova")
+  
+  StatsLC<-statResAnova %>%
+    select(1:25,98,111,113,136,137,152,164,177,179,202,203,218)%>%
+    knitr::kable()
+  
+  
+  Means<-statResAnova %>%
+    select(1, 14:25)%>%
+    pivot_longer(cols="Mean_-2_T0":"Mean_-6_10",
+                 names_to="treatment",
+                 values_to="mean")%>%
+    separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
+    select(-fun)
+  
+  
+  Lipid_pos<-Means%>%
+    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="pos")%>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Lipid, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_pos known compound means")
+  
+  
+  
+  Lipid_neg<-Means%>%
+    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="neg")%>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Lipid, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_neg known compound means")
+  
+  Means2<-Means %>%
+    filter(Lipid%in%c("DGDG(14:0/16:1)",
+                     "DGDG(31:1)",
+                     "PC(0:0/18:1)_B",
+                     "PC(16:0/18:1)",
+                     "TG(47:1)",
+                     "TG(48:0)",
+                     "PC(17:1/18:1)",
+                     "Cer(d18:1/26:1(2OH))",
+                     "DG(18:2/0:0/18:2)",
+                     "DGDG(16:0/18:3)",
+                     "TG(54:2)",
+                     "TG(36:0)",
+                     "TG(50:0)",
+                     "TG(16:1/18:2/18:3)",
+                     "DGDG(18:1/18:2)",
+                     "PC(15:0/17:0)",
+                     "PC(16:1/0:0)",
+                     "DG(18:2/18:3/0:0)",
+                     "Cer(d16:0/20:0)",
+                     "DGDG(18:2/18:2)"))
+  
+  Means3<-Means %>%
+    filter(Lipid%in%c(
+      "PE(16:0/17:0)_A",
+      "PE(15:0/15:0)",
+      "PE(14:0/15:0)",
+      "PE(16:1/17:1)",
+      "PE(15:0/16:1)_B",
+      "PE(15:0/17:0)",
+      "PE(15:0/17:1)",
+      "PE(33:2)",
+      "PG(15:0/16:1)_B",
+      "PG(16:1/17:1)_B",
+      "PG(16:0/16:1)",
+      "PE(16:0/17:0)_B",
+      "PG(16:1/16:1)",
+      "PG(16:0/17:1)",
+      "PG(16:0/17:0)",
+      "PG(15:0/17:1)",
+      "PG(15:0/16:1)_A",
+      "PE(16:0/17:0)_A",
+      "PG(15:0/16:0)_B"))
+  
+  Lipid_neg2<-Means3%>%
+    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="neg")%>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Lipid, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("Lipid_neg significant compound means")
+  Stat_plot<-plot(statResAnova)
+  
+  Lipid_pos2<-Means2%>%
+    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="pos")%>%
+    ggplot(aes(x = inc, y = mean, color = pre))+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    facet_wrap(~Lipid, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("Lipid_pos significant compound means")
+  
+  list(Stat_plot = Stat_plot,
+       Lipid_pos = Lipid_pos,
+       Lipid_neg = Lipid_neg,
+       Lipid_pos2=Lipid_pos2,
+       Lipid_neg2=Lipid_neg2
+       
+       
+  )
+  
+}
+

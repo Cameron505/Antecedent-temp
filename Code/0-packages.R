@@ -9,6 +9,7 @@ library(cowplot)
 library(nlme)
 library(knitr)
 library(agricolae)
+library(pmartR)
 
 # to install {ggbiplot}:
 # library(devtools)
