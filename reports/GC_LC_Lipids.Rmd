@@ -32,7 +32,7 @@ tar_read(gg_GC)
  
 
 ```{r , fig.height=15, fig.width=20, results='hide'}
-#tar_read(gg_LC)
+tar_read(gg_LC)
 ```
 
 </details>
