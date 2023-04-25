@@ -77,14 +77,5 @@ list(
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
   tar_target(gg_nutrients, plot_nutrients(nutrients_data)),
   tar_target(gg_MicrobialBiomass, plot_MicrobialBiomass(nutrients_data)),
-  tar_target(Stats_Table, Print_stats(nutrients_data,respiration_processed)),
-
-  
-  # combined data
- 
-  
-  # report  
-  tar_render(report, path = "reports/AntecedentTemp_report.Rmd"),
-  tar_render(GC_report,path="reports/GC_LC_Lipids.Rmd")
-  
+  tar_target(Stats_Table, Print_stats(nutrients_data,respiration_processed))
 )
