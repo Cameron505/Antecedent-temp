@@ -729,6 +729,18 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
 
 plot_GC = function(GC_processed){
   
+  
+  
+  
+  GC_data_composite = GC_processed$metab_final$e_data %>%
+    pivot_longer(cols=Wein_1_B_2_3:Wein_36_Pre_2_1, names_to= "Sample.ID")%>%
+    left_join(GC_processed$metab_final$f_data, by= "Sample.ID")
+  
+  
+  
+  
+  
+  
   statResAnova <- imd_anova(GC_processed$metab_final, test_method = "anova")
   
   StatsGC<-statResAnova %>%
@@ -769,6 +781,18 @@ plot_GC = function(GC_processed){
 ###LC
 
 plot_LC = function(LC_processed){
+  
+  
+  LC_data_composite = LC_processed$metab_final$e_data %>%
+    pivot_longer(cols=Pre_6_3:E_6_2, names_to= "Sample.ID")%>%
+    left_join(LC_processed$metab_final$f_data, by= "Sample.ID")
+  
+  
+  
+  
+  
+  
+  
   
   statResAnova <- imd_anova(LC_processed$metab_final, test_method = "anova")
   
@@ -829,6 +853,21 @@ plot_LC = function(LC_processed){
 ###Lipid
 
 plot_Lipid = function(Lipid_processed){
+  
+  
+  
+  Lipid_data_composite = Lipid_processed$metab_final$e_data %>%
+    pivot_longer(cols=Wein_51407_22_Pre_2_2_L:Wein_51407_19_A_2_1_L, names_to= "Sample.ID")%>%
+    left_join(Lipid_processed$metab_final$f_data, by= "Sample.ID")%>%
+    mutate(class = case_when(grepl("Cer", Name2) ~ "Sphingolipid",
+                             grepl("CoQ", Name2) ~ "Prenol Lipid",
+                             grepl("PC", Name2) ~ "Glycerophospholipid",
+                             grepl("PE", Name2) ~ "Glycerophospholipid",
+                             grepl("PG", Name2) ~ "Glycerophospholipid",
+                             grepl("PI", Name2) ~ "Glycerophospholipid",
+                             grepl("DG", Name2) ~ "Glycerolipid",
+                             grepl("TG", Name2) ~ "Glycerolipid"))
+  
   
   statResAnova <- imd_anova(Lipid_processed$metab_final, test_method = "anova")
   
@@ -937,6 +976,7 @@ plot_Lipid = function(Lipid_processed){
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("Lipid_pos significant compound means")
+  
   
   list(Stat_plot = Stat_plot,
        Lipid_pos = Lipid_pos,
