@@ -852,21 +852,38 @@ plot_LC = function(LC_processed){
 
 ###Lipid
 
-plot_Lipid = function(Lipid_processed){
+plot_Lipid = function(Lipid_processed,Lipid_PCA){
+
   
+  gg_pca_pre=
+    ggbiplot(Lipid_PCA$pca_Lip,obs.scale = 1, var.scale = 1,
+             groups = as.character(Lipid_PCA$grp$Pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre inc")+
+    scale_colour_manual(values=cbPalette2)
   
-  
-  Lipid_data_composite = Lipid_processed$metab_final$e_data %>%
-    pivot_longer(cols=Wein_51407_22_Pre_2_2_L:Wein_51407_19_A_2_1_L, names_to= "Sample.ID")%>%
-    left_join(Lipid_processed$metab_final$f_data, by= "Sample.ID")%>%
-    mutate(class = case_when(grepl("Cer", Name2) ~ "Sphingolipid",
-                             grepl("CoQ", Name2) ~ "Prenol Lipid",
-                             grepl("PC", Name2) ~ "Glycerophospholipid",
-                             grepl("PE", Name2) ~ "Glycerophospholipid",
-                             grepl("PG", Name2) ~ "Glycerophospholipid",
-                             grepl("PI", Name2) ~ "Glycerophospholipid",
-                             grepl("DG", Name2) ~ "Glycerolipid",
-                             grepl("TG", Name2) ~ "Glycerolipid"))
+  gg_pca_inc=
+    ggbiplot(Lipid_PCA$pca_Lip,obs.scale = 1, var.scale = 1,
+             groups = as.character(Lipid_PCA$grp$Inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by inc")+
+    scale_colour_manual(values=cbPalette2)
   
   
   statResAnova <- imd_anova(Lipid_processed$metab_final, test_method = "anova")
@@ -982,7 +999,9 @@ plot_Lipid = function(Lipid_processed){
        Lipid_pos = Lipid_pos,
        Lipid_neg = Lipid_neg,
        Lipid_pos2=Lipid_pos2,
-       Lipid_neg2=Lipid_neg2
+       Lipid_neg2=Lipid_neg2,
+       gg_pca_pre=gg_pca_pre,
+       gg_pca_inc=gg_pca_inc
        
        
   )

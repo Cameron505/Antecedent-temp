@@ -88,9 +88,10 @@ process_GC= function(GC_data,GC_fdata){
 
 process_LC= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
   edata <- LC_POS_data
-  edata1 <- LC_neg_data
+  edata1 <- LC_neg_data %>%
+    mutate(Name = if_else(grepl("HODE", Name), "13-HODE", Name))
   fdata1 <- LC_fdata
-
+  
   
   edata2<-edata1%>%
     select(-m.z,-RT..min.,-Tags,-RefMet.Nomenclature,-Main.class,-Sub.class,-Formula,-Annot..DeltaMass..ppm.,-Calc..MW,-Reference.Ion
@@ -235,6 +236,45 @@ process_Lipid= function(Lipid_POS_data,Lipid_NEG_data,Lipid_fdata){
                                   backtransform = TRUE)
   
   list(metab_final = metab_final)
+  
+}
+
+
+Lipid_process_PCA= function(Lipid_processed){
+  Lipid_data_composite = Lipid_processed$metab_final$e_data %>%
+    pivot_longer(cols=Wein_51407_22_Pre_2_2_L:Wein_51407_19_A_2_1_L, names_to= "Sample.ID")%>%
+    left_join(Lipid_processed$metab_final$f_data, by= "Sample.ID")%>%
+    mutate(class = case_when(grepl("Cer", Name2) ~ "Sphingolipid",
+                             grepl("CoQ", Name2) ~ "Prenol Lipid",
+                             grepl("PC", Name2) ~ "Glycerophospholipid",
+                             grepl("PE", Name2) ~ "Glycerophospholipid",
+                             grepl("PG", Name2) ~ "Glycerophospholipid",
+                             grepl("PI", Name2) ~ "Glycerophospholipid",
+                             grepl("DG", Name2) ~ "Glycerolipid",
+                             grepl("TG", Name2) ~ "Glycerolipid"))
+  
+  
+  Lipid_short<-Lipid_data_composite %>%
+    group_by(Sample.ID,class,Pre,Inc)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(abund, total)) %>% 
+    pivot_wider(names_from = class,values_from = relabund)
+  
+  num= Lipid_short%>%
+    dplyr::select(c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))
+  
+  grp=Lipid_short%>%
+    dplyr::select(-c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_Lip = prcomp(num, scale.=T)
+  
+  list(num=num,
+       grp=grp,
+       pca_Lip=pca_Lip)
   
 }
 

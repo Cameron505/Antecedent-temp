@@ -70,12 +70,17 @@ list(
   tar_target(Lipid_fdata_read,"Data/lipids/Lipid_metadata.csv", format="file"),
   tar_target(Lipid_fdata, read.csv(Lipid_fdata_read)),
   tar_target(Lipid_processed, process_Lipid(Lipid_POS_data,Lipid_NEG_data,Lipid_fdata)),
+  tar_target(Lipid_PCA, Lipid_process_PCA(Lipid_processed)),
   
-  tar_target(gg_Lipid, plot_Lipid(Lipid_processed)),
+  tar_target(gg_Lipid, plot_Lipid(Lipid_processed,Lipid_PCA)),
   
   # analysis - graphs
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
   tar_target(gg_nutrients, plot_nutrients(nutrients_data)),
   tar_target(gg_MicrobialBiomass, plot_MicrobialBiomass(nutrients_data)),
-  tar_target(Stats_Table, Print_stats(nutrients_data,respiration_processed))
+  tar_target(Stats_Table, Print_stats(nutrients_data,respiration_processed)),
+  
+  #reports
+  tar_render(report, path = "reports/AntecedentTemp_report.Rmd"),
+  tar_render(report2, path = "reports/GC_LC_Lipids.Rmd")
 )
