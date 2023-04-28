@@ -28,7 +28,8 @@ gg_nutrients|stem|gg_nutrients|0|skipped
 LC_processed|stem|LC_processed|0|skipped
 respiration_processed|stem|respiration_processed|0|skipped
 gg_GC|stem|gg_GC|0|skipped
-Lipid_PCA|stem|Lipid_PCA|0|skipped
+Lipid_PCA|stem|Lipid_PCA|0|started
+Lipid_PCA|stem|Lipid_PCA|0|built
 gg_LC|stem|gg_LC|0|skipped
 gg_respiration|stem|gg_respiration|0|skipped
 Stats_Table|stem|Stats_Table|0|skipped

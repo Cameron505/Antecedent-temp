@@ -260,8 +260,8 @@ Lipid_process_PCA= function(Lipid_processed){
     ungroup %>%
     dplyr::mutate(total = sum(abund,na.rm=TRUE),
                   relabund  = (abund/total)*100)%>%
-    dplyr::select(-c(abund, total)) %>% 
-    pivot_wider(names_from = class,values_from = relabund)
+    dplyr::select(-c(relabund, total)) %>% 
+    pivot_wider(names_from = class,values_from = abund)
   
   num= Lipid_short%>%
     dplyr::select(c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))
