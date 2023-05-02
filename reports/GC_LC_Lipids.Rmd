@@ -22,9 +22,6 @@ tar_read(gg_GC)
 ```
 
 </details>
-
----
-
 ## LC
 
 <details>

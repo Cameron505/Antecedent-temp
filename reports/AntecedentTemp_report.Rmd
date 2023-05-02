@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       )
 ```
 
-## sample summary
+## Sample Summary
 
 <details>
   <summary>click to open</summary>
@@ -26,7 +26,7 @@ tar_read(sample_key) %>% knitr::kable()
 
 ---
 
-## Respiration results
+## Respiration Results
 
 <details>
   <summary>click to open</summary>
@@ -53,7 +53,7 @@ tar_read(gg_nutrients)
 
 ---
 
-## Microbial biomass
+## Microbial Biomass
 <details>
   <summary>click to open</summary>
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data.An asterisks indicates a significant (p<= 0.05) difference in pre-incubation temperature.
