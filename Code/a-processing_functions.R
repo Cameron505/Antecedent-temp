@@ -263,6 +263,14 @@ Lipid_process_PCA= function(Lipid_processed){
     dplyr::select(-c(relabund, total)) %>% 
     pivot_wider(names_from = class,values_from = abund)
   
+  
+  
+  
+  
+  
+  
+  
+  
   num= Lipid_short%>%
     dplyr::select(c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))
   
@@ -274,7 +282,48 @@ Lipid_process_PCA= function(Lipid_processed){
   
   list(num=num,
        grp=grp,
-       pca_Lip=pca_Lip)
+       pca_Lip=pca_Lip,
+       Lipid_data_composite=Lipid_data_composite)
+  
+}
+
+
+
+
+
+Process_FTICR= function(FTICR_Lipid,FTICR_Metabolite){
+  source("code/fticr/a-functions_processing.R")
+  
+  Lipid_Key<- FTICR_Lipid %>%
+    pivot_longer(cols=out_Wein_51407_PBlank1_FTICR_Lipid_r1_13Feb23_Fir_300SA_P01_9650.XML:out_Wein_51407_36_Pre.2.1_FTICR_Lipid_r3_13Feb23_Fir_300SA_P01_9740.XML, names_to= "CoreID")%>%
+    select(CoreID)%>%
+    mutate(pre = case_when(grepl(".6", CoreID)~ "-6",
+                           grepl(".2", CoreID)~ "-2"),
+           inc = case_when(grepl("_Pre", CoreID)~ "Pre",
+                           grepl("_A", CoreID)~ "2",
+                           grepl("_B", CoreID)~ "4",
+                           grepl("_C", CoreID)~ "6",
+                           grepl("_D", CoreID)~ "8",
+                           grepl("_E", CoreID)~ "10"))
+  
+  Metab_Key<-FTICR_Metabolite%>%
+    pivot_longer(cols=out_Wein_51407_PBlank1_FTICR_r2_09Feb23_Fir_300SA_P01_9444:out_Wein_51407_PBlank1_FTICR_r1_08Feb23_Fir_300SA_P01_9394,names_to= "CoreID")%>%
+    select(CoreID)%>%
+    mutate(pre = case_when(grepl(".6", CoreID)~ "-6",
+                           grepl(".2", CoreID)~ "-2"),
+           inc = case_when(grepl("_Pre", CoreID)~ "Pre",
+                           grepl("_A", CoreID)~ "2",
+                           grepl("_B", CoreID)~ "4",
+                           grepl("_C", CoreID)~ "6",
+                           grepl("_D", CoreID)~ "8",
+                           grepl("_E", CoreID)~ "10"))
+  
+  
+
+  
+  
+  
+  
   
 }
 

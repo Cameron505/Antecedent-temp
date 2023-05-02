@@ -748,29 +748,49 @@ plot_GC = function(GC_processed){
     knitr::kable()
   
   
-  Means<-statResAnova %>%
-    select(1, 14:25)%>%
-    pivot_longer(cols="Mean_-2_4":"Mean_-2_2",
-                 names_to="treatment",
-                 values_to="mean")%>%
-    separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
-    select(-fun)%>%
-    filter(!row_number() %in% c(1021:4008))
+  Means<- GC_data_composite %>%
+    filter(!row_number() %in% c(2959:11390))
+  Means_unknown<- GC_data_composite %>%
+    filter(!row_number() %in% c(1:2958))
   
   
   GC<-Means%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
-    ggtitle("GC known compound means")
+    ggtitle("GC known compounds")
+  
+  
+  GC_unkown<-Means_unknown%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    facet_wrap(~Metabolites, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("GC unknown compounds")
   
   Stat_plot<-plot(statResAnova)
   list(Stat_plot = Stat_plot,
        GC = GC,
+       GC_unkown=GC_unkown,
        StatsGC=StatsGC
        
   )
@@ -801,27 +821,48 @@ plot_LC = function(LC_processed){
     knitr::kable()
   
   
-  Means<-statResAnova %>%
-    select(1, 14:25)%>%
-    pivot_longer(cols="Mean_-2_pre":"Mean_-6_10",
-                 names_to="treatment",
-                 values_to="mean")%>%
-    separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
+  Means<-LC_data_composite %>%
     separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
-    select(-fun)%>%
-    filter(!row_number() %in% c(421:4140,4477:6828))
+    filter(!row_number() %in% c(1226:12075,13056:19915))
   
+  Means_unknown<-LC_data_composite %>%
+    separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
+    filter(!row_number() %in% c(1:1225,12076:13055))
   
   LC_pos<-Means%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
     filter(MODE=="pos")%>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("LC_pos known compound means")
+  
+  
+  LC_pos_unknown<-Means_unknown%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="pos")%>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    facet_wrap(~Metabolite, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_pos unknown compounds")
   
   
   
@@ -829,12 +870,36 @@ plot_LC = function(LC_processed){
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
     filter(MODE=="neg")%>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("LC_neg known compound means")
+  
+  
+  LC_neg_unknown<-Means_unknown%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="neg")%>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    facet_wrap(~Metabolite, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_neg unknown compounds")
   
   
   
@@ -843,7 +908,9 @@ plot_LC = function(LC_processed){
   
   list(Stat_plot = Stat_plot,
        LC_pos = LC_pos,
-       LC_neg = LC_neg
+       LC_neg = LC_neg,
+       LC_pos_unknown= LC_pos_unknown,
+       LC_neg_unknown=LC_neg_unknown
        
   )
   
@@ -893,22 +960,22 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     knitr::kable()
   
   
-  Means<-statResAnova %>%
-    select(1, 14:25)%>%
-    pivot_longer(cols="Mean_-2_T0":"Mean_-6_10",
-                 names_to="treatment",
-                 values_to="mean")%>%
-    separate_wider_delim(treatment, "_", names=c("fun","pre","inc"))%>%
-    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
-    select(-fun)
+  Means<-Lipid_PCA$Lipid_data_composite %>%
+    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))
   
   
   Lipid_pos<-Means%>%
-    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
-           pre = factor(pre,levels=c("-2","-6"))) %>%
+    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="pos")%>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = Inc, y = value, color = Pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc, Pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
@@ -917,11 +984,17 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   
   
   Lipid_neg<-Means%>%
-    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
-           pre = factor(pre,levels=c("-2","-6"))) %>%
+    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="neg")%>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = Inc, y = value, color = Pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc, Pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
@@ -972,28 +1045,42 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
       "PG(15:0/16:0)_B"))
   
   Lipid_neg2<-Means3%>%
-    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
-           pre = factor(pre,levels=c("-2","-6"))) %>%
+    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="neg")%>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = Inc, y = value, color = Pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc, Pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("Lipid_neg significant compound means")
-  Stat_plot<-plot(statResAnova)
+
   
   Lipid_pos2<-Means2%>%
-    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
-           pre = factor(pre,levels=c("-2","-6"))) %>%
+    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="pos")%>%
-    ggplot(aes(x = inc, y = mean, color = pre))+
-    geom_point(position = position_dodge(width = 0.5), size = 1.5)+
+    ggplot(aes(x = Inc, y = value, color = Pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc, Pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("Lipid_pos significant compound means")
   
+  
+  Stat_plot<-plot(statResAnova)
   
   list(Stat_plot = Stat_plot,
        Lipid_pos = Lipid_pos,

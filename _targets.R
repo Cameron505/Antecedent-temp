@@ -74,6 +74,18 @@ list(
   
   tar_target(gg_Lipid, plot_Lipid(Lipid_processed,Lipid_PCA)),
   
+  
+  
+  
+  #FTICR
+  tar_target(FTICR_Lipid_read,"Data/FTICR/Report_Lipid_NegESI_Consolidation123.csv", format="file"),
+  tar_target(FTICR_Lipid, read.csv(FTICR_Lipid_read)),
+  #tar_target(FTICR_processed, Process_FTICR(FTICR_Lipid,FTICR_Metabolite)),
+  
+  tar_target(FTICR_Metabolite_read,"Data/FTICR/Report_Metabolite_NegESI_Consolidation123.csv", format="file"),
+  tar_target(FTICR_Metabolite, read.csv(FTICR_Metabolite_read)),
+  
+  
   # analysis - graphs
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
   tar_target(gg_nutrients, plot_nutrients(nutrients_data)),
