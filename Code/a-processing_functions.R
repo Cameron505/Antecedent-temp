@@ -319,7 +319,7 @@ Process_FTICR= function(FTICR_Lipid,FTICR_Metabolite){
                            grepl("_E", CoreID)~ "10"))
   
   
-
+  TREATMENTS = dplyr::quos(pre,inc)
   
   report_polar = FTICR_Metabolite
   corekey_polar = Metab_Key
@@ -338,7 +338,39 @@ Process_FTICR= function(FTICR_Lipid,FTICR_Metabolite){
     mutate(Polar = "nonpolar")
   
  
+  fticr_data_trt_polar = make_fticr_data(report_polar, corekey_polar, TREATMENTS)$data_long_trt %>% 
+    mutate(Polar = "polar")
   
+  fticr_data_trt_nonpolar = make_fticr_data(report_nonpolar, corekey_nonpolar, TREATMENTS)$data_long_trt %>% 
+    mutate(Polar = "nonpolar")
+  
+  fticr_meta_combined = 
+    rbind(fticr_meta_polar, fticr_meta_nonpolar) %>% 
+    distinct()
+  
+  fticr_data_longform_combined = 
+    rbind(fticr_data_longform_polar, fticr_data_longform_nonpolar)
+  
+  fticr_data_trt_combined = 
+    rbind(fticr_data_trt_polar, fticr_data_trt_nonpolar)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  list(fticr_meta_polar=fticr_meta_polar,
+       fticr_data_longform_polar=fticr_data_longform_polar,
+       fticr_data_trt_polar=fticr_data_trt_polar,
+       fticr_meta_nonpolar=fticr_meta_nonpolar,
+       fticr_data_longform_nonpolar=fticr_data_longform_nonpolar,
+       fticr_data_trt_nonpolar=fticr_data_trt_nonpolar,
+       fticr_meta_combined=fticr_meta_combined,
+       fticr_data_longform_combined=fticr_data_longform_combined,
+       fticr_data_trt_combined=fticr_data_trt_combined)
   
   
 }

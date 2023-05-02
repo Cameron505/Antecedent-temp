@@ -23,7 +23,7 @@ COREKEY_polar = "data/fticr/Field_Polar_Fdata.csv"
 REPORT_polar = "data/fticr/xtra_Report_15T_FieldSite_Upper_Polar_Consolidated.csv"
 ## SET the treatment variables
 ## this will work with multiple variables too. just add all the variable names in the parentheses.
-TREATMENTS = dplyr::quos(Site, Year, Season)
+TREATMENTS = dplyr::quos(pre,inc)
 
 #
 # 2. load packages and source the functions --------------------------------------------------------
