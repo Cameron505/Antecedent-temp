@@ -321,7 +321,23 @@ Process_FTICR= function(FTICR_Lipid,FTICR_Metabolite){
   
 
   
+  report_polar = FTICR_Metabolite
+  corekey_polar = Metab_Key
   
+  report_nonpolar = FTICR_Lipid
+  corekey_nonpolar = Lipid_Key
+  
+  fticr_meta_polar = make_fticr_meta(report_polar)$meta2
+  
+  fticr_meta_nonpolar = make_fticr_meta(report_nonpolar)$meta2
+  
+  fticr_data_longform_polar = make_fticr_data(report_polar, corekey_polar, TREATMENTS)$data_long_key_repfiltered %>% 
+    mutate(Polar = "polar")
+  
+  fticr_data_longform_nonpolar = make_fticr_data(report_nonpolar, corekey_nonpolar, TREATMENTS)$data_long_key_repfiltered %>% 
+    mutate(Polar = "nonpolar")
+  
+ 
   
   
   
