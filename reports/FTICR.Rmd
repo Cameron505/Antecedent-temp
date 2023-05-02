@@ -1,0 +1,41 @@
+---
+title: "FTICR"
+output: html_document
+date: "2023-05-02"
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE
+                      )
+```
+
+## FTICR
+
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_FTICR)
+```
+
+
+
+</details>
+
+---
+
+## Session Info 
+
+<details>
+  <summary> Session Info </summary>
+
+Date run: `r Sys.Date()`
+
+```{r}
+sessionInfo()
+```
+
+</details>

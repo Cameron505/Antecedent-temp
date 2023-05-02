@@ -1095,3 +1095,358 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   
 }
 
+
+
+
+plot_FTICR = function(FTICR_processed){
+  source("code/fticr/b-functions_analysis.R")
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_data_trt = FTICR_processed$fticr_data_trt_combined
+  TREATMENTS = dplyr::quos(pre,inc, Polar)
+  
+  
+  
+  # 2. van krevelen plots ---------------------------------------------------
+  ## 2a. domains ----
+  gg_vk_domains = 
+    gg_vankrev(fticr_meta, aes(x = OC, y = HC, color = Class))+
+    scale_color_manual(values = PNWColors::pnw_palette("Sunset2"))+
+    theme_CKM()
+  
+  gg_vk_domains_nosc = 
+    gg_vankrev(fticr_meta, aes(x = OC, y = HC, color = as.numeric(NOSC)))+
+    scale_color_gradientn(colors = PNWColors::pnw_palette("Bay"))+
+    theme_CKM()
+  ## 2b. treatments ----
+  
+  fticr_hcoc = 
+    fticr_data_trt %>% 
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+  
+  gg_vk_polar_nonpolar = 
+    (fticr_hcoc %>%
+       distinct(formula, HC, OC, Polar) %>% 
+       gg_vankrev(aes(x = OC, y = HC, color = Polar))+
+       stat_ellipse(level = 0.90, show.legend = FALSE)+
+       theme(legend.position = c(0.8, 0.8)) +
+       NULL) %>% 
+    # include marginal density plots
+    ggExtra::ggMarginal(groupColour = TRUE, groupFill = TRUE, alpha = 0.1)
+  
+  gg_vk_all = 
+    gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_grid(inc ~ Polar)+
+    theme_CKM()
+  
+  gg_vk_all_pre = 
+    gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = inc))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_grid(Polar ~ pre)+
+    theme_CKM()
+
+  
+  
+  
+  ## Unique peaks  by pre
+  
+  fticr_unique_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())
+  
+  gg_unique_pre =
+    fticr_unique_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre")+
+    theme_CKM()
+  
+  gg_common = 
+    fticr_unique_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique = 
+    fticr_unique_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary = 
+    fticr_unique_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc
+  
+  
+  fticr_unique_inc = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc =
+    fticr_unique_inc %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = inc))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc")+
+    theme_CKM()
+  
+  gg_common_inc = 
+    fticr_unique_inc %>% filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique_inc = 
+    fticr_unique_inc %>% filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc %>% filter(n == 1),
+               aes(color = inc), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc and pre
+  
+  
+  fticr_unique_inc_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc_pre =
+    fticr_unique_inc_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc")+
+    theme_CKM()
+  
+  gg_common_inc_pre = 
+    fticr_unique_inc_pre %>% filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique_inc_pre = 
+    fticr_unique_inc_pre %>% filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc and pre",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    knitr::kable()
+  
+ 
+  
+  # 3. relative abundance ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  relabund_cores = 
+    fticr_data_longform %>% 
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt = 
+    relabund_cores %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  relabund<-relabund_trt %>% 
+    ggplot(aes(x = pre, y = rel_abund, fill = Class))+
+    geom_bar(stat = "identity")+
+    facet_grid(~inc)+
+    theme_CKM()
+  
+  
+  # 4. statistics -----------------------------------------------------------
+  
+  relabund_wide = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    #filter(Polar == "polar") %>% 
+    mutate(Class = factor(Class, 
+                          levels = c("aliphatic", "unsaturated/lignin", 
+                                     "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class, relabund) %>% 
+    replace(is.na(.), 0)
+  
+  permanova_fticr_all = 
+    adonis2(relabund_wide %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
+           data = relabund_wide) %>%
+    knitr::kable()
+  
+  ## 4b. PCA ----
+  pca_all = fit_pca_function(relabund_cores)
+  pca_polar = fit_pca_function(relabund_cores %>% filter(Polar == "polar")) 
+  pca_nonpolar = fit_pca_function(relabund_cores %>% filter(Polar == "nonpolar"))
+  
+  
+  gg_pca_polar_nonpolar = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar = 
+  ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
+           groups = as.character(pca_polar$grp$pre), 
+           ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+  geom_point(size=3,stroke=1, alpha = 0.5,
+             aes(#shape = groups,
+                 color = groups))+
+  #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+  xlim(-4,4)+
+  ylim(-3.5,3.5)+
+  labs(shape="",
+       title = "Polar",
+       subtitle = "separation by pre")+
+  theme_CKM()+
+  NULL
+  
+  gg_pca_by_pre_nonpolar = 
+    ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Non-Polar",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  
+  
+  gg_pca_by_inc_polar = 
+    ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Polar",
+         subtitle = "separation by inc")+
+    theme_CKM()+
+    NULL
+  
+  gg_pca_by_inc_nonpolar = 
+    ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Non-Polar",
+         subtitle = "separation by inc")+
+    theme_CKM()+
+    NULL
+  
+  
+ 
+  
+  
+  
+  list(gg_vk_domains = gg_vk_domains,
+       gg_vk_domains_nosc = gg_vk_domains_nosc,
+       gg_vk_all=gg_vk_all,
+       gg_vk_all_pre=gg_vk_all_pre,
+       gg_unique_pre= gg_unique_pre,
+       gg_common_unique=gg_common_unique,
+       fticr_unique_summary=fticr_unique_summary,
+       gg_common_unique_inc=gg_common_unique_inc,
+       fticr_unique_summary_inc=fticr_unique_summary_inc,
+       gg_common_unique_inc_pre=gg_common_unique_inc_pre,
+       fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
+       relabund=relabund,
+       permanova_fticr_all=permanova_fticr_all,
+       gg_pca_polar_nonpolar= gg_pca_polar_nonpolar,
+       gg_pca_by_pre_polar=gg_pca_by_pre_polar,
+       gg_pca_by_pre_nonpolar=gg_pca_by_pre_nonpolar,
+       gg_pca_by_inc_polar=gg_pca_by_inc_polar,
+       gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar
+       
+       
+       
+       
+       
+       
+       
+       
+       
+  )
+  
+}
+
