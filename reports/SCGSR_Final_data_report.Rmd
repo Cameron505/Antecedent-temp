@@ -114,7 +114,16 @@ tar_read(gg_LC)$StatsLC
 
 tar_read(gg_Lipid)$Lipid_pos2
 tar_read(gg_Lipid)$Lipid_neg2
+
+tar_read(gg_Lipid)$gg_pca_pre
+tar_read(gg_Lipid)$gg_pca_inc
 tar_read(gg_Lipid)$permanova_Lipid_all
+tar_read(gg_Lipid)$gg_pca_pre_pos
+tar_read(gg_Lipid)$gg_pca_inc_pos
+tar_read(gg_Lipid)$permanova_Lipid_all2
+tar_read(gg_Lipid)$gg_pca_pre_neg
+tar_read(gg_Lipid)$gg_pca_inc_neg
+tar_read(gg_Lipid)$permanova_Lipid_all3
 
 ```
 
@@ -168,18 +177,21 @@ tar_read(gg_FTICR)$fticr_unique_summary
 
 ```{r , fig.height=6, fig.width=6}
 tar_read(gg_FTICR)$relabund
-tar_read(gg_FTICR)$permanova_fticr_all
-
 ```
 #### PCA results:
 ```{r , fig.height=6, fig.width=6}
 tar_read(gg_FTICR)$gg_pca_polar_nonpolar
+tar_read(gg_FTICR)$gg_pca_polar_nonpolar_pre
+tar_read(gg_FTICR)$gg_pca_polar_nonpolar_inc
+tar_read(gg_FTICR)$permanova_fticr_all
 
   tar_read(gg_FTICR)$gg_pca_by_pre_polar
+   tar_read(gg_FTICR)$gg_pca_by_inc_polar
+   tar_read(gg_FTICR)$permanova_fticr_polar
+   
   tar_read(gg_FTICR)$gg_pca_by_pre_nonpolar
-  
-  tar_read(gg_FTICR)$gg_pca_by_inc_polar
   tar_read(gg_FTICR)$gg_pca_by_inc_nonpolar
+  tar_read(gg_FTICR)$permanova_fticr_nonpolar
 ```
 </details>
 

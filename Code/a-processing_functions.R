@@ -271,7 +271,19 @@ Lipid_process_PCA= function(Lipid_processed){
     dplyr::mutate(total = sum(abund,na.rm=TRUE),
                   relabund  = (abund/total)*100)%>%
     dplyr::select(-c(relabund, total)) %>% 
-    pivot_wider(names_from = class,values_from = abund)
+    pivot_wider(names_from = class,values_from = abund)%>%
+    filter(MODE=="pos")
+  
+  Lipid_short3<-Lipid_data_composite %>%
+    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
+    group_by(Sample.ID,class,Pre,Inc,MODE)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(relabund, total)) %>% 
+    pivot_wider(names_from = class,values_from = abund)%>%
+    filter(MODE=="neg")
 
   
   
@@ -285,11 +297,38 @@ Lipid_process_PCA= function(Lipid_processed){
   
   pca_Lip = prcomp(num, scale.=T)
   
+  num2= Lipid_short2%>%
+    dplyr::select(c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))%>%
+    na.omit()
+  
+  grp2=Lipid_short2%>%
+    dplyr::select(-c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_Lip_pos = prcomp(num2, scale.=T)
+  
+  num3= Lipid_short3%>%
+    dplyr::select(c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))%>%
+    select(Sphingolipid,Glycerophospholipid)
+  
+  grp3=Lipid_short3%>%
+    dplyr::select(-c(Sphingolipid,'Prenol Lipid',Glycerophospholipid,Glycerolipid))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_Lip_neg = prcomp(num3, scale.=T)
+  
   list(num=num,
+       num2=num2,
+       num3=num3,
        grp=grp,
+       grp2=grp2,
+       grp3=grp3,
        pca_Lip=pca_Lip,
+       pca_Lip_pos=pca_Lip_pos,
+       pca_Lip_neg=pca_Lip_neg,
        Lipid_data_composite=Lipid_data_composite,
        Lipid_short2=Lipid_short2,
+       Lipid_short3=Lipid_short3,
        Lipid_short=Lipid_short)
   
 }

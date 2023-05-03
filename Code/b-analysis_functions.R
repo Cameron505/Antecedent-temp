@@ -950,11 +950,15 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   permanova_Lipid_all = 
     adonis2(Lipid_PCA$Lipid_short %>% dplyr::select(Glycerolipid:Sphingolipid) ~ Pre * Inc, 
             data = Lipid_PCA$Lipid_short) %>%
-    knitr::kable()
+    knitr::kable(caption="Permanova results all")
   permanova_Lipid_all2 = 
     adonis2(Lipid_PCA$Lipid_short2 %>% dplyr::select(Glycerolipid:Sphingolipid) ~ Pre * Inc, 
             data = Lipid_PCA$Lipid_short2, na.rm=T) %>%
-    knitr::kable()
+    knitr::kable(caption="Permanova results pos")
+  permanova_Lipid_all3 = 
+    adonis2(Lipid_PCA$Lipid_short3 %>% dplyr::select(Glycerolipid:Sphingolipid) ~ Pre * Inc, 
+            data = Lipid_PCA$Lipid_short3, na.rm=T) %>%
+    knitr::kable(caption="Permanova results neg")
   
   
   
@@ -990,6 +994,81 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "all samples",
          subtitle = "separation by inc")+
     scale_colour_manual(values=cbPalette2)
+  
+  
+  gg_pca_pre_pos=
+    ggbiplot(Lipid_PCA$pca_Lip_pos,obs.scale = 1, var.scale = 1,
+             groups = as.character(Lipid_PCA$grp2$Pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre inc pos")+
+    scale_colour_manual(values=cbPalette2)
+  
+  gg_pca_inc_pos=
+    ggbiplot(Lipid_PCA$pca_Lip_pos,obs.scale = 1, var.scale = 1,
+             groups = as.character(Lipid_PCA$grp2$Inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by inc pos")+
+    scale_colour_manual(values=cbPalette2)
+  
+  
+  
+  
+  gg_pca_pre_neg=
+    ggbiplot(Lipid_PCA$pca_Lip_neg,obs.scale = 1, var.scale = 1,
+             groups = as.character(Lipid_PCA$grp3$Pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre inc neg")+
+    scale_colour_manual(values=cbPalette2)
+  
+  gg_pca_inc_neg=
+    ggbiplot(Lipid_PCA$pca_Lip_neg,obs.scale = 1, var.scale = 1,
+             groups = as.character(Lipid_PCA$grp3$Inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by inc neg")+
+    scale_colour_manual(values=cbPalette2)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   statResAnova <- imd_anova(Lipid_processed$metab_final, test_method = "anova")
@@ -1128,7 +1207,13 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
        Lipid_neg2=Lipid_neg2,
        gg_pca_pre=gg_pca_pre,
        gg_pca_inc=gg_pca_inc,
-       permanova_Lipid_all=permanova_Lipid_all
+       gg_pca_pre_pos=gg_pca_pre_pos,
+       gg_pca_inc_pos=gg_pca_inc_pos,
+       gg_pca_pre_neg=gg_pca_pre_neg,
+       gg_pca_inc_neg=gg_pca_inc_neg,
+       permanova_Lipid_all=permanova_Lipid_all,
+       permanova_Lipid_all2=permanova_Lipid_all2,
+       permanova_Lipid_all3=permanova_Lipid_all3
        
        
   )
@@ -1368,11 +1453,41 @@ plot_FTICR = function(FTICR_processed){
     dplyr::select(-c(abund, total)) %>% 
     spread(Class, relabund) %>% 
     replace(is.na(.), 0)
+  relabund_wide_p = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    #filter(Polar == "polar") %>% 
+    mutate(Class = factor(Class, 
+                          levels = c("aliphatic", "unsaturated/lignin", 
+                                     "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class, relabund) %>% 
+    replace(is.na(.), 0)%>%
+    filter(Polar=='polar')
+  relabund_wide_np = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    #filter(Polar == "polar") %>% 
+    mutate(Class = factor(Class, 
+                          levels = c("aliphatic", "unsaturated/lignin", 
+                                     "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class, relabund) %>% 
+    replace(is.na(.), 0)%>%
+    filter(Polar=='nonpolar')
   
   permanova_fticr_all = 
     adonis2(relabund_wide %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
            data = relabund_wide) %>%
-    knitr::kable(caption = "Permanova results")
+    knitr::kable(caption = "Permanova results: All")
+  permanova_fticr_polar = 
+    adonis2(relabund_wide_p %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
+            data = relabund_wide_p) %>%
+    knitr::kable(caption = "Permanova results: Polar only")
+  permanova_fticr_nonpolar = 
+    adonis2(relabund_wide_np %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
+            data = relabund_wide_np) %>%
+    knitr::kable(caption = "Permanova results: Non-Polar only")
   
   ## 4b. PCA ----
   pca_all = fit_pca_function(relabund_cores)
@@ -1394,6 +1509,57 @@ plot_FTICR = function(FTICR_processed){
          title = "all samples",
          subtitle = "polar vs. nonpolar")+
     theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  gg_pca_polar_nonpolar_inc = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by inc")+
+    theme_CKM()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   gg_pca_by_pre_polar = 
@@ -1481,11 +1647,15 @@ plot_FTICR = function(FTICR_processed){
        fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
        relabund=relabund,
        permanova_fticr_all=permanova_fticr_all,
+       permanova_fticr_polar=permanova_fticr_polar,
+       permanova_fticr_nonpolar=permanova_fticr_nonpolar,
        gg_pca_polar_nonpolar= gg_pca_polar_nonpolar,
        gg_pca_by_pre_polar=gg_pca_by_pre_polar,
        gg_pca_by_pre_nonpolar=gg_pca_by_pre_nonpolar,
        gg_pca_by_inc_polar=gg_pca_by_inc_polar,
-       gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar
+       gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar,
+       gg_pca_polar_nonpolar_pre=gg_pca_polar_nonpolar_pre,
+       gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc
        
        
        
