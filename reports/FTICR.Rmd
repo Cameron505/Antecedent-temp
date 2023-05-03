@@ -11,21 +11,64 @@ knitr::opts_chunk$set(echo = FALSE,
                       )
 ```
 
-## FTICR
+## FTICR  Van krevalin diagrams:
+
+<details>
+  <summary>click to open</summary>
+  
+```{r , fig.height=9, fig.width=9}
+ggExtra::ggMarginal(gg_FTICR$gg_vk_polar_nonpolar, groupColour = TRUE, groupFill = TRUE, alpha = 0.1)
+
+```
+
+```{r , fig.height=9, fig.width=9}
+tar_read(gg_FTICR)$gg_vk_domains
+tar_read(gg_FTICR)$gg_vk_domains_nosc
+tar_read(gg_FTICR)$gg_vk_all
+tar_read(gg_FTICR)$gg_vk_all_pre
+tar_read(gg_FTICR)$gg_unique_pre
+```
+</details>
+
+## FTICR  Common vs unique peaks by treatment:
 
 <details>
   <summary>click to open</summary>
 
-
 ```{r , fig.height=6, fig.width=6}
-tar_read(gg_FTICR)
+tar_read(gg_FTICR)$gg_common_unique
+tar_read(gg_FTICR)$fticr_unique_summary
+  tar_read(gg_FTICR)$gg_common_unique_inc
+  tar_read(gg_FTICR)$fticr_unique_summary_inc
+  tar_read(gg_FTICR)$gg_common_unique_inc_pre
+  tar_read(gg_FTICR)$fticr_unique_summary_inc_pre
+  tar_read(gg_FTICR)$relabund
 ```
-
-
-
 </details>
 
----
+## FTICR  Permanova results and PCAs:
+
+<details>
+  <summary>click to open</summary>
+#### Permanova results:
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_FTICR)$permanova_fticr_all
+
+```
+#### PCA results:
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_FTICR)$gg_pca_polar_nonpolar
+
+  tar_read(gg_FTICR)$gg_pca_by_pre_polar
+  tar_read(gg_FTICR)$gg_pca_by_pre_nonpolar
+  
+  tar_read(gg_FTICR)$gg_pca_by_inc_polar
+  tar_read(gg_FTICR)$gg_pca_by_inc_nonpolar
+```
+</details>
+
+
+
 
 ## Session Info 
 

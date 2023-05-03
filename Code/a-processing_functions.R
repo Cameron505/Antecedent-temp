@@ -263,11 +263,16 @@ Lipid_process_PCA= function(Lipid_processed){
     dplyr::select(-c(relabund, total)) %>% 
     pivot_wider(names_from = class,values_from = abund)
   
-  
-  
-  
-  
-  
+  Lipid_short2<-Lipid_data_composite %>%
+    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
+    group_by(Sample.ID,class,Pre,Inc,MODE)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(relabund, total)) %>% 
+    pivot_wider(names_from = class,values_from = abund)
+
   
   
   
@@ -283,7 +288,9 @@ Lipid_process_PCA= function(Lipid_processed){
   list(num=num,
        grp=grp,
        pca_Lip=pca_Lip,
-       Lipid_data_composite=Lipid_data_composite)
+       Lipid_data_composite=Lipid_data_composite,
+       Lipid_short2=Lipid_short2,
+       Lipid_short=Lipid_short)
   
 }
 

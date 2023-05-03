@@ -1,0 +1,204 @@
+---
+title: "SCGSR final report"
+output: html_document
+date: "2023-05-03"
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE
+                      )
+```
+
+## Sample Summary
+
+<details>
+  <summary>click to open</summary>
+Soils from northwest Alaska were homogenized and pre-incubated at -2 and -6 degrees Celsius for three months after which they were incubated at 2,4,6,8,10 degrees Celsius for one week. After the week long incubation soils were extracted using 0.5M K2SO4, and chloroform extracted to measure microbial biomass and nutrient concentrations. Sub-samples were also sent to PNNL for more comprehensive analysis of organic matter using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also performed to ascertain if there were any significant shifts lipids.
+
+```{r analyte-completion, eval= TRUE}
+tar_read(sample_key) %>% knitr::kable()
+```
+
+</details>
+
+---
+
+## Respiration Results
+
+<details>
+  <summary>click to open</summary>
+Respiration measurements were taken daily during the incubation using a Li-850 bench top respiration unit. Below are the respiration rates for each sample, as well as the calculates total C respired.  
+
+```{r , fig.height=6, fig.width=9}
+tar_read(gg_respiration)$gg_N_Legend
+tar_read(Stats_Table)$"Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"
+tar_read(Stats_Table)$LastRES_aov
+```
+
+</details>
+
+
+---
+
+## Soil Nutrients
+<details>
+  <summary>click to open</summary>
+Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below are the concentration data. An asterisks indicates a significant (p<= 0.05) difference in pre-incubation temperature. 
+
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_nutrients)$`Total reducing sugars`
+tar_read(gg_nutrients)$`Nutrient combined`
+tar_read(Stats_Table)$all_aov3
+```
+
+</details>
+
+---
+
+## Microbial Biomass
+
+<details>
+  <summary>click to open</summary>
+Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data.An asterisks indicates a significant (p<= 0.05) difference in pre-incubation temperature.
+
+```{r , fig.height=3, fig.width=6}
+tar_read(gg_MicrobialBiomass)$"Total Biomass"
+tar_read(Stats_Table)$all_aov4
+```
+
+</details>
+
+---
+
+## GC
+
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=15, fig.width=20}
+tar_read(gg_GC)$GC
+tar_read(gg_GC)$StatsGC
+```
+
+</details>
+
+---
+
+## LC
+
+<details>
+  <summary>click to open</summary>
+ 
+
+```{r , fig.height=15, fig.width=20}
+tar_read(gg_LC)$LC_pos
+tar_read(gg_LC)$LC_neg
+tar_read(gg_LC)$StatsLC
+```
+
+</details>
+
+
+---
+
+## Lipids
+
+<details>
+  <summary>click to open</summary>
+ 
+
+```{r , fig.height=6, fig.width=9}
+
+tar_read(gg_Lipid)$Lipid_pos2
+tar_read(gg_Lipid)$Lipid_neg2
+tar_read(gg_Lipid)$permanova_Lipid_all
+
+```
+
+</details>
+
+---
+
+## FTICR
+
+<details>
+  <summary>click to open</summary>
+
+### FTICR  Van krevalin diagrams:
+
+<details>
+  <summary>click to open</summary>
+  
+```{r , fig.height=9, fig.width=9}
+ggExtra::ggMarginal(gg_FTICR$gg_vk_polar_nonpolar, groupColour = TRUE, groupFill = TRUE, alpha = 0.1)
+
+```
+
+```{r , fig.height=9, fig.width=9}
+tar_read(gg_FTICR)$gg_vk_domains
+tar_read(gg_FTICR)$gg_vk_all
+tar_read(gg_FTICR)$gg_vk_all_pre
+```
+</details>
+
+### FTICR  Common vs unique peaks by treatment:
+
+<details>
+  <summary>click to open</summary>
+
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_FTICR)$gg_unique_pre
+tar_read(gg_FTICR)$gg_common_unique
+tar_read(gg_FTICR)$fticr_unique_summary
+  tar_read(gg_FTICR)$gg_common_unique_inc
+  tar_read(gg_FTICR)$fticr_unique_summary_inc
+  tar_read(gg_FTICR)$gg_common_unique_inc_pre
+  tar_read(gg_FTICR)$fticr_unique_summary_inc_pre
+  
+```
+</details>
+
+### FTICR  Permanova results and PCAs:
+
+<details>
+  <summary>click to open</summary>
+
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_FTICR)$relabund
+tar_read(gg_FTICR)$permanova_fticr_all
+
+```
+#### PCA results:
+```{r , fig.height=6, fig.width=6}
+tar_read(gg_FTICR)$gg_pca_polar_nonpolar
+
+  tar_read(gg_FTICR)$gg_pca_by_pre_polar
+  tar_read(gg_FTICR)$gg_pca_by_pre_nonpolar
+  
+  tar_read(gg_FTICR)$gg_pca_by_inc_polar
+  tar_read(gg_FTICR)$gg_pca_by_inc_nonpolar
+```
+</details>
+
+
+
+
+</details>
+
+---
+
+## Session Info 
+
+<details>
+  <summary> Session Info </summary>
+
+Date run: `r Sys.Date()`
+
+```{r}
+sessionInfo()
+```
+
+</details>

@@ -96,5 +96,6 @@ list(
   #reports
   tar_render(report, path = "reports/AntecedentTemp_report.Rmd"),
   tar_render(report2, path = "reports/GC_LC_Lipids.Rmd"),
-  tar_render(report3, path = "reports/FTICR.Rmd")
+  tar_render(report3, path = "reports/FTICR.Rmd"),
+  tar_render(report4, path = "reports/SCGSR_Final_data_report.Rmd")
 )

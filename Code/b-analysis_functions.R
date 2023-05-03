@@ -617,12 +617,31 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
     
   } 
   
+ 
   all_aov2 = 
     nutrients_data_long %>% 
     group_by(analyte) %>% 
     filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
     do(fit_aov2(.)) %>%
-    knitr::kable("simple")
+  knitr::kable("simple", caption = "Extraction ANOVA results")
+  
+  
+ all_aov3 = 
+    nutrients_data_long %>% 
+    group_by(analyte) %>% 
+    filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
+    do(fit_aov2(.)) %>%
+    filter(analyte %in% c("TRS","NH4","NO3","PO4","TFPA"))%>%
+    knitr::kable("simple", caption = "Extraction ANOVA results nutrients and TRS")
+  
+  
+  all_aov4 = 
+    nutrients_data_long %>% 
+    group_by(analyte) %>% 
+    filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
+    do(fit_aov2(.)) %>%
+    filter(analyte %in% c("MBC","","MBN"))%>%
+    knitr::kable("simple", caption = "Extraction ANOVA results microbial biomass")
 #### Dunnett tests
   dunnett_soil <- function(nutrients_data_long) {
     
@@ -718,7 +737,9 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
        LastRES_aov=LastRES_aov,
        "ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)" = all_aov2,
        all_aov=all_aov,
-       Dunnett_label_all=Dunnett_label_all
+       Dunnett_label_all=Dunnett_label_all,
+       all_aov3=all_aov3,
+       all_aov4=all_aov4
        
   )
   
@@ -787,7 +808,11 @@ plot_GC = function(GC_processed){
     scale_colour_manual(values=cbPalette2)+
     ggtitle("GC unknown compounds")
   
+  
+  
   Stat_plot<-plot(statResAnova)
+  
+  
   list(Stat_plot = Stat_plot,
        GC = GC,
        GC_unkown=GC_unkown,
@@ -910,7 +935,8 @@ plot_LC = function(LC_processed){
        LC_pos = LC_pos,
        LC_neg = LC_neg,
        LC_pos_unknown= LC_pos_unknown,
-       LC_neg_unknown=LC_neg_unknown
+       LC_neg_unknown=LC_neg_unknown,
+       StatsLC= StatsLC
        
   )
   
@@ -921,6 +947,19 @@ plot_LC = function(LC_processed){
 
 plot_Lipid = function(Lipid_processed,Lipid_PCA){
 
+  permanova_Lipid_all = 
+    adonis2(Lipid_PCA$Lipid_short %>% dplyr::select(Glycerolipid:Sphingolipid) ~ Pre * Inc, 
+            data = Lipid_PCA$Lipid_short) %>%
+    knitr::kable()
+  permanova_Lipid_all2 = 
+    adonis2(Lipid_PCA$Lipid_short2 %>% dplyr::select(Glycerolipid:Sphingolipid) ~ Pre * Inc, 
+            data = Lipid_PCA$Lipid_short2, na.rm=T) %>%
+    knitr::kable()
+  
+  
+  
+  
+  
   
   gg_pca_pre=
     ggbiplot(Lipid_PCA$pca_Lip,obs.scale = 1, var.scale = 1,
@@ -1088,7 +1127,8 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
        Lipid_pos2=Lipid_pos2,
        Lipid_neg2=Lipid_neg2,
        gg_pca_pre=gg_pca_pre,
-       gg_pca_inc=gg_pca_inc
+       gg_pca_inc=gg_pca_inc,
+       permanova_Lipid_all=permanova_Lipid_all
        
        
   )
@@ -1097,8 +1137,8 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
 
 
 
-
 plot_FTICR = function(FTICR_processed){
+  
   source("code/fticr/b-functions_analysis.R")
   fticr_meta  = FTICR_processed$fticr_meta_combined
   fticr_data_longform = FTICR_processed$fticr_data_longform_combined
@@ -1112,12 +1152,14 @@ plot_FTICR = function(FTICR_processed){
   gg_vk_domains = 
     gg_vankrev(fticr_meta, aes(x = OC, y = HC, color = Class))+
     scale_color_manual(values = PNWColors::pnw_palette("Sunset2"))+
-    theme_CKM()
+    theme_CKM()+
+    ggtitle("van krevelen diagram domains")
   
   gg_vk_domains_nosc = 
     gg_vankrev(fticr_meta, aes(x = OC, y = HC, color = as.numeric(NOSC)))+
     scale_color_gradientn(colors = PNWColors::pnw_palette("Bay"))+
-    theme_CKM()
+    theme_CKM()+
+    ggtitle("van krevelen diagram domains")
   ## 2b. treatments ----
   
   fticr_hcoc = 
@@ -1129,22 +1171,22 @@ plot_FTICR = function(FTICR_processed){
        distinct(formula, HC, OC, Polar) %>% 
        gg_vankrev(aes(x = OC, y = HC, color = Polar))+
        stat_ellipse(level = 0.90, show.legend = FALSE)+
-       theme(legend.position = c(0.8, 0.8)) +
-       NULL) %>% 
-    # include marginal density plots
-    ggExtra::ggMarginal(groupColour = TRUE, groupFill = TRUE, alpha = 0.1)
+       theme(legend.position = c(0.8, 0.8))+
+    NULL) 
   
   gg_vk_all = 
     gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = pre))+
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_grid(inc ~ Polar)+
-    theme_CKM()
+    theme_CKM()+
+    ggtitle("van krevelen diagram seperated by incubation and colored by pre-incubation")
   
   gg_vk_all_pre = 
     gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = inc))+
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_grid(Polar ~ pre)+
-    theme_CKM()
+    theme_CKM()+
+    ggtitle("van krevelen diagram colored by incubation and seperated by pre-incubation")
 
   
   
@@ -1188,6 +1230,7 @@ plot_FTICR = function(FTICR_processed){
     left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
     group_by(pre, Class) %>% 
     dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = pre, values_from = counts)%>%
     knitr::kable()
   
   
@@ -1233,6 +1276,8 @@ plot_FTICR = function(FTICR_processed){
     left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
     group_by(inc, Class) %>% 
     dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = inc, values_from = counts)%>%
+    select(c( Class,  Pre  ,`2` ,  `4` ,  `6`,   `8`, `10` )) %>%
     knitr::kable()
   
   
@@ -1278,6 +1323,8 @@ plot_FTICR = function(FTICR_processed){
     left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
     group_by(inc,pre, Class) %>% 
     dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
     knitr::kable()
   
  
@@ -1305,7 +1352,8 @@ plot_FTICR = function(FTICR_processed){
     ggplot(aes(x = pre, y = rel_abund, fill = Class))+
     geom_bar(stat = "identity")+
     facet_grid(~inc)+
-    theme_CKM()
+    theme_CKM()+
+    ggtitle("relative abundance")
   
   
   # 4. statistics -----------------------------------------------------------
@@ -1324,7 +1372,7 @@ plot_FTICR = function(FTICR_processed){
   permanova_fticr_all = 
     adonis2(relabund_wide %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
            data = relabund_wide) %>%
-    knitr::kable()
+    knitr::kable(caption = "Permanova results")
   
   ## 4b. PCA ----
   pca_all = fit_pca_function(relabund_cores)
@@ -1421,6 +1469,7 @@ plot_FTICR = function(FTICR_processed){
   
   list(gg_vk_domains = gg_vk_domains,
        gg_vk_domains_nosc = gg_vk_domains_nosc,
+       gg_vk_polar_nonpolar= gg_vk_polar_nonpolar,
        gg_vk_all=gg_vk_all,
        gg_vk_all_pre=gg_vk_all_pre,
        gg_unique_pre= gg_unique_pre,

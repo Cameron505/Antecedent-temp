@@ -1,7 +1,7 @@
 Antecedent temperature experiment
 ================
 
-## sample summary
+## Sample Summary
 
 <details>
 <summary>
@@ -61,7 +61,7 @@ performed to ascertain if there were any significant shifts lipids.
 
 ------------------------------------------------------------------------
 
-## Respiration results
+## Respiration Results
 
 <details>
 <summary>
@@ -97,7 +97,7 @@ difference in pre-incubation temperature.
 
 ------------------------------------------------------------------------
 
-## Microbial biomass
+## Microbial Biomass
 
 <details>
 <summary>
@@ -165,6 +165,8 @@ nutrients had no significant variation.
     ## 
     ## $`ANOVA Nutrients and Microbial biomass: aov(conc ~ pre_inc*Inc_temp)`
     ## 
+    ## 
+    ## Table: Extraction ANOVA results
     ## 
     ## analyte   term                df          sumsq         meansq    statistic     p.value  asterisk 
     ## --------  -----------------  ---  -------------  -------------  -----------  ----------  ---------
@@ -533,7 +535,51 @@ nutrients had no significant variation.
     ## TRS       -6 vs T0    C                0.0010270  *     6        
     ## TRS       -6 vs T0    D                0.0000558  *     8        
     ## TRS       -6 vs T0    E                0.0000007  *     10       
-    ## TRS       -6 vs T0    Pre              0.4925597        Pre
+    ## TRS       -6 vs T0    Pre              0.4925597        Pre      
+    ## 
+    ## $all_aov3
+    ## 
+    ## 
+    ## Table: Extraction ANOVA results nutrients and TRS
+    ## 
+    ## analyte   term                df          sumsq         meansq    statistic     p.value  asterisk 
+    ## --------  -----------------  ---  -------------  -------------  -----------  ----------  ---------
+    ## NH4       pre_inc              2   2.146117e+00      1.0730587    0.9493991   0.4016231  NA       
+    ## NH4       Inc_temp             5   4.072849e+00      0.8145698    0.7206986   0.6146177  NA       
+    ## NH4       pre_inc:Inc_temp     5   9.671207e-01      0.1934241    0.1711339   0.9706936  NA       
+    ## NH4       Residuals           23   2.599576e+01      1.1302503           NA          NA  NA       
+    ## NO3       pre_inc              2   2.242756e+02    112.1377965    2.9983485   0.0696405  NA       
+    ## NO3       Inc_temp             5   2.223114e+02     44.4622878    1.1888359   0.3452741  NA       
+    ## NO3       pre_inc:Inc_temp     5   6.752124e+01     13.5042488    0.3610776   0.8697562  NA       
+    ## NO3       Residuals           23   8.601966e+02     37.3998535           NA          NA  NA       
+    ## PO4       pre_inc              2   2.504600e-03      0.0012523    0.0597511   0.9421447  NA       
+    ## PO4       Inc_temp             5   9.523150e-02      0.0190463    0.9087411   0.4925102  NA       
+    ## PO4       pre_inc:Inc_temp     5   3.795490e-02      0.0075910    0.3621820   0.8690340  NA       
+    ## PO4       Residuals           23   4.820571e-01      0.0209590           NA          NA  NA       
+    ## TFPA      pre_inc              2   4.188969e+02    209.4484748    0.3780633   0.6893668  NA       
+    ## TFPA      Inc_temp             5   6.149137e+03   1229.8273211    2.2198899   0.0869289  NA       
+    ## TFPA      pre_inc:Inc_temp     5   4.486744e+02     89.7348786    0.1619752   0.9739754  NA       
+    ## TFPA      Residuals           23   1.274209e+04    554.0037414           NA          NA  NA       
+    ## TRS       pre_inc              2   1.448907e-01      0.0724454   42.0381109   0.0000000  *        
+    ## TRS       Inc_temp             5   1.822171e-01      0.0364434   21.1471412   0.0000001  *        
+    ## TRS       pre_inc:Inc_temp     5   1.165281e-01      0.0233056   13.5236326   0.0000033  *        
+    ## TRS       Residuals           23   3.963650e-02      0.0017233           NA          NA  NA       
+    ## 
+    ## $all_aov4
+    ## 
+    ## 
+    ## Table: Extraction ANOVA results microbial biomass
+    ## 
+    ## analyte   term                df        sumsq       meansq   statistic     p.value  asterisk 
+    ## --------  -----------------  ---  -----------  -----------  ----------  ----------  ---------
+    ## MBC       pre_inc              2   120213.484   60106.7422   5.1910967   0.0137863  *        
+    ## MBC       Inc_temp             5   137188.626   27437.7252   2.3696491   0.0712674  NA       
+    ## MBC       pre_inc:Inc_temp     5    50703.129   10140.6258   0.8757914   0.5126424  NA       
+    ## MBC       Residuals           23   266312.717   11578.8138          NA          NA  NA       
+    ## MBN       pre_inc              2     7126.838    3563.4189   2.8206592   0.0802510  NA       
+    ## MBN       Inc_temp             5     2074.324     414.8649   0.3283903   0.8906130  NA       
+    ## MBN       pre_inc:Inc_temp     5     3892.345     778.4691   0.6162048   0.6886524  NA       
+    ## MBN       Residuals           23    29056.553    1263.3284          NA          NA  NA
 
 </details>
 
@@ -546,7 +592,7 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-05-02
+Date run: 2023-05-03
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -575,30 +621,27 @@ Date run: 2023-05-02
     ## [25] tidyverse_2.0.0   tarchetypes_0.7.5 targets_0.14.3   
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] colorspace_2.1-0   ggsignif_0.6.4     ellipsis_0.3.2     class_7.3-21      
-    ##  [5] snakecase_0.11.0   fs_1.6.1           gld_2.6.6          rstudioapi_0.14   
-    ##  [9] proxy_0.4-27       farver_2.1.1       listenv_0.9.0      furrr_0.3.1       
-    ## [13] mvtnorm_1.1-3      fansi_1.0.4        codetools_0.2-19   splines_4.2.3     
-    ## [17] rootSolve_1.8.2.3  robustbase_0.95-1  polynom_1.4-1      broom_1.0.4       
-    ## [21] cluster_2.1.4      shiny_1.7.4        httr_1.4.5         rrcov_1.7-2       
-    ## [25] compiler_4.2.3     backports_1.4.1    Matrix_1.5-3       fastmap_1.1.1     
-    ## [29] cli_3.6.0          later_1.3.0        htmltools_0.5.4    tools_4.2.3       
-    ## [33] igraph_1.4.1       lmom_2.9           gtable_0.3.3       glue_1.6.2        
-    ## [37] Rcpp_1.0.10        carData_3.0-5      cellranger_1.1.0   vctrs_0.6.0       
-    ## [41] iterators_1.0.14   xfun_0.38          globals_0.16.2     ps_1.7.2          
-    ## [45] timechange_0.2.0   mime_0.12          miniUI_0.1.1.1     lifecycle_1.0.3   
-    ## [49] rstatix_0.7.2      future_1.32.0      DEoptimR_1.0-12    MASS_7.3-58.2     
-    ## [53] hms_1.1.2          promises_1.2.0.1   parallel_4.2.3     expm_0.999-7      
-    ## [57] Exact_3.2          yaml_2.3.7         labelled_2.10.0    stringi_1.7.12    
-    ## [61] highr_0.10         klaR_1.7-1         AlgDesign_1.2.1    pcaPP_2.0-3       
-    ## [65] foreach_1.5.2      e1071_1.7-13       boot_1.3-28.1      rlang_1.1.0       
-    ## [69] pkgconfig_2.0.3    evaluate_0.20      labeling_0.4.2     processx_3.8.0    
-    ## [73] tidyselect_1.2.0   parallelly_1.35.0  magrittr_2.0.3     R6_2.5.1          
-    ## [77] DescTools_0.99.48  generics_0.1.3     base64url_1.4      combinat_0.0-8    
-    ## [81] pillar_1.9.0       haven_2.5.2        withr_2.5.0        mgcv_1.8-42       
-    ## [85] abind_1.4-5        car_3.1-1          questionr_0.7.8    utf8_1.2.3        
-    ## [89] tzdb_0.3.0         rmarkdown_2.21     future.callr_0.8.1 readxl_1.4.2      
-    ## [93] data.table_1.14.8  callr_3.7.3        digest_0.6.31      xtable_1.8-4      
-    ## [97] httpuv_1.6.9       stats4_4.2.3       munsell_0.5.0
+    ##  [1] colorspace_2.1-0   ggsignif_0.6.4     ellipsis_0.3.2     snakecase_0.11.0  
+    ##  [5] fs_1.6.1           rstudioapi_0.14    farver_2.1.1       listenv_0.9.0     
+    ##  [9] furrr_0.3.1        fansi_1.0.4        codetools_0.2-19   splines_4.2.3     
+    ## [13] cachem_1.0.7       polynom_1.4-1      jsonlite_1.8.4     broom_1.0.4       
+    ## [17] cluster_2.1.4      shiny_1.7.4        compiler_4.2.3     backports_1.4.1   
+    ## [21] Matrix_1.5-3       fastmap_1.1.1      cli_3.6.0          later_1.3.0       
+    ## [25] htmltools_0.5.4    tools_4.2.3        igraph_1.4.1       gtable_0.3.3      
+    ## [29] glue_1.6.2         Rcpp_1.0.10        carData_3.0-5      jquerylib_0.1.4   
+    ## [33] vctrs_0.6.0        iterators_1.0.14   xfun_0.38          globals_0.16.2    
+    ## [37] ps_1.7.2           timechange_0.2.0   mime_0.12          miniUI_0.1.1.1    
+    ## [41] lifecycle_1.0.3    rstatix_0.7.2      future_1.32.0      MASS_7.3-58.2     
+    ## [45] hms_1.1.2          promises_1.2.0.1   parallel_4.2.3     yaml_2.3.7        
+    ## [49] sass_0.4.5         labelled_2.10.0    ggExtra_0.10.0     stringi_1.7.12    
+    ## [53] highr_0.10         klaR_1.7-1         AlgDesign_1.2.1    foreach_1.5.2     
+    ## [57] rlang_1.1.0        pkgconfig_2.0.3    evaluate_0.20      labeling_0.4.2    
+    ## [61] processx_3.8.0     tidyselect_1.2.0   parallelly_1.35.0  magrittr_2.0.3    
+    ## [65] R6_2.5.1           generics_0.1.3     base64url_1.4      combinat_0.0-8    
+    ## [69] pillar_1.9.0       haven_2.5.2        withr_2.5.0        mgcv_1.8-42       
+    ## [73] abind_1.4-5        car_3.1-1          questionr_0.7.8    utf8_1.2.3        
+    ## [77] tzdb_0.3.0         rmarkdown_2.21     future.callr_0.8.1 data.table_1.14.8 
+    ## [81] callr_3.7.3        digest_0.6.31      xtable_1.8-4       httpuv_1.6.9      
+    ## [85] munsell_0.5.0      bslib_0.4.2
 
 </details>
