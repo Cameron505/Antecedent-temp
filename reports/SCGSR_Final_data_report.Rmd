@@ -72,7 +72,7 @@ tar_read(Stats_Table)$all_aov4
 
 ---
 
-## GC
+## GC-MS
 
 <details>
   <summary>click to open</summary>
@@ -87,7 +87,7 @@ tar_read(gg_GC)$StatsGC
 
 ---
 
-## LC
+## LC-MS
 
 <details>
   <summary>click to open</summary>
@@ -131,7 +131,7 @@ tar_read(gg_Lipid)$permanova_Lipid_all3
 
 ---
 
-## FTICR
+## FT-MS (FT-ICR)
 
 <details>
   <summary>click to open</summary>
