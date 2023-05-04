@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 <details>
   <summary>click to open</summary>
-Soils from northwest Alaska were homogenized and pre-incubated at -2 and -6 degrees Celsius for three months after which they were incubated at 2,4,6,8,10 degrees Celsius for one week. After the week long incubation soils were extracted using 0.5M K2SO4, and chloroform extracted to measure microbial biomass and nutrient concentrations. Sub-samples were also sent to PNNL for more comprehensive analysis of organic matter using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also performed to ascertain if there were any significant shifts lipids.
+Soils from northwest Alaska were homogenized and pre-incubated at -2 and -6 degrees Celsius for three months after which they were incubated at 2,4,6,8,10 degrees Celsius for one week. After the week long incubation soils were extracted using 0.5M K2SO4, and chloroform extracted to measure microbial biomass and nutrient concentrations. Sub-samples were also sent to PNNL for MPLEx (Methanol chloroform extraction) to provide more comprehensive analysis of the molecular composition of organic matter using FT-ICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also performed to ascertain if there were any significant shifts in microbial biomass.
 
 ```{r analyte-completion, eval= TRUE}
 tar_read(sample_key) %>% knitr::kable()
@@ -49,6 +49,9 @@ Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free prima
 
 ```{r , fig.height=6, fig.width=6}
 tar_read(gg_nutrients)$`Total reducing sugars`
+```
+```{r , fig.height=12, fig.width=12}
+tar_read(gg_nutrients)$`Total reducing sugars`
 tar_read(gg_nutrients)$`Nutrient combined`
 tar_read(Stats_Table)$all_aov3
 ```
@@ -63,7 +66,7 @@ tar_read(Stats_Table)$all_aov3
   <summary>click to open</summary>
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below is the concentration data.An asterisks indicates a significant (p<= 0.05) difference in pre-incubation temperature.
 
-```{r , fig.height=3, fig.width=6}
+```{r , fig.height=6, fig.width=9}
 tar_read(gg_MicrobialBiomass)$"Total Biomass"
 tar_read(Stats_Table)$all_aov4
 ```
@@ -178,6 +181,7 @@ tar_read(gg_FTICR)$fticr_unique_summary
 ```{r , fig.height=6, fig.width=6}
 tar_read(gg_FTICR)$relabund
 ```
+
 #### PCA results:
 ```{r , fig.height=6, fig.width=6}
 tar_read(gg_FTICR)$gg_pca_polar_nonpolar
