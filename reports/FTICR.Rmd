@@ -1,6 +1,8 @@
 ---
 title: "FTICR"
-output: html_document
+output: 
+  github_document:
+  html_preview: true
 date: "2023-05-02"
 ---
 

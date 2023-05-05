@@ -1,6 +1,8 @@
 ---
 title: "GC_LC_Lipids"
-output: html_document
+output: 
+  github_document:
+  html_preview: true
 date: "2023-04-25"
 ---
 

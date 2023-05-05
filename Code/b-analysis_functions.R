@@ -1542,26 +1542,6 @@ plot_FTICR = function(FTICR_processed){
          subtitle = "separation by inc")+
     theme_CKM()
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   gg_pca_by_pre_polar = 
   ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
            groups = as.character(pca_polar$grp$pre), 
@@ -1656,11 +1636,6 @@ plot_FTICR = function(FTICR_processed){
        gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar,
        gg_pca_polar_nonpolar_pre=gg_pca_polar_nonpolar_pre,
        gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc
-       
-       
-       
-       
-       
        
        
        
