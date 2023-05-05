@@ -204,8 +204,6 @@ tar_read(gg_FTICR)$permanova_fticr_all
 
 </details>
 
----
-
 ## Session Info 
 
 <details>

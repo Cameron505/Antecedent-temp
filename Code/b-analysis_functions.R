@@ -1007,8 +1007,8 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
-         subtitle = "separation by pre inc pos")+
+         title = "positive mode",
+         subtitle = "separation by pre inc")+
     scale_colour_manual(values=cbPalette2)
   
   gg_pca_inc_pos=
@@ -1022,7 +1022,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "positive mode",
          subtitle = "separation by inc pos")+
     scale_colour_manual(values=cbPalette2)
   
@@ -1040,8 +1040,8 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
-         subtitle = "separation by pre inc neg")+
+         title = "negative mode",
+         subtitle = "separation by pre inc")+
     scale_colour_manual(values=cbPalette2)
   
   gg_pca_inc_neg=
@@ -1055,7 +1055,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "negative mode",
          subtitle = "separation by inc neg")+
     scale_colour_manual(values=cbPalette2)
   

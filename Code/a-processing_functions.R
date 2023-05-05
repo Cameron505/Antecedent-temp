@@ -53,24 +53,20 @@ process_GC= function(GC_data,GC_fdata){
   
   # Add group designation
   metab_data <- group_designation(metab_data, main_effects = c("pre","inc"))
-  plot(metab_data,order_by = colnames(fdata) [2], color_by = colnames(fdata)[2])
-  plot(metab_data,order_by = colnames(fdata) [3], color_by = colnames(fdata)[3])
+  
   #################
   ## FILTER DATA ##
   #################
   
   # Add biomolecule filter
-  plot(molecule_filter(metab_data))
+  
   metab_filter <- applyFilt(molecule_filter(metab_data), metab_data,min_num=4)
-  plot(metab_filter,order_by = colnames(fdata) [2], color_by = colnames(fdata)[2])
-  plot(metab_filter,order_by = colnames(fdata) [3], color_by = colnames(fdata)[3])
   # Add imd anova
   metab_filter <- applyFilt(imdanova_filter(metab_data), metab_filter, 
                             min_nonmiss_anova = 3, min_nonmiss_gtest = 3)
   
   # Add rmd filter
   
-  plot(rmd_filter(metab_data,ignore_singleton_groups = TRUE, metrics = NULL), pvalue_threshold = 0.0001)
   metab_filter <- applyFilt(rmd_filter(metab_data,ignore_singleton_groups = TRUE,metrics=NULL), metab_filter, pvalue_threshold = 0.000001)
   
   ###################
