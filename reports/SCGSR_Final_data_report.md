@@ -2624,8 +2624,8 @@ click to open
 <summary>
 click to open
 </summary>
-
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
+</details>
 
 #### PCA results:
 
@@ -2670,7 +2670,6 @@ Permanova results: Polar only
 
 Permanova results: Non-Polar only
 
-</details>
 </details>
 </details>
 </details>
