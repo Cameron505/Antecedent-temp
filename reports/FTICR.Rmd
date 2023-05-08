@@ -98,8 +98,10 @@ tar_read(gg_FTICR_relabund)$relabund_p
 tar_read(gg_FTICR_relabund)$relabund_np
 ```
 
+</details>
 
 #### PCA results:
+
 <details>
   <summary>click to open</summary>
 
@@ -118,7 +120,7 @@ tar_read(gg_FTICR_permanova)$permanova_fticr_all
   tar_read(gg_FTICR_PCA)$gg_pca_by_inc_nonpolar
   tar_read(gg_FTICR_permanova)$permanova_fticr_nonpolar
 ```
-</details>
+
 
 </details>
 

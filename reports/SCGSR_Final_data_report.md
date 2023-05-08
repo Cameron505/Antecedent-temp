@@ -1436,6 +1436,9 @@ unsaturated/lignin
 <summary>
 click to open
 </summary>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
 <table>
 <thead>
@@ -1498,6 +1501,9 @@ unsaturated/lignin
 </tr>
 </tbody>
 </table>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
 <table>
 <thead>
@@ -1620,6 +1626,9 @@ NA
 </tr>
 </tbody>
 </table>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->
 <table>
 <thead>
@@ -1817,6 +1826,9 @@ NA
 </tr>
 </tbody>
 </table>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
 <table>
 <caption>
@@ -2041,6 +2053,9 @@ unsaturated/lignin
 <summary>
 click to open
 </summary>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-2.png)<!-- -->
 <table>
 <thead>
@@ -2103,6 +2118,9 @@ unsaturated/lignin
 </tr>
 </tbody>
 </table>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-3.png)<!-- -->
 <table>
 <thead>
@@ -2225,6 +2243,9 @@ NA
 </tr>
 </tbody>
 </table>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-4.png)<!-- -->
 <table>
 <thead>
@@ -2392,6 +2413,9 @@ NA
 </tr>
 </tbody>
 </table>
+
+    ## NULL
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-5.png)<!-- -->
 <table>
 <caption>
@@ -2618,13 +2642,15 @@ NA
 click to open
 </summary>
 
-#### relative abundance
+#### Relative Abundance
 
 <details>
 <summary>
 click to open
 </summary>
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
+
 </details>
 
 #### PCA results:

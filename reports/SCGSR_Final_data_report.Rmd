@@ -3,6 +3,7 @@ title: "SCGSR final report"
 output: 
   github_document:
   html_preview: true
+  always_allow_html: true
 date: "2023-05-03"
 ---
 
@@ -180,6 +181,7 @@ tar_read(gg_FTICR_unique)$gg_common_unique_sep_inc_pre
 tar_read(gg_FTICR_unique)$fticr_unique_summary_sep_inc_pre
   
 ```
+
 </details>
 
 
@@ -190,17 +192,27 @@ tar_read(gg_FTICR_unique)$fticr_unique_summary_sep_inc_pre
   <summary>click to open</summary>
 
 ```{r , fig.height=6, fig.width=6}
+NULL
 tar_read(gg_FTICR_unique_polar)$gg_unique_pre
+
 tar_read(gg_FTICR_unique_polar)$gg_common_unique
+
 tar_read(gg_FTICR_unique_polar)$fticr_unique_summary
+NULL
 tar_read(gg_FTICR_unique_polar)$gg_common_unique_inc
+
 tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_inc
+NULL
 tar_read(gg_FTICR_unique_polar)$gg_common_unique_inc_pre
+
 tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_inc_pre
+NULL
 tar_read(gg_FTICR_unique_polar)$gg_common_unique_sep_inc_pre
+
 tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_sep_inc_pre
   
 ```
+
 </details>
 
 #### Non-Polar
@@ -209,19 +221,25 @@ tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_sep_inc_pre
   <summary>click to open</summary>
 
 ```{r , fig.height=6, fig.width=6}
+NULL
 tar_read(gg_FTICR_unique_nonpolar)$gg_unique_pre
 tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique
 tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary
+NULL
 tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_inc
 tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_inc
+NULL
 tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_inc_pre
 tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_inc_pre
+NULL
 tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_sep_inc_pre
 tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_sep_inc_pre
 
 
   
 ```
+
+
 </details>
 
 </details>
@@ -231,7 +249,8 @@ tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_sep_inc_pre
 <details>
   <summary>click to open</summary>
   
-#### relative abundance
+#### Relative Abundance
+
 <details>
   <summary>click to open</summary>
 
@@ -240,9 +259,11 @@ tar_read(gg_FTICR_relabund)$relabund
 tar_read(gg_FTICR_relabund)$relabund_p
 tar_read(gg_FTICR_relabund)$relabund_np
 ```
+
 </details>
 
 #### PCA results:
+
 <details>
   <summary>click to open</summary>
 
@@ -265,10 +286,10 @@ tar_read(gg_FTICR_permanova)$permanova_fticr_all
 
 </details>
 
-
 </details>
 
 </details>
+
 ---
 
 ## Session Info 
