@@ -1644,3 +1644,1040 @@ plot_FTICR = function(FTICR_processed){
   
 }
 
+
+plot_FTICR_vk = function(FTICR_processed){
+  
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_data_trt = FTICR_processed$fticr_data_trt_combined
+  TREATMENTS = dplyr::quos(pre,inc, Polar)
+  
+  
+  
+  # 2. van krevelen plots ---------------------------------------------------
+  ## 2a. domains ----
+  gg_vk_domains = 
+    gg_vankrev(fticr_meta, aes(x = OC, y = HC, color = Class))+
+    scale_color_manual(values = PNWColors::pnw_palette("Sunset2"))+
+    theme_CKM()+
+    ggtitle("van krevelen diagram domains")
+  
+  gg_vk_domains_nosc = 
+    gg_vankrev(fticr_meta, aes(x = OC, y = HC, color = as.numeric(NOSC)))+
+    scale_color_gradientn(colors = PNWColors::pnw_palette("Bay"))+
+    theme_CKM()+
+    ggtitle("van krevelen diagram domains")
+  ## 2b. treatments ----
+  
+  fticr_hcoc = 
+    fticr_data_trt %>% 
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+  
+  gg_vk_polar_nonpolar = 
+    (fticr_hcoc %>%
+       distinct(formula, HC, OC, Polar) %>% 
+       gg_vankrev(aes(x = OC, y = HC, color = Polar))+
+       stat_ellipse(level = 0.90, show.legend = FALSE)+
+       theme(legend.position = c(0.8, 0.8))+
+       NULL) 
+  
+  gg_vk_all = 
+    gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_grid(inc ~ Polar)+
+    theme_CKM()+
+    ggtitle("van krevelen diagram seperated by incubation and colored by pre-incubation")
+  
+  gg_vk_all_pre = 
+    gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = inc))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_grid(Polar ~ pre)+
+    theme_CKM()+
+    ggtitle("van krevelen diagram colored by incubation and seperated by pre-incubation")
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  list(gg_vk_domains = gg_vk_domains,
+       gg_vk_domains_nosc = gg_vk_domains_nosc,
+       gg_vk_polar_nonpolar= gg_vk_polar_nonpolar,
+       gg_vk_all=gg_vk_all,
+       gg_vk_all_pre=gg_vk_all_pre
+       
+       
+       
+  )
+  
+}
+
+
+plot_FTICR_unique_all = function(FTICR_processed){
+  
+
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_data_trt = FTICR_processed$fticr_data_trt_combined
+  TREATMENTS = dplyr::quos(pre,inc, Polar)
+  fticr_hcoc = 
+    fticr_data_trt %>% 
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+  
+  #All
+  
+  ## Unique peaks  by pre
+  
+  fticr_unique_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())
+  
+  gg_unique_pre =
+    fticr_unique_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre")+
+    theme_CKM()
+  
+  gg_common = 
+    fticr_unique_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique = 
+    fticr_unique_pre %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary = 
+    fticr_unique_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = pre, values_from = counts)%>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc
+  
+  
+  fticr_unique_inc = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc =
+    fticr_unique_inc %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = inc))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc")+
+    theme_CKM()
+  
+  gg_common_inc = 
+    fticr_unique_inc %>% filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc %>% filter(n == 1),
+               aes(color = inc), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = inc, values_from = counts)%>%
+    select(c( Class,  Pre  ,`2` ,  `4` ,  `6`,   `8`, `10` )) %>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc and pre
+  
+  
+  fticr_unique_inc_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc_pre =
+    fticr_unique_inc_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc")+
+    theme_CKM()
+  
+  gg_common_inc_pre = 
+    fticr_unique_inc_pre %>% filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    mutate(inc = factor(inc, levels=c("T0","2","4","6","8","10")),
+                                    pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc and pre",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
+    knitr::kable()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #Unique by each inc temp
+  Filter_unique_FTICR = function(TEMP){
+    fticr_hcoc %>% 
+    filter(inc== TEMP)%>%
+    distinct(formula, HC,inc,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  }
+FTICRpre<- Filter_unique_FTICR("Pre")
+ FTICR2<- Filter_unique_FTICR(2)
+ FTICR4<- Filter_unique_FTICR(4)
+ FTICR6<- Filter_unique_FTICR(6)
+ FTICR8<- Filter_unique_FTICR(8)
+ FTICR10<- Filter_unique_FTICR(10)
+ 
+  FTICR_inc_unique_by_pre<- rbind(FTICR2,FTICR4,FTICR6,FTICR8,FTICR10,FTICRpre)
+  
+  gg_unique_sep_inc_pre =
+    FTICR_inc_unique_by_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc")+
+    theme_CKM()
+  
+  gg_common_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  
+  gg_common_unique_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>%
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = FTICR_inc_unique_by_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by pre seperated by incubation temp first",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  fticr_unique_summary_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
+    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature")%>%
+    kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
+    kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  list(
+       gg_unique_pre= gg_unique_pre,
+       gg_common_unique=gg_common_unique,
+       fticr_unique_summary=fticr_unique_summary,
+       gg_common_unique_inc=gg_common_unique_inc,
+       fticr_unique_summary_inc=fticr_unique_summary_inc,
+       gg_common_unique_inc_pre=gg_common_unique_inc_pre,
+       fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
+       gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
+       fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre
+       
+       
+       
+       
+       
+       
+  )
+  
+}
+
+plot_FTICR_unique_polar = function(FTICR_processed){
+  
+
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  fticr_data_trt = FTICR_processed$fticr_data_trt_combined
+  TREATMENTS = dplyr::quos(pre,inc, Polar)
+  fticr_hcoc = 
+    fticr_data_trt %>% 
+    filter(Polar=="polar")%>%
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+  
+  
+  
+  ## Unique peaks  by pre
+  
+  fticr_unique_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())
+  
+  gg_unique_pre =
+    fticr_unique_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre polar")+
+    theme_CKM()
+  
+  gg_common = 
+    fticr_unique_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks polar")+
+    theme_CKM()
+  
+  gg_common_unique = 
+    fticr_unique_pre %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre",
+         subtitle = "black/grey = peaks common to all polar")+
+    theme_CKM()
+  
+  fticr_unique_summary = 
+    fticr_unique_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = pre, values_from = counts)%>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc
+  
+  
+  fticr_unique_inc = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc =
+    fticr_unique_inc %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = inc))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc polar")+
+    theme_CKM()
+  
+  gg_common_inc = 
+    fticr_unique_inc %>% filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks polar")+
+    theme_CKM()
+  
+  gg_common_unique_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc %>% filter(n == 1),
+               aes(color = inc), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc",
+         subtitle = "black/grey = peaks common to all polar")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = inc, values_from = counts)%>%
+    select(c( Class,  Pre  ,`2` ,  `4` ,  `6`,   `8`, `10` )) %>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc and pre
+  
+  
+  fticr_unique_inc_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc_pre =
+    fticr_unique_inc_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc polar")+
+    theme_CKM()
+  
+  gg_common_inc_pre = 
+    fticr_unique_inc_pre %>% filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks polar")+
+    theme_CKM()
+  
+  gg_common_unique_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc and pre",
+         subtitle = "black/grey = peaks common to all polar")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-6_10`))%>%
+    knitr::kable()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #Unique by each inc temp
+  Filter_unique_FTICR = function(TEMP){
+    fticr_hcoc %>% 
+      filter(inc== TEMP)%>%
+      distinct(formula, HC,inc,pre, OC) %>% 
+      group_by(formula) %>% 
+      dplyr::mutate(n = n())%>%
+      filter(inc != 'NA')
+  }
+  FTICRpre<- Filter_unique_FTICR("Pre")
+  FTICR2<- Filter_unique_FTICR(2)
+  FTICR4<- Filter_unique_FTICR(4)
+  FTICR6<- Filter_unique_FTICR(6)
+  FTICR8<- Filter_unique_FTICR(8)
+  FTICR10<- Filter_unique_FTICR(10)
+  
+  FTICR_inc_unique_by_pre<- rbind(FTICR2,FTICR4,FTICR6,FTICR8,FTICR10,FTICRpre)
+  
+  gg_unique_sep_inc_pre =
+    FTICR_inc_unique_by_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc polar")+
+    theme_CKM()
+  
+  gg_common_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks polar")+
+    theme_CKM()
+  
+  gg_common_unique_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = FTICR_inc_unique_by_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by pre seperated by incubation temp first",
+         subtitle = "black/grey = peaks common to all polar")+
+    theme_CKM()
+  
+  fticr_unique_summary_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
+    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature polar")%>%
+    kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
+    kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  list(
+    gg_unique_pre= gg_unique_pre,
+    gg_common_unique=gg_common_unique,
+    fticr_unique_summary=fticr_unique_summary,
+    gg_common_unique_inc=gg_common_unique_inc,
+    fticr_unique_summary_inc=fticr_unique_summary_inc,
+    gg_common_unique_inc_pre=gg_common_unique_inc_pre,
+    fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
+    gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
+    fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre
+     )
+  
+}
+
+plot_FTICR_unique_nonpolar = function(FTICR_processed){
+  
+
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  fticr_data_trt = FTICR_processed$fticr_data_trt_combined
+  TREATMENTS = dplyr::quos(pre,inc, Polar)
+  fticr_hcoc = 
+    fticr_data_trt %>% 
+    filter(Polar=="nonpolar")%>%
+  left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+  
+  
+  
+  ## Unique peaks  by pre
+  
+  fticr_unique_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())
+  
+  gg_unique_pre =
+    fticr_unique_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre nonpolar")+
+    theme_CKM()
+  
+  gg_common = 
+    fticr_unique_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks nonpolar")+
+    theme_CKM()
+  
+  gg_common_unique = 
+    fticr_unique_pre %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~pre)+
+    labs(title = "Unique peaks by pre",
+         subtitle = "black/grey = peaks common to all nonpolar")+
+    theme_CKM()
+  
+  fticr_unique_summary = 
+    fticr_unique_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = pre, values_from = counts)%>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc
+  
+  
+  fticr_unique_inc = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc =
+    fticr_unique_inc %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = inc))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc nonpolar")+
+    theme_CKM()
+  
+  gg_common_inc = 
+    fticr_unique_inc %>% filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks nonpolar")+
+    theme_CKM()
+  
+  gg_common_unique_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 7) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc %>% filter(n == 1),
+               aes(color = inc), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc",
+         subtitle = "black/grey = peaks common to all nonpolar")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc = 
+    fticr_unique_inc %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = inc, values_from = counts)%>%
+    select(c( Class,  Pre  ,`2` ,  `4` ,  `6`,   `8`, `10` )) %>%
+    knitr::kable()
+  
+  
+  
+  ## Unique peaks  by inc and pre
+  
+  
+  fticr_unique_inc_pre = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,inc,pre, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())%>%
+    filter(inc != 'NA')
+  
+  gg_unique_inc_pre =
+    fticr_unique_inc_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc nonpolar")+
+    theme_CKM()
+  
+  gg_common_inc_pre = 
+    fticr_unique_inc_pre %>% filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks nonpolar")+
+    theme_CKM()
+  
+  gg_common_unique_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    filter(n == 14) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_inc_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by inc and pre",
+         subtitle = "black/grey = peaks common to all nonpolar")+
+    theme_CKM()
+  
+  fticr_unique_summary_inc_pre = 
+    fticr_unique_inc_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-2_8`, `-2_10`))%>%
+    knitr::kable()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #Unique by each inc temp
+  Filter_unique_FTICR = function(TEMP){
+    fticr_hcoc %>% 
+      filter(inc== TEMP)%>%
+      distinct(formula, HC,inc,pre, OC) %>% 
+      group_by(formula) %>% 
+      dplyr::mutate(n = n())%>%
+      filter(inc != 'NA')
+  }
+  FTICRpre<- Filter_unique_FTICR("Pre")
+  FTICR2<- Filter_unique_FTICR(2)
+  FTICR4<- Filter_unique_FTICR(4)
+  FTICR6<- Filter_unique_FTICR(6)
+  FTICR8<- Filter_unique_FTICR(8)
+  FTICR10<- Filter_unique_FTICR(10)
+  
+  FTICR_inc_unique_by_pre<- rbind(FTICR2,FTICR4,FTICR6,FTICR8,FTICR10,FTICRpre)
+  
+  gg_unique_sep_inc_pre =
+    FTICR_inc_unique_by_pre %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = pre))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks at each inc nonpolar")+
+    theme_CKM()
+  
+  gg_common_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks nonpolar")+
+    theme_CKM()
+  
+  gg_common_unique_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = FTICR_inc_unique_by_pre %>% filter(n == 1),
+               aes(color = pre), alpha = 0.7)+
+    facet_wrap(~inc)+
+    labs(title = "Unique peaks by pre seperated by incubation temp first",
+         subtitle = "black/grey = peaks common to all nonpolar")+
+    theme_CKM()
+  
+  fticr_unique_summary_sep_inc_pre = 
+    FTICR_inc_unique_by_pre %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(inc,pre, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
+    select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
+    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature nonpolar")%>%
+    kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
+    kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  list(
+    gg_unique_pre= gg_unique_pre,
+    gg_common_unique=gg_common_unique,
+    fticr_unique_summary=fticr_unique_summary,
+    gg_common_unique_inc=gg_common_unique_inc,
+    fticr_unique_summary_inc=fticr_unique_summary_inc,
+    gg_common_unique_inc_pre=gg_common_unique_inc_pre,
+    fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
+    gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
+    fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre
+  )
+  
+}
+
+
+plot_FTICR_relabund = function(FTICR_relabund){
+  
+  
+  relabund<-FTICR_relabund$relabund_trt2 %>% 
+    ggplot(aes(x = pre, y = rel_abund, fill = Class))+
+    geom_bar(stat = "identity")+
+    facet_grid(~inc)+
+    theme_CKM()+
+    ggtitle("relative abundance all")
+  
+  relabund_p<-FTICR_relabund$relabund_trt_p %>% 
+    ggplot(aes(x = pre, y = rel_abund, fill = Class))+
+    geom_bar(stat = "identity")+
+    facet_grid(~inc)+
+    theme_CKM()+
+    ggtitle("relative abundance polar")
+  
+  
+  relabund_np<-FTICR_relabund$relabund_trt_np %>% 
+    ggplot(aes(x = pre, y = rel_abund, fill = Class))+
+    geom_bar(stat = "identity")+
+    facet_grid(~inc)+
+    theme_CKM()+
+    ggtitle("relative abundance non-polar")
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  list(
+       relabund=relabund,
+       relabund_p= relabund_p,
+       relabund_np= relabund_np
+       
+       
+       
+       
+       
+  )
+  
+}
+
+plot_FTICR_permanova = function(FTICR_relabund){
+  
+ 
+  
+  permanova_fticr_all = 
+    adonis2(FTICR_relabund$relabund_wide %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
+            data = FTICR_relabund$relabund_wide) %>%
+    knitr::kable(caption = "Permanova results: All")
+  permanova_fticr_polar = 
+    adonis2(FTICR_relabund$relabund_wide_p %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
+            data = FTICR_relabund$relabund_wide_p) %>%
+    knitr::kable(caption = "Permanova results: Polar only")
+  permanova_fticr_nonpolar = 
+    adonis2(FTICR_relabund$relabund_wide_np %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
+            data = FTICR_relabund$relabund_wide_np) %>%
+    knitr::kable(caption = "Permanova results: Non-Polar only")
+  
+ 
+  
+  
+  
+  
+  list(
+       permanova_fticr_all=permanova_fticr_all,
+       permanova_fticr_polar=permanova_fticr_polar,
+       permanova_fticr_nonpolar=permanova_fticr_nonpolar
+       
+       
+       
+       
+       
+  )
+  
+}
+
+
+plot_FTICR_PCA = function(FTICR_relabund){
+
+  ## 4b. PCA ----
+  pca_all = fit_pca_function(FTICR_relabund$relabund_cores)
+  pca_polar = fit_pca_function(FTICR_relabund$relabund_cores_p)
+  pca_nonpolar = fit_pca_function(FTICR_relabund$relabund_cores_np)
+  
+  
+  gg_pca_polar_nonpolar = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  gg_pca_polar_nonpolar_inc = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by inc")+
+    theme_CKM()
+  
+  gg_pca_by_pre_polar = 
+    ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Polar",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  gg_pca_by_pre_nonpolar = 
+    ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Non-Polar",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  
+  
+  gg_pca_by_inc_polar = 
+    ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Polar",
+         subtitle = "separation by inc")+
+    theme_CKM()+
+    NULL
+  
+  gg_pca_by_inc_nonpolar = 
+    ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "Non-Polar",
+         subtitle = "separation by inc")+
+    theme_CKM()+
+    NULL
+  
+  
+  
+  
+  
+  
+  list(
+       gg_pca_polar_nonpolar= gg_pca_polar_nonpolar,
+       gg_pca_by_pre_polar=gg_pca_by_pre_polar,
+       gg_pca_by_pre_nonpolar=gg_pca_by_pre_nonpolar,
+       gg_pca_by_inc_polar=gg_pca_by_inc_polar,
+       gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar,
+       gg_pca_polar_nonpolar_pre=gg_pca_polar_nonpolar_pre,
+       gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc
+       
+       
+       
+       
+  )
+  
+}

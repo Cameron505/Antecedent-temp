@@ -23,6 +23,7 @@ tar_option_set(
 source("Code/0-packages.R")
 source("Code/a-processing_functions.R")
 source("Code/b-analysis_functions.R")
+source("Code/fticr/b-functions_analysis.R")
 
 
 # source("other_functions.R") # Source other scripts as needed. # nolint
@@ -80,11 +81,23 @@ list(
   #FTICR
   tar_target(FTICR_Lipid_read,"Data/FTICR/Report_Lipid_NegESI_Consolidation123.csv", format="file"),
   tar_target(FTICR_Lipid, read.csv(FTICR_Lipid_read)),
-  tar_target(FTICR_processed, Process_FTICR(FTICR_Lipid,FTICR_Metabolite)),
-  tar_target(gg_FTICR, plot_FTICR(FTICR_processed)),
-  
   tar_target(FTICR_Metabolite_read,"Data/FTICR/Report_Metabolite_NegESI_Consolidation123.csv", format="file"),
   tar_target(FTICR_Metabolite, read.csv(FTICR_Metabolite_read)),
+  
+  tar_target(FTICR_processed, Process_FTICR(FTICR_Lipid,FTICR_Metabolite)),
+  tar_target(FTICR_relabund, FTICR_relabund_fun(FTICR_processed)),
+  
+  tar_target(gg_FTICR_vk, plot_FTICR_vk(FTICR_processed)),
+  
+  tar_target(gg_FTICR_unique, plot_FTICR_unique_all(FTICR_processed)),
+  tar_target(gg_FTICR_unique_polar, plot_FTICR_unique_polar(FTICR_processed)),
+  tar_target(gg_FTICR_unique_nonpolar, plot_FTICR_unique_nonpolar(FTICR_processed)),
+  
+  tar_target(gg_FTICR_relabund, plot_FTICR_relabund(FTICR_relabund)),
+  tar_target(gg_FTICR_permanova, plot_FTICR_permanova(FTICR_relabund)),
+  tar_target(gg_FTICR_PCA, plot_FTICR_PCA(FTICR_relabund)),
+  #tar_target(gg_FTICR, plot_FTICR(FTICR_processed)), #This is a combined version of above targets
+  
   
   
   # analysis - graphs

@@ -1179,6 +1179,13 @@ click to open
 click to open
 </summary>
 
+#### All
+
+<details>
+<summary>
+click to open
+</summary>
+
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
 
 | Class              |  -2 |  -6 |
@@ -1206,6 +1213,1402 @@ click to open
 | aromatic           |     11 |      3 |    2 |   NA |    1 |    2 |   NA |    1 |    2 |   NA |    NA |    NA |
 | condensed aromatic |      2 |     NA |    4 |   NA |   NA |   NA |   NA |   NA |    4 |   NA |    NA |    NA |
 
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-5.png)<!-- -->
+<table>
+<caption>
+Unique between preincubation temperatures at each incubation temperature
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2_Pre
+</th>
+<th style="text-align:right;">
+-6_Pre
+</th>
+<th style="text-align:right;">
+-2_2
+</th>
+<th style="text-align:right;">
+-6_2
+</th>
+<th style="text-align:right;">
+-2_4
+</th>
+<th style="text-align:right;">
+-6_4
+</th>
+<th style="text-align:right;">
+-2_6
+</th>
+<th style="text-align:right;">
+-6_6
+</th>
+<th style="text-align:right;">
+-2_8
+</th>
+<th style="text-align:right;">
+-6_8
+</th>
+<th style="text-align:right;">
+-2_10
+</th>
+<th style="text-align:right;">
+-6_10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+338
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+175
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+508
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+62
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+437
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+66
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+446
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+50
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+613
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+15
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+627
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+101
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+41
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+18
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+21
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+19
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+29
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+17
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+17
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+25
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+54
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+4
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+28
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+15
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+2
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+29
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+NA
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+19
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+10
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+25
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+9
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+108
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+132
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+109
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+81
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+92
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+61
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+78
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+37
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+253
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+15
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+90
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+139
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+#### Polar
+
+<details>
+<summary>
+click to open
+</summary>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2
+</th>
+<th style="text-align:right;">
+-6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+152
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+147
+</td>
+</tr>
+</tbody>
+</table>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+Pre
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+6
+</th>
+<th style="text-align:right;">
+8
+</th>
+<th style="text-align:right;">
+10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2_Pre
+</th>
+<th style="text-align:right;">
+-6_Pre
+</th>
+<th style="text-align:right;">
+-2_2
+</th>
+<th style="text-align:right;">
+-6_2
+</th>
+<th style="text-align:right;">
+-2_4
+</th>
+<th style="text-align:right;">
+-6_4
+</th>
+<th style="text-align:right;">
+-2_6
+</th>
+<th style="text-align:right;">
+-6_6
+</th>
+<th style="text-align:right;">
+-2_8
+</th>
+<th style="text-align:right;">
+-6_8
+</th>
+<th style="text-align:right;">
+-6_10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
+<table>
+<caption>
+Unique between preincubation temperatures at each incubation temperature
+polar
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2_Pre
+</th>
+<th style="text-align:right;">
+-6_Pre
+</th>
+<th style="text-align:right;">
+-2_2
+</th>
+<th style="text-align:right;">
+-6_2
+</th>
+<th style="text-align:right;">
+-2_4
+</th>
+<th style="text-align:right;">
+-6_4
+</th>
+<th style="text-align:right;">
+-2_6
+</th>
+<th style="text-align:right;">
+-6_6
+</th>
+<th style="text-align:right;">
+-2_8
+</th>
+<th style="text-align:right;">
+-6_8
+</th>
+<th style="text-align:right;">
+-2_10
+</th>
+<th style="text-align:right;">
+-6_10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+121
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+206
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+151
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+74
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+97
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+99
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+81
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+78
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+383
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+16
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+62
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+177
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+33
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+19
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+11
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+20
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+17
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+17
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+10
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+27
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+47
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+4
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+12
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+13
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+4
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+20
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+NA
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+19
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+7
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+24
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+4
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+87
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+144
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+62
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+91
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+67
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+63
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+50
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+38
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+226
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+15
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+41
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+157
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+#### Non-Polar
+
+<details>
+<summary>
+click to open
+</summary>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-2.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2
+</th>
+<th style="text-align:right;">
+-6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+439
+</td>
+<td style="text-align:right;">
+248
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+</tbody>
+</table>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-3.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+Pre
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+6
+</th>
+<th style="text-align:right;">
+8
+</th>
+<th style="text-align:right;">
+10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-4.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2_Pre
+</th>
+<th style="text-align:right;">
+-6_Pre
+</th>
+<th style="text-align:right;">
+-2_2
+</th>
+<th style="text-align:right;">
+-6_2
+</th>
+<th style="text-align:right;">
+-2_4
+</th>
+<th style="text-align:right;">
+-6_4
+</th>
+<th style="text-align:right;">
+-2_6
+</th>
+<th style="text-align:right;">
+-2_8
+</th>
+<th style="text-align:right;">
+-2_10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-5.png)<!-- -->
+<table>
+<caption>
+Unique between preincubation temperatures at each incubation temperature
+nonpolar
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2_Pre
+</th>
+<th style="text-align:right;">
+-6_Pre
+</th>
+<th style="text-align:right;">
+-2_2
+</th>
+<th style="text-align:right;">
+-6_2
+</th>
+<th style="text-align:right;">
+-2_4
+</th>
+<th style="text-align:right;">
+-6_4
+</th>
+<th style="text-align:right;">
+-2_6
+</th>
+<th style="text-align:right;">
+-6_6
+</th>
+<th style="text-align:right;">
+-2_8
+</th>
+<th style="text-align:right;">
+-6_8
+</th>
+<th style="text-align:right;">
+-2_10
+</th>
+<th style="text-align:right;">
+-6_10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+311
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+43
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+531
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+16
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+518
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+15
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+526
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+480
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+10
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+750
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+17
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+2
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+16
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+1
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+17
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+12
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+14
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+1
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+28
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+7
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+12
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+3
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+4
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+5
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+6
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+76
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+36
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+175
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+6
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+124
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+11
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+172
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+NA
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+111
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+3
+</td>
+<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
+193
+</td>
+<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
+2
+</td>
+</tr>
+</tbody>
+</table>
+</details>
 </details>
 
 ### FTICR Permanova results and PCAs:
@@ -1215,27 +2618,39 @@ click to open
 click to open
 </summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+#### relative abundance
+
+<details>
+<summary>
+click to open
+</summary>
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
 
 #### PCA results:
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-3.png)<!-- -->
+<details>
+<summary>
+click to open
+</summary>
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-3.png)<!-- -->
 
 |          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
 |:---------|----:|----------:|----------:|----------:|--------:|
-| pre      |   1 | 0.2906302 | 0.0458303 | 9.8161099 |   0.005 |
-| inc      |   5 | 0.0082554 | 0.0013018 | 0.0557657 |   0.998 |
-| pre:inc  |   5 | 0.0322426 | 0.0050844 | 0.2178001 |   0.956 |
+| pre      |   1 | 0.2906302 | 0.0458303 | 9.8161099 |   0.001 |
+| inc      |   5 | 0.0082554 | 0.0013018 | 0.0557657 |   0.995 |
+| pre:inc  |   5 | 0.0322426 | 0.0050844 | 0.2178001 |   0.954 |
 | Residual | 203 | 6.0103176 | 0.9477835 |        NA |      NA |
 | Total    | 214 | 6.3414458 | 1.0000000 |        NA |      NA |
 
 Permanova results: All
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-4.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-5.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-4.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-5.png)<!-- -->
 
 |          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
 |:---------|----:|----------:|----------:|----------:|--------:|
-| pre      |   1 | 0.0001709 | 0.0163378 |  4.023551 |   0.024 |
+| pre      |   1 | 0.0001709 | 0.0163378 |  4.023551 |   0.029 |
 | inc      |   5 | 0.0046123 | 0.4408260 | 21.712725 |   0.001 |
 | pre:inc  |   5 | 0.0016011 | 0.1530252 |  7.537202 |   0.001 |
 | Residual |  96 | 0.0040785 | 0.3898110 |        NA |      NA |
@@ -1243,13 +2658,13 @@ Permanova results: All
 
 Permanova results: Polar only
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-6.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-7.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-6.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-7.png)<!-- -->
 
 |          |  Df |  SumOfSqs |        R2 |          F | Pr(\>F) |
 |:---------|----:|----------:|----------:|-----------:|--------:|
 | pre      |   1 | 0.0066753 | 0.1654780 | 24.5398933 |   0.001 |
 | inc      |   5 | 0.0066012 | 0.1636400 |  4.8534640 |   0.002 |
-| pre:inc  |   5 | 0.0012213 | 0.0302756 |  0.8979562 |   0.479 |
+| pre:inc  |   5 | 0.0012213 | 0.0302756 |  0.8979562 |   0.485 |
 | Residual |  95 | 0.0258419 | 0.6406064 |         NA |      NA |
 | Total    | 106 | 0.0403397 | 1.0000000 |         NA |      NA |
 
@@ -1257,6 +2672,10 @@ Permanova results: Non-Polar only
 
 </details>
 </details>
+</details>
+</details>
+
+------------------------------------------------------------------------
 
 ## Session Info
 
@@ -1265,7 +2684,7 @@ Permanova results: Non-Polar only
 Session Info
 </summary>
 
-Date run: 2023-05-05
+Date run: 2023-05-08
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
