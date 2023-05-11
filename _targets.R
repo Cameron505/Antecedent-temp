@@ -49,7 +49,8 @@ list(
   tar_target(GC_fdata_read,"Data/GC/GC_LC_fdata2.csv", format="file"),
   tar_target(GC_fdata, read.csv(GC_fdata_read)),
   tar_target(GC_processed, process_GC(GC_data,GC_fdata)),
-  
+  tar_target(GC_PCA, GC_process_PCA(GC_processed)),
+  tar_target(gg_GC_PCA, plot_GC_PCA(GC_PCA)),
   tar_target(gg_GC, plot_GC(GC_processed)),
   
   #LC analysis
@@ -60,8 +61,9 @@ list(
   tar_target(LC_neg_data_read,"Data/LC/LC_neg_Data.csv", format="file"),
   tar_target(LC_neg_data, read.csv(LC_neg_data_read)),
   tar_target(LC_processed, process_LC(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata)),
-  
+  tar_target(LC_PCA, LC_process_PCA(LC_processed)),
   tar_target(gg_LC, plot_LC(LC_processed)),
+  tar_target(gg_LC_PCA, plot_LC_PCA(LC_PCA)),
   
   #Lipid analysis
   tar_target(Lipid_POS_data_read,"Data/lipids/Lipid_POS_data.csv", format="file"),

@@ -90,4 +90,33 @@ fit_pca_function = function(dat){
        pca_int = pca_int)
 }
 
+fit_pca_function2 = function(dat){
+  # first, make wide-form
+  relabund_pca=
+    dat %>% 
+    filter(!is.na(CoreID)) %>% 
+    ungroup %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Polar, relabund) %>% 
+    replace(.,is.na(.),0)  %>% 
+    dplyr::select(-1)
+  
+  # then, separate the wide form into the numeric component (data) and the groups (treatments)
+  num = 
+    relabund_pca %>% 
+    dplyr::select(c(polar,nonpolar))
+  
+  grp = 
+    relabund_pca %>% 
+    dplyr::select(-c(polar,nonpolar)) %>% 
+    dplyr::mutate(row = row_number())
+  
+  # finally, compute PCA using `prcomp()`
+  pca_int = prcomp(num, scale. = T)
+  
+  list(num = num,
+       grp = grp,
+       pca_int = pca_int)
+}
+
 

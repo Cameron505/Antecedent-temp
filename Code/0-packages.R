@@ -19,10 +19,18 @@ library(pmartR)
 
 
 # custom ggplot theme
+
+
 cbPalette <- c("#888888","#FF1493","#00FFFF" , "#117733", "#332288", "#AA4499", 
                         "#44AA99", "#882255", "#661100", "#6699CC","#DDCC77")
 cbPalette2 <- c("#FF1493","#00FFFF", "#117733", "#332288", "#AA4499", 
                          "#44AA99", "#882255", "#661100", "#6699CC", "#DDCC77", "#888888")
+
+Scale_inc= scale_color_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
+
+
+
+
 theme_CKM <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 12),

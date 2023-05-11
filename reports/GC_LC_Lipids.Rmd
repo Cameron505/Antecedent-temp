@@ -19,9 +19,23 @@ knitr::opts_chunk$set(echo = FALSE,
   <summary>click to open</summary>
 
 
-```{r , fig.height=15, fig.width=20, results='hide'}
+```{r , fig.height=15, fig.width=20}
 tar_read(gg_GC)
 ```
+
+
+#### PCA
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=15, fig.width=20}
+tar_read(gg_GC_PCA)
+```
+
+</details>
+
+
 
 </details>
 ## LC
@@ -30,9 +44,22 @@ tar_read(gg_GC)
   <summary>click to open</summary>
  
 
-```{r , fig.height=15, fig.width=20, results='hide'}
+```{r , fig.height=15, fig.width=20}
 tar_read(gg_LC)
 ```
+#### PCA
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=15, fig.width=20}
+tar_read(gg_LC_PCA)
+```
+
+</details>
+
+
+
 
 </details>
 
@@ -42,7 +69,7 @@ tar_read(gg_LC)
   <summary>click to open</summary>
  
 
-```{r , fig.height=6, fig.width=9, results='hide'}
+```{r , fig.height=6, fig.width=9}
 
 tar_read(gg_Lipid)
 

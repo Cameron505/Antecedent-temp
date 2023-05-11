@@ -79,7 +79,59 @@ process_GC= function(GC_data,GC_fdata){
   metab_final <- normalize_global(metab_filter, subset_fn = "all", norm_fn = "mean", apply_norm = TRUE, 
                                   backtransform = TRUE)
 
-  list(metab_final = metab_final)
+  list(metab_final = metab_final,
+       emeta=emeta)
+}
+
+GC_process_PCA= function(GC_processed){
+  
+  GC_data_composite = GC_processed$metab_final$e_data %>%
+    pivot_longer(cols=Wein_1_B_2_3:Wein_36_Pre_2_1, names_to= "Sample.ID")%>%
+    left_join(GC_processed$metab_final$f_data, by= "Sample.ID")%>%
+    left_join(GC_processed$emeta, by="Metabolites")
+  
+  GC_short<-GC_data_composite %>%
+    group_by(Sample.ID,Main.class,pre,inc)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(relabund, total)) %>% 
+    filter(Main.class!="")%>%
+    pivot_wider(names_from = Main.class,values_from = abund)
+  
+  
+  
+  
+  num= GC_short%>%
+    dplyr::select(c("Alcohols and polyols":Terpenoid))
+  
+  grp=GC_short%>%
+    dplyr::select(-c("Alcohols and polyols":Terpenoid))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_GC = prcomp(num, scale.=T)
+  
+  
+  num2= GC_short%>%
+    dplyr::select(c("Oligosaccharides","Monosaccharides","Disaccharides"))
+  
+  grp2=GC_short%>%
+    dplyr::select(-c("Alcohols and polyols":Terpenoid))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_GC2 = prcomp(num2, scale.=T)
+  
+  
+  list(num=num,
+       grp=grp,
+       pca_GC=pca_GC,
+       num2=num2,
+       grp2=grp2,
+       pca_GC2=pca_GC2,
+       GC_data_composite=GC_data_composite,
+       GC_short=GC_short)
+  
 }
 
 process_LC= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
@@ -101,6 +153,8 @@ process_LC= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
     pivot_longer(cols=c(Wein_Blank.01:E_6_3))%>%
     mutate(MODE="neg")
   
+
+  
   
   LC_data_all<-rbind(edata_pos, edata_neg)%>%
     pivot_wider(names_from = name, values_from = value)%>%
@@ -113,7 +167,7 @@ process_LC= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
     )  
   
   LC_meta<-LC_data_all%>%
-    select(m.z,RT..min.,Name,Tags,RefMet.Nomenclature,Main.class,Sub.class,Formula,Annot..DeltaMass..ppm.,Calc..MW,Reference.Ion,MODE,Name
+    select(m.z,RT..min.,Name,Tags,RefMet.Nomenclature,Main.class,Sub.class,Formula,Annot..DeltaMass..ppm.,Calc..MW,Reference.Ion,MODE,Name2
     )
   
   
@@ -154,10 +208,62 @@ process_LC= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
   metab_final <- normalize_global(metab_filter, subset_fn = "all", norm_fn = "mean", apply_norm = TRUE, 
                                   backtransform = TRUE)
   
-  list(metab_final = metab_final)
+  list(metab_final = metab_final,
+       LC_meta=LC_meta)
   
 }
 
+LC_process_PCA= function(LC_processed){
+  
+  LC_data_composite = LC_processed$metab_final$e_data %>%
+    pivot_longer(cols=Pre_6_3:E_6_2, names_to= "Sample.ID")%>%
+    left_join(LC_processed$metab_final$f_data, by= "Sample.ID")%>%
+    left_join(LC_processed$LC_meta, by="Name2")
+  
+  LC_short<-LC_data_composite %>%
+    group_by(Sample.ID,Main.class,pre,inc)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(relabund, total)) %>% 
+    filter(Main.class!="")%>%
+    pivot_wider(names_from = Main.class,values_from = abund)
+  
+  
+  
+  num= LC_short%>%
+    dplyr::select(c(Amines:Pyrimidines))
+  
+  grp=LC_short%>%
+    dplyr::select(-c(Amines:Pyrimidines))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_LC = prcomp(num, scale.=T)
+  
+  
+  num2= LC_short%>%
+    dplyr::select(c("Oligosaccharides","Monosaccharides","Disaccharides"))
+  
+  grp2=LC_short%>%
+    dplyr::select(-c(Amines:Pyrimidines))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_LC2 = prcomp(num2, scale.=T)
+  
+  
+  list(num=num,
+       grp=grp,
+       pca_LC=pca_LC,
+       num2=num2,
+       grp2=grp2,
+       pca_LC2=pca_LC2,
+       LC_data_composite=LC_data_composite,
+       LC_short=LC_short
+       )
+ 
+  
+}
 
 process_Lipid= function(Lipid_POS_data,Lipid_NEG_data,Lipid_fdata){
   edata <- Lipid_POS_data
@@ -234,7 +340,6 @@ process_Lipid= function(Lipid_POS_data,Lipid_NEG_data,Lipid_fdata){
   list(metab_final = metab_final)
   
 }
-
 
 Lipid_process_PCA= function(Lipid_processed){
   Lipid_data_composite = Lipid_processed$metab_final$e_data %>%
@@ -328,8 +433,6 @@ Lipid_process_PCA= function(Lipid_processed){
        Lipid_short=Lipid_short)
   
 }
-
-
 
 Process_FTICR= function(FTICR_Lipid,FTICR_Metabolite){
   
@@ -495,6 +598,19 @@ FTICR_relabund_fun = function(FTICR_processed){
   
   # 4. statistics -----------------------------------------------------------
   
+  
+  
+  relabund_wide_PolarVnonPolar = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Polar, relabund) %>% 
+    replace(is.na(.), 0)
+  
+  
+  
+  
+  
   relabund_wide = 
     relabund_cores %>% 
     ungroup() %>% 
@@ -555,7 +671,8 @@ FTICR_relabund_fun = function(FTICR_processed){
        relabund_wide_np=relabund_wide_np,
        relabund_cores=relabund_cores,
        relabund_cores_p=relabund_cores_p,
-       relabund_cores_np=relabund_cores_np
+       relabund_cores_np=relabund_cores_np,
+       relabund_wide_PolarVnonPolar=relabund_wide_PolarVnonPolar
     
   )
   

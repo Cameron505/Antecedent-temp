@@ -54,7 +54,6 @@ Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free prima
 tar_read(gg_nutrients)$`Total reducing sugars`
 ```
 ```{r , fig.height=12, fig.width=12}
-tar_read(gg_nutrients)$`Total reducing sugars`
 tar_read(gg_nutrients)$`Nutrient combined`
 tar_read(Stats_Table)$all_aov3
 ```
@@ -86,8 +85,29 @@ tar_read(Stats_Table)$all_aov4
 
 ```{r , fig.height=15, fig.width=20}
 tar_read(gg_GC)$GC
+tar_read(gg_GC)$GC_sac
+```
+
+<details>
+  <summary>click to open ANOVA table</summary>
+```{r , fig.height=15, fig.width=20}
 tar_read(gg_GC)$StatsGC
 ```
+
+</details>
+
+#### PCA
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=15, fig.width=20}
+tar_read(gg_GC_PCA)
+```
+
+</details>
+
+
 
 </details>
 
@@ -102,8 +122,31 @@ tar_read(gg_GC)$StatsGC
 ```{r , fig.height=15, fig.width=20}
 tar_read(gg_LC)$LC_pos
 tar_read(gg_LC)$LC_neg
+tar_read(gg_LC)$LC_pos_sac
+tar_read(gg_LC)$LC_neg_sac
+```
+
+
+<details>
+  <summary>click to open ANOVA table</summary>
+
+```{r , fig.height=15, fig.width=20}
 tar_read(gg_LC)$StatsLC
 ```
+
+</details>
+#### PCA
+<details>
+  <summary>click to open</summary>
+
+
+```{r , fig.height=15, fig.width=20}
+tar_read(gg_LC_PCA)
+```
+
+</details>
+
+
 
 </details>
 
@@ -133,6 +176,11 @@ tar_read(gg_Lipid)$permanova_Lipid_all3
 
 ```
 
+<details>
+  <summary>click to open ANOVA table</summary>
+```{r , fig.height=6, fig.width=9}
+tar_read(gg_Lipid)$StatsLipid
+```
 </details>
 
 ---
@@ -272,7 +320,9 @@ tar_read(gg_FTICR_relabund)$relabund_np
 tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar
 tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar_pre
 tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar_inc
+tar_read(gg_FTICR_permanova)$permanova_fticr_all_with_polar
 tar_read(gg_FTICR_permanova)$permanova_fticr_all
+
 
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_polar
    tar_read(gg_FTICR_PCA)$gg_pca_by_inc_polar
@@ -281,6 +331,12 @@ tar_read(gg_FTICR_permanova)$permanova_fticr_all
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
   tar_read(gg_FTICR_PCA)$gg_pca_by_inc_nonpolar
   tar_read(gg_FTICR_permanova)$permanova_fticr_nonpolar
+  
+  
+  tar_read(gg_FTICR_PCA)$gg_pca_polarVnonpolar_pre
+  tar_read(gg_FTICR_PCA)$gg_pca_polarVnonpolar_inc
+  tar_read(gg_FTICR_permanova)$permanova_fticr_PolarSeperations
+  
 ```
 
 

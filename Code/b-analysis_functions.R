@@ -755,8 +755,8 @@ plot_GC = function(GC_processed){
   
   GC_data_composite = GC_processed$metab_final$e_data %>%
     pivot_longer(cols=Wein_1_B_2_3:Wein_36_Pre_2_1, names_to= "Sample.ID")%>%
-    left_join(GC_processed$metab_final$f_data, by= "Sample.ID")
-  
+    left_join(GC_processed$metab_final$f_data, by= "Sample.ID")%>%
+    left_join(GC_processed$emeta, by="Metabolites")
   
   
   
@@ -775,6 +775,12 @@ plot_GC = function(GC_processed){
     filter(!row_number() %in% c(1:2958))
   
   
+  
+  GC_Saccharides = Means%>%
+    filter(Main.class %in% c("Oligosaccharides","Monosaccharides","Disaccharides"))
+  
+  
+  
   GC<-Means%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
@@ -790,6 +796,22 @@ plot_GC = function(GC_processed){
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("GC known compounds")
+  
+  GC_sac<-GC_Saccharides%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    facet_wrap(~Metabolites, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("GC Saccharides only")
   
   
   GC_unkown<-Means_unknown%>%
@@ -815,8 +837,98 @@ plot_GC = function(GC_processed){
   
   list(Stat_plot = Stat_plot,
        GC = GC,
+       GC_sac=GC_sac,
        GC_unkown=GC_unkown,
        StatsGC=StatsGC
+       
+  )
+  
+}
+
+plot_GC_PCA = function(GC_PCA){
+  
+  permanova_GC_all = 
+    adonis2(GC_PCA$GC_short %>% dplyr::select("Alcohols and polyols":Terpenoid) ~ pre * inc, 
+            data = GC_PCA$GC_short) %>%
+    knitr::kable(caption="Permanova results all by Main class")
+  permanova_GC_all2 = 
+    adonis2(GC_PCA$GC_short %>% dplyr::select("Oligosaccharides","Monosaccharides","Disaccharides") ~ pre * inc, 
+            data = GC_PCA$GC_short, na.rm=T) %>%
+    knitr::kable(caption="Permanova results saccharides")
+  
+  gg_pca_pre1=
+    ggbiplot(GC_PCA$pca_GC,obs.scale = 1, var.scale = 1,
+             groups = as.character(GC_PCA$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre pre")+
+    scale_colour_manual(values=cbPalette2)
+  
+  gg_pca_pre2=
+    ggbiplot(GC_PCA$pca_GC2,obs.scale = 1, var.scale = 1,
+             groups = as.character(GC_PCA$grp2$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "saccharides only",
+         subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2)
+  
+  
+  gg_pca_inc1=
+    ggbiplot(GC_PCA$pca_GC,obs.scale = 1, var.scale = 1,
+             groups = as.character(GC_PCA$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre inc")+
+    Scale_inc
+  
+  gg_pca_inc2=
+    ggbiplot(GC_PCA$pca_GC2,obs.scale = 1, var.scale = 1,
+             groups = as.character(GC_PCA$grp2$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "saccharides only",
+         subtitle = "separation by inc")+
+    Scale_inc
+  
+  
+
+  
+  
+ 
+  
+  list( gg_pca_pre1=gg_pca_pre1,
+        gg_pca_inc1=gg_pca_inc1,
+        permanova_GC_all= permanova_GC_all,
+        gg_pca_pre2=gg_pca_pre2,
+        gg_pca_inc2=gg_pca_inc2,
+        permanova_GC_all2= permanova_GC_all2
        
   )
   
@@ -830,7 +942,9 @@ plot_LC = function(LC_processed){
   
   LC_data_composite = LC_processed$metab_final$e_data %>%
     pivot_longer(cols=Pre_6_3:E_6_2, names_to= "Sample.ID")%>%
-    left_join(LC_processed$metab_final$f_data, by= "Sample.ID")
+    left_join(LC_processed$metab_final$f_data, by= "Sample.ID")%>%
+    left_join(LC_processed$LC_meta, by="Name2")%>%
+    select(-MODE)
   
   
   
@@ -853,7 +967,9 @@ plot_LC = function(LC_processed){
   Means_unknown<-LC_data_composite %>%
     separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
     filter(!row_number() %in% c(1:1225,12076:13055))
-  
+  Means_sac<-Means%>%
+    filter(Main.class %in% c("Oligosaccharides","Monosaccharides","Disaccharides"))
+    
   LC_pos<-Means%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
@@ -870,6 +986,23 @@ plot_LC = function(LC_processed){
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
     ggtitle("LC_pos known compound means")
+  
+  LC_pos_sac<-Means_sac%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="pos")%>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    facet_wrap(~Metabolite, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_pos saccharides")
   
   
   LC_pos_unknown<-Means_unknown%>%
@@ -908,6 +1041,23 @@ plot_LC = function(LC_processed){
     scale_colour_manual(values=cbPalette2)+
     ggtitle("LC_neg known compound means")
   
+  LC_neg_sac<-Means_sac%>%
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(MODE=="neg")%>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    facet_wrap(~Metabolite, scales="free")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC_neg saccharides")
+  
   
   LC_neg_unknown<-Means_unknown%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
@@ -942,6 +1092,94 @@ plot_LC = function(LC_processed){
   
 }
 
+plot_LC_PCA = function(LC_PCA){
+  
+  permanova_LC_all = 
+    adonis2(LC_PCA$LC_short %>% dplyr::select(Amines:Pyrimidines) ~ pre * inc, 
+            data = LC_PCA$LC_short) %>%
+    knitr::kable(caption="Permanova results all by Main class")
+  permanova_LC_all2 = 
+    adonis2(LC_PCA$LC_short %>% dplyr::select("Oligosaccharides","Monosaccharides","Disaccharides") ~ pre * inc, 
+            data = LC_PCA$LC_short, na.rm=T) %>%
+    knitr::kable(caption="Permanova results saccharides")
+  
+  gg_pca_pre1=
+    ggbiplot(LC_PCA$pca_LC,obs.scale = 1, var.scale = 1,
+             groups = as.character(LC_PCA$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre pre")+
+    scale_colour_manual(values=cbPalette2)
+  
+  gg_pca_pre2=
+    ggbiplot(LC_PCA$pca_LC2,obs.scale = 1, var.scale = 1,
+             groups = as.character(LC_PCA$grp2$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "saccharides only",
+         subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2)
+  
+  
+  gg_pca_inc1=
+    ggbiplot(LC_PCA$pca_LC,obs.scale = 1, var.scale = 1,
+             groups = as.character(LC_PCA$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "separation by pre inc")+
+    Scale_inc
+  
+  gg_pca_inc2=
+    ggbiplot(LC_PCA$pca_LC2,obs.scale = 1, var.scale = 1,
+             groups = as.character(LC_PCA$grp2$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "saccharides only",
+         subtitle = "separation by inc")+
+    Scale_inc
+  
+  
+  
+  
+  
+  
+  
+  list( gg_pca_pre1=gg_pca_pre1,
+        gg_pca_inc1=gg_pca_inc1,
+        permanova_LC_all= permanova_LC_all,
+        gg_pca_pre2=gg_pca_pre2,
+        gg_pca_inc2=gg_pca_inc2,
+        permanova_LC_all2= permanova_LC_all2
+        
+  )
+  
+}
 
 ###Lipid
 
@@ -993,7 +1231,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "all samples",
          subtitle = "separation by inc")+
-    scale_colour_manual(values=cbPalette2)
+    Scale_inc
   
   
   gg_pca_pre_pos=
@@ -1024,7 +1262,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "positive mode",
          subtitle = "separation by inc pos")+
-    scale_colour_manual(values=cbPalette2)
+    Scale_inc
   
   
   
@@ -1057,7 +1295,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "negative mode",
          subtitle = "separation by inc neg")+
-    scale_colour_manual(values=cbPalette2)
+    Scale_inc
   
   
   
@@ -1076,7 +1314,8 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   StatsLC<-statResAnova %>%
     select(1:25,98,111,113,136,137,152,164,177,179,202,203,218)%>%
     knitr::kable()
-  
+  StatsLipid<-statResAnova %>%
+    knitr::kable()
   
   Means<-Lipid_PCA$Lipid_data_composite %>%
     separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))
@@ -1213,13 +1452,13 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
        gg_pca_inc_neg=gg_pca_inc_neg,
        permanova_Lipid_all=permanova_Lipid_all,
        permanova_Lipid_all2=permanova_Lipid_all2,
-       permanova_Lipid_all3=permanova_Lipid_all3
+       permanova_Lipid_all3=permanova_Lipid_all3,
+       StatsLipid=StatsLipid
        
        
   )
   
 }
-
 
 
 plot_FTICR = function(FTICR_processed){
@@ -1249,7 +1488,8 @@ plot_FTICR = function(FTICR_processed){
   
   fticr_hcoc = 
     fticr_data_trt %>% 
-    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   gg_vk_polar_nonpolar = 
     (fticr_hcoc %>%
@@ -1671,7 +1911,8 @@ plot_FTICR_vk = function(FTICR_processed){
   
   fticr_hcoc = 
     fticr_data_trt %>% 
-    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   gg_vk_polar_nonpolar = 
     (fticr_hcoc %>%
@@ -1726,7 +1967,8 @@ plot_FTICR_unique_all = function(FTICR_processed){
   TREATMENTS = dplyr::quos(pre,inc, Polar)
   fticr_hcoc = 
     fticr_data_trt %>% 
-    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   #All
   
@@ -1980,7 +2222,8 @@ plot_FTICR_unique_polar = function(FTICR_processed){
   fticr_hcoc = 
     fticr_data_trt %>% 
     filter(Polar=="polar")%>%
-    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+    left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   
   
@@ -2224,7 +2467,8 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
   fticr_hcoc = 
     fticr_data_trt %>% 
     filter(Polar=="nonpolar")%>%
-  left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")
+  left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   
   
@@ -2466,14 +2710,16 @@ plot_FTICR_relabund = function(FTICR_relabund){
     geom_bar(stat = "identity")+
     facet_grid(~inc)+
     theme_CKM()+
-    ggtitle("relative abundance all")
+    ggtitle("relative abundance all")+
+    scale_fill_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
   
   relabund_p<-FTICR_relabund$relabund_trt_p %>% 
     ggplot(aes(x = pre, y = rel_abund, fill = Class))+
     geom_bar(stat = "identity")+
     facet_grid(~inc)+
     theme_CKM()+
-    ggtitle("relative abundance polar")
+    ggtitle("relative abundance polar")+
+    scale_fill_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
   
   
   relabund_np<-FTICR_relabund$relabund_trt_np %>% 
@@ -2481,7 +2727,8 @@ plot_FTICR_relabund = function(FTICR_relabund){
     geom_bar(stat = "identity")+
     facet_grid(~inc)+
     theme_CKM()+
-    ggtitle("relative abundance non-polar")
+    ggtitle("relative abundance non-polar")+
+    scale_fill_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
   
   
   
@@ -2511,16 +2758,28 @@ plot_FTICR_permanova = function(FTICR_relabund){
   permanova_fticr_all = 
     adonis2(FTICR_relabund$relabund_wide %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
             data = FTICR_relabund$relabund_wide) %>%
-    knitr::kable(caption = "Permanova results: All")
+    knitr::kable(caption = "Permanova results: axis class all")
   permanova_fticr_polar = 
     adonis2(FTICR_relabund$relabund_wide_p %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
             data = FTICR_relabund$relabund_wide_p) %>%
-    knitr::kable(caption = "Permanova results: Polar only")
+    knitr::kable(caption = "Permanova results: Axis class Polar only")
   permanova_fticr_nonpolar = 
     adonis2(FTICR_relabund$relabund_wide_np %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
             data = FTICR_relabund$relabund_wide_np) %>%
-    knitr::kable(caption = "Permanova results: Non-Polar only")
+    knitr::kable(caption = "Permanova results: Axis class Non-Polar only")
+
+  permanova_fticr_all_with_polar = 
+    adonis2(FTICR_relabund$relabund_wide %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc *Polar, 
+            data = FTICR_relabund$relabund_wide) %>%
+    knitr::kable(caption = "Permanova results: Axis Class with Polar comparison")
   
+  permanova_fticr_PolarSeperations = 
+    adonis2(FTICR_relabund$relabund_wide_PolarVnonPolar %>% dplyr::select(polar:nonpolar) ~ pre * inc, 
+            data = FTICR_relabund$relabund_wide_PolarVnonPolar) %>%
+    knitr::kable(caption = "Permanova results: Axis Polar")
+  
+
+
  
   
   
@@ -2529,7 +2788,9 @@ plot_FTICR_permanova = function(FTICR_relabund){
   list(
        permanova_fticr_all=permanova_fticr_all,
        permanova_fticr_polar=permanova_fticr_polar,
-       permanova_fticr_nonpolar=permanova_fticr_nonpolar
+       permanova_fticr_nonpolar=permanova_fticr_nonpolar,
+       permanova_fticr_PolarSeperations=permanova_fticr_PolarSeperations,
+       permanova_fticr_all_with_polar=permanova_fticr_all_with_polar
        
        
        
@@ -2546,6 +2807,42 @@ plot_FTICR_PCA = function(FTICR_relabund){
   pca_all = fit_pca_function(FTICR_relabund$relabund_cores)
   pca_polar = fit_pca_function(FTICR_relabund$relabund_cores_p)
   pca_nonpolar = fit_pca_function(FTICR_relabund$relabund_cores_np)
+  pca_PolarVsnonPolar = fit_pca_function2(FTICR_relabund$relabund_cores)
+
+  
+
+  
+  gg_pca_polarVnonpolar_inc = 
+    ggbiplot(pca_PolarVsnonPolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_PolarVsnonPolar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  gg_pca_polarVnonpolar_pre = 
+    ggbiplot(pca_PolarVsnonPolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_PolarVsnonPolar$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "all samples",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
   
   
   gg_pca_polar_nonpolar = 
@@ -2593,6 +2890,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labs(shape="",
          title = "all samples",
          subtitle = "separation by inc")+
+    Scale_inc+
     theme_CKM()
   
   gg_pca_by_pre_polar = 
@@ -2642,6 +2940,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labs(shape="",
          title = "Polar",
          subtitle = "separation by inc")+
+    Scale_inc+
     theme_CKM()+
     NULL
   
@@ -2658,6 +2957,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labs(shape="",
          title = "Non-Polar",
          subtitle = "separation by inc")+
+    Scale_inc+
     theme_CKM()+
     NULL
   
@@ -2673,7 +2973,9 @@ plot_FTICR_PCA = function(FTICR_relabund){
        gg_pca_by_inc_polar=gg_pca_by_inc_polar,
        gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar,
        gg_pca_polar_nonpolar_pre=gg_pca_polar_nonpolar_pre,
-       gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc
+       gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc,
+       gg_pca_polarVnonpolar_pre=gg_pca_polarVnonpolar_pre,
+       gg_pca_polarVnonpolar_inc=gg_pca_polarVnonpolar_inc
        
        
        
