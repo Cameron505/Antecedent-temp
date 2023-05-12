@@ -3,6 +3,7 @@ title: "FTICR"
 output: 
   github_document:
   html_preview: true
+  always_allow_html: true
 date: "2023-05-02"
 ---
 
@@ -49,6 +50,7 @@ tar_read(gg_FTICR_unique)$fticr_unique_summary
   tar_read(gg_FTICR_unique)$gg_common_unique_inc
   tar_read(gg_FTICR_unique)$fticr_unique_summary_inc
   tar_read(gg_FTICR_unique)$gg_common_unique_inc_pre
+  tar_read(gg_FTICR_unique)$gg_common_unique_sep_inc_pre_seperated
   tar_read(gg_FTICR_unique)$fticr_unique_summary_inc_pre
   
 ```
@@ -64,6 +66,7 @@ tar_read(gg_FTICR_unique_polar)$fticr_unique_summary
   tar_read(gg_FTICR_unique_polar)$gg_common_unique_inc
   tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_inc
   tar_read(gg_FTICR_unique_polar)$gg_common_unique_inc_pre
+  tar_read(gg_FTICR_unique_polar)$gg_common_unique_sep_inc_pre_seperated
   tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_inc_pre
   
 ```
@@ -79,6 +82,7 @@ tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary
   tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_inc
   tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_inc
   tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_inc_pre
+  tar_read(gg_FTICR_unique_nonpolar)$ gg_common_unique_sep_inc_pre_seperated 
   tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_inc_pre
   
 ```

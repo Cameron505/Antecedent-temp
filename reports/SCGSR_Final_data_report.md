@@ -1517,6 +1517,7 @@ click to open ANOVA table
 | PI(18:1/18:1)\_\_neg                             |            3 |           3 |           3 |           3 |            3 |           3 |           3 |            3 |           3 |           3 |           3 |            3 |    19.22452 |   18.78506 |   19.04435 |   18.75397 |    18.98572 |   18.87507 |   19.16557 |    18.84026 |   18.86868 |   19.01798 |   19.01800 |    19.26178 |                   0.4394588 |                   0.1801763 |                   0.4705538 |                    0.2387981 |                   0.3494536 |                   0.0589560 |                    0.3842592 |                   0.3558447 |                   0.2065411 |                   0.2065179 |                   -0.0372561 |                  -0.2592825 |                   0.0310950 |                   -0.2006607 |                  -0.0900052 |                  -0.3805027 |                   -0.0551996 |                  -0.0836140 |                  -0.2329177 |                  -0.2329409 |                   -0.4767148 |                   0.2903775 |                    0.0586218 |                   0.1692773 |                  -0.1212203 |                    0.2040829 |                   0.1756685 |                   0.0263648 |                   0.0263416 |                   -0.2174324 |                   -0.2317557 |                  -0.1211002 |                  -0.4115978 |                   -0.0862946 |                  -0.1147090 |                  -0.2640127 |                  -0.2640359 |                   -0.5078098 |                   0.1106555 |                  -0.1798420 |                    0.1454611 |                   0.1170467 |                  -0.0322570 |                  -0.0322802 |                   -0.2760541 |                  -0.2904976 |                    0.0348056 |                   0.0063911 |                  -0.1429125 |                  -0.1429357 |                   -0.3867097 |                    0.3253032 |                   0.2968887 |                   0.1475850 |                   0.1475618 |                   -0.0962121 |                  -0.0284144 |                  -0.1777181 |                  -0.1777413 |                   -0.4215152 |                  -0.1493037 |                  -0.1493269 |                   -0.3931008 |                  -0.0000232 |                   -0.2437971 |                   -0.2437739 |                 0.1329467 |                 0.5297088 |                 0.1088293 |                  0.4063597 |                 0.2281210 |                 0.8364724 |                  0.1864676 |                 0.2199831 |                 0.4718506 |                 0.4718999 |                  0.8961941 |                 0.3679188 |                 0.9132814 |                  0.4844263 |                 0.7528200 |                 0.1906543 |                  0.8467499 |                 0.7698256 |                 0.4178508 |                 0.4178051 |                  0.1045149 |                 0.3143237 |                  0.8373857 |                 0.5547055 |                 0.6717252 |                  0.4770842 |                 0.5399732 |                 0.9264298 |                 0.9264943 |                  0.4490712 |                  0.4201453 |                 0.6720303 |                 0.1581412 |                  0.7626782 |                 0.6883479 |                 0.3593952 |                 0.3593537 |                  0.0848857 |                 0.6987784 |                 0.5304662 |                  0.6113814 |                 0.6823611 |                 0.9100551 |                 0.9099908 |                  0.3382974 |                 0.3141278 |                  0.9029847 |                 0.9821403 |                 0.6176050 |                 0.6175482 |                  0.1837756 |                  0.2609326 |                 0.3038274 |                 0.6062175 |                 0.6062737 |                  0.7364256 |                 0.9207296 |                 0.5352930 |                 0.5352402 |                  0.1487632 |                 0.6020542 |                 0.6019981 |                  0.1768986 |                 0.9999352 |                  0.3967502 |                  0.3967944 |                      0 |                      0 |                      0 |                       0 |                      0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                      0 |                      0 |                       0 |                      0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                      0 |                       0 |                      0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                       0 |                      0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                      0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                       0 |                      0 |                      0 |                      0 |                       0 |                      0 |                      0 |                      0 |                       0 |                      0 |                      0 |                       0 |                      0 |                       0 |                       0 |
 
 </details>
+</details>
 
 ------------------------------------------------------------------------
 
@@ -1553,34 +1554,414 @@ click to open
 click to open
 </summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
+    ## NULL
 
-| Class              |  -2 |  -6 |
-|:-------------------|----:|----:|
-| aliphatic          | 465 | 230 |
-| aromatic           |  29 |  33 |
-| condensed aromatic |  16 |  12 |
-| unsaturated/lignin | 103 | 166 |
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2
+</th>
+<th style="text-align:right;">
+-6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+465
+</td>
+<td style="text-align:right;">
+230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+166
+</td>
+</tr>
+</tbody>
+</table>
+
+    ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-3.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+Pre
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+6
+</th>
+<th style="text-align:right;">
+8
+</th>
+<th style="text-align:right;">
+10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table>
 
-| Class              | Pre |   2 |   4 |   6 |   8 |  10 |
-|:-------------------|----:|----:|----:|----:|----:|----:|
-| aliphatic          |  55 |  57 |  17 |  10 |  14 |  11 |
-| aromatic           |  14 |   2 |   3 |   1 |   2 |  NA |
-| condensed aromatic |   2 |   4 |  NA |  NA |   4 |  NA |
-| unsaturated/lignin |  39 |  11 |   8 |   4 |  10 |   2 |
+    ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-4.png)<!-- -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:right;">
+-2_Pre
+</th>
+<th style="text-align:right;">
+-6_Pre
+</th>
+<th style="text-align:right;">
+-2_2
+</th>
+<th style="text-align:right;">
+-6_2
+</th>
+<th style="text-align:right;">
+-2_4
+</th>
+<th style="text-align:right;">
+-6_4
+</th>
+<th style="text-align:right;">
+-2_6
+</th>
+<th style="text-align:right;">
+-6_6
+</th>
+<th style="text-align:right;">
+-2_8
+</th>
+<th style="text-align:right;">
+-6_8
+</th>
+<th style="text-align:right;">
+-2_10
+</th>
+<th style="text-align:right;">
+-6_10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+aliphatic
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aromatic
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+condensed aromatic
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unsaturated/lignin
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table>
 
-| Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -2_10 | -6_10 |
-|:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|------:|
-| aliphatic          |     38 |     10 |   54 |    3 |   17 |   NA |   10 |   NA |   13 |    1 |    11 |    NA |
-| aromatic           |     11 |      3 |    2 |   NA |    1 |    2 |   NA |    1 |    2 |   NA |    NA |    NA |
-| condensed aromatic |      2 |     NA |    4 |   NA |   NA |   NA |   NA |   NA |    4 |   NA |    NA |    NA |
-| unsaturated/lignin |     25 |      8 |    9 |    2 |    7 |    1 |    3 |    1 |    8 |    2 |    NA |     2 |
+    ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-5.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-6.png)<!-- -->
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -1807,396 +2188,39 @@ click to open
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2
-</th>
-<th style="text-align:right;">
--6
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;">
-183
-</td>
-<td style="text-align:right;">
-152
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-32
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;">
-86
-</td>
-<td style="text-align:right;">
-147
-</td>
-</tr>
-</tbody>
-</table>
+
+| Class              |  -2 |  -6 |
+|:-------------------|----:|----:|
+| aliphatic          | 183 | 152 |
+| aromatic           |  16 |  32 |
+| condensed aromatic |   8 |   9 |
+| unsaturated/lignin |  86 | 147 |
 
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-3.png)<!-- -->
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
-Pre
-</th>
-<th style="text-align:right;">
-2
-</th>
-<th style="text-align:right;">
-4
-</th>
-<th style="text-align:right;">
-6
-</th>
-<th style="text-align:right;">
-8
-</th>
-<th style="text-align:right;">
-10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-</tbody>
-</table>
+
+| Class              | Pre |   2 |   4 |   6 |   8 |  10 |
+|:-------------------|----:|----:|----:|----:|----:|----:|
+| aliphatic          |  32 |   8 |   9 |   6 |  14 |   1 |
+| aromatic           |  11 |  NA |   2 |   1 |   3 |  NA |
+| condensed aromatic |   1 |  NA |  NA |  NA |   4 |  NA |
+| unsaturated/lignin |  33 |   3 |   9 |   4 |   8 |   2 |
 
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-4.png)<!-- -->
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2_Pre
-</th>
-<th style="text-align:right;">
--6_Pre
-</th>
-<th style="text-align:right;">
--2_2
-</th>
-<th style="text-align:right;">
--6_2
-</th>
-<th style="text-align:right;">
--2_4
-</th>
-<th style="text-align:right;">
--6_4
-</th>
-<th style="text-align:right;">
--2_6
-</th>
-<th style="text-align:right;">
--6_6
-</th>
-<th style="text-align:right;">
--2_8
-</th>
-<th style="text-align:right;">
--6_8
-</th>
-<th style="text-align:right;">
--6_10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-</tbody>
-</table>
+
+| Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -6_10 |
+|:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|
+| aliphatic          |     15 |     13 |    3 |    5 |    9 |   NA |    4 |    2 |   13 |    1 |     1 |
+| aromatic           |      8 |      3 |   NA |   NA |   NA |    2 |   NA |    1 |    3 |   NA |    NA |
+| condensed aromatic |      1 |     NA |   NA |   NA |   NA |   NA |   NA |   NA |    4 |   NA |    NA |
+| unsaturated/lignin |     17 |     10 |    1 |    2 |    9 |   NA |    3 |    1 |    6 |    2 |     2 |
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-5.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-6.png)<!-- -->
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -2783,7 +2807,7 @@ NA
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-6.png)<!-- -->
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -3102,7 +3126,7 @@ Permanova results: Axis Polar
 Session Info
 </summary>
 
-Date run: 2023-05-11
+Date run: 2023-05-12
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

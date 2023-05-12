@@ -1958,6 +1958,36 @@ plot_FTICR_vk = function(FTICR_processed){
 }
 
 
+plot_FTICR_NOSC = function(FTICR_processed){
+  
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_data_trt = FTICR_processed$fticr_data_trt_combined
+  fticr_Nosc = fticr_data_trt%>%
+    left_join(fticr_meta, by= 'formula')%>%
+    filter(inc != 'NA')
+ 
+  
+  gg_nosc<- fticr_Nosc%>%
+    ggplot(aes(x=inc,y=NOSC, color=pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))
+    #geom_point(position = position_dodge(width = 1), size = 3)
+  
+  
+  list(gg_nosc=gg_nosc
+       
+       
+       
+  )
+  
+}
+
+
 plot_FTICR_unique_all = function(FTICR_processed){
   
 
@@ -2155,17 +2185,26 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     labs(title = "common peaks")+
     theme_CKM()
   
+  gg_common_unique_sep_inc_pre_seperated = 
+    FTICR_inc_unique_by_pre %>%
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 1)%>%
+    gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
+    facet_wrap(~inc+pre)+
+    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    theme_CKM()
+  
   gg_common_unique_sep_inc_pre = 
     FTICR_inc_unique_by_pre %>%
     mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
-    filter(n == 2) %>% 
-    gg_vankrev(aes(x = OC, y = HC))+
-    geom_point(data = FTICR_inc_unique_by_pre %>% filter(n == 1),
-               aes(color = pre), alpha = 0.7)+
+    filter(n == 1)%>%
+    gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first",
-         subtitle = "black/grey = peaks common to all")+
+    labs(title = "Unique peaks by pre seperated by incubation temp first")+
     theme_CKM()
   
   fticr_unique_summary_sep_inc_pre = 
@@ -2202,7 +2241,8 @@ FTICRpre<- Filter_unique_FTICR("Pre")
        gg_common_unique_inc_pre=gg_common_unique_inc_pre,
        fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
        gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
-       fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre
+       fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre,
+       gg_common_unique_sep_inc_pre_seperated=gg_common_unique_sep_inc_pre_seperated
        
        
        
@@ -2408,15 +2448,26 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     labs(title = "common peaks polar")+
     theme_CKM()
   
+  gg_common_unique_sep_inc_pre_seperated = 
+    FTICR_inc_unique_by_pre %>%
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 1)%>%
+    gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
+    facet_wrap(~inc+pre)+
+    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    theme_CKM()
+  
   gg_common_unique_sep_inc_pre = 
     FTICR_inc_unique_by_pre %>%
-    filter(n == 2) %>% 
-    gg_vankrev(aes(x = OC, y = HC))+
-    geom_point(data = FTICR_inc_unique_by_pre %>% filter(n == 1),
-               aes(color = pre), alpha = 0.7)+
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 1)%>%
+    gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first",
-         subtitle = "black/grey = peaks common to all polar")+
+    labs(title = "Unique peaks by pre seperated by incubation temp first")+
     theme_CKM()
   
   fticr_unique_summary_sep_inc_pre = 
@@ -2453,7 +2504,8 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     gg_common_unique_inc_pre=gg_common_unique_inc_pre,
     fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
     gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
-    fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre
+    fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre,
+    gg_common_unique_sep_inc_pre_seperated=gg_common_unique_sep_inc_pre_seperated
      )
   
 }
@@ -2538,7 +2590,7 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
   gg_common_inc = 
     fticr_unique_inc %>% filter(n == 7) %>% 
     gg_vankrev(aes(x = OC, y = HC))+
-    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
     labs(title = "common peaks nonpolar")+
     theme_CKM()
   
@@ -2586,7 +2638,7 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
   gg_common_inc_pre = 
     fticr_unique_inc_pre %>% filter(n == 14) %>% 
     gg_vankrev(aes(x = OC, y = HC))+
-    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
     labs(title = "common peaks nonpolar")+
     theme_CKM()
   
@@ -2653,15 +2705,26 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     labs(title = "common peaks nonpolar")+
     theme_CKM()
   
+  gg_common_unique_sep_inc_pre_seperated = 
+    FTICR_inc_unique_by_pre %>%
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 1)%>%
+    gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
+    facet_wrap(~inc+pre)+
+    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    theme_CKM()
+  
   gg_common_unique_sep_inc_pre = 
     FTICR_inc_unique_by_pre %>%
-    filter(n == 2) %>% 
-    gg_vankrev(aes(x = OC, y = HC))+
-    geom_point(data = FTICR_inc_unique_by_pre %>% filter(n == 1),
-               aes(color = pre), alpha = 0.7)+
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    filter(n == 1)%>%
+    gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
+    stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first",
-         subtitle = "black/grey = peaks common to all nonpolar")+
+    labs(title = "Unique peaks by pre seperated by incubation temp first")+
     theme_CKM()
   
   fticr_unique_summary_sep_inc_pre = 
@@ -2696,7 +2759,8 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     gg_common_unique_inc_pre=gg_common_unique_inc_pre,
     fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
     gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
-    fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre
+    fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre,
+    gg_common_unique_sep_inc_pre_seperated=gg_common_unique_sep_inc_pre_seperated
   )
   
 }
@@ -2817,7 +2881,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
              groups = as.character(pca_PolarVsnonPolar$grp$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 0.5,
-               aes(#shape = groups,
+               aes(shape = as.character(pca_PolarVsnonPolar$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
@@ -2882,7 +2946,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
              groups = as.character(pca_all$grp$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 0.5,
-               aes(#shape = groups,
+               aes(shape = as.character(pca_all$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
@@ -2932,7 +2996,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
              groups = as.character(pca_polar$grp$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 0.5,
-               aes(#shape = groups,
+               aes(shape = as.character(pca_polar$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
@@ -2949,7 +3013,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
              groups = as.character(pca_nonpolar$grp$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 0.5,
-               aes(#shape = groups,
+               aes(shape = as.character(pca_nonpolar$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+

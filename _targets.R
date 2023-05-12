@@ -98,7 +98,8 @@ list(
   tar_target(gg_FTICR_relabund, plot_FTICR_relabund(FTICR_relabund)),
   tar_target(gg_FTICR_permanova, plot_FTICR_permanova(FTICR_relabund)),
   tar_target(gg_FTICR_PCA, plot_FTICR_PCA(FTICR_relabund)),
-  #tar_target(gg_FTICR, plot_FTICR(FTICR_processed)), #This is a combined version of above targets
+  tar_target(gg_FTICR_NOSC, plot_FTICR_NOSC(FTICR_processed)),
+  
   
   
   
