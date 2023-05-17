@@ -176,6 +176,10 @@ Extraction ANOVA results microbial biomass
 <summary>
 click to open
 </summary>
+<details>
+<summary>
+click to open
+</summary>
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
 
@@ -522,6 +526,7 @@ click to open ANOVA table
 | Unknown 248                                                                              |           2 |             3 |           3 |           3 |            3 |            3 |           3 |           3 |           3 |           3 |             3 |           2 |   18.58762 |     18.00262 |   18.20767 |   17.85465 |   17.815563 |    17.87288 |   17.00352 |   18.09201 |   17.82111 |   18.08367 |     17.84175 |  17.976592 |                 0.2890975 |                    0.7019720 |                 0.7830471 |                 0.0523375 |                  0.8913883 |                 0.7406877 |                      0 |                         0 |                      0 |                      0 |                       0 |                      0 |
 
 </details>
+</details>
 
 #### PCA
 
@@ -530,51 +535,29 @@ click to open ANOVA table
 click to open
 </summary>
 
-    ## $gg_pca_pre1
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0002722 | 0.0440732 | 1.796432 |   0.128 |
+| inc      |   5 | 0.0016413 | 0.2657632 | 2.166512 |   0.010 |
+| pre:inc  |   5 | 0.0009290 | 0.1504214 | 1.226242 |   0.237 |
+| Residual |  22 | 0.0033334 | 0.5397422 |       NA |      NA |
+| Total    |  33 | 0.0061758 | 1.0000000 |       NA |      NA |
 
-    ## 
-    ## $gg_pca_inc1
+Permanova results all by Main class
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-4.png)<!-- -->
 
-    ## 
-    ## $permanova_GC_all
-    ## 
-    ## 
-    ## Table: Permanova results all by Main class
-    ## 
-    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
-    ## |:--------|--:|---------:|---------:|--------:|------:|
-    ## |pre      |  1| 0.0002722| 0.0440732| 1.796432|  0.128|
-    ## |inc      |  5| 0.0016413| 0.2657632| 2.166512|  0.010|
-    ## |pre:inc  |  5| 0.0009290| 0.1504214| 1.226242|  0.237|
-    ## |Residual | 22| 0.0033334| 0.5397422|       NA|     NA|
-    ## |Total    | 33| 0.0061758| 1.0000000|       NA|     NA|
-    ## 
-    ## $gg_pca_pre2
+|          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
+|:---------|----:|----------:|----------:|----------:|--------:|
+| pre      |   1 | 0.0004367 | 0.0410917 | 1.6469493 |   0.199 |
+| inc      |   5 | 0.0038628 | 0.3634700 | 2.9135648 |   0.022 |
+| pre:inc  |   5 | 0.0004945 | 0.0465342 | 0.3730168 |   0.941 |
+| Residual |  22 | 0.0058335 | 0.5489041 |        NA |      NA |
+| Total    |  33 | 0.0106275 | 1.0000000 |        NA |      NA |
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->
-
-    ## 
-    ## $gg_pca_inc2
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-4.png)<!-- -->
-
-    ## 
-    ## $permanova_GC_all2
-    ## 
-    ## 
-    ## Table: Permanova results saccharides
-    ## 
-    ## |         | Df|  SumOfSqs|        R2|         F| Pr(>F)|
-    ## |:--------|--:|---------:|---------:|---------:|------:|
-    ## |pre      |  1| 0.0004367| 0.0410917| 1.6469493|  0.199|
-    ## |inc      |  5| 0.0038628| 0.3634700| 2.9135648|  0.022|
-    ## |pre:inc  |  5| 0.0004945| 0.0465342| 0.3730168|  0.941|
-    ## |Residual | 22| 0.0058335| 0.5489041|        NA|     NA|
-    ## |Total    | 33| 0.0106275| 1.0000000|        NA|     NA|
+Permanova results saccharides
 
 </details>
 </details>
@@ -587,12 +570,12 @@ click to open
 <summary>
 click to open
 </summary>
+<details>
+<summary>
+click to open
+</summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-8-2.png)<!-- -->
-
-    ## NULL
-
-    ## NULL
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-8-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-8-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-8-4.png)<!-- -->
 
 <details>
 <summary>
@@ -1173,6 +1156,7 @@ click to open ANOVA table
 | Ursolic acid_neg                                                                                                                              |             3 |             3 |           3 |           3 |           2 |           3 |           3 |           3 |           3 |           3 |            3 |            3 |     25.23912 |     26.10589 |   25.86392 |   25.21724 |   25.71310 |   25.59353 |   25.00428 |   25.47873 |   25.48609 |   26.30581 |    26.00457 |    25.81859 |                    0.1154815 |                 0.2346508 |                 0.8418250 |                 0.3798316 |                 0.1355013 |                  0.7287908 |                         0 |                      0 |                      0 |                      0 |                      0 |                       0 |
 
 </details>
+</details>
 
 #### PCA
 
@@ -1181,51 +1165,29 @@ click to open ANOVA table
 click to open
 </summary>
 
-    ## $gg_pca_pre1
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0001455 | 0.0358253 | 1.929872 |   0.114 |
+| inc      |   5 | 0.0014038 | 0.3457389 | 3.724922 |   0.001 |
+| pre:inc  |   5 | 0.0007774 | 0.1914741 | 2.062904 |   0.021 |
+| Residual |  23 | 0.0017335 | 0.4269617 |       NA |      NA |
+| Total    |  34 | 0.0040602 | 1.0000000 |       NA |      NA |
 
-    ## 
-    ## $gg_pca_inc1
+Permanova results all by Main class
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-4.png)<!-- -->
 
-    ## 
-    ## $permanova_LC_all
-    ## 
-    ## 
-    ## Table: Permanova results all by Main class
-    ## 
-    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
-    ## |:--------|--:|---------:|---------:|--------:|------:|
-    ## |pre      |  1| 0.0001455| 0.0358253| 1.929872|  0.114|
-    ## |inc      |  5| 0.0014038| 0.3457389| 3.724922|  0.001|
-    ## |pre:inc  |  5| 0.0007774| 0.1914741| 2.062904|  0.021|
-    ## |Residual | 23| 0.0017335| 0.4269617|       NA|     NA|
-    ## |Total    | 34| 0.0040602| 1.0000000|       NA|     NA|
-    ## 
-    ## $gg_pca_pre2
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0001863 | 0.0273047 | 1.412979 |   0.212 |
+| inc      |   5 | 0.0023910 | 0.3503736 | 3.626269 |   0.005 |
+| pre:inc  |   5 | 0.0012138 | 0.1778652 | 1.840855 |   0.105 |
+| Residual |  23 | 0.0030331 | 0.4444564 |       NA |      NA |
+| Total    |  34 | 0.0068243 | 1.0000000 |       NA |      NA |
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->
-
-    ## 
-    ## $gg_pca_inc2
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-4.png)<!-- -->
-
-    ## 
-    ## $permanova_LC_all2
-    ## 
-    ## 
-    ## Table: Permanova results saccharides
-    ## 
-    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
-    ## |:--------|--:|---------:|---------:|--------:|------:|
-    ## |pre      |  1| 0.0001863| 0.0273047| 1.412979|  0.212|
-    ## |inc      |  5| 0.0023910| 0.3503736| 3.626269|  0.005|
-    ## |pre:inc  |  5| 0.0012138| 0.1778652| 1.840855|  0.105|
-    ## |Residual | 23| 0.0030331| 0.4444564|       NA|     NA|
-    ## |Total    | 34| 0.0068243| 1.0000000|       NA|     NA|
+Permanova results saccharides
 
 </details>
 </details>
@@ -1238,42 +1200,12 @@ click to open
 <summary>
 click to open
 </summary>
+<details>
+<summary>
+click to open
+</summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->
-
-|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
-|:---------|----:|----------:|----------:|---------:|--------:|
-| Pre      |   1 | 0.0000127 | 0.0312988 | 1.259669 |   0.302 |
-| Inc      |   5 | 0.0000742 | 0.1823599 | 1.467871 |   0.175 |
-| Pre:Inc  |   5 | 0.0000773 | 0.1900165 | 1.529501 |   0.168 |
-| Residual |  24 | 0.0002427 | 0.5963247 |       NA |      NA |
-| Total    |  35 | 0.0004071 | 1.0000000 |       NA |      NA |
-
-Permanova results all
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-6.png)<!-- -->
-
-|          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
-|:---------|----:|----------:|----------:|----------:|--------:|
-| Pre      |   1 | 0.0000064 | 0.0153686 | 0.5551514 |   0.594 |
-| Inc      |   5 | 0.0000636 | 0.1537306 | 1.1106287 |   0.366 |
-| Pre:Inc  |   5 | 0.0000689 | 0.1664960 | 1.2028526 |   0.328 |
-| Residual |  24 | 0.0002749 | 0.6644048 |        NA |      NA |
-| Total    |  35 | 0.0004138 | 1.0000000 |        NA |      NA |
-
-Permanova results pos
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-7.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-8.png)<!-- -->
-
-|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
-|:---------|----:|----------:|----------:|---------:|--------:|
-| Pre      |   1 | 0.0000268 | 0.0346902 | 1.933659 |   0.170 |
-| Inc      |   5 | 0.0002308 | 0.2982330 | 3.324750 |   0.009 |
-| Pre:Inc  |   5 | 0.0001830 | 0.2365126 | 2.636681 |   0.035 |
-| Residual |  24 | 0.0003332 | 0.4305642 |       NA |      NA |
-| Total    |  35 | 0.0007739 | 1.0000000 |       NA |      NA |
-
-Permanova results neg
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
 
 <details>
 <summary>
@@ -1518,6 +1450,49 @@ click to open ANOVA table
 
 </details>
 </details>
+<details>
+<summary>
+click to open
+</summary>
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->
+
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| Pre      |   1 | 0.0000127 | 0.0312988 | 1.259669 |   0.302 |
+| Inc      |   5 | 0.0000742 | 0.1823599 | 1.467871 |   0.175 |
+| Pre:Inc  |   5 | 0.0000773 | 0.1900165 | 1.529501 |   0.168 |
+| Residual |  24 | 0.0002427 | 0.5963247 |       NA |      NA |
+| Total    |  35 | 0.0004071 | 1.0000000 |       NA |      NA |
+
+Permanova results all
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-4.png)<!-- -->
+
+|          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
+|:---------|----:|----------:|----------:|----------:|--------:|
+| Pre      |   1 | 0.0000064 | 0.0153686 | 0.5551514 |   0.594 |
+| Inc      |   5 | 0.0000636 | 0.1537306 | 1.1106287 |   0.366 |
+| Pre:Inc  |   5 | 0.0000689 | 0.1664960 | 1.2028526 |   0.328 |
+| Residual |  24 | 0.0002749 | 0.6644048 |        NA |      NA |
+| Total    |  35 | 0.0004138 | 1.0000000 |        NA |      NA |
+
+Permanova results pos
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-6.png)<!-- -->
+
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| Pre      |   1 | 0.0000268 | 0.0346902 | 1.933659 |   0.170 |
+| Inc      |   5 | 0.0002308 | 0.2982330 | 3.324750 |   0.009 |
+| Pre:Inc  |   5 | 0.0001830 | 0.2365126 | 2.636681 |   0.035 |
+| Residual |  24 | 0.0003332 | 0.4305642 |       NA |      NA |
+| Total    |  35 | 0.0007739 | 1.0000000 |       NA |      NA |
+
+Permanova results neg
+
+</details>
+</details>
 
 ------------------------------------------------------------------------
 
@@ -1535,9 +1510,9 @@ click to open
 click to open
 </summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-3.png)<!-- -->
 </details>
 
 ### FTICR Common vs unique peaks by treatment:
@@ -1556,7 +1531,7 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-2.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
 <table>
 <thead>
 <tr>
@@ -1621,7 +1596,7 @@ unsaturated/lignin
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-3.png)<!-- -->
 <table>
 <thead>
 <tr>
@@ -1746,7 +1721,7 @@ unsaturated/lignin
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-4.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-4.png)<!-- -->
 <table>
 <thead>
 <tr>
@@ -1961,7 +1936,7 @@ NA
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-6.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-6.png)<!-- -->
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -2187,7 +2162,7 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->
 
 | Class              |  -2 |  -6 |
 |:-------------------|----:|----:|
@@ -2198,7 +2173,7 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-3.png)<!-- -->
 
 | Class              | Pre |   2 |   4 |   6 |   8 |  10 |
 |:-------------------|----:|----:|----:|----:|----:|----:|
@@ -2209,7 +2184,7 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-4.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-4.png)<!-- -->
 
 | Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -6_10 |
 |:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|
@@ -2220,7 +2195,7 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-6.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-6.png)<!-- -->
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -2447,7 +2422,7 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-2.png)<!-- -->
 <table>
 <thead>
 <tr>
@@ -2512,7 +2487,7 @@ unsaturated/lignin
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-3.png)<!-- -->
 <table>
 <thead>
 <tr>
@@ -2637,7 +2612,7 @@ unsaturated/lignin
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-4.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-4.png)<!-- -->
 <table>
 <thead>
 <tr>
@@ -2807,7 +2782,7 @@ NA
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-6.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-6.png)<!-- -->
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -3040,7 +3015,7 @@ click to open
 click to open
 </summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->
 
 </details>
 
@@ -3051,7 +3026,7 @@ click to open
 click to open
 </summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
 
 |               |  Df |  SumOfSqs |        R2 |            F | Pr(\>F) |
 |:--------------|----:|----------:|----------:|-------------:|--------:|
@@ -3077,7 +3052,7 @@ Permanova results: Axis Class with Polar comparison
 
 Permanova results: axis class all
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-5.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-4.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-5.png)<!-- -->
 
 |          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
 |:---------|----:|----------:|----------:|----------:|--------:|
@@ -3089,7 +3064,7 @@ Permanova results: axis class all
 
 Permanova results: Axis class Polar only
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-6.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-7.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-6.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-7.png)<!-- -->
 
 |          |  Df |  SumOfSqs |        R2 |          F | Pr(\>F) |
 |:---------|----:|----------:|----------:|-----------:|--------:|
@@ -3101,7 +3076,7 @@ Permanova results: Axis class Polar only
 
 Permanova results: Axis class Non-Polar only
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-8.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-9.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-8.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-9.png)<!-- -->
 
 |          |  Df |    SumOfSqs |        R2 |          F | Pr(\>F) |
 |:---------|----:|------------:|----------:|-----------:|--------:|
@@ -3126,7 +3101,7 @@ Permanova results: Axis Polar
 Session Info
 </summary>
 
-Date run: 2023-05-12
+Date run: 2023-05-17
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

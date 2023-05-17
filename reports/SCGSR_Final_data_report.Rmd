@@ -81,7 +81,9 @@ tar_read(Stats_Table)$all_aov4
 
 <details>
   <summary>click to open</summary>
-
+  
+<details>
+  <summary>click to open</summary>
 
 ```{r , fig.height=15, fig.width=20}
 tar_read(gg_GC)$GC
@@ -93,7 +95,7 @@ tar_read(gg_GC)$GC_sac
 ```{r , fig.height=15, fig.width=20}
 tar_read(gg_GC)$StatsGC
 ```
-
+</details>
 </details>
 
 #### PCA
@@ -101,8 +103,13 @@ tar_read(gg_GC)$StatsGC
   <summary>click to open</summary>
 
 
-```{r , fig.height=15, fig.width=20}
-tar_read(gg_GC_PCA)
+```{r , fig.height=6, fig.width=9}
+tar_read(gg_GC_PCA)$gg_pca_pre1
+tar_read(gg_GC_PCA)$gg_pca_inc1
+tar_read(gg_GC_PCA)$permanova_GC_all
+tar_read(gg_GC_PCA)$gg_pca_pre2
+tar_read(gg_GC_PCA)$gg_pca_inc2
+tar_read(gg_GC_PCA)$permanova_GC_all2
 ```
 
 </details>
@@ -118,6 +125,8 @@ tar_read(gg_GC_PCA)
 <details>
   <summary>click to open</summary>
  
+ <details>
+  <summary>click to open</summary>
 
 ```{r , fig.height=15, fig.width=20}
 tar_read(gg_LC)$LC_pos
@@ -133,15 +142,20 @@ tar_read(gg_LC)$LC_neg_sac
 ```{r , fig.height=15, fig.width=20}
 tar_read(gg_LC)$StatsLC
 ```
-
+</details>
 </details>
 #### PCA
 <details>
   <summary>click to open</summary>
 
 
-```{r , fig.height=15, fig.width=20}
-tar_read(gg_LC_PCA)
+```{r , fig.height=6, fig.width=9}
+tar_read(gg_LC_PCA)$gg_pca_pre1
+tar_read(gg_LC_PCA)$gg_pca_inc1
+tar_read(gg_LC_PCA)$permanova_LC_all
+tar_read(gg_LC_PCA)$gg_pca_pre2
+tar_read(gg_LC_PCA)$gg_pca_inc2
+tar_read(gg_LC_PCA)$permanova_LC_all2
 ```
 
 </details>
@@ -158,11 +172,27 @@ tar_read(gg_LC_PCA)
 <details>
   <summary>click to open</summary>
  
-
+<details>
+  <summary>click to open</summary>
 ```{r , fig.height=6, fig.width=9}
 
 tar_read(gg_Lipid)$Lipid_pos2
 tar_read(gg_Lipid)$Lipid_neg2
+
+```
+
+<details>
+  <summary>click to open ANOVA table</summary>
+```{r , fig.height=6, fig.width=9}
+tar_read(gg_Lipid)$StatsLipid
+```
+</details>
+
+</details>
+
+<details>
+  <summary>click to open</summary>
+```{r , fig.height=6, fig.width=9}
 
 tar_read(gg_Lipid)$gg_pca_pre
 tar_read(gg_Lipid)$gg_pca_inc
@@ -175,14 +205,9 @@ tar_read(gg_Lipid)$gg_pca_inc_neg
 tar_read(gg_Lipid)$permanova_Lipid_all3
 
 ```
-
-<details>
-  <summary>click to open ANOVA table</summary>
-```{r , fig.height=6, fig.width=9}
-tar_read(gg_Lipid)$StatsLipid
-```
-
 </details>
+
+
 
 </details>
 ---
@@ -308,7 +333,7 @@ tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_sep_inc_pre
 <details>
   <summary>click to open</summary>
 
-```{r , fig.height=6, fig.width=6}
+```{r , fig.height=6, fig.width=9}
 tar_read(gg_FTICR_relabund)$relabund
 tar_read(gg_FTICR_relabund)$relabund_p
 tar_read(gg_FTICR_relabund)$relabund_np

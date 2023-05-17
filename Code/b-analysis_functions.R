@@ -161,6 +161,7 @@ plot_nutrients = function(nutrients_data){
   
   inc.lab<-c("2 °C","4 °C","6 °C","8 °C","10 °C")
   names(inc.lab) <- c("2","4","6","8","10")
+  
   ####
   #Significance between pre-incubation temps across incubation (Marked with asterisk)
     fit_aov = function(nutrients_data){
@@ -867,9 +868,10 @@ plot_GC_PCA = function(GC_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
-         subtitle = "separation by pre pre")+
-    scale_colour_manual(values=cbPalette2)
+         title = "GC-all samples",
+         subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   gg_pca_pre2=
     ggbiplot(GC_PCA$pca_GC2,obs.scale = 1, var.scale = 1,
@@ -882,9 +884,10 @@ plot_GC_PCA = function(GC_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "saccharides only",
+         title = "GC-saccharides only",
          subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   
   gg_pca_inc1=
@@ -892,30 +895,32 @@ plot_GC_PCA = function(GC_PCA){
              groups = as.character(GC_PCA$grp$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape=as.character(GC_PCA$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
-         subtitle = "separation by pre inc")+
-    Scale_inc
+         title = "GC-all samples",
+         subtitle = "separation by inc")+
+    Scale_inc+
+    theme_CKM()
   
   gg_pca_inc2=
     ggbiplot(GC_PCA$pca_GC2,obs.scale = 1, var.scale = 1,
              groups = as.character(GC_PCA$grp2$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape=as.character(GC_PCA$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "saccharides only",
+         title = "GC-saccharides only",
          subtitle = "separation by inc")+
-    Scale_inc
+    Scale_inc+
+    theme_CKM()
   
   
 
@@ -1086,6 +1091,8 @@ plot_LC = function(LC_processed){
        LC_neg = LC_neg,
        LC_pos_unknown= LC_pos_unknown,
        LC_neg_unknown=LC_neg_unknown,
+       LC_pos_sac=LC_pos_sac,
+       LC_neg_sac=LC_neg_sac,
        StatsLC= StatsLC
        
   )
@@ -1114,9 +1121,10 @@ plot_LC_PCA = function(LC_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
-         subtitle = "separation by pre pre")+
-    scale_colour_manual(values=cbPalette2)
+         title = "LC-all samples",
+         subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   gg_pca_pre2=
     ggbiplot(LC_PCA$pca_LC2,obs.scale = 1, var.scale = 1,
@@ -1129,9 +1137,10 @@ plot_LC_PCA = function(LC_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "saccharides only",
+         title = "LC-saccharides only",
          subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   
   gg_pca_inc1=
@@ -1139,30 +1148,32 @@ plot_LC_PCA = function(LC_PCA){
              groups = as.character(LC_PCA$grp$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape=as.character(LC_PCA$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "LC-all samples",
          subtitle = "separation by pre inc")+
-    Scale_inc
+    Scale_inc+
+    theme_CKM()
   
   gg_pca_inc2=
     ggbiplot(LC_PCA$pca_LC2,obs.scale = 1, var.scale = 1,
              groups = as.character(LC_PCA$grp2$inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape=as.character(LC_PCA$grp$pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "saccharides only",
+         title = "LC-saccharides only",
          subtitle = "separation by inc")+
-    Scale_inc
+    Scale_inc+
+    theme_CKM()
   
   
   
@@ -1214,24 +1225,26 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "Lipid-all samples",
          subtitle = "separation by pre inc")+
-    scale_colour_manual(values=cbPalette2)
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   gg_pca_inc=
     ggbiplot(Lipid_PCA$pca_Lip,obs.scale = 1, var.scale = 1,
              groups = as.character(Lipid_PCA$grp$Inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape=as.character(Lipid_PCA$grp$Pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "Lipid-all samples",
          subtitle = "separation by inc")+
-    Scale_inc
+    Scale_inc+
+    theme_CKM()
   
   
   gg_pca_pre_pos=
@@ -1245,24 +1258,26 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "positive mode",
+         title = "Lipid-positive mode",
          subtitle = "separation by pre inc")+
-    scale_colour_manual(values=cbPalette2)
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   gg_pca_inc_pos=
     ggbiplot(Lipid_PCA$pca_Lip_pos,obs.scale = 1, var.scale = 1,
              groups = as.character(Lipid_PCA$grp2$Inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape=as.character(Lipid_PCA$grp2$Pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "positive mode",
+         title = "Lipid-positive mode",
          subtitle = "separation by inc pos")+
-    Scale_inc
+    Scale_inc+
+    theme_CKM()
   
   
   
@@ -1278,24 +1293,26 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "negative mode",
+         title = "Lipid-negative mode",
          subtitle = "separation by pre inc")+
-    scale_colour_manual(values=cbPalette2)
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
   
   gg_pca_inc_neg=
     ggbiplot(Lipid_PCA$pca_Lip_neg,obs.scale = 1, var.scale = 1,
              groups = as.character(Lipid_PCA$grp3$Inc), 
              ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
     geom_point(size=3,stroke=1, alpha = 1,
-               aes(#shape = groups,
+               aes(shape = as.character(Lipid_PCA$grp3$Pre),
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "negative mode",
+         title = "Lipid-negative mode",
          subtitle = "separation by inc neg")+
-    Scale_inc
+    Scale_inc+
+    theme_CKM()
   
   
   
@@ -2225,7 +2242,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
   
   
   
-  
+
   
   
   
@@ -2769,30 +2786,40 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
 plot_FTICR_relabund = function(FTICR_relabund){
   
   
+  inc.lab<-c("Pre","2 °C","4 °C","6 °C","8 °C","10 °C")
+  names(inc.lab) <- c("Pre","2","4","6","8","10")
+    
+    
   relabund<-FTICR_relabund$relabund_trt2 %>% 
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10"))) %>%
     ggplot(aes(x = pre, y = rel_abund, fill = Class))+
     geom_bar(stat = "identity")+
-    facet_grid(~inc)+
+    facet_grid(~inc,labeller = labeller(inc =inc.lab ))+
     theme_CKM()+
     ggtitle("relative abundance all")+
-    scale_fill_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
+      xlab("Pre incubation temp (°C)")+
+    scale_fill_manual(values=cbPalette2)
   
   relabund_p<-FTICR_relabund$relabund_trt_p %>% 
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10"))) %>%
     ggplot(aes(x = pre, y = rel_abund, fill = Class))+
     geom_bar(stat = "identity")+
-    facet_grid(~inc)+
+    facet_grid(~inc,labeller = labeller(inc =inc.lab ))+
     theme_CKM()+
     ggtitle("relative abundance polar")+
-    scale_fill_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
+    xlab("Pre incubation temp (°C)")+
+    scale_fill_manual(values=cbPalette2)
   
   
   relabund_np<-FTICR_relabund$relabund_trt_np %>% 
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10"))) %>%
     ggplot(aes(x = pre, y = rel_abund, fill = Class))+
     geom_bar(stat = "identity")+
-    facet_grid(~inc)+
+    facet_grid(~inc,labeller = labeller(inc =inc.lab ))+
     theme_CKM()+
     ggtitle("relative abundance non-polar")+
-    scale_fill_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
+    xlab("Pre incubation temp (°C)")+
+    scale_fill_manual(values=cbPalette2)
   
   
   
@@ -2887,7 +2914,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "FTICR-all samples",
          subtitle = "polar vs. nonpolar")+
     theme_CKM()
   
@@ -2903,7 +2930,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "FTICR-all samples",
          subtitle = "polar vs. nonpolar")+
     theme_CKM()
   
@@ -2920,7 +2947,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "FTICR-all samples",
          subtitle = "polar vs. nonpolar")+
     theme_CKM()
   
@@ -2937,7 +2964,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "FTICR-all samples",
          subtitle = "separation by pre")+
     theme_CKM()
   
@@ -2952,7 +2979,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "all samples",
+         title = "FTICR-all samples",
          subtitle = "separation by inc")+
     Scale_inc+
     theme_CKM()
@@ -2968,7 +2995,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "Polar",
+         title = "FTICR-Polar",
          subtitle = "separation by pre")+
     theme_CKM()+
     NULL
@@ -2984,7 +3011,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "Non-Polar",
+         title = "FTICR-Non-Polar",
          subtitle = "separation by pre")+
     theme_CKM()+
     NULL
@@ -3002,7 +3029,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "Polar",
+         title = "FTICR-Polar",
          subtitle = "separation by inc")+
     Scale_inc+
     theme_CKM()+
@@ -3019,7 +3046,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "Non-Polar",
+         title = "FTICR-Non-Polar",
          subtitle = "separation by inc")+
     Scale_inc+
     theme_CKM()+

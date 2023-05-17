@@ -538,23 +538,28 @@ FTICR_relabund_fun = function(FTICR_processed){
   relabund_cores = 
     fticr_data_longform %>%
     compute_relabund_cores(fticr_meta, TREATMENTS)%>%
-    filter(inc!='NA')
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
+  
   relabund_cores2 = 
     fticr_data_longform %>%
     compute_relabund_cores(fticr_meta, TREATMENTS2)%>%
-    filter(inc!='NA')
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   relabund_cores_p = 
     fticr_data_longform %>%
     filter(Polar=="polar")%>%
     compute_relabund_cores(fticr_meta, TREATMENTS)%>%
-    filter(inc!='NA')
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   relabund_cores_np = 
     fticr_data_longform %>%
     filter(Polar=="nonpolar")%>%
     compute_relabund_cores(fticr_meta, TREATMENTS)%>%
-    filter(inc!='NA')
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
   
   relabund_trt = 
@@ -565,6 +570,7 @@ FTICR_relabund_fun = function(FTICR_processed){
                      relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
     ungroup()  %>% 
     mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
   relabund_trt2 = 
     relabund_cores %>% 
     group_by(!!!TREATMENTS2, Class) %>% 

@@ -457,6 +457,16 @@ click to open
 ![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-3-5.png)<!-- -->
 
     ## 
+    ## $LC_pos_sac
+
+![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-3-6.png)<!-- -->
+
+    ## 
+    ## $LC_neg_sac
+
+![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-3-7.png)<!-- -->
+
+    ## 
     ## $StatsLC
     ## 
     ## 
@@ -1438,7 +1448,7 @@ click to open
 Session Info
 </summary>
 
-Date run: 2023-05-11
+Date run: 2023-05-17
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -1484,8 +1494,8 @@ Date run: 2023-05-11
     ## [57] ggsignif_0.6.4     base64url_1.4      codetools_0.2-19   glue_1.6.2        
     ## [61] evaluate_0.21      data.table_1.14.8  foreach_1.5.2      httpuv_1.6.9      
     ## [65] vctrs_0.6.0        tzdb_0.3.0         gtable_0.3.3       future_1.32.0     
-    ## [69] ggExtra_0.10.0     xfun_0.38          mime_0.12          xtable_1.8-4      
-    ## [73] broom_1.0.4        later_1.3.0        rstatix_0.7.2      iterators_1.0.14  
-    ## [77] cluster_2.1.4      timechange_0.2.0   globals_0.16.2     ellipsis_0.3.2
+    ## [69] xfun_0.38          mime_0.12          xtable_1.8-4       broom_1.0.4       
+    ## [73] later_1.3.0        rstatix_0.7.2      iterators_1.0.14   cluster_2.1.4     
+    ## [77] timechange_0.2.0   globals_0.16.2     ellipsis_0.3.2
 
 </details>

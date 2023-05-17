@@ -885,7 +885,7 @@ Permanova results: Axis class Non-Polar only
 Session Info
 </summary>
 
-Date run: 2023-05-12
+Date run: 2023-05-17
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -914,27 +914,25 @@ Date run: 2023-05-12
     ## [25] tidyverse_2.0.0   tarchetypes_0.7.6 targets_0.14.3   
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] colorspace_2.1-0   ggsignif_0.6.4     ellipsis_0.3.2     snakecase_0.11.0  
-    ##  [5] fs_1.6.2           rstudioapi_0.14    farver_2.1.1       listenv_0.9.0     
-    ##  [9] furrr_0.3.1        fansi_1.0.4        xml2_1.3.4         codetools_0.2-19  
-    ## [13] splines_4.2.3      broom_1.0.4        cluster_2.1.4      shiny_1.7.4       
-    ## [17] compiler_4.2.3     httr_1.4.6         backports_1.4.1    Matrix_1.5-4      
-    ## [21] fastmap_1.1.1      cli_3.6.0          later_1.3.0        htmltools_0.5.4   
-    ## [25] tools_4.2.3        igraph_1.4.1       gtable_0.3.3       glue_1.6.2        
-    ## [29] Rcpp_1.0.10        carData_3.0-5      vctrs_0.6.0        svglite_2.1.1     
-    ## [33] iterators_1.0.14   xfun_0.38          globals_0.16.2     ps_1.7.2          
-    ## [37] rvest_1.0.3        timechange_0.2.0   mime_0.12          miniUI_0.1.1.1    
-    ## [41] lifecycle_1.0.3    rstatix_0.7.2      future_1.32.0      MASS_7.3-60       
-    ## [45] hms_1.1.3          promises_1.2.0.1   parallel_4.2.3     yaml_2.3.7        
-    ## [49] labelled_2.11.0    ggExtra_0.10.0     stringi_1.7.12     highr_0.10        
-    ## [53] klaR_1.7-2         AlgDesign_1.2.1    foreach_1.5.2      systemfonts_1.0.4 
-    ## [57] rlang_1.1.0        pkgconfig_2.0.3    evaluate_0.21      labeling_0.4.2    
-    ## [61] processx_3.8.0     tidyselect_1.2.0   parallelly_1.35.0  magrittr_2.0.3    
-    ## [65] R6_2.5.1           generics_0.1.3     base64url_1.4      combinat_0.0-8    
-    ## [69] pillar_1.9.0       haven_2.5.2        withr_2.5.0        mgcv_1.8-42       
-    ## [73] abind_1.4-5        car_3.1-2          questionr_0.7.8    utf8_1.2.3        
-    ## [77] tzdb_0.3.0         rmarkdown_2.21     future.callr_0.8.1 data.table_1.14.8 
-    ## [81] callr_3.7.3        webshot_0.5.4      digest_0.6.31      xtable_1.8-4      
-    ## [85] httpuv_1.6.9       munsell_0.5.0      viridisLite_0.4.2  kableExtra_1.3.4
+    ##  [1] fs_1.6.2           future.callr_0.8.1 tools_4.2.3        backports_1.4.1   
+    ##  [5] utf8_1.2.3         R6_2.5.1           AlgDesign_1.2.1    mgcv_1.8-42       
+    ##  [9] questionr_0.7.8    colorspace_2.1-0   withr_2.5.0        tidyselect_1.2.0  
+    ## [13] processx_3.8.0     klaR_1.7-2         compiler_4.2.3     cli_3.6.0         
+    ## [17] labeling_0.4.2     callr_3.7.3        digest_0.6.31      rmarkdown_2.21    
+    ## [21] pkgconfig_2.0.3    htmltools_0.5.4    parallelly_1.35.0  labelled_2.11.0   
+    ## [25] highr_0.10         fastmap_1.1.1      rlang_1.1.0        rstudioapi_0.14   
+    ## [29] shiny_1.7.4        farver_2.1.1       generics_0.1.3     combinat_0.0-8    
+    ## [33] car_3.1-2          magrittr_2.0.3     Matrix_1.5-4       Rcpp_1.0.10       
+    ## [37] munsell_0.5.0      fansi_1.0.4        abind_1.4-5        lifecycle_1.0.3   
+    ## [41] furrr_0.3.1        stringi_1.7.12     yaml_2.3.7         snakecase_0.11.0  
+    ## [45] carData_3.0-5      MASS_7.3-60        promises_1.2.0.1   parallel_4.2.3    
+    ## [49] listenv_0.9.0      miniUI_0.1.1.1     haven_2.5.2        splines_4.2.3     
+    ## [53] hms_1.1.3          ps_1.7.2           pillar_1.9.0       igraph_1.4.1      
+    ## [57] ggsignif_0.6.4     base64url_1.4      codetools_0.2-19   glue_1.6.2        
+    ## [61] evaluate_0.21      data.table_1.14.8  foreach_1.5.2      httpuv_1.6.9      
+    ## [65] vctrs_0.6.0        tzdb_0.3.0         gtable_0.3.3       future_1.32.0     
+    ## [69] ggExtra_0.10.0     xfun_0.38          mime_0.12          xtable_1.8-4      
+    ## [73] broom_1.0.4        later_1.3.0        rstatix_0.7.2      iterators_1.0.14  
+    ## [77] cluster_2.1.4      timechange_0.2.0   globals_0.16.2     ellipsis_0.3.2
 
 </details>
