@@ -9,7 +9,7 @@ FTICR
 click to open
 </summary>
 
-### FTICR Van krevalin diagrams:
+### FTICR Van krevelen diagrams:
 
 <details>
 <summary>
@@ -215,7 +215,11 @@ unsaturated/lignin
 </tr>
 </tbody>
 </table>
-![](FTICR_files/figure-gfm/unnamed-chunk-3-4.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-3-5.png)<!-- -->
+
+![](FTICR_files/figure-gfm/unnamed-chunk-3-4.png)<!-- -->
+
+    ## NULL
+
 <table>
 <thead>
 <tr>
@@ -451,7 +455,9 @@ click to open
 | condensed aromatic |   1 |  NA |  NA |  NA |   4 |  NA |
 | unsaturated/lignin |  33 |   3 |   9 |   4 |   8 |   2 |
 
-![](FTICR_files/figure-gfm/unnamed-chunk-4-4.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-4-5.png)<!-- -->
+![](FTICR_files/figure-gfm/unnamed-chunk-4-4.png)<!-- -->
+
+    ## NULL
 
 | Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -6_10 |
 |:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|
@@ -649,7 +655,11 @@ unsaturated/lignin
 </tr>
 </tbody>
 </table>
-![](FTICR_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->
+
+![](FTICR_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
+
+    ## NULL
+
 <table>
 <thead>
 <tr>
@@ -885,7 +895,7 @@ Permanova results: Axis class Non-Polar only
 Session Info
 </summary>
 
-Date run: 2023-05-17
+Date run: 2023-05-23
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

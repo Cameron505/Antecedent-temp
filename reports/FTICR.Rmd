@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE,
 <details>
   <summary>click to open</summary>
 
-### FTICR  Van krevalin diagrams:
+### FTICR  Van krevelen diagrams:
 
 <details>
   <summary>click to open</summary>

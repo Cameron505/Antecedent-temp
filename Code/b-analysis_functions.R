@@ -956,8 +956,6 @@ plot_LC = function(LC_processed){
   
   
   
-  
-  
   statResAnova <- imd_anova(LC_processed$metab_final, test_method = "anova")
   
   StatsLC<-statResAnova %>%
@@ -968,6 +966,9 @@ plot_LC = function(LC_processed){
   Means<-LC_data_composite %>%
     separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
     filter(!row_number() %in% c(1226:12075,13056:19915))
+  
+  
+  
   
   Means_unknown<-LC_data_composite %>%
     separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
@@ -1244,6 +1245,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "Lipid-all samples",
          subtitle = "separation by inc")+
     Scale_inc+
+    scale_colour_manual(values=cbPalette2)+
     theme_CKM()
   
   
@@ -1277,6 +1279,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "Lipid-positive mode",
          subtitle = "separation by inc pos")+
     Scale_inc+
+    scale_colour_manual(values=cbPalette2)+
     theme_CKM()
   
   
@@ -1335,11 +1338,12 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     knitr::kable()
   
   Means<-Lipid_PCA$Lipid_data_composite %>%
-    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))
+    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
+    mutate(Inc = replace(Inc, Inc == "T0", "Pre"))
   
   
   Lipid_pos<-Means%>%
-    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+    mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
            Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="pos")%>%
     ggplot(aes(x = Inc, y = value, color = Pre))+
@@ -1358,7 +1362,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   
   
   Lipid_neg<-Means%>%
-    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+    mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
            Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="neg")%>%
     ggplot(aes(x = Inc, y = value, color = Pre))+
@@ -1419,7 +1423,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
       "PG(15:0/16:0)_B"))
   
   Lipid_neg2<-Means3%>%
-    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+    mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
            Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="neg")%>%
     ggplot(aes(x = Inc, y = value, color = Pre))+
@@ -1437,7 +1441,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
 
   
   Lipid_pos2<-Means2%>%
-    mutate(Inc = factor(Inc, levels=c("T0","2","4","6","8","10")),
+    mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
            Pre = factor(Pre,levels=c("-2","-6"))) %>%
     filter(MODE=="pos")%>%
     ggplot(aes(x = Inc, y = value, color = Pre))+
@@ -1521,14 +1525,14 @@ plot_FTICR = function(FTICR_processed){
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_grid(inc ~ Polar)+
     theme_CKM()+
-    ggtitle("van krevelen diagram seperated by incubation and colored by pre-incubation")
+    ggtitle("van krevelen diagram separated by incubation and colored by pre-incubation")
   
   gg_vk_all_pre = 
     gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = inc))+
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_grid(Polar ~ pre)+
     theme_CKM()+
-    ggtitle("van krevelen diagram colored by incubation and seperated by pre-incubation")
+    ggtitle("van krevelen diagram colored by incubation and separated by pre-incubation")
 
   
   
@@ -1944,14 +1948,14 @@ plot_FTICR_vk = function(FTICR_processed){
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_grid(inc ~ Polar)+
     theme_CKM()+
-    ggtitle("van krevelen diagram seperated by incubation and colored by pre-incubation")
+    ggtitle("van krevelen diagram separated by incubation and colored by pre-incubation")
   
   gg_vk_all_pre = 
     gg_vankrev(fticr_hcoc, aes(x = OC, y = HC, color = inc))+
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_grid(Polar ~ pre)+
     theme_CKM()+
-    ggtitle("van krevelen diagram colored by incubation and seperated by pre-incubation")
+    ggtitle("van krevelen diagram colored by incubation and separated by pre-incubation")
   
   
   
@@ -2202,7 +2206,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     labs(title = "common peaks")+
     theme_CKM()
   
-  gg_common_unique_sep_inc_pre_seperated = 
+  gg_common_unique_sep_inc_pre_separated = 
     FTICR_inc_unique_by_pre %>%
     mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
@@ -2210,7 +2214,8 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    labs(title = "Unique peaks by pre separated by incubation temp first")+
+    guides(alpha= FALSE)+
     theme_CKM()
   
   gg_common_unique_sep_inc_pre = 
@@ -2221,7 +2226,8 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    labs(title = "Unique peaks by pre separated by incubation temp first")+
+    guides(alpha= FALSE)+
     theme_CKM()
   
   fticr_unique_summary_sep_inc_pre = 
@@ -2259,7 +2265,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
        fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
        gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
        fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre,
-       gg_common_unique_sep_inc_pre_seperated=gg_common_unique_sep_inc_pre_seperated
+       gg_common_unique_sep_inc_pre_separated=gg_common_unique_sep_inc_pre_separated
        
        
        
@@ -2465,7 +2471,7 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     labs(title = "common peaks polar")+
     theme_CKM()
   
-  gg_common_unique_sep_inc_pre_seperated = 
+  gg_common_unique_sep_inc_pre_separated = 
     FTICR_inc_unique_by_pre %>%
     mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
@@ -2473,7 +2479,8 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    labs(title = "Unique peaks by pre separated by inc first")+
+    guides(alpha= FALSE)+
     theme_CKM()
   
   gg_common_unique_sep_inc_pre = 
@@ -2484,7 +2491,8 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    labs(title = "Polar: Unique peaks by pre separated by inc first")+
+    guides(alpha= FALSE)+
     theme_CKM()
   
   fticr_unique_summary_sep_inc_pre = 
@@ -2522,7 +2530,7 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
     gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
     fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre,
-    gg_common_unique_sep_inc_pre_seperated=gg_common_unique_sep_inc_pre_seperated
+    gg_common_unique_sep_inc_pre_separated=gg_common_unique_sep_inc_pre_separated
      )
   
 }
@@ -2722,7 +2730,7 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     labs(title = "common peaks nonpolar")+
     theme_CKM()
   
-  gg_common_unique_sep_inc_pre_seperated = 
+  gg_common_unique_sep_inc_pre_separated = 
     FTICR_inc_unique_by_pre %>%
     mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
            pre = factor(pre,levels=c("-2","-6"))) %>%
@@ -2730,7 +2738,8 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    labs(title = "Unique peaks by pre separated by inc first")+
+    guides(alpha= FALSE)+
     theme_CKM()
   
   gg_common_unique_sep_inc_pre = 
@@ -2741,7 +2750,8 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Unique peaks by pre seperated by incubation temp first")+
+    labs(title = "Non Polar: Unique peaks by pre separated by inc first")+
+    guides(alpha= FALSE)+
     theme_CKM()
   
   fticr_unique_summary_sep_inc_pre = 
@@ -2777,7 +2787,7 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     fticr_unique_summary_inc_pre=fticr_unique_summary_inc_pre,
     gg_common_unique_sep_inc_pre=gg_common_unique_sep_inc_pre,
     fticr_unique_summary_sep_inc_pre=fticr_unique_summary_sep_inc_pre,
-    gg_common_unique_sep_inc_pre_seperated=gg_common_unique_sep_inc_pre_seperated
+    gg_common_unique_sep_inc_pre_separated=gg_common_unique_sep_inc_pre_separated
   )
   
 }
@@ -2789,6 +2799,8 @@ plot_FTICR_relabund = function(FTICR_relabund){
   inc.lab<-c("Pre","2 °C","4 °C","6 °C","8 °C","10 °C")
   names(inc.lab) <- c("Pre","2","4","6","8","10")
     
+  
+  
     
   relabund<-FTICR_relabund$relabund_trt2 %>% 
     mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10"))) %>%
@@ -2823,7 +2835,7 @@ plot_FTICR_relabund = function(FTICR_relabund){
   
   
   
-  
+
   
   
   

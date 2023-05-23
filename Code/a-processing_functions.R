@@ -667,6 +667,52 @@ FTICR_relabund_fun = function(FTICR_processed){
   
   
   
+  
+  #### ANOVAs on relative abundances
+  
+  
+  
+  fit_aov = function(A){
+    
+    a = aov(relabund ~ pre, data = A)
+    broom::tidy(a) %>% 
+      na.omit()%>%
+      dplyr::select(`p.value`) %>% 
+      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
+  }    
+  
+  
+  
+  
+  Total_Relabund_aov = 
+    relabund_cores %>% 
+    group_by(inc, Class) %>% 
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")))%>%
+    knitr::kable()
+  
+  
+  
+  Polar_Relabund_aov = 
+    relabund_cores_p %>% 
+    group_by(inc, Class) %>% 
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")))%>%
+    knitr::kable()
+  
+  
+  NonPolar_Relabund_aov = 
+    relabund_cores_np %>% 
+    group_by(inc, Class) %>% 
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")))%>%
+    knitr::kable()
+  
+  
+  
   list(relabund_trt2=relabund_trt2,
        relabund_trt=relabund_trt,
        relabund_trt_p=relabund_trt_p,
@@ -678,7 +724,11 @@ FTICR_relabund_fun = function(FTICR_processed){
        relabund_cores=relabund_cores,
        relabund_cores_p=relabund_cores_p,
        relabund_cores_np=relabund_cores_np,
-       relabund_wide_PolarVnonPolar=relabund_wide_PolarVnonPolar
+       relabund_wide_PolarVnonPolar=relabund_wide_PolarVnonPolar,
+       Total_Relabund_aov=Total_Relabund_aov,
+       Polar_Relabund_aov=Polar_Relabund_aov,
+       NonPolar_Relabund_aov=NonPolar_Relabund_aov
+       
     
   )
   

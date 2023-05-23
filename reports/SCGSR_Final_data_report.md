@@ -1503,7 +1503,7 @@ Permanova results neg
 click to open
 </summary>
 
-### FTICR Van krevalin diagrams:
+### FTICR Van krevelen diagrams:
 
 <details>
 <summary>
@@ -1936,7 +1936,10 @@ NA
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-6.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-5.png)<!-- -->
+
+    ## NULL
+
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -2195,7 +2198,10 @@ click to open
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-6.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-5.png)<!-- -->
+
+    ## NULL
+
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -2782,7 +2788,10 @@ NA
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-6.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-5.png)<!-- -->
+
+    ## NULL
+
 <table>
 <caption>
 Unique between preincubation temperatures at each incubation temperature
@@ -3015,7 +3024,92 @@ click to open
 click to open
 </summary>
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+
+| inc | Class              |   p.value | asterisk |
+|:----|:-------------------|----------:|:---------|
+| Pre | aliphatic          | 0.2093738 | NA       |
+| Pre | aromatic           | 0.0510643 | NA       |
+| Pre | condensed aromatic | 0.0071149 | \*       |
+| Pre | unsaturated/lignin | 0.2458422 | NA       |
+| 2   | aliphatic          | 0.0660417 | NA       |
+| 2   | aromatic           | 0.1158111 | NA       |
+| 2   | condensed aromatic | 0.0000172 | \*       |
+| 2   | unsaturated/lignin | 0.0691490 | NA       |
+| 4   | aliphatic          | 0.1509268 | NA       |
+| 4   | aromatic           | 0.0976994 | NA       |
+| 4   | condensed aromatic | 0.9180557 | NA       |
+| 4   | unsaturated/lignin | 0.1485223 | NA       |
+| 6   | aliphatic          | 0.1152613 | NA       |
+| 6   | aromatic           | 0.2157247 | NA       |
+| 6   | condensed aromatic | 0.0321850 | \*       |
+| 6   | unsaturated/lignin | 0.1112067 | NA       |
+| 8   | aliphatic          | 0.4175795 | NA       |
+| 8   | aromatic           | 0.1449162 | NA       |
+| 8   | condensed aromatic | 0.0103817 | \*       |
+| 8   | unsaturated/lignin | 0.4650701 | NA       |
+| 10  | aliphatic          | 0.4986083 | NA       |
+| 10  | aromatic           | 0.9248260 | NA       |
+| 10  | condensed aromatic | 0.5820435 | NA       |
+| 10  | unsaturated/lignin | 0.4806927 | NA       |
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->
+
+| inc | Class              |   p.value | asterisk |
+|:----|:-------------------|----------:|:---------|
+| Pre | aliphatic          | 0.0050814 | \*       |
+| Pre | aromatic           | 0.0000004 | \*       |
+| Pre | condensed aromatic | 0.0000000 | \*       |
+| Pre | unsaturated/lignin | 0.6677599 | NA       |
+| 2   | aliphatic          | 0.0468925 | \*       |
+| 2   | aromatic           | 0.0004110 | \*       |
+| 2   | condensed aromatic | 0.0000000 | \*       |
+| 2   | unsaturated/lignin | 0.0335681 | \*       |
+| 4   | aliphatic          | 0.0503274 | NA       |
+| 4   | aromatic           | 0.6832084 | NA       |
+| 4   | condensed aromatic | 0.0000000 | \*       |
+| 4   | unsaturated/lignin | 0.5241315 | NA       |
+| 6   | aliphatic          | 0.9114361 | NA       |
+| 6   | aromatic           | 0.0086044 | \*       |
+| 6   | condensed aromatic | 0.0001500 | \*       |
+| 6   | unsaturated/lignin | 0.1133068 | NA       |
+| 8   | aliphatic          | 0.4505523 | NA       |
+| 8   | aromatic           | 0.0002515 | \*       |
+| 8   | condensed aromatic | 0.0000004 | \*       |
+| 8   | unsaturated/lignin | 0.0087129 | \*       |
+| 10  | aliphatic          | 0.0233339 | \*       |
+| 10  | aromatic           | 0.0000022 | \*       |
+| 10  | condensed aromatic | 0.1738067 | NA       |
+| 10  | unsaturated/lignin | 0.8538746 | NA       |
+
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->
+
+| inc | Class              |   p.value | asterisk |
+|:----|:-------------------|----------:|:---------|
+| Pre | aliphatic          | 0.5691289 | NA       |
+| Pre | aromatic           | 0.0360432 | \*       |
+| Pre | condensed aromatic | 0.0011877 | \*       |
+| Pre | unsaturated/lignin | 0.7515522 | NA       |
+| 2   | aliphatic          | 0.0010902 | \*       |
+| 2   | aromatic           | 0.0086945 | \*       |
+| 2   | condensed aromatic | 0.0003813 | \*       |
+| 2   | unsaturated/lignin | 0.0015464 | \*       |
+| 4   | aliphatic          | 0.0644581 | NA       |
+| 4   | aromatic           | 0.0000049 | \*       |
+| 4   | condensed aromatic | 0.0704758 | NA       |
+| 4   | unsaturated/lignin | 0.1312235 | NA       |
+| 6   | aliphatic          | 0.0024186 | \*       |
+| 6   | aromatic           | 0.0000609 | \*       |
+| 6   | condensed aromatic | 0.0112483 | \*       |
+| 6   | unsaturated/lignin | 0.0045287 | \*       |
+| 8   | aliphatic          | 0.0222275 | \*       |
+| 8   | aromatic           | 0.0000512 | \*       |
+| 8   | condensed aromatic | 0.0013826 | \*       |
+| 8   | unsaturated/lignin | 0.0569638 | NA       |
+| 10  | aliphatic          | 0.0261894 | \*       |
+| 10  | aromatic           | 0.0000001 | \*       |
+| 10  | condensed aromatic | 0.0015232 | \*       |
+| 10  | unsaturated/lignin | 0.0654967 | NA       |
 
 </details>
 
@@ -3101,7 +3195,7 @@ Permanova results: Axis Polar
 Session Info
 </summary>
 
-Date run: 2023-05-17
+Date run: 2023-05-23
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

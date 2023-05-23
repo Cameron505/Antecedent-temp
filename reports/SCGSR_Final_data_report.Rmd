@@ -4,6 +4,7 @@ output:
   github_document:
   html_preview: true
   always_allow_html: true
+  
 date: "2023-05-03"
 ---
 
@@ -217,7 +218,7 @@ tar_read(gg_Lipid)$permanova_Lipid_all3
 <details>
   <summary>click to open</summary>
 
-### FTICR  Van krevalin diagrams:
+### FTICR  Van krevelen diagrams:
 
 <details>
   <summary>click to open</summary>
@@ -335,8 +336,11 @@ tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_sep_inc_pre
 
 ```{r , fig.height=6, fig.width=9}
 tar_read(gg_FTICR_relabund)$relabund
+tar_read(FTICR_relabund)$Total_Relabund_aov
 tar_read(gg_FTICR_relabund)$relabund_p
+tar_read(FTICR_relabund)$Polar_Relabund_aov
 tar_read(gg_FTICR_relabund)$relabund_np
+tar_read(FTICR_relabund)$NonPolar_Relabund_aov
 ```
 
 </details>
