@@ -1460,6 +1460,28 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   
   Stat_plot<-plot(statResAnova)
   
+
+  Lipid_heat_map <- Means%>%
+    mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6")),
+           class= factor(class, levels=c("Sphingolipid","Prenol Lipid","Glycerophospholipid","Glycerolipid"))) %>%
+    group_by(class)%>%
+    ggplot(aes( Pre,Lipid)) +                           # Create heatmap with ggplot2
+    geom_tile(aes(fill = value))+
+    scale_fill_gradient(low = "#00FFFF", high = "#FF1493")+
+    facet_grid(class~ Inc, scales="free")+
+    ggtitle("Heat map for each lipid")
+  
+  class_heat_map <- Means%>%
+    mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6"))) %>%
+    ggplot(aes( Pre,class)) +                           # Create heatmap with ggplot2
+    geom_tile(aes(fill = value))+
+    scale_fill_gradient(low = "#00FFFF", high = "#FF1493")+
+    facet_grid(~Inc)+
+    ggtitle("Heat map of Lipids by class")
+  
+  
   list(Stat_plot = Stat_plot,
        Lipid_pos = Lipid_pos,
        Lipid_neg = Lipid_neg,
@@ -1474,7 +1496,9 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
        permanova_Lipid_all=permanova_Lipid_all,
        permanova_Lipid_all2=permanova_Lipid_all2,
        permanova_Lipid_all3=permanova_Lipid_all3,
-       StatsLipid=StatsLipid
+       StatsLipid=StatsLipid,
+       Lipid_heat_map=Lipid_heat_map,
+       class_heat_map=class_heat_map
        
        
   )
@@ -2021,7 +2045,58 @@ plot_FTICR_unique_all = function(FTICR_processed){
     left_join(dplyr::select(fticr_meta, formula, HC, OC), by = "formula")%>%
     mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
   
-  #All
+  #All 
+  
+  ## Unique and common by Polar vs non polar
+  fticr_unique_polar = 
+    fticr_hcoc %>% 
+    distinct(formula, HC,Polar, OC) %>% 
+    group_by(formula) %>% 
+    dplyr::mutate(n = n())
+  gg_common = 
+    fticr_unique_polar %>% filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "common peaks")+
+    theme_CKM()
+  fticr_common_summary = 
+    fticr_unique_polar %>% 
+    filter(n == 2) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(Class) %>% 
+    dplyr::summarise(counts = n()/2)%>%
+    knitr::kable(caption = "Common peaks between polar and non polar")
+  
+  gg_unique_polar =
+    fticr_unique_polar %>% filter(n == 1) %>% 
+    gg_vankrev(aes(x = OC, y = HC, color = Polar))+
+    stat_ellipse(level = 0.90, show.legend = FALSE)+
+    labs(title = "Unique peaks by Polar")+
+    theme_CKM()
+  
+  
+  
+  gg_common_unique = 
+    fticr_unique_polar %>%
+    filter(n == 2) %>% 
+    gg_vankrev(aes(x = OC, y = HC))+
+    geom_point(data = fticr_unique_polar %>% filter(n == 1),
+               aes(color = Polar), alpha = 0.7)+
+    facet_wrap(~Polar)+
+    labs(title = "Unique peaks by Polar",
+         subtitle = "black/grey = peaks common to all")+
+    theme_CKM()
+  
+  
+  
+  fticr_unique_summary = 
+    fticr_unique_polar %>% 
+    filter(n == 1) %>% 
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(Polar, Class) %>% 
+    dplyr::summarise(counts = n())%>%
+    pivot_wider(names_from = Polar, values_from = counts)%>%
+    knitr::kable()
   
   ## Unique peaks  by pre
   

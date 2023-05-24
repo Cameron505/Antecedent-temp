@@ -105,9 +105,11 @@ tar_read(gg_GC)$StatsGC
 
 
 ```{r , fig.height=6, fig.width=9}
+NULL
 tar_read(gg_GC_PCA)$gg_pca_pre1
 tar_read(gg_GC_PCA)$gg_pca_inc1
 tar_read(gg_GC_PCA)$permanova_GC_all
+NULL
 tar_read(gg_GC_PCA)$gg_pca_pre2
 tar_read(gg_GC_PCA)$gg_pca_inc2
 tar_read(gg_GC_PCA)$permanova_GC_all2
@@ -151,9 +153,11 @@ tar_read(gg_LC)$StatsLC
 
 
 ```{r , fig.height=6, fig.width=9}
+NULL
 tar_read(gg_LC_PCA)$gg_pca_pre1
 tar_read(gg_LC_PCA)$gg_pca_inc1
 tar_read(gg_LC_PCA)$permanova_LC_all
+NULL
 tar_read(gg_LC_PCA)$gg_pca_pre2
 tar_read(gg_LC_PCA)$gg_pca_inc2
 tar_read(gg_LC_PCA)$permanova_LC_all2
@@ -194,13 +198,15 @@ tar_read(gg_Lipid)$StatsLipid
 <details>
   <summary>click to open</summary>
 ```{r , fig.height=6, fig.width=9}
-
+NULL
 tar_read(gg_Lipid)$gg_pca_pre
 tar_read(gg_Lipid)$gg_pca_inc
 tar_read(gg_Lipid)$permanova_Lipid_all
+NULL
 tar_read(gg_Lipid)$gg_pca_pre_pos
 tar_read(gg_Lipid)$gg_pca_inc_pos
 tar_read(gg_Lipid)$permanova_Lipid_all2
+NULL
 tar_read(gg_Lipid)$gg_pca_pre_neg
 tar_read(gg_Lipid)$gg_pca_inc_neg
 tar_read(gg_Lipid)$permanova_Lipid_all3
@@ -335,10 +341,13 @@ tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_sep_inc_pre
   <summary>click to open</summary>
 
 ```{r , fig.height=6, fig.width=9}
+NULL
 tar_read(gg_FTICR_relabund)$relabund
 tar_read(FTICR_relabund)$Total_Relabund_aov
+NULL
 tar_read(gg_FTICR_relabund)$relabund_p
 tar_read(FTICR_relabund)$Polar_Relabund_aov
+NULL
 tar_read(gg_FTICR_relabund)$relabund_np
 tar_read(FTICR_relabund)$NonPolar_Relabund_aov
 ```
@@ -352,20 +361,23 @@ tar_read(FTICR_relabund)$NonPolar_Relabund_aov
 
 
 ```{r , fig.height=6, fig.width=6}
+NULL
 tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar
 tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar_pre
 tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar_inc
 tar_read(gg_FTICR_permanova)$permanova_fticr_all_with_polar
 tar_read(gg_FTICR_permanova)$permanova_fticr_all
-
+NULL
 
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_polar
    tar_read(gg_FTICR_PCA)$gg_pca_by_inc_polar
    tar_read(gg_FTICR_permanova)$permanova_fticr_polar
+   NULL
    
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
   tar_read(gg_FTICR_PCA)$gg_pca_by_inc_nonpolar
   tar_read(gg_FTICR_permanova)$permanova_fticr_nonpolar
+  NULL
   
   
   tar_read(gg_FTICR_PCA)$gg_pca_polarVnonpolar_pre

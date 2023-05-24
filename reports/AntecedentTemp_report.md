@@ -17,46 +17,885 @@ also sent to PNNL for more comprehensive analysis of organic matter
 using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also
 performed to ascertain if there were any significant shifts lipids.
 
-| Replicate | Pre.incubation | Incubation.ID | Incubation.temperauture | ID              | UUID                                 | X   |
-|----------:|---------------:|:--------------|------------------------:|:----------------|:-------------------------------------|:----|
-|         1 |             -2 | A             |                       2 | A-2-1           | 8656c258-a0e4-4755-81ed-f1d862112621 | NA  |
-|         2 |             -2 | A             |                       2 | A-2-2           | 04cbe581-cd60-44ff-8322-e3c9d0f83b9b | NA  |
-|         3 |             -2 | A             |                       2 | A-2-3           | 5476356e-c64f-4057-80c1-f75c811fd36e | NA  |
-|         1 |             -6 | A             |                       2 | A-6-1           | 23e00139-06b9-4e24-9999-02f36c313389 | NA  |
-|         2 |             -6 | A             |                       2 | A-6-2           | 0377bae3-d808-4dde-a8a3-9b68d5ef26de | NA  |
-|         3 |             -6 | A             |                       2 | A-6-3           | 537028bc-b721-4650-9b07-7e9a120a86d5 | NA  |
-|         1 |             -2 | B             |                       4 | B-2-1           | 440dba45-293d-4a1b-bd7e-25ab39357fa2 | NA  |
-|         2 |             -2 | B             |                       4 | B-2-2           | 8245ad28-be7f-4252-a46d-5fd861c420f5 | NA  |
-|         3 |             -2 | B             |                       4 | B-2-3           | 1d3baff5-e4c8-4a89-a6c1-8cff831fec47 | NA  |
-|         1 |             -6 | B             |                       4 | B-6-1           | a045cdb7-4657-4366-ab08-a49b9c9780ae | NA  |
-|         2 |             -6 | B             |                       4 | B-6-2           | ed8616cf-0423-43c6-a1dd-ec97431309c9 | NA  |
-|         3 |             -6 | B             |                       4 | B-6-3           | 44e660ac-df81-410a-b264-e345291f1872 | NA  |
-|         1 |             -2 | C             |                       6 | C-2-1           | dd528c4e-3d60-40c8-b3a6-accce911cbf9 | NA  |
-|         2 |             -2 | C             |                       6 | C-2-2           | 3efde34c-2e51-4560-bfcb-164de36e563e | NA  |
-|         3 |             -2 | C             |                       6 | C-2-3           | 96d60bed-37ab-4d96-818d-e43353b81425 | NA  |
-|         1 |             -6 | C             |                       6 | C-6-1           | d8d73f99-589b-4559-97b6-107d71c0688c | NA  |
-|         2 |             -6 | C             |                       6 | C-6-2           | fce12027-06e4-41d8-9c98-645c90cdf058 | NA  |
-|         3 |             -6 | C             |                       6 | C-6-3           | 580e2f97-ae86-4b45-ae91-5f8be28d57f1 | NA  |
-|         1 |             -2 | D             |                       8 | D-2-1           | a3edfe91-4286-4ded-9d74-6e59008a0f0b | NA  |
-|         2 |             -2 | D             |                       8 | D-2-2           | 587708ea-5a51-49ee-b7b2-aaff43016145 | NA  |
-|         3 |             -2 | D             |                       8 | D-2-3           | 571d8331-5027-49c6-9ee0-362ed7654dc5 | NA  |
-|         1 |             -6 | D             |                       8 | D-6-1           | 48c5aae9-6684-4f19-bea2-28698eed6d5b | NA  |
-|         2 |             -6 | D             |                       8 | D-6-2           | dc8d0e75-f57d-4236-9ef5-523c6bd7e2e1 | NA  |
-|         3 |             -6 | D             |                       8 | D-6-3           | da4b7b0d-51ea-43e9-9db0-768352f0dc52 | NA  |
-|         1 |             -2 | E             |                      10 | E-2-1           | 51bdcfb0-b98e-4b6d-9271-f857553c99ee | NA  |
-|         2 |             -2 | E             |                      10 | E-2-2           | 1c00ea1c-ab85-41b9-9713-7f74f1aaa2fb | NA  |
-|         3 |             -2 | E             |                      10 | E-2-3           | 4270be4e-67fc-4f42-811c-bb85d271bf86 | NA  |
-|         1 |             -6 | E             |                      10 | E-6-1           | a5f82baa-555e-48ef-bc79-8febae160345 | NA  |
-|         2 |             -6 | E             |                      10 | E-6-2           | 3bac6092-7564-4731-8411-8b5f2df33f3f | NA  |
-|         3 |             -6 | E             |                      10 | E-6-3           | cefe1d73-c95e-430f-a38a-130e61f11fc9 | NA  |
-|         1 |             -2 | Pre           |                      -2 | Pre-2-1         | 0301b210-e061-4847-8236-55b4604e86b9 | NA  |
-|         2 |             -2 | Pre           |                      -2 | Pre-2-2         | d07b9001-0b93-4a1a-92b7-70b238a58a2c | NA  |
-|         3 |             -2 | Pre           |                      -2 | Pre-2-3         | 392fb7a7-e664-482e-90e7-87a2b5fbaa6e | NA  |
-|         1 |             -6 | Pre           |                      -6 | Pre-6-1         | 504ecbd1-d7bc-4c8f-9ec9-1d345bff218d | NA  |
-|         2 |             -6 | Pre           |                      -6 | Pre-6-2         | a389c91b-9593-4b0f-84e7-b911e099c3e3 | NA  |
-|         3 |             -6 | Pre           |                      -6 | Pre-6-3         | dec78bde-1a26-4368-a537-5b480888b90b | NA  |
-|        NA |             NA |               |                      NA | Source material | e6b98a07-c63b-47a7-b872-e99320205b34 | NA  |
-
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Replicate
+</th>
+<th style="text-align:right;">
+Pre.incubation
+</th>
+<th style="text-align:left;">
+Incubation.ID
+</th>
+<th style="text-align:right;">
+Incubation.temperauture
+</th>
+<th style="text-align:left;">
+ID
+</th>
+<th style="text-align:left;">
+UUID
+</th>
+<th style="text-align:left;">
+X
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A-2-1
+</td>
+<td style="text-align:left;">
+8656c258-a0e4-4755-81ed-f1d862112621
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A-2-2
+</td>
+<td style="text-align:left;">
+04cbe581-cd60-44ff-8322-e3c9d0f83b9b
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A-2-3
+</td>
+<td style="text-align:left;">
+5476356e-c64f-4057-80c1-f75c811fd36e
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A-6-1
+</td>
+<td style="text-align:left;">
+23e00139-06b9-4e24-9999-02f36c313389
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A-6-2
+</td>
+<td style="text-align:left;">
+0377bae3-d808-4dde-a8a3-9b68d5ef26de
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A-6-3
+</td>
+<td style="text-align:left;">
+537028bc-b721-4650-9b07-7e9a120a86d5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B-2-1
+</td>
+<td style="text-align:left;">
+440dba45-293d-4a1b-bd7e-25ab39357fa2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B-2-2
+</td>
+<td style="text-align:left;">
+8245ad28-be7f-4252-a46d-5fd861c420f5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B-2-3
+</td>
+<td style="text-align:left;">
+1d3baff5-e4c8-4a89-a6c1-8cff831fec47
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B-6-1
+</td>
+<td style="text-align:left;">
+a045cdb7-4657-4366-ab08-a49b9c9780ae
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B-6-2
+</td>
+<td style="text-align:left;">
+ed8616cf-0423-43c6-a1dd-ec97431309c9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B-6-3
+</td>
+<td style="text-align:left;">
+44e660ac-df81-410a-b264-e345291f1872
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C-2-1
+</td>
+<td style="text-align:left;">
+dd528c4e-3d60-40c8-b3a6-accce911cbf9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C-2-2
+</td>
+<td style="text-align:left;">
+3efde34c-2e51-4560-bfcb-164de36e563e
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C-2-3
+</td>
+<td style="text-align:left;">
+96d60bed-37ab-4d96-818d-e43353b81425
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C-6-1
+</td>
+<td style="text-align:left;">
+d8d73f99-589b-4559-97b6-107d71c0688c
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C-6-2
+</td>
+<td style="text-align:left;">
+fce12027-06e4-41d8-9c98-645c90cdf058
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C-6-3
+</td>
+<td style="text-align:left;">
+580e2f97-ae86-4b45-ae91-5f8be28d57f1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+D-2-1
+</td>
+<td style="text-align:left;">
+a3edfe91-4286-4ded-9d74-6e59008a0f0b
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+D-2-2
+</td>
+<td style="text-align:left;">
+587708ea-5a51-49ee-b7b2-aaff43016145
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+D-2-3
+</td>
+<td style="text-align:left;">
+571d8331-5027-49c6-9ee0-362ed7654dc5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+D-6-1
+</td>
+<td style="text-align:left;">
+48c5aae9-6684-4f19-bea2-28698eed6d5b
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+D-6-2
+</td>
+<td style="text-align:left;">
+dc8d0e75-f57d-4236-9ef5-523c6bd7e2e1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+D-6-3
+</td>
+<td style="text-align:left;">
+da4b7b0d-51ea-43e9-9db0-768352f0dc52
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+E-2-1
+</td>
+<td style="text-align:left;">
+51bdcfb0-b98e-4b6d-9271-f857553c99ee
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+E-2-2
+</td>
+<td style="text-align:left;">
+1c00ea1c-ab85-41b9-9713-7f74f1aaa2fb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+E-2-3
+</td>
+<td style="text-align:left;">
+4270be4e-67fc-4f42-811c-bb85d271bf86
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+E-6-1
+</td>
+<td style="text-align:left;">
+a5f82baa-555e-48ef-bc79-8febae160345
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+E-6-2
+</td>
+<td style="text-align:left;">
+3bac6092-7564-4731-8411-8b5f2df33f3f
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+E-6-3
+</td>
+<td style="text-align:left;">
+cefe1d73-c95e-430f-a38a-130e61f11fc9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Pre-2-1
+</td>
+<td style="text-align:left;">
+0301b210-e061-4847-8236-55b4604e86b9
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Pre-2-2
+</td>
+<td style="text-align:left;">
+d07b9001-0b93-4a1a-92b7-70b238a58a2c
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Pre-2-3
+</td>
+<td style="text-align:left;">
+392fb7a7-e664-482e-90e7-87a2b5fbaa6e
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+Pre-6-1
+</td>
+<td style="text-align:left;">
+504ecbd1-d7bc-4c8f-9ec9-1d345bff218d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+Pre-6-2
+</td>
+<td style="text-align:left;">
+a389c91b-9593-4b0f-84e7-b911e099c3e3
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+Pre
+</td>
+<td style="text-align:right;">
+-6
+</td>
+<td style="text-align:left;">
+Pre-6-3
+</td>
+<td style="text-align:left;">
+dec78bde-1a26-4368-a537-5b480888b90b
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Source material
+</td>
+<td style="text-align:left;">
+e6b98a07-c63b-47a7-b872-e99320205b34
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
 </details>
 
 ------------------------------------------------------------------------
@@ -592,7 +1431,7 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-05-03
+Date run: 2023-05-23
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -614,34 +1453,48 @@ Date run: 2023-05-03
     ## other attached packages:
     ##  [1] pmartR_2.3.0      agricolae_1.3-5   knitr_1.42        nlme_3.1-162     
     ##  [5] cowplot_1.1.1     ggpubr_0.6.0      janitor_2.2.0     pracma_2.4.2     
-    ##  [9] reshape2_1.4.4    ggbiplot_0.55     scales_1.2.1      plyr_1.8.8       
+    ##  [9] reshape2_1.4.4    ggbiplot_0.55     scales_1.2.1.9000 plyr_1.8.8       
     ## [13] vegan_2.6-4       lattice_0.20-45   permute_0.9-7     lubridate_1.9.2  
     ## [17] forcats_1.0.0     stringr_1.5.0     dplyr_1.1.1       purrr_1.0.1      
-    ## [21] readr_2.1.4       tidyr_1.3.0       tibble_3.2.1      ggplot2_3.4.2    
-    ## [25] tidyverse_2.0.0   tarchetypes_0.7.5 targets_0.14.3   
+    ## [21] readr_2.1.4       tidyr_1.3.0       tibble_3.2.1      ggplot2_3.4.1    
+    ## [25] tidyverse_2.0.0   tarchetypes_0.7.6 targets_0.14.3   
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] colorspace_2.1-0   ggsignif_0.6.4     ellipsis_0.3.2     snakecase_0.11.0  
-    ##  [5] fs_1.6.1           rstudioapi_0.14    farver_2.1.1       listenv_0.9.0     
-    ##  [9] furrr_0.3.1        fansi_1.0.4        codetools_0.2-19   splines_4.2.3     
-    ## [13] cachem_1.0.7       polynom_1.4-1      jsonlite_1.8.4     broom_1.0.4       
-    ## [17] cluster_2.1.4      shiny_1.7.4        compiler_4.2.3     backports_1.4.1   
-    ## [21] Matrix_1.5-3       fastmap_1.1.1      cli_3.6.0          later_1.3.0       
-    ## [25] htmltools_0.5.4    tools_4.2.3        igraph_1.4.1       gtable_0.3.3      
-    ## [29] glue_1.6.2         Rcpp_1.0.10        carData_3.0-5      jquerylib_0.1.4   
-    ## [33] vctrs_0.6.0        iterators_1.0.14   xfun_0.38          globals_0.16.2    
-    ## [37] ps_1.7.2           timechange_0.2.0   mime_0.12          miniUI_0.1.1.1    
-    ## [41] lifecycle_1.0.3    rstatix_0.7.2      future_1.32.0      MASS_7.3-58.2     
-    ## [45] hms_1.1.2          promises_1.2.0.1   parallel_4.2.3     yaml_2.3.7        
-    ## [49] sass_0.4.5         labelled_2.10.0    ggExtra_0.10.0     stringi_1.7.12    
-    ## [53] highr_0.10         klaR_1.7-1         AlgDesign_1.2.1    foreach_1.5.2     
-    ## [57] rlang_1.1.0        pkgconfig_2.0.3    evaluate_0.20      labeling_0.4.2    
-    ## [61] processx_3.8.0     tidyselect_1.2.0   parallelly_1.35.0  magrittr_2.0.3    
-    ## [65] R6_2.5.1           generics_0.1.3     base64url_1.4      combinat_0.0-8    
-    ## [69] pillar_1.9.0       haven_2.5.2        withr_2.5.0        mgcv_1.8-42       
-    ## [73] abind_1.4-5        car_3.1-1          questionr_0.7.8    utf8_1.2.3        
-    ## [77] tzdb_0.3.0         rmarkdown_2.21     future.callr_0.8.1 data.table_1.14.8 
-    ## [81] callr_3.7.3        digest_0.6.31      xtable_1.8-4       httpuv_1.6.9      
-    ## [85] munsell_0.5.0      bslib_0.4.2
+    ##   [1] readxl_1.4.2       backports_1.4.1    systemfonts_1.0.4 
+    ##   [4] igraph_1.4.1       splines_4.2.3      AlgDesign_1.2.1   
+    ##   [7] listenv_0.9.0      digest_0.6.31      foreach_1.5.2     
+    ##  [10] htmltools_0.5.4    fansi_1.0.4        magrittr_2.0.3    
+    ##  [13] base64url_1.4      cluster_2.1.4      tzdb_0.3.0        
+    ##  [16] globals_0.16.2     svglite_2.1.1      timechange_0.2.0  
+    ##  [19] colorspace_2.1-0   rvest_1.0.3        rrcov_1.7-2       
+    ##  [22] haven_2.5.2        xfun_0.38          callr_3.7.3       
+    ##  [25] Exact_3.2          iterators_1.0.14   glue_1.6.2        
+    ##  [28] kableExtra_1.3.4   gtable_0.3.3       webshot_0.5.4     
+    ##  [31] questionr_0.7.8    car_3.1-2          DEoptimR_1.0-13   
+    ##  [34] abind_1.4-5        mvtnorm_1.1-3      rstatix_0.7.2     
+    ##  [37] miniUI_0.1.1.1     Rcpp_1.0.10        viridisLite_0.4.2 
+    ##  [40] xtable_1.8-4       proxy_0.4-27       stats4_4.2.3      
+    ##  [43] httr_1.4.6         ellipsis_0.3.2     pkgconfig_2.0.3   
+    ##  [46] farver_2.1.1       utf8_1.2.3         tidyselect_1.2.0  
+    ##  [49] labeling_0.4.2     rlang_1.1.0        later_1.3.0       
+    ##  [52] polynom_1.4-1      munsell_0.5.0      cellranger_1.1.0  
+    ##  [55] tools_4.2.3        cli_3.6.0          generics_0.1.3    
+    ##  [58] broom_1.0.4        evaluate_0.21      fastmap_1.1.1     
+    ##  [61] yaml_2.3.7         processx_3.8.0     fs_1.6.2          
+    ##  [64] robustbase_0.95-1  future.callr_0.8.1 rootSolve_1.8.2.3 
+    ##  [67] future_1.32.0      mime_0.12          xml2_1.3.4        
+    ##  [70] compiler_4.2.3     rstudioapi_0.14    e1071_1.7-13      
+    ##  [73] ggsignif_0.6.4     klaR_1.7-2         DescTools_0.99.48 
+    ##  [76] pcaPP_2.0-3        stringi_1.7.12     highr_0.10        
+    ##  [79] ps_1.7.2           Matrix_1.5-4       vctrs_0.6.0       
+    ##  [82] pillar_1.9.0       lifecycle_1.0.3    furrr_0.3.1       
+    ##  [85] combinat_0.0-8     data.table_1.14.8  PNWColors_0.1.0   
+    ##  [88] lmom_2.9           httpuv_1.6.9       R6_2.5.1          
+    ##  [91] promises_1.2.0.1   parallelly_1.35.0  gld_2.6.6         
+    ##  [94] codetools_0.2-19   boot_1.3-28.1      MASS_7.3-60       
+    ##  [97] withr_2.5.0        mgcv_1.8-42        expm_0.999-7      
+    ## [100] parallel_4.2.3     hms_1.1.3          labelled_2.11.0   
+    ## [103] class_7.3-22       rmarkdown_2.21     snakecase_0.11.0  
+    ## [106] carData_3.0-5      shiny_1.7.4
 
 </details>
