@@ -16,10 +16,7 @@ library(pmartR)
 # install_github("vqv/ggbiplot")
 #install_github("haozhu233/kableExtra")
 
-
-
 # custom ggplot theme
-
 
 cbPalette <- c("#888888","#FF1493","#00FFFF" , "#117733", "#332288", "#AA4499", 
                         "#44AA99", "#882255", "#661100", "#6699CC","#DDCC77")
