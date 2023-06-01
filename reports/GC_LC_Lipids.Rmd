@@ -2,7 +2,9 @@
 title: "GC_LC_Lipids"
 output: 
   github_document:
-  html_preview: true
+  html_preview: TRUE
+  always_allow_html: TRUE
+  
 date: "2023-04-25"
 ---
 
@@ -70,7 +72,7 @@ tar_read(gg_LC_PCA)
  
 
 ```{r , fig.height=6, fig.width=9}
-
+NULL
 tar_read(gg_Lipid)
 
 ```

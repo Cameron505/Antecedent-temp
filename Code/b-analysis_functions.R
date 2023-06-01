@@ -311,8 +311,45 @@ nutrients_data_long = nutrients_data %>%
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Ammonium")
- # y = bquote('Ammonium ('*mu*'g '*NH[4]^"+"~-N~g^-1 ~ dry ~ soil*')'))+
   
+  gg_NH4_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = NH4, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(5.3,5.8), size=2)+
+    stat_regline_equation(label.y=c(5.5,6.1), size=2)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Ammonium")
+
+  
+  #Calulating P-value between lines
+  nutrients_data2<-nutrients_data%>%
+    mutate(Inc_temp = replace(Inc_temp, Inc_temp == "Pre", "0"),
+           Inc_temp = as.numeric(as.character(Inc_temp)))
+    
+  lm1 = lm(NH4 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
+  lm2 = lm(NH4 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
+  b1 <- summary(lm1)$coefficients[2,1]
+  se1 <- summary(lm1)$coefficients[2,2]
+  b2 <- summary(lm2)$coefficients[2,1]
+  se2 <- summary(lm2)$coefficients[2,2]
+  p_value_NH4 = 2*pnorm(-abs(compare.coeff(b1,se1,b2,se2)))
+  p_value_NH4 
   
   
   gg_NO3 =
@@ -332,14 +369,45 @@ nutrients_data_long = nutrients_data %>%
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
     ggtitle("Nitrate")
   #y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
   
-  
+  gg_NO3_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = NO3, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(33,35), size=2)+
+    stat_regline_equation(label.y=c(34,36), size=2)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Nitrate")
+  #Calulating P-value between lines
+  lm1 = lm(NO3 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
+  lm2 = lm(NO3 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
+  b1 <- summary(lm1)$coefficients[2,1]
+  se1 <- summary(lm1)$coefficients[2,2]
+  b2 <- summary(lm2)$coefficients[2,1]
+  se2 <- summary(lm2)$coefficients[2,2]
+  p_value_NO3 = 2*pnorm(-abs(compare.coeff(b1,se1,b2,se2)))
+  p_value_NO3 
   
   gg_TFPA =
     nutrients_data %>%
@@ -364,7 +432,29 @@ nutrients_data_long = nutrients_data %>%
     ggtitle("Total free primary amines")
   #y = bquote(atop('Total free primary amines-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
   
-  
+  gg_TFPA_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = TFPA, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(130,138), size=2)+
+    stat_regline_equation(label.y=c(134,142), size=2)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
+    labs(color='pre_inc temp') +
+    ggtitle("Total free primary amines")
   
   gg_TRS =
     nutrients_data %>%
@@ -389,6 +479,41 @@ nutrients_data_long = nutrients_data %>%
     ggtitle("Total reducing sugars")
   #y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
   
+  
+  gg_TRS_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = TRS, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(0.55,0.61), size=2)+
+    stat_regline_equation(label.y=c(0.58,0.64), size=2)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Total reducing sugars")
+  
+  #Calulating P-value between lines
+  lm1 = lm(TRS ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
+  lm2 = lm(TRS ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
+  b1 <- summary(lm1)$coefficients[2,1]
+  se1 <- summary(lm1)$coefficients[2,2]
+  b2 <- summary(lm2)$coefficients[2,1]
+  se2 <- summary(lm2)$coefficients[2,2]
+  p_value_TRS = 2*pnorm(-abs(compare.coeff(b1,se1,b2,se2)))
+  p_value_TRS
+  
   gg_PO4 =
     nutrients_data %>%
     mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
@@ -412,7 +537,31 @@ nutrients_data_long = nutrients_data %>%
     labs(color='pre_inc temp') +
     ggtitle("Phosphate")
   #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
-  
+  gg_PO4_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = PO4, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(0.55,0.61), size=2)+
+    stat_regline_equation(label.y=c(0.58,0.64), size=2)+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
+    labs(color='pre_inc temp') +
+    ggtitle("Phosphate")
+  #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
   
   
   Nutrient_legend = get_legend(gg_NH4+ guides(color = guide_legend(nrow = 1)) +
@@ -435,7 +584,13 @@ gg_N_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.1)
        #"Total free primary amines" = gg_TFPA,
        #"Phosphate" = gg_PO4,
        "Total reducing sugars" = gg_TRS,
-       "Nutrient combined"=gg_N_Legend
+       "Nutrient combined"=gg_N_Legend,
+       gg_NH4_2=gg_NH4_2,
+       gg_NO3_2=gg_NO3_2,
+       gg_TFPA_2=gg_TFPA_2,
+       gg_TRS_2=gg_TRS_2,
+       gg_PO4_2=gg_PO4_2
+       
   )
   
 }
@@ -483,6 +638,10 @@ plot_MicrobialBiomass = function(nutrients_data){
     filter(Incubation.ID!=c("Pre","Pre-Pre"))%>%
     do(fit_aov2(.)) 
     
+  nutrients_data2<-nutrients_data%>%
+    mutate(Inc_temp = replace(Inc_temp, Inc_temp == "Pre", "0"),
+           Inc_temp = as.numeric(as.character(Inc_temp)))
+  
   
   nutrients_data[nutrients_data == "none"] <- "T0"  
   
@@ -538,6 +697,84 @@ plot_MicrobialBiomass = function(nutrients_data){
   #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
   
   
+  
+  
+  
+  
+  
+  gg_MBC_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = MBC, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(810,830), size=2)+
+    stat_regline_equation(label.y=c(820,840), size=2)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
+    labs(color='pre_inc temp') +
+    ggtitle("Microbial biomass C")
+  #y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1 ~ dry ~ soil*')'))))+
+  
+  #Calulating P-value between lines
+  lm1 = lm(MBC ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
+  lm2 = lm(MBC ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
+  b1 <- summary(lm1)$coefficients[2,1]
+  se1 <- summary(lm1)$coefficients[2,2]
+  b2 <- summary(lm2)$coefficients[2,1]
+  se2 <- summary(lm2)$coefficients[2,2]
+  p_value_MBC = 2*pnorm(-abs(compare.coeff(b1,se1,b2,se2)))
+  p_value_MBC 
+  
+  
+  
+  gg_MBN_2 =
+    nutrients_data %>%
+    mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
+           pre_inc = factor(pre_inc,levels=c("T0","-2","-6"))) %>%
+    ggplot(aes(x = Inc_temp, y = MBN, color = pre_inc, group = pre_inc, fill = pre_inc))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc_temp, pre_inc)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    stat_smooth(method= "lm")+
+    stat_cor(label.y=c(130,140), size=2)+
+    stat_regline_equation(label.y=c(135,145), size=2)+
+    theme_light()+
+    scale_colour_manual(values=cbPalette)+
+    scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
+    labs(x = "Incubation Temp. (°C)", 
+         y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
+    labs(color='pre_inc temp') +
+    ggtitle("Microbial biomass N")
+  #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
+  
+  #Calulating P-value between lines
+  lm1 = lm(MBN ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
+  lm2 = lm(MBN ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
+  b1 <- summary(lm1)$coefficients[2,1]
+  se1 <- summary(lm1)$coefficients[2,2]
+  b2 <- summary(lm2)$coefficients[2,1]
+  se2 <- summary(lm2)$coefficients[2,2]
+  p_value_MBN = 2*pnorm(-abs(compare.coeff(b1,se1,b2,se2)))
+  p_value_MBN 
+    
+    
   biomass_legend = get_legend(gg_MBC+ guides(color = guide_legend(nrow = 1)) +
                                  theme(legend.position = "bottom"))
   gg_Biomasscombine= plot_grid(
@@ -770,6 +1007,50 @@ plot_GC = function(GC_processed){
     knitr::kable()
   
   
+  
+  fit_aov = function(LASTRES){
+    
+    a = aov(value ~ pre, data = LASTRES)
+    broom::tidy(a) %>% 
+      filter(term == "pre") 
+    
+  }  
+  fit_lm = function(LASTRES){
+    
+    a = lm(value ~ inc, data = LASTRES)
+    broom::tidy(a)  
+    
+  }  
+  
+  GC_aov = 
+    GC_data_composite %>% 
+    group_by(inc,Metabolites) %>% 
+    filter(pre !="none")%>%
+    na.omit()%>%
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")))%>%
+    dplyr::select(`p.value`,'Metabolites','inc')
+  
+  GC_data_composite2<-GC_data_composite%>%
+    mutate(inc = replace(inc, inc == "pre", "0"),
+           inc = as.numeric(as.character(inc)))  
+  
+  
+  GC_lm = 
+    GC_data_composite2 %>% 
+    group_by(pre,Metabolites) %>% 
+    do(fit_lm(.)) %>%
+    filter(term =="inc")%>%
+    # factor the Inc_temp so they can line up in the graph
+    dplyr::select(`p.value`,'Metabolites','pre')
+  
+  
+  Means_all<-GC_data_composite2 %>%
+    mutate( Known=case_when(grepl("Unknown", Metabolites) ~ "Unkown"))%>%
+    replace_na(list(Known="Known"))%>%
+    left_join(GC_lm, by= c("Metabolites","pre"))
+  
   Means<- GC_data_composite %>%
     filter(!row_number() %in% c(2959:11390))
   Means_unknown<- GC_data_composite %>%
@@ -781,6 +1062,21 @@ plot_GC = function(GC_processed){
     filter(Main.class %in% c("Oligosaccharides","Monosaccharides","Disaccharides"))
   
   
+    GC_all<-Means_all%>%
+    mutate(inc = factor(inc, levels=c("0","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+      facet_trelliscope(~ Metabolites , nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "GC compounds")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("GC compounds")
   
   GC<-Means%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
@@ -963,6 +1259,33 @@ plot_LC = function(LC_processed){
     knitr::kable()
   
   
+  
+
+    
+  LC_data_composite2<-LC_data_composite%>%
+    mutate(inc = replace(inc, inc == "pre", "0"),
+           inc = as.numeric(as.character(inc)))  
+  
+  
+  LC_lm = 
+    LC_data_composite2 %>% 
+    separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
+    group_by(pre,Metabolite) %>% 
+    do(fit_lm(.)) %>%
+    filter(term =="inc")%>%
+    # factor the Inc_temp so they can line up in the graph
+    dplyr::select(`p.value`,'Metabolite','pre')
+    
+  
+  Means_all<-LC_data_composite2 %>%
+    separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
+    mutate( Known=case_when(grepl("Unknown", Metabolite) ~ "Unkown"))%>%
+    replace_na(list(Known="Known"))%>%
+    left_join(LC_lm, by= c("Metabolite","pre")) 
+  
+  
+  
+  
   Means<-LC_data_composite %>%
     separate_wider_delim(Name2, "_", names=c("Metabolite","MODE"))%>%
     filter(!row_number() %in% c(1226:12075,13056:19915))
@@ -975,6 +1298,28 @@ plot_LC = function(LC_processed){
     filter(!row_number() %in% c(1:1225,12076:13055))
   Means_sac<-Means%>%
     filter(Main.class %in% c("Oligosaccharides","Monosaccharides","Disaccharides"))
+  
+
+  
+  
+    LC_all<-Means_all%>%
+    mutate(inc = factor(inc, levels=c("0","2","4","6","8","10")),
+           pre = factor(pre,levels=c("-2","-6"))) %>%
+    ggplot(aes(x = inc, y = value, color = pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    geom_point(position = position_dodge(width = 1), size = 3)+
+      facet_trelliscope(~ Metabolite + MODE, nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "LC compounds")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("LC")
+    
+    
+    
     
   LC_pos<-Means%>%
     mutate(inc = factor(inc, levels=c("pre","2","4","6","8","10")),
@@ -1317,18 +1662,6 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     Scale_inc+
     theme_CKM()
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   statResAnova <- imd_anova(Lipid_processed$metab_final, test_method = "anova")
   
   StatsLC<-statResAnova %>%
@@ -1337,10 +1670,50 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   StatsLipid<-statResAnova %>%
     knitr::kable()
   
+  
+  fit_lm2 = function(LASTRES){
+    
+    a = lm(value ~ Inc, data = LASTRES)
+    broom::tidy(a)  
+    
+  }    
+
+  Means_all<-Lipid_PCA$Lipid_data_composite %>%
+    separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
+    mutate(Inc = replace(Inc, Inc == "T0", "0"),
+           Inc = as.numeric(as.character(Inc)))
+  
+  Lipid_lm = 
+    Means_all %>% 
+    group_by(Pre,Lipid) %>% 
+    do(fit_lm2(.)) %>%
+    filter(term =="Inc")%>%
+    # factor the Inc_temp so they can line up in the graph
+    dplyr::select(`p.value`,"Lipid",'Pre')
+  
+  Means_all2<- Means_all%>%
+    left_join(Lipid_lm, by= c("Lipid","Pre"))
+  
+  
   Means<-Lipid_PCA$Lipid_data_composite %>%
     separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
     mutate(Inc = replace(Inc, Inc == "T0", "Pre"))
   
+  Lipid_all<-Means_all2%>%
+    mutate(Inc = factor(Inc, levels=c("0","2","4","6","8","10")),
+           Pre = factor(Pre,levels=c("-2","-6"))) %>%
+    ggplot(aes(x = Inc, y = value, color = Pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(Inc, Pre)))+
+    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    facet_trelliscope(~ Lipid + MODE, nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "Lipids")+
+    theme_light()+
+    scale_colour_manual(values=cbPalette2)+
+    ggtitle("Lipids")
   
   Lipid_pos<-Means%>%
     mutate(Inc = factor(Inc, levels=c("Pre","2","4","6","8","10")),
@@ -1357,7 +1730,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
-    ggtitle("LC_pos known compound means")
+    ggtitle("Lipid_pos")
   
   
   
@@ -1376,7 +1749,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
-    ggtitle("LC_neg known compound means")
+    ggtitle("Lipid_neg")
   
   Means2<-Means %>%
     filter(Lipid%in%c("DGDG(14:0/16:1)",
@@ -1483,6 +1856,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
   
   
   list(Stat_plot = Stat_plot,
+       #Lipid_all = Lipid_all,
        Lipid_pos = Lipid_pos,
        Lipid_neg = Lipid_neg,
        Lipid_pos2=Lipid_pos2,

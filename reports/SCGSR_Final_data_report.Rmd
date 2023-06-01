@@ -1,9 +1,10 @@
 ---
 title: "SCGSR final report"
 output: 
-  github_document:
-  html_preview: true
-  always_allow_html: true
+  #github_document:
+  #html_preview: true
+  #always_allow_html: true
+  pdf_document:
   
 date: "2023-05-03"
 ---
@@ -83,6 +84,9 @@ tar_read(Stats_Table)$all_aov4
 <details>
   <summary>click to open</summary>
   
+  Below is the relative quantification of compounds identified by gas chromatography within the MPLEx extracts.Little to no variation was identified that corresponds to the more broad metrics above in the soil nutrient section. The majority of compounds measured were unidentified.  
+  
+  
 <details>
   <summary>click to open</summary>
 
@@ -127,7 +131,9 @@ tar_read(gg_GC_PCA)$permanova_GC_all2
 
 <details>
   <summary>click to open</summary>
- 
+  
+   Below is the relative quantification of compounds identified by liquid chromatography within the MPLEx extracts.Little to no variation was identified that corresponds to the more broad metrics above in the soil nutrient section. The majority of compounds measured were unidentified.  
+   
  <details>
   <summary>click to open</summary>
 
@@ -176,6 +182,8 @@ tar_read(gg_LC_PCA)$permanova_LC_all2
 
 <details>
   <summary>click to open</summary>
+  
+ Lipid analysis was done via liquid chrometography on MEPLEx extracts. Some variation was identified between pre-incubation temperatures, though little was biologically significant. Conclusion that small changes in biomass were present but not significant. A big missing piece to this analysis would be community composition.
  
 <details>
   <summary>click to open</summary>
@@ -223,6 +231,8 @@ tar_read(gg_Lipid)$permanova_Lipid_all3
 
 <details>
   <summary>click to open</summary>
+
+FTICR was performed on MEPLEx extracts to gain a qualitative understanding of the changes in organic matter composition after the incubation. There appear to be differences between pre-incubation temperatures, particularly in terms of the number of unique compounds, which could be indicative of microbial processing of organic matter and production of new organic compounds. 
 
 ### FTICR  Van krevelen diagrams:
 

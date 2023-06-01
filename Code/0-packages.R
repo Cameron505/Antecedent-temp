@@ -10,6 +10,7 @@ library(nlme)
 library(knitr)
 library(agricolae)
 library(pmartR)
+library(trelliscopejs)
 
 # to install {ggbiplot}:
 # library(devtools)
@@ -63,3 +64,14 @@ ggplotRegression <- function (fit) {
                                     " P =",signif(summary(fit)$coef[2,4], 5)))
    }
 
+compare.coeff <- function(b1,se1,b2,se2){
+  return((b1-b2)/sqrt(se1^2+se2^2))
+}
+
+
+fit_lm = function(LASTRES){
+  
+  a = lm(value ~ inc, data = LASTRES)
+  broom::tidy(a)  
+  
+}    
