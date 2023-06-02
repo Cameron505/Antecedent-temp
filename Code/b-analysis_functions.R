@@ -846,7 +846,7 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
     mutate(pre_inc = "-2") %>% 
     # factor the Inc_temp so they can line up in the graph
     mutate(Inc_temp = factor(Inc_temp, levels=c("Pre","-2","-6","2","4","6","8","10")))%>%
-    knitr::kable("simple")
+    knitr::kable("simple", caption = "ANOVA")
   
   fit_aov2 = function(nutrients_data){
     a = aov(conc ~ pre_inc*Inc_temp, data = nutrients_data)

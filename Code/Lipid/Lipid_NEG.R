@@ -70,11 +70,12 @@ plot(statResAnova2)
 write.csv(statResAnova2, "Data/lipids/stats_NEGLipid_pre_and_inc.csv", quote = F, row.names = F)
 
 
+
 StatsLCNEG_all<-statResAnova2 %>%
   select(1:25,98,111,113,136,137,152,164,177,179,202,203,218)
 write.csv(StatsLCNEG_all, "Data/LC/stats_NEGLipids_pre_and_inc_compare_at_inc.csv", quote = F, row.names = F)
 
-
+plot(statResAnova2, plot_type = 'fcheatmap')
 
 Means<-statResAnova2 %>%
   select(1, 14:25)%>%

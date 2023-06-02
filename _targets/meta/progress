@@ -32,7 +32,8 @@ LC_processed|stem|LC_processed|0|skipped
 FTICR_processed|stem|FTICR_processed|0|skipped
 Lipid_processed|stem|Lipid_processed|0|skipped
 GC_processed|stem|GC_processed|0|skipped
-Stats_Table|stem|Stats_Table|0|skipped
+Stats_Table|stem|Stats_Table|0|started
+Stats_Table|stem|Stats_Table|0|built
 gg_respiration|stem|gg_respiration|0|skipped
 LC_PCA|stem|LC_PCA|0|skipped
 gg_LC|stem|gg_LC|0|skipped
@@ -45,7 +46,8 @@ gg_FTICR_unique|stem|gg_FTICR_unique|0|skipped
 Lipid_PCA|stem|Lipid_PCA|0|skipped
 gg_GC|stem|gg_GC|0|skipped
 GC_PCA|stem|GC_PCA|0|skipped
-report|stem|report|0|skipped
+report|stem|report|0|started
+report|stem|report|0|built
 gg_LC_PCA|stem|gg_LC_PCA|0|skipped
 gg_FTICR_permanova|stem|gg_FTICR_permanova|0|skipped
 gg_FTICR_PCA|stem|gg_FTICR_PCA|0|skipped
@@ -55,4 +57,4 @@ gg_GC_PCA|stem|gg_GC_PCA|0|skipped
 report3|stem|report3|0|skipped
 report2|stem|report2|0|skipped
 report4|stem|report4|0|started
-report4|stem|report4|0|errored
+report4|stem|report4|0|built

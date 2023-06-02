@@ -1,10 +1,9 @@
 ---
 title: "SCGSR final report"
 output: 
-  #github_document:
-  #html_preview: true
-  #always_allow_html: true
-  pdf_document:
+  github_document:
+  html_preview: true
+  always_allow_html: true
   
 date: "2023-05-03"
 ---
@@ -38,7 +37,13 @@ Respiration measurements were taken daily during the incubation using a Li-850 b
 
 ```{r , fig.height=6, fig.width=9}
 tar_read(gg_respiration)$gg_N_Legend
+
+"Linear mixed effects model. JD2 is incubation day,Inc_temp is incubation temperature, pre_inc is the pre incubation temperature "
+
 tar_read(Stats_Table)$"Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"
+
+"ANOVA results comparing total respiration at the end of incubation.pre_inc is the pre incubation temperature, Inc_temp is the incubation temperature"
+
 tar_read(Stats_Table)$LastRES_aov
 ```
 

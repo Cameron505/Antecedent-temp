@@ -77,12 +77,16 @@ each sample, as well as the calculates total C respired.
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
+    ## [1] "Linear mixed effects model. JD2 is incubation day,Inc_temp is incubation temperature, pre_inc is the pre incubation temperature "
+
 |           n | umDF d | enDF |  F-value   |  p-value  |
 |------------:|--------|:-----|:----------:|:---------:|
 | (Intercept) | 1      | 149  | 673.355930 | 0.0000000 |
 |         JD2 | 1      | 149  | 40.135389  | 0.0000000 |
 |    Inc_temp | 1      | 27   | 91.448720  | 0.0000000 |
 |     pre_inc | 1      | 27   |  6.956082  | 0.0136884 |
+
+    ## [1] "ANOVA results comparing total respiration at the end of incubation.pre_inc is the pre incubation temperature, Inc_temp is the incubation temperature"
 
     ##             Df Sum Sq Mean Sq F value   Pr(>F)    
     ## pre_inc      1  10682   10682   22.84 5.51e-05 ***
@@ -5003,7 +5007,7 @@ NA
 Session Info
 </summary>
 
-Date run: 2023-06-01
+Date run: 2023-06-02
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -5035,35 +5039,40 @@ Date run: 2023-06-01
     ## [28] targets_0.14.3     
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] colorspace_2.1-0        ggsignif_0.6.4          ellipsis_0.3.2         
-    ##  [4] mclust_6.0.0            snakecase_0.11.0        base64enc_0.1-3        
-    ##  [7] fs_1.6.2                rstudioapi_0.14         farver_2.1.1           
-    ## [10] listenv_0.9.0           furrr_0.3.1             fansi_1.0.4            
-    ## [13] codetools_0.2-19        splines_4.2.3           jsonlite_1.8.4         
-    ## [16] broom_1.0.4             cluster_2.1.4           shiny_1.7.4            
-    ## [19] compiler_4.2.3          backports_1.4.1         Matrix_1.5-4           
-    ## [22] fastmap_1.1.1           cli_3.6.0               later_1.3.0            
-    ## [25] htmltools_0.5.4         prettyunits_1.1.1       tools_4.2.3            
-    ## [28] igraph_1.4.1            gtable_0.3.3            glue_1.6.2             
-    ## [31] Rcpp_1.0.10             carData_3.0-5           vctrs_0.6.0            
-    ## [34] iterators_1.0.14        autocogs_0.1.4          xfun_0.38              
-    ## [37] globals_0.16.2          ps_1.7.2                timechange_0.2.0       
-    ## [40] mime_0.12               miniUI_0.1.1.1          lifecycle_1.0.3        
-    ## [43] rstatix_0.7.2           future_1.32.0           MASS_7.3-60            
-    ## [46] DistributionUtils_0.6-0 hms_1.1.3               promises_1.2.0.1       
-    ## [49] parallel_4.2.3          yaml_2.3.7              labelled_2.11.0        
-    ## [52] ggExtra_0.10.0          stringi_1.7.12          highr_0.10             
-    ## [55] klaR_1.7-2              AlgDesign_1.2.1         foreach_1.5.2          
-    ## [58] checkmate_2.2.0         rlang_1.1.0             pkgconfig_2.0.3        
-    ## [61] evaluate_0.21           labeling_0.4.2          processx_3.8.0         
-    ## [64] tidyselect_1.2.0        parallelly_1.35.0       magrittr_2.0.3         
-    ## [67] R6_2.5.1                generics_0.1.3          base64url_1.4          
-    ## [70] combinat_0.0-8          pillar_1.9.0            haven_2.5.2            
-    ## [73] withr_2.5.0             mgcv_1.8-42             abind_1.4-5            
-    ## [76] crayon_1.5.2            car_3.1-2               questionr_0.7.8        
-    ## [79] utf8_1.2.3              rmarkdown_2.21          tzdb_0.3.0             
-    ## [82] future.callr_0.8.1      progress_1.2.2          data.table_1.14.8      
-    ## [85] callr_3.7.3             webshot_0.5.4           digest_0.6.31          
-    ## [88] xtable_1.8-4            httpuv_1.6.9            munsell_0.5.0
+    ##   [1] colorspace_2.1-0        ggsignif_0.6.4          class_7.3-22           
+    ##   [4] ellipsis_0.3.2          mclust_6.0.0            snakecase_0.11.0       
+    ##   [7] base64enc_0.1-3         fs_1.6.2                gld_2.6.6              
+    ##  [10] proxy_0.4-27            rstudioapi_0.14         farver_2.1.1           
+    ##  [13] listenv_0.9.0           furrr_0.3.1             mvtnorm_1.1-3          
+    ##  [16] fansi_1.0.4             codetools_0.2-19        splines_4.2.3          
+    ##  [19] rootSolve_1.8.2.3       polynom_1.4-1           jsonlite_1.8.4         
+    ##  [22] broom_1.0.4             cluster_2.1.4           shiny_1.7.4            
+    ##  [25] httr_1.4.6              compiler_4.2.3          backports_1.4.1        
+    ##  [28] Matrix_1.5-4            fastmap_1.1.1           cli_3.6.0              
+    ##  [31] later_1.3.0             htmltools_0.5.4         prettyunits_1.1.1      
+    ##  [34] tools_4.2.3             igraph_1.4.1            lmom_2.9               
+    ##  [37] gtable_0.3.3            glue_1.6.2              Rcpp_1.0.10            
+    ##  [40] carData_3.0-5           cellranger_1.1.0        vctrs_0.6.0            
+    ##  [43] iterators_1.0.14        autocogs_0.1.4          xfun_0.38              
+    ##  [46] globals_0.16.2          ps_1.7.2                timechange_0.2.0       
+    ##  [49] mime_0.12               miniUI_0.1.1.1          lifecycle_1.0.3        
+    ##  [52] rstatix_0.7.2           future_1.32.0           MASS_7.3-60            
+    ##  [55] DistributionUtils_0.6-0 hms_1.1.3               promises_1.2.0.1       
+    ##  [58] parallel_4.2.3          expm_0.999-7            Exact_3.2              
+    ##  [61] yaml_2.3.7              labelled_2.11.0         ggExtra_0.10.0         
+    ##  [64] stringi_1.7.12          highr_0.10              klaR_1.7-2             
+    ##  [67] AlgDesign_1.2.1         foreach_1.5.2           e1071_1.7-13           
+    ##  [70] checkmate_2.2.0         boot_1.3-28.1           rlang_1.1.0            
+    ##  [73] pkgconfig_2.0.3         evaluate_0.21           labeling_0.4.2         
+    ##  [76] processx_3.8.0          tidyselect_1.2.0        parallelly_1.35.0      
+    ##  [79] magrittr_2.0.3          R6_2.5.1                DescTools_0.99.48      
+    ##  [82] generics_0.1.3          base64url_1.4           combinat_0.0-8         
+    ##  [85] pillar_1.9.0            haven_2.5.2             withr_2.5.0            
+    ##  [88] mgcv_1.8-42             abind_1.4-5             crayon_1.5.2           
+    ##  [91] car_3.1-2               questionr_0.7.8         utf8_1.2.3             
+    ##  [94] rmarkdown_2.21          tzdb_0.3.0              future.callr_0.8.1     
+    ##  [97] progress_1.2.2          readxl_1.4.2            data.table_1.14.8      
+    ## [100] callr_3.7.3             webshot_0.5.4           digest_0.6.31          
+    ## [103] xtable_1.8-4            httpuv_1.6.9            munsell_0.5.0
 
 </details>
