@@ -33,6 +33,21 @@ compute_relabund_cores = function(fticr_data_longform, fticr_meta, TREATMENTS){
                   relabund  = round((abund/total)*100,2))
 }
 
+
+compute_relabund_cores2 = function(fticr_data_longform, fticr_meta, TREATMENTS){
+  fticr_data_longform %>% 
+    # add the Class column to the data
+    left_join(dplyr::select(fticr_meta, formula, Class, Class_detailed), by = "formula") %>% 
+    # calculate abundance of each Class as the sum of all counts
+    group_by(CoreID, Class_detailed, !!!TREATMENTS) %>%
+    dplyr::summarise(abund = sum(presence)) %>%
+    ungroup %>% 
+    # create a new column for total counts per core assignment
+    # and then calculate relative abundance  
+    group_by(CoreID, !!!TREATMENTS) %>% 
+    dplyr::mutate(total = sum(abund),
+                  relabund  = round((abund/total)*100,2))
+}
 #
 # Van Krevelens -----------------------------------------------------------
 
@@ -119,4 +134,33 @@ fit_pca_function2 = function(dat){
        pca_int = pca_int)
 }
 
-
+fit_pca_function3 = function(dat){
+  # first, make wide-form
+  relabund_pca=
+    dat %>% 
+    filter(!is.na(CoreID)) %>% 
+    ungroup %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class_detailed, relabund) %>% 
+    replace(.,is.na(.),0)  %>% 
+    dplyr::select(-1)
+  
+  # then, separate the wide form into the numeric component (data) and the groups (treatments)
+  num = 
+    relabund_pca %>% 
+    dplyr::select(c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                    "aromatic", "condensed aromatic"))
+  
+  grp = 
+    relabund_pca %>% 
+    dplyr::select(-c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                     "aromatic", "condensed aromatic")) %>% 
+    dplyr::mutate(row = row_number())
+  
+  # finally, compute PCA using `prcomp()`
+  pca_int = prcomp(num, scale. = T)
+  
+  list(num = num,
+       grp = grp,
+       pca_int = pca_int)
+}

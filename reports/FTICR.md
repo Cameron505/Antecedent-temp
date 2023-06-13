@@ -865,6 +865,9 @@ NA
 </tr>
 </tbody>
 </table>
+
+![](FTICR_files/figure-gfm/unnamed-chunk-7-8.png)<!-- -->
+
 </details>
 </details>
 
@@ -875,7 +878,7 @@ NA
 Session Info
 </summary>
 
-Date run: 2023-05-31
+Date run: 2023-06-12
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

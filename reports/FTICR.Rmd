@@ -124,6 +124,9 @@ tar_read(gg_FTICR_permanova)$permanova_fticr_all
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
   tar_read(gg_FTICR_PCA)$gg_pca_by_inc_nonpolar
   tar_read(gg_FTICR_permanova)$permanova_fticr_nonpolar
+  
+  
+  tar_read(gg_FTICR_PCA)$gg_PCA_Legend
 ```
 
 

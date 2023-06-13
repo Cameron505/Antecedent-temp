@@ -253,6 +253,7 @@ ggExtra::ggMarginal(gg_FTICR_vk$gg_vk_polar_nonpolar, groupColour = TRUE, groupF
 tar_read(gg_FTICR_vk)$gg_vk_domains
 tar_read(gg_FTICR_vk)$gg_vk_all
 tar_read(gg_FTICR_vk)$gg_vk_all_pre
+
 ```
 </details>
 

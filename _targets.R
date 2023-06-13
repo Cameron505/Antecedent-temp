@@ -88,6 +88,11 @@ list(
   
   tar_target(FTICR_processed, Process_FTICR(FTICR_Lipid,FTICR_Metabolite)),
   tar_target(FTICR_relabund, FTICR_relabund_fun(FTICR_processed)),
+  tar_target(FTICR_relabund2, FTICR_relabund_fun2(FTICR_processed)),
+  tar_target(FTICR_relabund_filter, FTICR_relabund_fun_Filter(FTICR_processed)),
+  tar_target(FTICR_relabund_filter2, FTICR_relabund_fun_Filter2(FTICR_processed)),
+  tar_target(FTICR_relabund_filter_N2N6, FTICR_relabund_fun_Filter_N2N6(FTICR_processed)),
+  tar_target(FTICR_relabund_filter_N2N6_2, FTICR_relabund_fun_Filter_N2N6_2(FTICR_processed)),
   
   tar_target(gg_FTICR_vk, plot_FTICR_vk(FTICR_processed)),
   
@@ -98,9 +103,12 @@ list(
   tar_target(gg_FTICR_relabund, plot_FTICR_relabund(FTICR_relabund)),
   tar_target(gg_FTICR_permanova, plot_FTICR_permanova(FTICR_relabund)),
   tar_target(gg_FTICR_PCA, plot_FTICR_PCA(FTICR_relabund)),
+  tar_target(gg_FTICR_PCA_DetailedClass, plot_FTICR_PCA_DetailedClass(FTICR_relabund2)),
+  tar_target(gg_FTICR_PCA_filter, plot_FTICR_PCA_filter(FTICR_relabund_filter)),
+  tar_target(gg_FTICR_PCA_filter_DetailedClass, plot_FTICR_PCA_filter_DetailedClass(FTICR_relabund_filter2)),
   tar_target(gg_FTICR_NOSC, plot_FTICR_NOSC(FTICR_processed)),
-  
-  
+  tar_target(gg_FTICR_PCA_filter_N2N6, plot_FTICR_PCA_filter_N2N6(FTICR_relabund_filter_N2N6)),
+  tar_target(gg_FTICR_PCA_filter_N2N6_2, plot_FTICR_PCA_filter_N2N6_2(FTICR_relabund_filter_N2N6_2)),
   
   
   # analysis - graphs
@@ -113,5 +121,7 @@ list(
   tar_render(report, path = "reports/AntecedentTemp_report.Rmd"),
   tar_render(report2, path = "reports/GC_LC_Lipids.Rmd"),
   tar_render(report3, path = "reports/FTICR.Rmd"),
-  tar_render(report4, path = "reports/SCGSR_Final_data_report.Rmd")
+  tar_render(report4, path = "reports/SCGSR_Final_data_report.Rmd"),
+  tar_render(report5, path = "reports/SCGSR_Final_data_report2.Rmd"),
+  tar_render(report6, path = "reports/Data_explore.Rmd")
 )

@@ -32,6 +32,9 @@ compute_indices = function(dat){
                   NOSC =  round(4-(((4*C)+H-(3*N)-(2*O)-(2*S))/C),4),
                   HC = round(H/C,2),
                   OC = round(O/C,2),
+                  NC = round(N/C,2),
+                  SC = round(S/C,2),
+                  PC = round(P/C,2),
                   DBE_AI = 1+C-O-S-0.5*(N+P+H),
                   DBE =  1 + ((2*C-H + N + P))/2,
                   DBE_C = round(DBE_AI/C,4)) %>% 
@@ -65,7 +68,7 @@ assign_class_seidel = function(meta_clean, meta_indices){
                                       HC >= 2.0 & OC < 0.9 ~ "lipid",
                                       HC < 2.0 & HC >= 1.5 & N==0 ~ "aliphatic",
                                       HC < 2.0 & HC >= 1.5 & N > 0 ~ "aliphatic+N")) %>% 
-    dplyr::select(Mass, EMSL_class, Class, Class_detailed)
+    dplyr::select(Mass, EMSL_class, Class, Class_detailed,C:P)
 }
 
 ## for data file

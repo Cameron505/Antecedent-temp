@@ -2394,11 +2394,36 @@ plot_FTICR_NOSC = function(FTICR_processed){
                  outlier.fill = NULL,
                  position = position_dodge(width = 1), 
                  alpha = 0.2,
-                 aes(group = interaction(inc, pre)))
+                 aes(group = interaction(inc, pre)))+
+    ggtitle("All NOSC")
     #geom_point(position = position_dodge(width = 1), size = 3)
+  gg_nosc_polar<- fticr_Nosc%>%
+    filter(Polar=='polar')%>%
+    ggplot(aes(x=inc,y=NOSC, color=pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    ggtitle("polar NOSC")
+  #geom_point(position = position_dodge(width = 1), size = 3)
+  gg_nosc_nonpolar<- fticr_Nosc%>%
+    filter(Polar=='nonpolar')%>%
+    ggplot(aes(x=inc,y=NOSC, color=pre))+
+    geom_boxplot(show.legend = F, 
+                 outlier.colour = NULL,
+                 outlier.fill = NULL,
+                 position = position_dodge(width = 1), 
+                 alpha = 0.2,
+                 aes(group = interaction(inc, pre)))+
+    ggtitle("nonpolar NOSC")
+  #geom_point(position = position_dodge(width = 1), size = 3)
   
   
-  list(gg_nosc=gg_nosc
+  list(gg_nosc=gg_nosc,
+       gg_nosc_polar=gg_nosc_polar,
+       gg_nosc_nonpolar=gg_nosc_nonpolar
        
        
        
@@ -2408,8 +2433,6 @@ plot_FTICR_NOSC = function(FTICR_processed){
 
 
 plot_FTICR_unique_all = function(FTICR_processed){
-  
-
   fticr_meta  = FTICR_processed$fticr_meta_combined
   fticr_data_longform = FTICR_processed$fticr_data_longform_combined
   fticr_data_trt = FTICR_processed$fticr_data_trt_combined
@@ -3459,6 +3482,8 @@ plot_FTICR_PCA = function(FTICR_relabund){
          title = "FTICR-Polar",
          subtitle = "separation by pre")+
     theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
     NULL
   
   gg_pca_by_pre_nonpolar = 
@@ -3513,8 +3538,18 @@ plot_FTICR_PCA = function(FTICR_relabund){
     theme_CKM()+
     NULL
   
-  
-  
+  Nutrient_legend = get_legend(gg_pca_by_pre_polar+ guides(color = guide_legend(nrow = 1)) +
+                                 theme(legend.position = "bottom"))
+  gg_Ncombine= plot_grid(
+    gg_pca_by_pre_polar + theme(legend.position="none"),
+    gg_pca_by_pre_nonpolar + theme(legend.position="none"),
+    align = 'vh',
+    labels = c("A", "B"),
+    label_y= 0.93,
+    hjust = -1,
+    nrow = 1
+  )
+  gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
   
   
   
@@ -3527,7 +3562,8 @@ plot_FTICR_PCA = function(FTICR_relabund){
        gg_pca_polar_nonpolar_pre=gg_pca_polar_nonpolar_pre,
        gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc,
        gg_pca_polarVnonpolar_pre=gg_pca_polarVnonpolar_pre,
-       gg_pca_polarVnonpolar_inc=gg_pca_polarVnonpolar_inc
+       gg_pca_polarVnonpolar_inc=gg_pca_polarVnonpolar_inc,
+       gg_PCA_Legend=gg_PCA_Legend
        
        
        
@@ -3535,3 +3571,1430 @@ plot_FTICR_PCA = function(FTICR_relabund){
   )
   
 }
+
+plot_FTICR_PCA_DetailedClass = function(FTICR_relabund2){
+  
+  ## 4b. PCA ----
+  pca_all = fit_pca_function3(FTICR_relabund2$relabund_cores)
+  pca_polar = fit_pca_function3(FTICR_relabund2$relabund_cores_p)
+  pca_nonpolar = fit_pca_function3(FTICR_relabund2$relabund_cores_np)
+
+  gg_pca_polar_nonpolar = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  gg_pca_polar_nonpolar_inc = 
+    ggbiplot(pca_all$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(shape = as.character(pca_all$grp$pre),
+                   color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples Detailed Class",
+         subtitle = "separation by inc")+
+    Scale_inc+
+    theme_CKM()
+  
+  gg_pca_by_pre_polar = 
+    ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar = 
+    ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  
+  
+  gg_pca_by_inc_polar = 
+    ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(shape = as.character(pca_polar$grp$pre),
+                   color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar Detailed Class",
+         subtitle = "separation by inc")+
+    Scale_inc+
+    theme_CKM()+
+    NULL
+  
+  gg_pca_by_inc_nonpolar = 
+    ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(shape = as.character(pca_nonpolar$grp$pre),
+                   color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar Detailed Class",
+         subtitle = "separation by inc")+
+    Scale_inc+
+    theme_CKM()+
+    NULL
+  
+  Nutrient_legend = get_legend(gg_pca_by_pre_polar+ guides(color = guide_legend(nrow = 1)) +
+                                 theme(legend.position = "bottom"))
+  gg_Ncombine= plot_grid(
+    gg_pca_by_pre_polar + theme(legend.position="none"),
+    gg_pca_by_pre_nonpolar + theme(legend.position="none"),
+    align = 'vh',
+    labels = c("A", "B"),
+    label_y= 0.93,
+    hjust = -1,
+    nrow = 1
+  )
+  gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
+  
+  
+  
+  list(
+    gg_pca_polar_nonpolar= gg_pca_polar_nonpolar,
+    gg_pca_by_pre_polar=gg_pca_by_pre_polar,
+    gg_pca_by_pre_nonpolar=gg_pca_by_pre_nonpolar,
+    gg_pca_by_inc_polar=gg_pca_by_inc_polar,
+    gg_pca_by_inc_nonpolar=gg_pca_by_inc_nonpolar,
+    gg_pca_polar_nonpolar_pre=gg_pca_polar_nonpolar_pre,
+    gg_pca_polar_nonpolar_inc=gg_pca_polar_nonpolar_inc,
+    gg_PCA_Legend=gg_PCA_Legend
+    
+    
+    
+    
+  )
+  
+}
+
+plot_FTICR_PCA_filter = function(FTICR_relabund_filter){
+  
+  ## 4b. PCA ----
+  pca_all_Pre = fit_pca_function(FTICR_relabund_filter$relabund_cores_Pre)
+  pca_polar_Pre = fit_pca_function(FTICR_relabund_filter$relabund_cores_p_Pre)
+  pca_nonpolar_Pre = fit_pca_function(FTICR_relabund_filter$relabund_cores_np_Pre)
+  pca_all_2 = fit_pca_function(FTICR_relabund_filter$relabund_cores_2)
+  pca_polar_2 = fit_pca_function(FTICR_relabund_filter$relabund_cores_p_2)
+  pca_nonpolar_2 = fit_pca_function(FTICR_relabund_filter$relabund_cores_np_2)
+  pca_all_4 = fit_pca_function(FTICR_relabund_filter$relabund_cores_4)
+  pca_polar_4 = fit_pca_function(FTICR_relabund_filter$relabund_cores_p_4)
+  pca_nonpolar_4 = fit_pca_function(FTICR_relabund_filter$relabund_cores_np_4)
+  pca_all_6 = fit_pca_function(FTICR_relabund_filter$relabund_cores_6)
+  pca_polar_6 = fit_pca_function(FTICR_relabund_filter$relabund_cores_p_6)
+  pca_nonpolar_6 = fit_pca_function(FTICR_relabund_filter$relabund_cores_np_6)
+  pca_all_8 = fit_pca_function(FTICR_relabund_filter$relabund_cores_8)
+  pca_polar_8 = fit_pca_function(FTICR_relabund_filter$relabund_cores_p_8)
+  pca_nonpolar_8 = fit_pca_function(FTICR_relabund_filter$relabund_cores_np_8)
+  pca_all_10 = fit_pca_function(FTICR_relabund_filter$relabund_cores_10)
+  pca_polar_10 = fit_pca_function(FTICR_relabund_filter$relabund_cores_p_10)
+  pca_nonpolar_10 = fit_pca_function(FTICR_relabund_filter$relabund_cores_np_10)
+  
+  
+  
+  ####PRE
+  gg_pca_polar_nonpolar_Pre = 
+    ggbiplot(pca_all_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_Pre$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_PRE only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_Pre = 
+    ggbiplot(pca_all_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_Pre$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_PRE only",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_Pre = 
+    ggbiplot(pca_polar_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_Pre$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_PRE only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_Pre = 
+    ggbiplot(pca_nonpolar_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_Pre$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_PRE only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####2
+  gg_pca_polar_nonpolar_2 = 
+    ggbiplot(pca_all_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_2$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_2 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_2 = 
+    ggbiplot(pca_all_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_2$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_2 only",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_2 = 
+    ggbiplot(pca_polar_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_2$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_2 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_2 = 
+    ggbiplot(pca_nonpolar_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_2$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_2 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####4
+  gg_pca_polar_nonpolar_4 = 
+    ggbiplot(pca_all_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_4$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_4 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_4 = 
+    ggbiplot(pca_all_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_4$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_4 only",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_4 = 
+    ggbiplot(pca_polar_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_4$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_4 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_4 = 
+    ggbiplot(pca_nonpolar_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_4$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_4 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####6
+  gg_pca_polar_nonpolar_6 = 
+    ggbiplot(pca_all_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_6$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_6 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_6 = 
+    ggbiplot(pca_all_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_6$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_6 only",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_6 = 
+    ggbiplot(pca_polar_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_6$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_6 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_6 = 
+    ggbiplot(pca_nonpolar_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_6$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_6 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####8
+  gg_pca_polar_nonpolar_8 = 
+    ggbiplot(pca_all_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_8$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_8 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_8 = 
+    ggbiplot(pca_all_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_8$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_8 only",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_8 = 
+    ggbiplot(pca_polar_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_8$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_8 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_8 = 
+    ggbiplot(pca_nonpolar_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_8$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_8 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  ####10
+  gg_pca_polar_nonpolar_10 = 
+    ggbiplot(pca_all_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_10$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_10 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_10 = 
+    ggbiplot(pca_all_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_10$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_10 only",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_10 = 
+    ggbiplot(pca_polar_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_10$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_10 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_10 = 
+    ggbiplot(pca_nonpolar_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_10$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_10 only",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  list(
+    gg_pca_polar_nonpolar_Pre= gg_pca_polar_nonpolar_Pre,
+    gg_pca_by_pre_polar_Pre=gg_pca_by_pre_polar_Pre,
+    gg_pca_by_pre_nonpolar_Pre=gg_pca_by_pre_nonpolar_Pre,
+    gg_pca_polar_nonpolar_pre_Pre=gg_pca_polar_nonpolar_pre_Pre,
+    gg_pca_polar_nonpolar_2= gg_pca_polar_nonpolar_2,
+    gg_pca_by_pre_polar_2=gg_pca_by_pre_polar_2,
+    gg_pca_by_pre_nonpolar_2=gg_pca_by_pre_nonpolar_2,
+    gg_pca_polar_nonpolar_pre_2=gg_pca_polar_nonpolar_pre_2,
+    gg_pca_polar_nonpolar_4= gg_pca_polar_nonpolar_4,
+    gg_pca_by_pre_polar_4=gg_pca_by_pre_polar_4,
+    gg_pca_by_pre_nonpolar_4=gg_pca_by_pre_nonpolar_4,
+    gg_pca_polar_nonpolar_pre_4=gg_pca_polar_nonpolar_pre_4,
+    gg_pca_polar_nonpolar_6= gg_pca_polar_nonpolar_6,
+    gg_pca_by_pre_polar_6=gg_pca_by_pre_polar_6,
+    gg_pca_by_pre_nonpolar_6=gg_pca_by_pre_nonpolar_6,
+    gg_pca_polar_nonpolar_pre_6=gg_pca_polar_nonpolar_pre_6,
+    gg_pca_polar_nonpolar_8= gg_pca_polar_nonpolar_8,
+    gg_pca_by_pre_polar_8=gg_pca_by_pre_polar_8,
+    gg_pca_by_pre_nonpolar_8=gg_pca_by_pre_nonpolar_8,
+    gg_pca_polar_nonpolar_pre_8=gg_pca_polar_nonpolar_pre_8,
+    gg_pca_polar_nonpolar_10= gg_pca_polar_nonpolar_10,
+    gg_pca_by_pre_polar_10=gg_pca_by_pre_polar_10,
+    gg_pca_by_pre_nonpolar_10=gg_pca_by_pre_nonpolar_10,
+    gg_pca_polar_nonpolar_pre_10=gg_pca_polar_nonpolar_pre_10
+    
+    
+    
+    
+    
+  )
+  
+}
+
+plot_FTICR_PCA_filter_DetailedClass = function(FTICR_relabund_filter2){
+  
+  ## 4b. PCA ----
+  pca_all_Pre = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_Pre)
+  pca_polar_Pre = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_p_Pre)
+  pca_nonpolar_Pre = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_np_Pre)
+  pca_all_2 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_2)
+  pca_polar_2 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_p_2)
+  pca_nonpolar_2 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_np_2)
+  pca_all_4 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_4)
+  pca_polar_4 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_p_4)
+  pca_nonpolar_4 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_np_4)
+  pca_all_6 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_6)
+  pca_polar_6 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_p_6)
+  pca_nonpolar_6 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_np_6)
+  pca_all_8 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_8)
+  pca_polar_8 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_p_8)
+  pca_nonpolar_8 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_np_8)
+  pca_all_10 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_10)
+  pca_polar_10 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_p_10)
+  pca_nonpolar_10 = fit_pca_function3(FTICR_relabund_filter2$relabund_cores_np_10)
+  
+  
+  
+  ####PRE
+  gg_pca_polar_nonpolar_Pre = 
+    ggbiplot(pca_all_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_Pre$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_PRE only Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_Pre = 
+    ggbiplot(pca_all_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_Pre$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_PRE only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_Pre = 
+    ggbiplot(pca_polar_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_Pre$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_PRE only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_Pre = 
+    ggbiplot(pca_nonpolar_Pre$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_Pre$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_PRE only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####2
+  gg_pca_polar_nonpolar_2 = 
+    ggbiplot(pca_all_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_2$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_2 only Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_2 = 
+    ggbiplot(pca_all_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_2$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_2 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_2 = 
+    ggbiplot(pca_polar_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_2$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_2 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_2 = 
+    ggbiplot(pca_nonpolar_2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_2$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_2 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####4
+  gg_pca_polar_nonpolar_4 = 
+    ggbiplot(pca_all_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_4$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_4 only Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_4 = 
+    ggbiplot(pca_all_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_4$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_4 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_4 = 
+    ggbiplot(pca_polar_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_4$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_4 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_4 = 
+    ggbiplot(pca_nonpolar_4$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_4$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(41, 44, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_4 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####6
+  gg_pca_polar_nonpolar_6 = 
+    ggbiplot(pca_all_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_6$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_6 only Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_6 = 
+    ggbiplot(pca_all_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_6$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_6 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_6 = 
+    ggbiplot(pca_polar_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_6$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_6 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_6 = 
+    ggbiplot(pca_nonpolar_6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_6$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(61, 66, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_6 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  ####8
+  gg_pca_polar_nonpolar_8 = 
+    ggbiplot(pca_all_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_8$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_8 only Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_8 = 
+    ggbiplot(pca_all_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_8$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_8 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_8 = 
+    ggbiplot(pca_polar_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_8$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_8 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_8 = 
+    ggbiplot(pca_nonpolar_8$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_8$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(81, 88, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_8 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  ####10
+  gg_pca_polar_nonpolar_10 = 
+    ggbiplot(pca_all_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_10$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_10 only Detailed Class",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_10 = 
+    ggbiplot(pca_all_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_10$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_10 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_10 = 
+    ggbiplot(pca_polar_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_10$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_10 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_10 = 
+    ggbiplot(pca_nonpolar_10$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_10$grp$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(101, 1010, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_10 only Detailed Class",
+         subtitle = "separation by pre")+
+    theme_CKM()+
+    NULL
+  
+  list(
+    gg_pca_polar_nonpolar_Pre= gg_pca_polar_nonpolar_Pre,
+    gg_pca_by_pre_polar_Pre=gg_pca_by_pre_polar_Pre,
+    gg_pca_by_pre_nonpolar_Pre=gg_pca_by_pre_nonpolar_Pre,
+    gg_pca_polar_nonpolar_pre_Pre=gg_pca_polar_nonpolar_pre_Pre,
+    gg_pca_polar_nonpolar_2= gg_pca_polar_nonpolar_2,
+    gg_pca_by_pre_polar_2=gg_pca_by_pre_polar_2,
+    gg_pca_by_pre_nonpolar_2=gg_pca_by_pre_nonpolar_2,
+    gg_pca_polar_nonpolar_pre_2=gg_pca_polar_nonpolar_pre_2,
+    gg_pca_polar_nonpolar_4= gg_pca_polar_nonpolar_4,
+    gg_pca_by_pre_polar_4=gg_pca_by_pre_polar_4,
+    gg_pca_by_pre_nonpolar_4=gg_pca_by_pre_nonpolar_4,
+    gg_pca_polar_nonpolar_pre_4=gg_pca_polar_nonpolar_pre_4,
+    gg_pca_polar_nonpolar_6= gg_pca_polar_nonpolar_6,
+    gg_pca_by_pre_polar_6=gg_pca_by_pre_polar_6,
+    gg_pca_by_pre_nonpolar_6=gg_pca_by_pre_nonpolar_6,
+    gg_pca_polar_nonpolar_pre_6=gg_pca_polar_nonpolar_pre_6,
+    gg_pca_polar_nonpolar_8= gg_pca_polar_nonpolar_8,
+    gg_pca_by_pre_polar_8=gg_pca_by_pre_polar_8,
+    gg_pca_by_pre_nonpolar_8=gg_pca_by_pre_nonpolar_8,
+    gg_pca_polar_nonpolar_pre_8=gg_pca_polar_nonpolar_pre_8,
+    gg_pca_polar_nonpolar_10= gg_pca_polar_nonpolar_10,
+    gg_pca_by_pre_polar_10=gg_pca_by_pre_polar_10,
+    gg_pca_by_pre_nonpolar_10=gg_pca_by_pre_nonpolar_10,
+    gg_pca_polar_nonpolar_pre_10=gg_pca_polar_nonpolar_pre_10
+    
+    
+    
+    
+    
+  )
+  
+}
+
+plot_FTICR_PCA_filter_N2N6 = function(FTICR_relabund_filter_N2N6){
+  
+  ## 4b. PCA ----
+  pca_all_N2 = fit_pca_function(FTICR_relabund_filter_N2N6$relabund_cores_N2)
+  pca_polar_N2 = fit_pca_function(FTICR_relabund_filter_N2N6$relabund_cores_p_N2)
+  pca_nonpolar_N2 = fit_pca_function(FTICR_relabund_filter_N2N6$relabund_cores_np_N2)
+  pca_all_N6 = fit_pca_function(FTICR_relabund_filter_N2N6$relabund_cores_N6)
+  pca_polar_N6 = fit_pca_function(FTICR_relabund_filter_N2N6$relabund_cores_p_N6)
+  pca_nonpolar_N6 = fit_pca_function(FTICR_relabund_filter_N2N6$relabund_cores_np_N6)
+  
+  
+  
+  
+  ####PRE
+  gg_pca_polar_nonpolar_N2 = 
+    ggbiplot(pca_all_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N2$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N2 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_N2 = 
+    ggbiplot(pca_all_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N2$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N2 only",
+         subtitle = " ")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_N2 = 
+    ggbiplot(pca_polar_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_N2$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_N2 only",
+         subtitle = " ")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_N2 = 
+    ggbiplot(pca_nonpolar_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_N2$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_N2 only",
+         subtitle = " ")+
+    theme_CKM()+
+    NULL
+  
+  ####2
+  gg_pca_polar_nonpolar_N6 = 
+    ggbiplot(pca_all_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N6$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N6 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_N6 = 
+    ggbiplot(pca_all_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N6$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N6 only",
+         subtitle = " ")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_N6 = 
+    ggbiplot(pca_polar_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_N6$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_N6 only",
+         subtitle = " ")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_N6 = 
+    ggbiplot(pca_nonpolar_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_N6$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_N6 only",
+         subtitle = " ")+
+    theme_CKM()+
+    NULL
+  
+ 
+  
+  list(
+    gg_pca_polar_nonpolar_N2= gg_pca_polar_nonpolar_N2,
+    gg_pca_by_pre_polar_N2=gg_pca_by_pre_polar_N2,
+    gg_pca_by_pre_nonpolar_N2=gg_pca_by_pre_nonpolar_N2,
+    gg_pca_polar_nonpolar_pre_N2=gg_pca_polar_nonpolar_pre_N2,
+    gg_pca_polar_nonpolar_N6= gg_pca_polar_nonpolar_N6,
+    gg_pca_by_pre_polar_N6=gg_pca_by_pre_polar_N6,
+    gg_pca_by_pre_nonpolar_N6=gg_pca_by_pre_nonpolar_N6,
+    gg_pca_polar_nonpolar_pre_N6=gg_pca_polar_nonpolar_pre_N6
+    
+    
+    
+    
+    
+  )
+  
+}
+
+plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
+  
+  ## 4b. PCA ----
+  pca_all_N2 = fit_pca_function3(FTICR_relabund_filter_N2N6_2$relabund_cores_N2)
+  pca_polar_N2 = fit_pca_function3(FTICR_relabund_filter_N2N6_2$relabund_cores_p_N2)
+  pca_nonpolar_N2 = fit_pca_function3(FTICR_relabund_filter_N2N6_2$relabund_cores_np_N2)
+  pca_all_N6 = fit_pca_function3(FTICR_relabund_filter_N2N6_2$relabund_cores_N6)
+  pca_polar_N6 = fit_pca_function3(FTICR_relabund_filter_N2N6_2$relabund_cores_p_N6)
+  pca_nonpolar_N6 = fit_pca_function3(FTICR_relabund_filter_N2N6_2$relabund_cores_np_N6)
+  
+  
+  
+  
+  ####PRE
+  gg_pca_polar_nonpolar_N2 = 
+    ggbiplot(pca_all_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N2$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N2 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_N2 = 
+    ggbiplot(pca_all_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N2$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N2 only",
+         subtitle = " ")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_N2 = 
+    ggbiplot(pca_polar_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_N2$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_N2 only",
+         subtitle = " ")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_N2 = 
+    ggbiplot(pca_nonpolar_N2$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_N2$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_N2 only",
+         subtitle = " ")+
+    theme_CKM()+
+    NULL
+  
+  ####2
+  gg_pca_polar_nonpolar_N6 = 
+    ggbiplot(pca_all_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N6$grp$Polar), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N6 only",
+         subtitle = "polar vs. nonpolar")+
+    theme_CKM()
+  
+  
+  
+  gg_pca_polar_nonpolar_pre_N6 = 
+    ggbiplot(pca_all_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_all_N6$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-all samples_N6 only",
+         subtitle = " ")+
+    theme_CKM()
+  
+  
+  gg_pca_by_pre_polar_N6 = 
+    ggbiplot(pca_polar_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_polar_N6$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Polar_N6 only",
+         subtitle = " ")+
+    theme_CKM()+
+    theme(legend.background = element_rect(fill = "white"),
+          legend.margin=margin(t=-55))
+  NULL
+  
+  gg_pca_by_pre_nonpolar_N6 = 
+    ggbiplot(pca_nonpolar_N6$pca_int, obs.scale = 1, var.scale = 1,
+             groups = as.character(pca_nonpolar_N6$grp$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    xlim(-4,4)+
+    ylim(-3.5,3.5)+
+    labs(shape="",
+         title = "FTICR-Non-Polar_N6 only",
+         subtitle = " ")+
+    theme_CKM()+
+    NULL
+  
+  
+  
+  list(
+    gg_pca_polar_nonpolar_N2= gg_pca_polar_nonpolar_N2,
+    gg_pca_by_pre_polar_N2=gg_pca_by_pre_polar_N2,
+    gg_pca_by_pre_nonpolar_N2=gg_pca_by_pre_nonpolar_N2,
+    gg_pca_polar_nonpolar_pre_N2=gg_pca_polar_nonpolar_pre_N2,
+    gg_pca_polar_nonpolar_N6= gg_pca_polar_nonpolar_N6,
+    gg_pca_by_pre_polar_N6=gg_pca_by_pre_polar_N6,
+    gg_pca_by_pre_nonpolar_N6=gg_pca_by_pre_nonpolar_N6,
+    gg_pca_polar_nonpolar_pre_N6=gg_pca_polar_nonpolar_pre_N6
+    
+    
+    
+    
+    
+  )
+  
+}
+
+

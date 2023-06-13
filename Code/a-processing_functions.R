@@ -738,3 +738,1344 @@ FTICR_relabund_fun = function(FTICR_processed){
   
 }
 
+
+FTICR_relabund_fun_Filter = function(FTICR_processed){
+  
+  source("code/fticr/b-functions_analysis.R")
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  TREATMENTS = dplyr::quos(pre,inc,Polar)
+  TREATMENTS2 = dplyr::quos(pre,inc)
+  
+  
+  
+  # 3. relative abundance_PRE ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###PRE
+  relabund_cores_Pre = 
+    fticr_data_longform %>%
+    filter(inc=="Pre")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_Pre = 
+    fticr_data_longform %>%
+    filter(inc=="Pre",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_Pre = 
+    fticr_data_longform %>%
+    filter(inc=="Pre",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_Pre = 
+    relabund_cores_Pre %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_Pre = 
+    relabund_cores_p_Pre %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_Pre = 
+    relabund_cores_np_Pre %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_2 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###2
+  relabund_cores_2 = 
+    fticr_data_longform %>%
+    filter(inc=="2")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_2 = 
+    fticr_data_longform %>%
+    filter(inc=="2",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_2 = 
+    fticr_data_longform %>%
+    filter(inc=="2",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_2 = 
+    relabund_cores_2 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_2 = 
+    relabund_cores_p_2 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_2 = 
+    relabund_cores_np_2 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_4 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###4
+  relabund_cores_4 = 
+    fticr_data_longform %>%
+    filter(inc=="4")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_4 = 
+    fticr_data_longform %>%
+    filter(inc=="4",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_4 = 
+    fticr_data_longform %>%
+    filter(inc=="4",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_4 = 
+    relabund_cores_4 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_4 = 
+    relabund_cores_p_4 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_4 = 
+    relabund_cores_np_4 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_6 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###6
+  relabund_cores_6 = 
+    fticr_data_longform %>%
+    filter(inc=="6")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_6 = 
+    fticr_data_longform %>%
+    filter(inc=="6",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_6 = 
+    fticr_data_longform %>%
+    filter(inc=="6",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_6 = 
+    relabund_cores_6 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_6 = 
+    relabund_cores_p_6 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_6 = 
+    relabund_cores_np_6 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_8 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###8
+  relabund_cores_8 = 
+    fticr_data_longform %>%
+    filter(inc=="8")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_8 = 
+    fticr_data_longform %>%
+    filter(inc=="8",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_8 = 
+    fticr_data_longform %>%
+    filter(inc=="8",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_8 = 
+    relabund_cores_8 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_8 = 
+    relabund_cores_p_8 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_8 = 
+    relabund_cores_np_8 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_10 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###10
+  relabund_cores_10 = 
+    fticr_data_longform %>%
+    filter(inc=="10")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_10 = 
+    fticr_data_longform %>%
+    filter(inc=="10",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_10 = 
+    fticr_data_longform %>%
+    filter(inc=="10",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_10 = 
+    relabund_cores_10 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_10 = 
+    relabund_cores_p_10 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_10 = 
+    relabund_cores_np_10 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  
+  
+  
+  list(
+       relabund_trt_Pre=relabund_trt_Pre,
+       relabund_trt_p_Pre=relabund_trt_p_Pre,
+       relabund_trt_np_Pre=relabund_trt_np_Pre,
+       relabund_cores_Pre=relabund_cores_Pre,
+       relabund_cores_p_Pre=relabund_cores_p_Pre,
+       relabund_cores_np_Pre=relabund_cores_np_Pre,
+       relabund_trt_2=relabund_trt_2,
+       relabund_trt_p_2=relabund_trt_p_2,
+       relabund_trt_np_2=relabund_trt_np_2,
+       relabund_cores_2=relabund_cores_2,
+       relabund_cores_p_2=relabund_cores_p_2,
+       relabund_cores_np_2=relabund_cores_np_2,
+       relabund_trt_4=relabund_trt_4,
+       relabund_trt_p_4=relabund_trt_p_4,
+       relabund_trt_np_4=relabund_trt_np_4,
+       relabund_cores_4=relabund_cores_4,
+       relabund_cores_p_4=relabund_cores_p_4,
+       relabund_cores_np_4=relabund_cores_np_4,
+       relabund_trt_6=relabund_trt_6,
+       relabund_trt_p_6=relabund_trt_p_6,
+       relabund_trt_np_6=relabund_trt_np_6,
+       relabund_cores_6=relabund_cores_6,
+       relabund_cores_p_6=relabund_cores_p_6,
+       relabund_cores_np_6=relabund_cores_np_6,
+       relabund_trt_8=relabund_trt_8,
+       relabund_trt_p_8=relabund_trt_p_8,
+       relabund_trt_np_8=relabund_trt_np_8,
+       relabund_cores_8=relabund_cores_8,
+       relabund_cores_p_8=relabund_cores_p_8,
+       relabund_cores_np_8=relabund_cores_np_8,
+       relabund_trt_10=relabund_trt_10,
+       relabund_trt_p_10=relabund_trt_p_10,
+       relabund_trt_np_10=relabund_trt_np_10,
+       relabund_cores_10=relabund_cores_10,
+       relabund_cores_p_10=relabund_cores_p_10,
+       relabund_cores_np_10=relabund_cores_np_10
+      
+  )
+  
+  
+  
+}
+
+FTICR_relabund_fun_Filter_N2N6 = function(FTICR_processed){
+  
+  source("code/fticr/b-functions_analysis.R")
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  TREATMENTS = dplyr::quos(pre,inc,Polar)
+  TREATMENTS2 = dplyr::quos(pre,inc)
+  
+  
+  
+  # 3. relative abundance_PRE ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###PRE
+  relabund_cores_N2 = 
+    fticr_data_longform %>%
+    filter(pre=="-2")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_N2 = 
+    fticr_data_longform %>%
+    filter(pre=="-2",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_N2 = 
+    fticr_data_longform %>%
+    filter(pre=="-2",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_N2 = 
+    relabund_cores_N2 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_N2 = 
+    relabund_cores_p_N2 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_N2 = 
+    relabund_cores_np_N2 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_2 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###2
+  relabund_cores_N6 = 
+    fticr_data_longform %>%
+    filter(pre=="-6")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_N6 = 
+    fticr_data_longform %>%
+    filter(pre=="-6",Polar=="polar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_N6 = 
+    fticr_data_longform %>%
+    filter(pre=="-6",Polar=="nonpolar")%>%
+    compute_relabund_cores(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_N6 = 
+    relabund_cores_N6 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_N6 = 
+    relabund_cores_p_N6 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_N6 = 
+    relabund_cores_np_N6 %>% 
+    group_by(!!!TREATMENTS, Class) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class = factor(Class, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  
+
+  
+  list(
+    relabund_trt_N2=relabund_trt_N2,
+    relabund_trt_p_N2=relabund_trt_p_N2,
+    relabund_trt_np_N2=relabund_trt_np_N2,
+    relabund_cores_N2=relabund_cores_N2,
+    relabund_cores_p_N2=relabund_cores_p_N2,
+    relabund_cores_np_N2=relabund_cores_np_N2,
+    relabund_trt_N6=relabund_trt_N6,
+    relabund_trt_p_N6=relabund_trt_p_N6,
+    relabund_trt_np_N6=relabund_trt_np_N6,
+    relabund_cores_N6=relabund_cores_N6,
+    relabund_cores_p_N6=relabund_cores_p_N6,
+    relabund_cores_np_N6=relabund_cores_np_N6
+    
+  )
+  
+  
+  
+}
+
+FTICR_relabund_fun_Filter_N2N6_2 = function(FTICR_processed){
+  
+  source("code/fticr/b-functions_analysis.R")
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  TREATMENTS = dplyr::quos(pre,inc,Polar)
+  TREATMENTS2 = dplyr::quos(pre,inc)
+  
+  
+  
+  # 3. relative abundance_PRE ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###PRE
+  relabund_cores_N2 = 
+    fticr_data_longform %>%
+    filter(pre=="-2")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_N2 = 
+    fticr_data_longform %>%
+    filter(pre=="-2",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_N2 = 
+    fticr_data_longform %>%
+    filter(pre=="-2",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_N2 = 
+    relabund_cores_N2 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_N2 = 
+    relabund_cores_p_N2 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_N2 = 
+    relabund_cores_np_N2 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_2 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###2
+  relabund_cores_N6 = 
+    fticr_data_longform %>%
+    filter(pre=="-6")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_N6 = 
+    fticr_data_longform %>%
+    filter(pre=="-6",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_N6 = 
+    fticr_data_longform %>%
+    filter(pre=="-6",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_N6 = 
+    relabund_cores_N6 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_N6 = 
+    relabund_cores_p_N6 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_N6 = 
+    relabund_cores_np_N6 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic", "unsaturated/lignin", "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  
+  
+  
+  list(
+    relabund_trt_N2=relabund_trt_N2,
+    relabund_trt_p_N2=relabund_trt_p_N2,
+    relabund_trt_np_N2=relabund_trt_np_N2,
+    relabund_cores_N2=relabund_cores_N2,
+    relabund_cores_p_N2=relabund_cores_p_N2,
+    relabund_cores_np_N2=relabund_cores_np_N2,
+    relabund_trt_N6=relabund_trt_N6,
+    relabund_trt_p_N6=relabund_trt_p_N6,
+    relabund_trt_np_N6=relabund_trt_np_N6,
+    relabund_cores_N6=relabund_cores_N6,
+    relabund_cores_p_N6=relabund_cores_p_N6,
+    relabund_cores_np_N6=relabund_cores_np_N6
+    
+  )
+  
+  
+  
+}
+
+FTICR_relabund_fun_Filter2 = function(FTICR_processed){
+  
+  source("code/fticr/b-functions_analysis.R")
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  TREATMENTS = dplyr::quos(pre,inc,Polar)
+  TREATMENTS2 = dplyr::quos(pre,inc)
+  
+  
+  
+  # 3. relative abundance_PRE ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###PRE
+  relabund_cores_Pre = 
+    fticr_data_longform %>%
+    filter(inc=="Pre")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_Pre = 
+    fticr_data_longform %>%
+    filter(inc=="Pre",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_Pre = 
+    fticr_data_longform %>%
+    filter(inc=="Pre",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_Pre = 
+    relabund_cores_Pre %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_Pre = 
+    relabund_cores_p_Pre %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_Pre = 
+    relabund_cores_np_Pre %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_2 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###2
+  relabund_cores_2 = 
+    fticr_data_longform %>%
+    filter(inc=="2")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_2 = 
+    fticr_data_longform %>%
+    filter(inc=="2",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_2 = 
+    fticr_data_longform %>%
+    filter(inc=="2",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_2 = 
+    relabund_cores_2 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_2 = 
+    relabund_cores_p_2 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_2 = 
+    relabund_cores_np_2 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_4 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###4
+  relabund_cores_4 = 
+    fticr_data_longform %>%
+    filter(inc=="4")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_4 = 
+    fticr_data_longform %>%
+    filter(inc=="4",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_4 = 
+    fticr_data_longform %>%
+    filter(inc=="4",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_4 = 
+    relabund_cores_4 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_4 = 
+    relabund_cores_p_4 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_4 = 
+    relabund_cores_np_4 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_6 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###6
+  relabund_cores_6 = 
+    fticr_data_longform %>%
+    filter(inc=="6")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_6 = 
+    fticr_data_longform %>%
+    filter(inc=="6",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_6 = 
+    fticr_data_longform %>%
+    filter(inc=="6",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_6 = 
+    relabund_cores_6 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_6 = 
+    relabund_cores_p_6 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_6 = 
+    relabund_cores_np_6 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_8 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###8
+  relabund_cores_8 = 
+    fticr_data_longform %>%
+    filter(inc=="8")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_8 = 
+    fticr_data_longform %>%
+    filter(inc=="8",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_8 = 
+    fticr_data_longform %>%
+    filter(inc=="8",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_8 = 
+    relabund_cores_8 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_8 = 
+    relabund_cores_p_8 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_8 = 
+    relabund_cores_np_8 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 3. relative abundance_10 ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  
+  
+  ###10
+  relabund_cores_10 = 
+    fticr_data_longform %>%
+    filter(inc=="10")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_cores_p_10 = 
+    fticr_data_longform %>%
+    filter(inc=="10",Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  relabund_cores_np_10 = 
+    fticr_data_longform %>%
+    filter(inc=="10",Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')
+  
+  
+  relabund_trt_10 = 
+    relabund_cores_10 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_p_10 = 
+    relabund_cores_p_10 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np_10 = 
+    relabund_cores_np_10 %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin",                                                                "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  
+  
+  
+  list(
+    relabund_trt_Pre=relabund_trt_Pre,
+    relabund_trt_p_Pre=relabund_trt_p_Pre,
+    relabund_trt_np_Pre=relabund_trt_np_Pre,
+    relabund_cores_Pre=relabund_cores_Pre,
+    relabund_cores_p_Pre=relabund_cores_p_Pre,
+    relabund_cores_np_Pre=relabund_cores_np_Pre,
+    relabund_trt_2=relabund_trt_2,
+    relabund_trt_p_2=relabund_trt_p_2,
+    relabund_trt_np_2=relabund_trt_np_2,
+    relabund_cores_2=relabund_cores_2,
+    relabund_cores_p_2=relabund_cores_p_2,
+    relabund_cores_np_2=relabund_cores_np_2,
+    relabund_trt_4=relabund_trt_4,
+    relabund_trt_p_4=relabund_trt_p_4,
+    relabund_trt_np_4=relabund_trt_np_4,
+    relabund_cores_4=relabund_cores_4,
+    relabund_cores_p_4=relabund_cores_p_4,
+    relabund_cores_np_4=relabund_cores_np_4,
+    relabund_trt_6=relabund_trt_6,
+    relabund_trt_p_6=relabund_trt_p_6,
+    relabund_trt_np_6=relabund_trt_np_6,
+    relabund_cores_6=relabund_cores_6,
+    relabund_cores_p_6=relabund_cores_p_6,
+    relabund_cores_np_6=relabund_cores_np_6,
+    relabund_trt_8=relabund_trt_8,
+    relabund_trt_p_8=relabund_trt_p_8,
+    relabund_trt_np_8=relabund_trt_np_8,
+    relabund_cores_8=relabund_cores_8,
+    relabund_cores_p_8=relabund_cores_p_8,
+    relabund_cores_np_8=relabund_cores_np_8,
+    relabund_trt_10=relabund_trt_10,
+    relabund_trt_p_10=relabund_trt_p_10,
+    relabund_trt_np_10=relabund_trt_np_10,
+    relabund_cores_10=relabund_cores_10,
+    relabund_cores_p_10=relabund_cores_p_10,
+    relabund_cores_np_10=relabund_cores_np_10
+    
+  )
+  
+  
+  
+}
+
+FTICR_relabund_fun2 = function(FTICR_processed){
+  
+  source("code/fticr/b-functions_analysis.R")
+  fticr_data_longform = FTICR_processed$fticr_data_longform_combined
+  fticr_meta  = FTICR_processed$fticr_meta_combined
+  TREATMENTS = dplyr::quos(pre,inc,Polar)
+  TREATMENTS2 = dplyr::quos(pre,inc)
+  
+  
+  
+  # 3. relative abundance ---------------------------------------------------
+  # calculate relative abundance for each core/sample
+  # make sure totals add up to 100 % for each sample 
+  # use this for stats, including PERMANOVA, PCA
+  relabund_cores = 
+    fticr_data_longform %>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
+  
+  relabund_cores2 = 
+    fticr_data_longform %>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS2)%>%
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
+  
+  relabund_cores_p = 
+    fticr_data_longform %>%
+    filter(Polar=="polar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
+  
+  relabund_cores_np = 
+    fticr_data_longform %>%
+    filter(Polar=="nonpolar")%>%
+    compute_relabund_cores2(fticr_meta, TREATMENTS)%>%
+    filter(inc!='NA')%>%
+    mutate(inc=factor(inc,levels=c("Pre",'2','4','6','8','10')))
+  
+  
+  relabund_trt = 
+    relabund_cores %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                                              "aromatic", "condensed aromatic")))
+  
+  relabund_trt2 = 
+    relabund_cores %>% 
+    group_by(!!!TREATMENTS2, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                                              "aromatic", "condensed aromatic")))
+  
+  relabund_trt_p = 
+    relabund_cores_p %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                                              "aromatic", "condensed aromatic")))
+  
+  
+  relabund_trt_np = 
+    relabund_cores_np %>% 
+    group_by(!!!TREATMENTS, Class_detailed) %>% 
+    dplyr::summarize(rel_abund = round(mean(relabund),2),
+                     se  = round((sd(relabund/sqrt(n()))),2),
+                     relative_abundance = paste(rel_abund, "\u00b1",se)) %>% 
+    ungroup()  %>% 
+    mutate(Class_detailed = factor(Class_detailed, levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                                              "aromatic", "condensed aromatic")))
+  
+  
+  
+  
+  # 4. statistics -----------------------------------------------------------
+  
+  
+  
+  relabund_wide_PolarVnonPolar = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Polar, relabund) %>% 
+    replace(is.na(.), 0)
+  
+  
+  
+  
+  
+  relabund_wide = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    mutate(Class_detailed = factor(Class_detailed, 
+                                   levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                              "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class_detailed, relabund) %>% 
+    replace(is.na(.), 0)
+  
+  
+  relabund_wide2 = 
+    relabund_cores2 %>% 
+    ungroup() %>% 
+    mutate(Class_detailed = factor(Class_detailed, 
+                          levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                     "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class_detailed, relabund) %>% 
+    replace(is.na(.), 0)
+  
+  
+  relabund_wide_p = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    mutate(Class_detailed = factor(Class_detailed, 
+                                   levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                              "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class_detailed, relabund) %>% 
+    replace(is.na(.), 0)%>%
+    filter(Polar=='polar')
+  
+  relabund_wide_np = 
+    relabund_cores %>% 
+    ungroup() %>% 
+    mutate(Class_detailed = factor(Class_detailed, 
+                                   levels = c("aliphatic","aliphatic+N","lipid", "carbohydrate","unsaturated/lignin", 
+                                              "aromatic", "condensed aromatic"))) %>% 
+    dplyr::select(-c(abund, total)) %>% 
+    spread(Class_detailed, relabund) %>% 
+    replace(is.na(.), 0)%>%
+    filter(Polar=='nonpolar')
+  
+  
+  
+  
+  
+  
+  
+  
+  #### ANOVAs on relative abundances
+  
+  
+  
+  fit_aov = function(A){
+    
+    a = aov(relabund ~ pre, data = A)
+    broom::tidy(a) %>% 
+      na.omit()%>%
+      dplyr::select(`p.value`) %>% 
+      mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
+  }    
+  
+  
+  
+  
+  Total_Relabund_aov = 
+    relabund_cores %>% 
+    group_by(inc, Class_detailed) %>% 
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")))%>%
+    knitr::kable()
+  
+  
+  
+  Polar_Relabund_aov = 
+    relabund_cores_p %>% 
+    group_by(inc, Class_detailed) %>% 
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")))%>%
+    knitr::kable()
+  
+  
+  NonPolar_Relabund_aov = 
+    relabund_cores_np %>% 
+    group_by(inc, Class_detailed) %>% 
+    do(fit_aov(.)) %>%
+    # factor the Inc_temp so they can line up in the graph
+    mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")))%>%
+    knitr::kable()
+  
+  
+  
+  list(relabund_trt2=relabund_trt2,
+       relabund_trt=relabund_trt,
+       relabund_trt_p=relabund_trt_p,
+       relabund_trt_np=relabund_trt_np,
+       relabund_wide=relabund_wide,
+       relabund_wide2=relabund_wide2,
+       relabund_wide_p=relabund_wide_p,
+       relabund_wide_np=relabund_wide_np,
+       relabund_cores=relabund_cores,
+       relabund_cores_p=relabund_cores_p,
+       relabund_cores_np=relabund_cores_np,
+       relabund_wide_PolarVnonPolar=relabund_wide_PolarVnonPolar,
+       Total_Relabund_aov=Total_Relabund_aov,
+       Polar_Relabund_aov=Polar_Relabund_aov,
+       NonPolar_Relabund_aov=NonPolar_Relabund_aov
+       
+       
+  )
+  
+}
