@@ -387,61 +387,17 @@ click to open
 
     ## 
     ## $permanova_GC_all
-    ## <table>
-    ## <caption>Permanova results all by Main class</caption>
-    ##  <thead>
-    ##   <tr>
-    ##    <th style="text-align:left;">   </th>
-    ##    <th style="text-align:right;"> Df </th>
-    ##    <th style="text-align:right;"> SumOfSqs </th>
-    ##    <th style="text-align:right;"> R2 </th>
-    ##    <th style="text-align:right;"> F </th>
-    ##    <th style="text-align:right;"> Pr(&gt;F) </th>
-    ##   </tr>
-    ##  </thead>
-    ## <tbody>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre </td>
-    ##    <td style="text-align:right;"> 1 </td>
-    ##    <td style="text-align:right;"> 0.0002722 </td>
-    ##    <td style="text-align:right;"> 0.0440732 </td>
-    ##    <td style="text-align:right;"> 1.796432 </td>
-    ##    <td style="text-align:right;"> 0.128 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0016413 </td>
-    ##    <td style="text-align:right;"> 0.2657632 </td>
-    ##    <td style="text-align:right;"> 2.166512 </td>
-    ##    <td style="text-align:right;"> 0.010 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre:inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0009290 </td>
-    ##    <td style="text-align:right;"> 0.1504214 </td>
-    ##    <td style="text-align:right;"> 1.226242 </td>
-    ##    <td style="text-align:right;"> 0.237 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Residual </td>
-    ##    <td style="text-align:right;"> 22 </td>
-    ##    <td style="text-align:right;"> 0.0033334 </td>
-    ##    <td style="text-align:right;"> 0.5397422 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Total </td>
-    ##    <td style="text-align:right;"> 33 </td>
-    ##    <td style="text-align:right;"> 0.0061758 </td>
-    ##    <td style="text-align:right;"> 1.0000000 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ## </tbody>
-    ## </table>
+    ## 
+    ## 
+    ## Table: Permanova results all by Main class
+    ## 
+    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
+    ## |:--------|--:|---------:|---------:|--------:|------:|
+    ## |pre      |  1| 0.0002772| 0.0440164| 1.794259|  0.128|
+    ## |inc      |  5| 0.0016756| 0.2660254| 2.168822|  0.010|
+    ## |pre:inc  |  5| 0.0009464| 0.1502589| 1.225014|  0.239|
+    ## |Residual | 22| 0.0033994| 0.5396993|       NA|     NA|
+    ## |Total    | 33| 0.0062987| 1.0000000|       NA|     NA|
     ## 
     ## $gg_pca_pre2
 
@@ -454,61 +410,17 @@ click to open
 
     ## 
     ## $permanova_GC_all2
-    ## <table>
-    ## <caption>Permanova results saccharides</caption>
-    ##  <thead>
-    ##   <tr>
-    ##    <th style="text-align:left;">   </th>
-    ##    <th style="text-align:right;"> Df </th>
-    ##    <th style="text-align:right;"> SumOfSqs </th>
-    ##    <th style="text-align:right;"> R2 </th>
-    ##    <th style="text-align:right;"> F </th>
-    ##    <th style="text-align:right;"> Pr(&gt;F) </th>
-    ##   </tr>
-    ##  </thead>
-    ## <tbody>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre </td>
-    ##    <td style="text-align:right;"> 1 </td>
-    ##    <td style="text-align:right;"> 0.0004367 </td>
-    ##    <td style="text-align:right;"> 0.0410917 </td>
-    ##    <td style="text-align:right;"> 1.6469493 </td>
-    ##    <td style="text-align:right;"> 0.199 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0038628 </td>
-    ##    <td style="text-align:right;"> 0.3634700 </td>
-    ##    <td style="text-align:right;"> 2.9135648 </td>
-    ##    <td style="text-align:right;"> 0.022 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre:inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0004945 </td>
-    ##    <td style="text-align:right;"> 0.0465342 </td>
-    ##    <td style="text-align:right;"> 0.3730168 </td>
-    ##    <td style="text-align:right;"> 0.941 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Residual </td>
-    ##    <td style="text-align:right;"> 22 </td>
-    ##    <td style="text-align:right;"> 0.0058335 </td>
-    ##    <td style="text-align:right;"> 0.5489041 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Total </td>
-    ##    <td style="text-align:right;"> 33 </td>
-    ##    <td style="text-align:right;"> 0.0106275 </td>
-    ##    <td style="text-align:right;"> 1.0000000 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ## </tbody>
-    ## </table>
+    ## 
+    ## 
+    ## Table: Permanova results saccharides
+    ## 
+    ## |         | Df|  SumOfSqs|        R2|         F| Pr(>F)|
+    ## |:--------|--:|---------:|---------:|---------:|------:|
+    ## |pre      |  1| 0.0004367| 0.0410917| 1.6469493|  0.199|
+    ## |inc      |  5| 0.0038628| 0.3634700| 2.9135648|  0.022|
+    ## |pre:inc  |  5| 0.0004945| 0.0465342| 0.3730168|  0.941|
+    ## |Residual | 22| 0.0058335| 0.5489041|        NA|     NA|
+    ## |Total    | 33| 0.0106275| 1.0000000|        NA|     NA|
 
 </details>
 </details>
@@ -1149,61 +1061,17 @@ click to open
 
     ## 
     ## $permanova_LC_all
-    ## <table>
-    ## <caption>Permanova results all by Main class</caption>
-    ##  <thead>
-    ##   <tr>
-    ##    <th style="text-align:left;">   </th>
-    ##    <th style="text-align:right;"> Df </th>
-    ##    <th style="text-align:right;"> SumOfSqs </th>
-    ##    <th style="text-align:right;"> R2 </th>
-    ##    <th style="text-align:right;"> F </th>
-    ##    <th style="text-align:right;"> Pr(&gt;F) </th>
-    ##   </tr>
-    ##  </thead>
-    ## <tbody>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre </td>
-    ##    <td style="text-align:right;"> 1 </td>
-    ##    <td style="text-align:right;"> 0.0001455 </td>
-    ##    <td style="text-align:right;"> 0.0358253 </td>
-    ##    <td style="text-align:right;"> 1.929872 </td>
-    ##    <td style="text-align:right;"> 0.114 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0014038 </td>
-    ##    <td style="text-align:right;"> 0.3457389 </td>
-    ##    <td style="text-align:right;"> 3.724922 </td>
-    ##    <td style="text-align:right;"> 0.001 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre:inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0007774 </td>
-    ##    <td style="text-align:right;"> 0.1914741 </td>
-    ##    <td style="text-align:right;"> 2.062904 </td>
-    ##    <td style="text-align:right;"> 0.021 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Residual </td>
-    ##    <td style="text-align:right;"> 23 </td>
-    ##    <td style="text-align:right;"> 0.0017335 </td>
-    ##    <td style="text-align:right;"> 0.4269617 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Total </td>
-    ##    <td style="text-align:right;"> 34 </td>
-    ##    <td style="text-align:right;"> 0.0040602 </td>
-    ##    <td style="text-align:right;"> 1.0000000 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ## </tbody>
-    ## </table>
+    ## 
+    ## 
+    ## Table: Permanova results all by Main class
+    ## 
+    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
+    ## |:--------|--:|---------:|---------:|--------:|------:|
+    ## |pre      |  1| 0.0001455| 0.0358253| 1.929872|  0.114|
+    ## |inc      |  5| 0.0014038| 0.3457389| 3.724922|  0.001|
+    ## |pre:inc  |  5| 0.0007774| 0.1914741| 2.062904|  0.021|
+    ## |Residual | 23| 0.0017335| 0.4269617|       NA|     NA|
+    ## |Total    | 34| 0.0040602| 1.0000000|       NA|     NA|
     ## 
     ## $gg_pca_pre2
 
@@ -1216,61 +1084,17 @@ click to open
 
     ## 
     ## $permanova_LC_all2
-    ## <table>
-    ## <caption>Permanova results saccharides</caption>
-    ##  <thead>
-    ##   <tr>
-    ##    <th style="text-align:left;">   </th>
-    ##    <th style="text-align:right;"> Df </th>
-    ##    <th style="text-align:right;"> SumOfSqs </th>
-    ##    <th style="text-align:right;"> R2 </th>
-    ##    <th style="text-align:right;"> F </th>
-    ##    <th style="text-align:right;"> Pr(&gt;F) </th>
-    ##   </tr>
-    ##  </thead>
-    ## <tbody>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre </td>
-    ##    <td style="text-align:right;"> 1 </td>
-    ##    <td style="text-align:right;"> 0.0001863 </td>
-    ##    <td style="text-align:right;"> 0.0273047 </td>
-    ##    <td style="text-align:right;"> 1.412979 </td>
-    ##    <td style="text-align:right;"> 0.212 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0023910 </td>
-    ##    <td style="text-align:right;"> 0.3503736 </td>
-    ##    <td style="text-align:right;"> 3.626269 </td>
-    ##    <td style="text-align:right;"> 0.005 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> pre:inc </td>
-    ##    <td style="text-align:right;"> 5 </td>
-    ##    <td style="text-align:right;"> 0.0012138 </td>
-    ##    <td style="text-align:right;"> 0.1778652 </td>
-    ##    <td style="text-align:right;"> 1.840855 </td>
-    ##    <td style="text-align:right;"> 0.105 </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Residual </td>
-    ##    <td style="text-align:right;"> 23 </td>
-    ##    <td style="text-align:right;"> 0.0030331 </td>
-    ##    <td style="text-align:right;"> 0.4444564 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ##   <tr>
-    ##    <td style="text-align:left;"> Total </td>
-    ##    <td style="text-align:right;"> 34 </td>
-    ##    <td style="text-align:right;"> 0.0068243 </td>
-    ##    <td style="text-align:right;"> 1.0000000 </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##    <td style="text-align:right;"> NA </td>
-    ##   </tr>
-    ## </tbody>
-    ## </table>
+    ## 
+    ## 
+    ## Table: Permanova results saccharides
+    ## 
+    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
+    ## |:--------|--:|---------:|---------:|--------:|------:|
+    ## |pre      |  1| 0.0001863| 0.0273047| 1.412979|  0.212|
+    ## |inc      |  5| 0.0023910| 0.3503736| 3.626269|  0.005|
+    ## |pre:inc  |  5| 0.0012138| 0.1778652| 1.840855|  0.105|
+    ## |Residual | 23| 0.0030331| 0.4444564|       NA|     NA|
+    ## |Total    | 34| 0.0068243| 1.0000000|       NA|     NA|
 
 </details>
 </details>
@@ -1635,7 +1459,7 @@ click to open
 Session Info
 </summary>
 
-Date run: 2023-06-01
+Date run: 2023-06-13
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -1671,31 +1495,31 @@ Date run: 2023-06-01
     ##  [4] mclust_6.0.0            snakecase_0.11.0        base64enc_0.1-3        
     ##  [7] fs_1.6.2                rstudioapi_0.14         farver_2.1.1           
     ## [10] listenv_0.9.0           furrr_0.3.1             fansi_1.0.4            
-    ## [13] codetools_0.2-19        splines_4.2.3           polynom_1.4-1          
-    ## [16] jsonlite_1.8.4          broom_1.0.4             cluster_2.1.4          
-    ## [19] shiny_1.7.4             compiler_4.2.3          backports_1.4.1        
-    ## [22] Matrix_1.5-4            fastmap_1.1.1           cli_3.6.0              
-    ## [25] later_1.3.0             htmltools_0.5.4         prettyunits_1.1.1      
-    ## [28] tools_4.2.3             igraph_1.4.1            gtable_0.3.3           
-    ## [31] glue_1.6.2              Rcpp_1.0.10             carData_3.0-5          
-    ## [34] vctrs_0.6.0             iterators_1.0.14        autocogs_0.1.4         
-    ## [37] xfun_0.38               globals_0.16.2          ps_1.7.2               
-    ## [40] timechange_0.2.0        mime_0.12               miniUI_0.1.1.1         
-    ## [43] lifecycle_1.0.3         rstatix_0.7.2           future_1.32.0          
-    ## [46] MASS_7.3-60             DistributionUtils_0.6-0 hms_1.1.3              
-    ## [49] promises_1.2.0.1        parallel_4.2.3          yaml_2.3.7             
-    ## [52] labelled_2.11.0         stringi_1.7.12          highr_0.10             
-    ## [55] klaR_1.7-2              AlgDesign_1.2.1         foreach_1.5.2          
-    ## [58] checkmate_2.2.0         rlang_1.1.0             pkgconfig_2.0.3        
-    ## [61] evaluate_0.21           labeling_0.4.2          processx_3.8.0         
-    ## [64] tidyselect_1.2.0        parallelly_1.35.0       magrittr_2.0.3         
-    ## [67] R6_2.5.1                generics_0.1.3          base64url_1.4          
-    ## [70] combinat_0.0-8          pillar_1.9.0            haven_2.5.2            
-    ## [73] withr_2.5.0             mgcv_1.8-42             abind_1.4-5            
-    ## [76] crayon_1.5.2            car_3.1-2               questionr_0.7.8        
-    ## [79] utf8_1.2.3              rmarkdown_2.21          tzdb_0.3.0             
-    ## [82] future.callr_0.8.1      progress_1.2.2          data.table_1.14.8      
-    ## [85] callr_3.7.3             webshot_0.5.4           digest_0.6.31          
-    ## [88] xtable_1.8-4            httpuv_1.6.9            munsell_0.5.0
+    ## [13] codetools_0.2-19        splines_4.2.3           jsonlite_1.8.4         
+    ## [16] broom_1.0.4             cluster_2.1.4           shiny_1.7.4            
+    ## [19] compiler_4.2.3          backports_1.4.1         Matrix_1.5-4           
+    ## [22] fastmap_1.1.1           cli_3.6.0               later_1.3.0            
+    ## [25] htmltools_0.5.4         prettyunits_1.1.1       tools_4.2.3            
+    ## [28] igraph_1.4.1            gtable_0.3.3            glue_1.6.2             
+    ## [31] Rcpp_1.0.10             carData_3.0-5           vctrs_0.6.0            
+    ## [34] iterators_1.0.14        autocogs_0.1.4          xfun_0.38              
+    ## [37] globals_0.16.2          ps_1.7.2                timechange_0.2.0       
+    ## [40] mime_0.12               miniUI_0.1.1.1          lifecycle_1.0.3        
+    ## [43] rstatix_0.7.2           future_1.32.0           MASS_7.3-60            
+    ## [46] DistributionUtils_0.6-0 hms_1.1.3               promises_1.2.0.1       
+    ## [49] parallel_4.2.3          yaml_2.3.7              labelled_2.11.0        
+    ## [52] stringi_1.7.12          highr_0.10              klaR_1.7-2             
+    ## [55] AlgDesign_1.2.1         foreach_1.5.2           checkmate_2.2.0        
+    ## [58] rlang_1.1.0             pkgconfig_2.0.3         evaluate_0.21          
+    ## [61] labeling_0.4.2          processx_3.8.0          tidyselect_1.2.0       
+    ## [64] parallelly_1.35.0       magrittr_2.0.3          R6_2.5.1               
+    ## [67] generics_0.1.3          base64url_1.4           combinat_0.0-8         
+    ## [70] pillar_1.9.0            haven_2.5.2             withr_2.5.0            
+    ## [73] mgcv_1.8-42             abind_1.4-5             crayon_1.5.2           
+    ## [76] car_3.1-2               questionr_0.7.8         utf8_1.2.3             
+    ## [79] rmarkdown_2.21          tzdb_0.3.0              future.callr_0.8.1     
+    ## [82] progress_1.2.2          data.table_1.14.8       callr_3.7.3            
+    ## [85] webshot_0.5.4           digest_0.6.31           xtable_1.8-4           
+    ## [88] httpuv_1.6.9            munsell_0.5.0
 
 </details>

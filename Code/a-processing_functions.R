@@ -88,7 +88,10 @@ GC_process_PCA= function(GC_processed){
   GC_data_composite = GC_processed$metab_final$e_data %>%
     pivot_longer(cols=Wein_1_B_2_3:Wein_36_Pre_2_1, names_to= "Sample.ID")%>%
     left_join(GC_processed$metab_final$f_data, by= "Sample.ID")%>%
-    left_join(GC_processed$emeta, by="Metabolites")
+    left_join(GC_processed$emeta, by="Metabolites")%>%
+    mutate_if(is.character, ~na_if(., ''))%>%
+    mutate(Main.class = if_else(grepl("Unknown", Metabolites), "unknown", Main.class))%>%
+    mutate(Main.class = if_else(grepl("NA", Main.class), "unknown", Main.class))
   
   GC_short<-GC_data_composite %>%
     group_by(Sample.ID,Main.class,pre,inc)%>%
@@ -104,10 +107,10 @@ GC_process_PCA= function(GC_processed){
   
   
   num= GC_short%>%
-    dplyr::select(c("Alcohols and polyols":Terpenoid))
+    dplyr::select(c("Alcohols and polyols":unknown))
   
   grp=GC_short%>%
-    dplyr::select(-c("Alcohols and polyols":Terpenoid))%>%
+    dplyr::select(-c("Alcohols and polyols":unknown))%>%
     dplyr::mutate(row = row_number())
   
   pca_GC = prcomp(num, scale.=T)
@@ -117,7 +120,7 @@ GC_process_PCA= function(GC_processed){
     dplyr::select(c("Oligosaccharides","Monosaccharides","Disaccharides"))
   
   grp2=GC_short%>%
-    dplyr::select(-c("Alcohols and polyols":Terpenoid))%>%
+    dplyr::select(-c("Alcohols and polyols":unknown))%>%
     dplyr::mutate(row = row_number())
   
   pca_GC2 = prcomp(num2, scale.=T)
@@ -218,7 +221,10 @@ LC_process_PCA= function(LC_processed){
   LC_data_composite = LC_processed$metab_final$e_data %>%
     pivot_longer(cols=Pre_6_3:E_6_2, names_to= "Sample.ID")%>%
     left_join(LC_processed$metab_final$f_data, by= "Sample.ID")%>%
-    left_join(LC_processed$LC_meta, by="Name2")
+    left_join(LC_processed$LC_meta, by="Name2")%>%
+    mutate_if(is.character, ~na_if(., ''))%>%
+    mutate(Main.class = if_else(grepl("Unknown", Name2), "unknown", Main.class))%>%
+    mutate(Main.class = if_else(grepl("NA", Main.class), "unknown", Main.class))
   
   LC_short<-LC_data_composite %>%
     group_by(Sample.ID,Main.class,pre,inc)%>%
@@ -233,10 +239,10 @@ LC_process_PCA= function(LC_processed){
   
   
   num= LC_short%>%
-    dplyr::select(c(Amines:Pyrimidines))
+    dplyr::select(c(Amines:unknown))
   
   grp=LC_short%>%
-    dplyr::select(-c(Amines:Pyrimidines))%>%
+    dplyr::select(-c(Amines:unknown))%>%
     dplyr::mutate(row = row_number())
   
   pca_LC = prcomp(num, scale.=T)
@@ -246,7 +252,7 @@ LC_process_PCA= function(LC_processed){
     dplyr::select(c("Oligosaccharides","Monosaccharides","Disaccharides"))
   
   grp2=LC_short%>%
-    dplyr::select(-c(Amines:Pyrimidines))%>%
+    dplyr::select(-c(Amines:unknown))%>%
     dplyr::mutate(row = row_number())
   
   pca_LC2 = prcomp(num2, scale.=T)

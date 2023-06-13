@@ -4853,7 +4853,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-all samples_N2 only",
+         title = "FTICR-all samples_N2 only Detailed Class",
          subtitle = "polar vs. nonpolar")+
     theme_CKM()
   
@@ -4870,7 +4870,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-all samples_N2 only",
+         title = "FTICR-all samples_N2 only Detailed Class",
          subtitle = " ")+
     theme_CKM()
   
@@ -4886,7 +4886,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-Polar_N2 only",
+         title = "FTICR-Polar_N2 only Detailed Class",
          subtitle = " ")+
     theme_CKM()+
     theme(legend.background = element_rect(fill = "white"),
@@ -4904,7 +4904,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-Non-Polar_N2 only",
+         title = "FTICR-Non-Polar_N2 only Detailed Class",
          subtitle = " ")+
     theme_CKM()+
     NULL
@@ -4921,7 +4921,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-all samples_N6 only",
+         title = "FTICR-all samples_N6 only Detailed Class",
          subtitle = "polar vs. nonpolar")+
     theme_CKM()
   
@@ -4938,7 +4938,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-all samples_N6 only",
+         title = "FTICR-all samples_N6 only Detailed Class",
          subtitle = " ")+
     theme_CKM()
   
@@ -4954,7 +4954,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-Polar_N6 only",
+         title = "FTICR-Polar_N6 only Detailed Class",
          subtitle = " ")+
     theme_CKM()+
     theme(legend.background = element_rect(fill = "white"),
@@ -4972,7 +4972,7 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-Non-Polar_N6 only",
+         title = "FTICR-Non-Polar_N6 only Detailed Class",
          subtitle = " ")+
     theme_CKM()+
     NULL

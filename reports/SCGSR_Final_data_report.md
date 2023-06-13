@@ -548,266 +548,31 @@ click to open
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0002772 | 0.0440164 | 1.794259 |   0.128 |
+| inc      |   5 | 0.0016756 | 0.2660254 | 2.168822 |   0.010 |
+| pre:inc  |   5 | 0.0009464 | 0.1502589 | 1.225014 |   0.239 |
+| Residual |  22 | 0.0033994 | 0.5396993 |       NA |      NA |
+| Total    |  33 | 0.0062987 | 1.0000000 |       NA |      NA |
+
 Permanova results all by Main class
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0002722
-</td>
-<td style="text-align:right;">
-0.0440732
-</td>
-<td style="text-align:right;">
-1.796432
-</td>
-<td style="text-align:right;">
-0.128
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0016413
-</td>
-<td style="text-align:right;">
-0.2657632
-</td>
-<td style="text-align:right;">
-2.166512
-</td>
-<td style="text-align:right;">
-0.010
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0009290
-</td>
-<td style="text-align:right;">
-0.1504214
-</td>
-<td style="text-align:right;">
-1.226242
-</td>
-<td style="text-align:right;">
-0.237
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-0.0033334
-</td>
-<td style="text-align:right;">
-0.5397422
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:right;">
-0.0061758
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
 
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-7-4.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
+|:---------|----:|----------:|----------:|----------:|--------:|
+| pre      |   1 | 0.0004367 | 0.0410917 | 1.6469493 |   0.199 |
+| inc      |   5 | 0.0038628 | 0.3634700 | 2.9135648 |   0.022 |
+| pre:inc  |   5 | 0.0004945 | 0.0465342 | 0.3730168 |   0.941 |
+| Residual |  22 | 0.0058335 | 0.5489041 |        NA |      NA |
+| Total    |  33 | 0.0106275 | 1.0000000 |        NA |      NA |
+
 Permanova results saccharides
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0004367
-</td>
-<td style="text-align:right;">
-0.0410917
-</td>
-<td style="text-align:right;">
-1.6469493
-</td>
-<td style="text-align:right;">
-0.199
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0038628
-</td>
-<td style="text-align:right;">
-0.3634700
-</td>
-<td style="text-align:right;">
-2.9135648
-</td>
-<td style="text-align:right;">
-0.022
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0004945
-</td>
-<td style="text-align:right;">
-0.0465342
-</td>
-<td style="text-align:right;">
-0.3730168
-</td>
-<td style="text-align:right;">
-0.941
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-0.0058335
-</td>
-<td style="text-align:right;">
-0.5489041
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:right;">
-0.0106275
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
+
 </details>
 </details>
 
@@ -1423,266 +1188,31 @@ click to open
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0001455 | 0.0358253 | 1.929872 |   0.114 |
+| inc      |   5 | 0.0014038 | 0.3457389 | 3.724922 |   0.001 |
+| pre:inc  |   5 | 0.0007774 | 0.1914741 | 2.062904 |   0.021 |
+| Residual |  23 | 0.0017335 | 0.4269617 |       NA |      NA |
+| Total    |  34 | 0.0040602 | 1.0000000 |       NA |      NA |
+
 Permanova results all by Main class
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0001455
-</td>
-<td style="text-align:right;">
-0.0358253
-</td>
-<td style="text-align:right;">
-1.929872
-</td>
-<td style="text-align:right;">
-0.114
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0014038
-</td>
-<td style="text-align:right;">
-0.3457389
-</td>
-<td style="text-align:right;">
-3.724922
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0007774
-</td>
-<td style="text-align:right;">
-0.1914741
-</td>
-<td style="text-align:right;">
-2.062904
-</td>
-<td style="text-align:right;">
-0.021
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-23
-</td>
-<td style="text-align:right;">
-0.0017335
-</td>
-<td style="text-align:right;">
-0.4269617
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-34
-</td>
-<td style="text-align:right;">
-0.0040602
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
 
     ## NULL
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-10-4.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0001863 | 0.0273047 | 1.412979 |   0.212 |
+| inc      |   5 | 0.0023910 | 0.3503736 | 3.626269 |   0.005 |
+| pre:inc  |   5 | 0.0012138 | 0.1778652 | 1.840855 |   0.105 |
+| Residual |  23 | 0.0030331 | 0.4444564 |       NA |      NA |
+| Total    |  34 | 0.0068243 | 1.0000000 |       NA |      NA |
+
 Permanova results saccharides
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0001863
-</td>
-<td style="text-align:right;">
-0.0273047
-</td>
-<td style="text-align:right;">
-1.412979
-</td>
-<td style="text-align:right;">
-0.212
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0023910
-</td>
-<td style="text-align:right;">
-0.3503736
-</td>
-<td style="text-align:right;">
-3.626269
-</td>
-<td style="text-align:right;">
-0.005
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0012138
-</td>
-<td style="text-align:right;">
-0.1778652
-</td>
-<td style="text-align:right;">
-1.840855
-</td>
-<td style="text-align:right;">
-0.105
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-23
-</td>
-<td style="text-align:right;">
-0.0030331
-</td>
-<td style="text-align:right;">
-0.4444564
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-34
-</td>
-<td style="text-align:right;">
-0.0068243
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
+
 </details>
 </details>
 
@@ -5007,7 +4537,7 @@ NA
 Session Info
 </summary>
 
-Date run: 2023-06-12
+Date run: 2023-06-13
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
