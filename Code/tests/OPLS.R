@@ -87,11 +87,11 @@ PLS_DA_all = opls(Data_OPLS_1,Meta_OPLS[, "pre"])
 
 plot(PLS_DA_all, typeVc = "x-score")
 
-PLS_DA_all2 = opls(Data_OPLS_1,Meta_OPLS[, "inc"]) #Does not work
+PLS_DA_all2 = opls(Data_OPLS_1,Meta_OPLS[, "inc"],predI = 2)
 
 plot(PLS_DA_all2, typeVc = "x-score")
 
-PLS_DA_all@scoreMN #I think these are the coords for the PLS-DA plot? where is class data stored...  
+PLS_DA_all@scoreMN #I think these are the coords (x,y) for the PLS-DA plot? where is class data stored...  
 DF1<-data.frame(PLS_DA_all@scoreMN) # have to dump this object into a data frame before I can call it? 
 plot(DF1$p1,DF1$p2) #Confirmed that these are the points the PLS-DA is plotting. Still not sure how to get the class data to draw the vectors. Should be able to left join metadata to DF1 to get color separation and elipse drawing. 
 
