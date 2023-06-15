@@ -52,6 +52,7 @@ list(
   tar_target(GC_PCA, GC_process_PCA(GC_processed)),
   tar_target(gg_GC_PCA, plot_GC_PCA(GC_PCA)),
   tar_target(gg_GC, plot_GC(GC_processed)),
+  tar_target(gg_GC_PLS, plot_GC_PLS(GC_PCA)),
   
   #LC analysis
   tar_target(LC_POS_data_read,"Data/LC/LC_pos_Data.csv", format="file"),
@@ -64,6 +65,7 @@ list(
   tar_target(LC_PCA, LC_process_PCA(LC_processed)),
   tar_target(gg_LC, plot_LC(LC_processed)),
   tar_target(gg_LC_PCA, plot_LC_PCA(LC_PCA)),
+  tar_target(gg_LC_PLS, plot_LC_PLS(LC_PCA)),
   
   #Lipid analysis
   tar_target(Lipid_POS_data_read,"Data/lipids/Lipid_POS_data.csv", format="file"),
@@ -74,6 +76,7 @@ list(
   tar_target(Lipid_fdata, read.csv(Lipid_fdata_read)),
   tar_target(Lipid_processed, process_Lipid(Lipid_POS_data,Lipid_NEG_data,Lipid_fdata)),
   tar_target(Lipid_PCA, Lipid_process_PCA(Lipid_processed)),
+  tar_target(gg_Lipid_PLS, plot_Lipid_PLS(Lipid_PCA)),
   
   tar_target(gg_Lipid, plot_Lipid(Lipid_processed,Lipid_PCA)),
   
@@ -109,7 +112,7 @@ list(
   tar_target(gg_FTICR_NOSC, plot_FTICR_NOSC(FTICR_processed)),
   tar_target(gg_FTICR_PCA_filter_N2N6, plot_FTICR_PCA_filter_N2N6(FTICR_relabund_filter_N2N6)),
   tar_target(gg_FTICR_PCA_filter_N2N6_2, plot_FTICR_PCA_filter_N2N6_2(FTICR_relabund_filter_N2N6_2)),
-  
+  tar_target(gg_FTICR_PLS, plot_FTICR_PLS(FTICR_relabund)),
   
   # analysis - graphs
   tar_target(gg_respiration, plot_respiration(respiration_processed)),

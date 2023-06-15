@@ -14,6 +14,142 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE
                       )
 ```
+## PCA vs PLS GC
+
+<details>
+  <summary>click to open</summary>
+
+#### Pre:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+
+  tar_read(gg_GC_PCA)$gg_pca_pre1
+  tar_read(gg_GC_PLS)$PLS_pre
+
+ 
+```
+
+
+#### INC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  
+  tar_read(gg_GC_PCA)$gg_pca_inc1
+  tar_read(gg_GC_PLS)$PLS_inc
+  
+  
+```
+
+
+
+</details>
+
+
+
+## PCA vs PLS LC
+
+<details>
+  <summary>click to open</summary>
+
+#### Pre:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+
+  tar_read(gg_LC_PCA)$gg_pca_pre1
+  tar_read(gg_LC_PLS)$PLS_pre
+
+ 
+```
+
+
+#### INC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  
+  tar_read(gg_LC_PCA)$gg_pca_inc1
+  tar_read(gg_LC_PLS)$PLS_inc
+  
+  
+```
+
+
+
+</details>
+
+
+
+## PCA vs PLS Lipid
+
+<details>
+  <summary>click to open</summary>
+
+#### Pre:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+
+  tar_read(Lipid_PCA)$gg_pca_pre
+  tar_read(gg_Lipid_PLS)$PLS_pre
+
+ 
+```
+
+
+#### INC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  
+  tar_read(Lipid_PCA)$gg_pca_inc
+  tar_read(gg_Lipid_PLS)$PLS_inc
+  
+  
+```
+
+
+
+</details>
+
+
+
+## PCA vs PLS FTICR
+
+<details>
+  <summary>click to open</summary>
+
+#### -2:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+
+  tar_read(gg_FTICR_PCA_filter_N2N6)$gg_pca_by_pre_polar_N2
+  tar_read(gg_FTICR_PLS)$PolarPLS2
+  tar_read(gg_FTICR_PCA_filter_N2N6)$gg_pca_by_pre_nonpolar_N2
+  tar_read(gg_FTICR_PLS)$nonPolarPLS2
+ 
+```
+
+
+#### -6:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  
+  tar_read(gg_FTICR_PCA_filter_N2N6)$gg_pca_by_pre_polar_N6
+  tar_read(gg_FTICR_PLS)$PolarPLS6
+  tar_read(gg_FTICR_PCA_filter_N2N6)$gg_pca_by_pre_nonpolar_N6
+  tar_read(gg_FTICR_PLS)$nonPolarPLS6
+  
+```
+
+
+
+</details>
+
 
 ## NOSC by polar and non polar
 

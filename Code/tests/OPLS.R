@@ -69,18 +69,22 @@ relabund_wide =
 
 ##Data reorganization
 nameH<-c(1:215)
-
+nameP<-c(1:108)
+namePN2<-c(1:44)
+namePN6<-c(1:64)
 Data_OPLS<- relabund_wide %>%
+  filter(Polar=='polar', pre=='-6')%>%
   select(CoreID,aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`)
 Data_OPLS<-as.data.frame(Data_OPLS)
 Data_OPLS_1 <- as.matrix(Data_OPLS[, colnames(Data_OPLS) != "CoreID"])
-rownames(Data_OPLS_1) <- nameH
+rownames(Data_OPLS_1) <- namePN6
 
 Meta_OPLS<-relabund_wide %>%
+  filter(Polar=='polar', pre=='-6')%>%
   select(-c(aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`))
 Meta_OPLS<-as.data.frame(Meta_OPLS)
 Meta_OPLS_1 <- as.matrix(Meta_OPLS[, colnames(Meta_OPLS) != "CoreID"])
-rownames(Meta_OPLS_1) <- nameH
+rownames(Meta_OPLS_1) <- namePN6
 
 ##PLS-DA
 PLS_DA_all = opls(Data_OPLS_1,Meta_OPLS[, "pre"])

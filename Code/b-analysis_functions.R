@@ -1235,6 +1235,65 @@ plot_GC_PCA = function(GC_PCA){
   
 }
 
+plot_GC_PLS= function(GC_PCA){
+  library(ropls)
+  ##Data reorganization
+GC_PLS_DATA<- GC_PCA$GC_short%>%
+  select(`Alcohols and polyols`:unknown)
+  
+  
+  
+  nameH<-c(1:34)
+  GC_PLS_DATA<- GC_PCA$GC_short%>%
+    select(`Alcohols and polyols`:unknown)%>%
+    as.data.frame()
+  rownames(GC_PLS_DATA) <- nameH
+  
+  GC_PLS_Meta<- GC_PCA$GC_short%>%
+    select(Sample.ID:inc)%>%
+    as.data.frame()%>%
+    mutate(inc=as.factor(inc),pre=as.factor(pre))
+  rownames(GC_PLS_DATA) <- nameH
+  
+  
+  
+  ##Polar PLS-DA
+  
+  PLS_DA_all_inc = opls(GC_PLS_DATA,GC_PLS_Meta[, "inc"],predI = 2)
+  PLS_DA_all_pre = opls(GC_PLS_DATA,GC_PLS_Meta[, "pre"],predI = 2)
+  
+  ggplot_PLS= function(PLS_DA_P6,Meta_PLS_P6_1){
+    DF<-data.frame(PLS_DA_P6@scoreMN)
+    DF2<-data.frame(Meta_PLS_P6_1)
+    DF$ID<-rownames(DF)
+    DF2$ID<-rownames(DF2)
+    DFT<-DF%>%
+      left_join(DF2, by="ID")
+    
+    DFT%>%
+      ggplot(aes(x=p1,y=p2,color=DFT[,4]))+
+      stat_ellipse()+
+      geom_point(aes())+
+      theme_CKM()
+  
+  }
+
+  
+  PLS_pre<- ggplot_PLS(PLS_DA_all_pre,GC_PLS_Meta[, "pre"])
+  PLS_inc<-ggplot_PLS(PLS_DA_all_inc,GC_PLS_Meta[, "inc"])
+  
+  
+ 
+  
+  
+  list(PLS_pre=PLS_pre,
+       PLS_inc=PLS_inc
+       
+  )
+  
+}
+
+
 
 ###LC
 
@@ -1534,6 +1593,59 @@ plot_LC_PCA = function(LC_PCA){
         gg_pca_inc2=gg_pca_inc2,
         permanova_LC_all2= permanova_LC_all2
         
+  )
+  
+}
+
+plot_LC_PLS= function(LC_PCA){
+  library(ropls)
+  ##Data reorganization
+  nameH<-c(1:35)
+  LC_PLS_DATA<- LC_PCA$LC_short%>%
+    select(Amines:unknown)%>%
+    as.data.frame()
+  rownames(LC_PLS_DATA) <- nameH
+  
+  LC_PLS_Meta<- LC_PCA$LC_short%>%
+    select(Sample.ID:inc)%>%
+    as.data.frame()%>%
+    mutate(inc=as.factor(inc),pre=as.factor(pre))
+  rownames(LC_PLS_DATA) <- nameH
+  
+  
+  
+  ##Polar PLS-DA
+  
+  PLS_DA_all_inc = opls(LC_PLS_DATA,LC_PLS_Meta[, "inc"],predI = 2)
+  PLS_DA_all_pre = opls(LC_PLS_DATA,LC_PLS_Meta[, "pre"],predI = 2)
+  
+  ggplot_PLS= function(PLS_DA_P6,Meta_PLS_P6_1){
+    DF<-data.frame(PLS_DA_P6@scoreMN)
+    DF2<-data.frame(Meta_PLS_P6_1)
+    DF$ID<-rownames(DF)
+    DF2$ID<-rownames(DF2)
+    DFT<-DF%>%
+      left_join(DF2, by="ID")
+    
+    DFT%>%
+      ggplot(aes(x=p1,y=p2,color=DFT[,4]))+
+      stat_ellipse()+
+      geom_point(aes())+
+      theme_CKM()
+    
+  }
+  
+  
+  PLS_pre<- ggplot_PLS(PLS_DA_all_pre,LC_PLS_Meta[, "pre"])
+  PLS_inc<-ggplot_PLS(PLS_DA_all_inc,LC_PLS_Meta[, "inc"])
+  
+  
+  
+  
+  
+  list(PLS_pre=PLS_pre,
+       PLS_inc=PLS_inc
+       
   )
   
 }
@@ -1874,6 +1986,81 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
        Lipid_heat_map=Lipid_heat_map,
        class_heat_map=class_heat_map
        
+       
+  )
+  
+}
+
+plot_Lipid_PLS= function(Lipid_PCA){
+  library(ropls)
+  ##Data reorganization
+  nameH<-c(1:36)
+  Lipid_PLS_DATA<- Lipid_PCA$Lipid_short%>%
+    select(Glycerolipid:Sphingolipid)%>%
+    as.data.frame()
+  rownames(Lipid_PLS_DATA) <- nameH
+  
+  Lipid_PLS_DATA2<- Lipid_PCA$Lipid_short2%>%
+    select(Glycerolipid:Sphingolipid)%>%
+    as.data.frame()
+  rownames(Lipid_PLS_DATA2) <- nameH
+  
+  Lipid_PLS_DATA3<- Lipid_PCA$Lipid_short3%>%
+    select(Glycerophospholipid,Sphingolipid)%>%
+    as.data.frame()
+  rownames(Lipid_PLS_DATA3) <- nameH
+  
+  Lipid_PLS_Meta<- Lipid_PCA$Lipid_short%>%
+    select(Sample.ID:Inc)%>%
+    as.data.frame()%>%
+    mutate(inc=as.factor(Inc),pre=as.factor(Pre))
+  rownames(Lipid_PLS_DATA) <- nameH
+  
+  
+  
+  ##Polar PLS-DA
+  
+  PLS_DA_all_inc = opls(Lipid_PLS_DATA,Lipid_PLS_Meta[, "inc"],predI = 2)
+  PLS_DA_all_pre = opls(Lipid_PLS_DATA,Lipid_PLS_Meta[, "pre"],predI = 2)
+  PLS_DA_all_inc2 = opls(Lipid_PLS_DATA2,Lipid_PLS_Meta[, "inc"],predI = 2)
+  PLS_DA_all_pre2 = opls(Lipid_PLS_DATA2,Lipid_PLS_Meta[, "pre"],predI = 2)
+  PLS_DA_all_inc3 = opls(Lipid_PLS_DATA3,Lipid_PLS_Meta[, "inc"],predI = 2)
+  PLS_DA_all_pre3 = opls(Lipid_PLS_DATA3,Lipid_PLS_Meta[, "pre"],predI = 2)
+  
+  ggplot_PLS= function(PLS_DA_P6,Meta_PLS_P6_1){
+    DF<-data.frame(PLS_DA_P6@scoreMN)
+    DF2<-data.frame(Meta_PLS_P6_1)
+    DF$ID<-rownames(DF)
+    DF2$ID<-rownames(DF2)
+    DFT<-DF%>%
+      left_join(DF2, by="ID")
+    
+    DFT%>%
+      ggplot(aes(x=p1,y=p2,color=DFT[,4]))+
+      stat_ellipse()+
+      geom_point(aes())+
+      theme_CKM()
+    
+  }
+  
+  
+  PLS_pre<- ggplot_PLS(PLS_DA_all_pre,Lipid_PLS_Meta[, "pre"])
+  PLS_inc<-ggplot_PLS(PLS_DA_all_inc,Lipid_PLS_Meta[, "inc"])
+  PLS_pre2<- ggplot_PLS(PLS_DA_all_pre2,Lipid_PLS_Meta[, "pre"])
+  PLS_inc2<-ggplot_PLS(PLS_DA_all_inc2,Lipid_PLS_Meta[, "inc"])
+  PLS_pre3<- ggplot_PLS(PLS_DA_all_pre3,Lipid_PLS_Meta[, "pre"])
+  PLS_inc3<-ggplot_PLS(PLS_DA_all_inc3,Lipid_PLS_Meta[, "inc"])
+  
+  
+  
+  
+  
+  list(PLS_pre=PLS_pre,
+       PLS_inc=PLS_inc,
+       PLS_pre2=PLS_pre2,
+       PLS_inc2=PLS_inc2,
+       PLS_pre3=PLS_pre3,
+       PLS_inc3=PLS_inc3
        
   )
   
@@ -4992,6 +5179,128 @@ plot_FTICR_PCA_filter_N2N6_2 = function(FTICR_relabund_filter_N2N6_2){
     
     
     
+    
+  )
+  
+}
+
+plot_FTICR_PLS= function(FTICR_relabund){
+  library(ropls)
+  ##Data reorganization
+  nameH<-c(1:215)
+  nameP<-c(1:108)
+  namePN2<-c(1:44)
+  namePN6<-c(1:64)
+  nameNP6<-c(1:83)
+  nameNP2<-c(1:24)
+  Data_PLS_P6<- FTICR_relabund$relabund_wide %>%
+    filter(Polar=='polar', pre=='-6')%>%
+    select(CoreID,aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`)
+  Data_PLS_P6<-as.data.frame(Data_PLS_P6)
+  Data_PLS_P6_1 <- as.matrix(Data_PLS_P6[, colnames(Data_PLS_P6) != "CoreID"])
+  rownames(Data_PLS_P6_1) <- namePN6
+  
+  Meta_PLS_P6<-FTICR_relabund$relabund_wide %>%
+    filter(Polar=='polar', pre=='-6')%>%
+    select(-c(aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`))
+  Meta_PLS_P6<-as.data.frame(Meta_PLS_P6)
+  Meta_PLS_P6_1 <- as.matrix(Meta_PLS_P6[, colnames(Meta_PLS_P6) != "CoreID"])
+  rownames(Meta_PLS_P6_1) <- namePN6
+  
+  
+  Data_PLS_P2<- FTICR_relabund$relabund_wide %>%
+    filter(Polar=='polar', pre=='-2')%>%
+    select(CoreID,aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`)
+  Data_PLS_P2<-as.data.frame(Data_PLS_P2)
+  Data_PLS_P2_1 <- as.matrix(Data_PLS_P2[, colnames(Data_PLS_P2) != "CoreID"])
+  rownames(Data_PLS_P2_1) <- namePN2
+  
+  Meta_PLS_P2<-FTICR_relabund$relabund_wide %>%
+    filter(Polar=='polar', pre=='-2')%>%
+    select(-c(aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`))
+  Meta_PLS_P2<-as.data.frame(Meta_PLS_P2)
+  Meta_PLS_P2_1 <- as.matrix(Meta_PLS_P2[, colnames(Meta_PLS_P2) != "CoreID"])
+  rownames(Meta_PLS_P2_1) <- namePN2
+  
+  
+
+  ##Polar PLS-DA
+  
+  PLS_DA_P6 = opls(Data_PLS_P6_1,Meta_PLS_P6_1[, "inc"],predI = 2)
+  PLS_DA_P2 = opls(Data_PLS_P2_1,Meta_PLS_P2_1[, "inc"],predI = 2)
+  
+  ggplot_FTICR_PLS= function(PLS_DA_P6,Meta_PLS_P6_1){
+    DF<-data.frame(PLS_DA_P6@scoreMN)
+    DF2<-data.frame(Meta_PLS_P6_1)
+    DF$ID<-rownames(DF)
+    DF2$ID<-rownames(DF2)
+    DFT<-DF%>%
+      left_join(DF2, by="ID")
+    
+    DFT%>%
+      ggplot(aes(x=p1,y=p2, color=inc))+
+      geom_point()+
+      stat_ellipse()+
+      theme_CKM()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  }
+  
+  
+  
+  
+  PolarPLS6<- ggplot_FTICR_PLS(PLS_DA_P6, Meta_PLS_P6_1)
+  PolarPLS2<-ggplot_FTICR_PLS(PLS_DA_P2, Meta_PLS_P2_1)
+ 
+  
+  #### Non polar PLS-DA
+  Data_PLS_NP6<- FTICR_relabund$relabund_wide %>%
+    filter(Polar=='nonpolar', pre=='-6')%>%
+    select(CoreID,aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`)
+  Data_PLS_NP6<-as.data.frame(Data_PLS_NP6)
+  Data_PLS_NP6_1 <- as.matrix(Data_PLS_NP6[, colnames(Data_PLS_NP6) != "CoreID"])
+  rownames(Data_PLS_NP6_1) <- nameNP6
+  
+  Meta_PLS_NP6<-FTICR_relabund$relabund_wide %>%
+    filter(Polar=='nonpolar', pre=='-6')%>%
+    select(-c(aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`))
+  Meta_PLS_NP6<-as.data.frame(Meta_PLS_NP6)
+  Meta_PLS_NP6_1 <- as.matrix(Meta_PLS_NP6[, colnames(Meta_PLS_NP6) != "CoreID"])
+  rownames(Meta_PLS_NP6_1) <- nameNP6
+  
+  
+  Data_PLS_NP2<- FTICR_relabund$relabund_wide %>%
+    filter(Polar=='nonpolar', pre=='-2')%>%
+    select(CoreID,aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`)
+  Data_PLS_NP2<-as.data.frame(Data_PLS_NP2)
+  Data_PLS_NP2_1 <- as.matrix(Data_PLS_NP2[, colnames(Data_PLS_NP2) != "CoreID"])
+  rownames(Data_PLS_NP2_1) <- nameNP2
+  
+  Meta_PLS_NP2<-FTICR_relabund$relabund_wide %>%
+    filter(Polar=='nonpolar', pre=='-2')%>%
+    select(-c(aliphatic,`unsaturated/lignin`,aromatic,`condensed aromatic`))
+  Meta_PLS_NP2<-as.data.frame(Meta_PLS_NP2)
+  Meta_PLS_NP2_1 <- as.matrix(Meta_PLS_NP2[, colnames(Meta_PLS_NP2) != "CoreID"])
+  rownames(Meta_PLS_NP2_1) <- nameNP2
+  ##nonPolar PLS-DA
+  
+  PLS_DA_NP6 = opls(Data_PLS_NP6_1,Meta_PLS_NP6_1[, "inc"],predI = 2)
+  PLS_DA_NP2 = opls(Data_PLS_NP2_1,Meta_PLS_NP2_1[, "inc"],predI = 2)
+  nonPolarPLS6<-ggplot_FTICR_PLS(PLS_DA_NP6, Meta_PLS_NP6_1)
+  nonPolarPLS2<-ggplot_FTICR_PLS(PLS_DA_NP2, Meta_PLS_NP2_1)
+  
+  
+  list(PolarPLS6=PolarPLS6,
+       PolarPLS2=PolarPLS2,
+       nonPolarPLS6=nonPolarPLS6,
+       nonPolarPLS2=nonPolarPLS2
     
   )
   
