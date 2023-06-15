@@ -14,6 +14,40 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE
                       )
 ```
+
+## Volcano
+
+<details>
+  <summary>click to open</summary>
+
+#### GC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
+
+  tar_read(GC_volcano)$GC_Volcano
+
+ 
+```
+
+
+#### LC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
+  
+  tar_read(LC_volcano)$LC_Volcano
+  
+  
+```
+
+
+
+</details>
+
+
+
+
 ## PCA vs PLS GC
 
 <details>

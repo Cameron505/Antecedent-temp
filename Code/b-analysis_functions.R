@@ -1261,6 +1261,9 @@ GC_PLS_DATA<- GC_PCA$GC_short%>%
   
   PLS_DA_all_inc = opls(GC_PLS_DATA,GC_PLS_Meta[, "inc"],predI = 2)
   PLS_DA_all_pre = opls(GC_PLS_DATA,GC_PLS_Meta[, "pre"],predI = 2)
+  OPLS_DA_all_pre = opls(GC_PLS_DATA,GC_PLS_Meta[, "pre"],predI = 1, orthoI = 1)
+  
+  plot(OPLS_DA_all_pre, typeVc = "x-score")
   
   ggplot_PLS= function(PLS_DA_P6,Meta_PLS_P6_1){
     DF<-data.frame(PLS_DA_P6@scoreMN)
@@ -1278,7 +1281,26 @@ GC_PLS_DATA<- GC_PCA$GC_short%>%
   
   }
 
+  ggplot_OPLS= function(OPLS_DA_all_pre,LC_PLS_Meta){
+    DF<-data.frame(OPLS_DA_all_pre@scoreMN,OPLS_DA_all_pre@orthoScoreMN)
+    DF2<-data.frame(LC_PLS_Meta)
+    DF$ID<-rownames(DF)
+    DF2$ID<-rownames(DF2)
+    DFT<-DF%>%
+      left_join(DF2, by="ID")
+    
+    DFT%>%
+      ggplot(aes(x=p1,y=o1,color=DFT[,4]))+
+      stat_ellipse()+
+      geom_point(aes())+
+      theme_CKM()
+    
+  }
   
+  
+  
+  
+  OPLS_pre<- ggplot_OPLS(OPLS_DA_all_pre,GC_PLS_Meta[, "pre"])
   PLS_pre<- ggplot_PLS(PLS_DA_all_pre,GC_PLS_Meta[, "pre"])
   PLS_inc<-ggplot_PLS(PLS_DA_all_inc,GC_PLS_Meta[, "inc"])
   
@@ -1287,7 +1309,8 @@ GC_PLS_DATA<- GC_PCA$GC_short%>%
   
   
   list(PLS_pre=PLS_pre,
-       PLS_inc=PLS_inc
+       PLS_inc=PLS_inc,
+       OPLS_pre=OPLS_pre
        
   )
   
@@ -1617,7 +1640,33 @@ plot_LC_PLS= function(LC_PCA){
   ##Polar PLS-DA
   
   PLS_DA_all_inc = opls(LC_PLS_DATA,LC_PLS_Meta[, "inc"],predI = 2)
+  
+  
   PLS_DA_all_pre = opls(LC_PLS_DATA,LC_PLS_Meta[, "pre"],predI = 2)
+  OPLS_DA_all_pre = opls(LC_PLS_DATA,LC_PLS_Meta[, "pre"],predI = 1, orthoI = NA)
+  
+  plot(OPLS_DA_all_pre, typeVc = "x-score")
+  
+  plot(OPLS_DA_all_pre@scoreMN,OPLS_DA_all_pre@orthoScoreMN)
+  
+  
+  ggplot_OPLS= function(OPLS_DA_all_pre,LC_PLS_Meta){
+    DF<-data.frame(OPLS_DA_all_pre@scoreMN,OPLS_DA_all_pre@orthoScoreMN)
+    DF2<-data.frame(LC_PLS_Meta)
+    DF$ID<-rownames(DF)
+    DF2$ID<-rownames(DF2)
+    DFT<-DF%>%
+      left_join(DF2, by="ID")
+    
+    DFT%>%
+      ggplot(aes(x=p1,y=o1,color=DFT[,4]))+
+      stat_ellipse()+
+      geom_point(aes())+
+      theme_CKM()
+    
+  }
+  
+  
   
   ggplot_PLS= function(PLS_DA_P6,Meta_PLS_P6_1){
     DF<-data.frame(PLS_DA_P6@scoreMN)
@@ -1638,13 +1687,15 @@ plot_LC_PLS= function(LC_PCA){
   
   PLS_pre<- ggplot_PLS(PLS_DA_all_pre,LC_PLS_Meta[, "pre"])
   PLS_inc<-ggplot_PLS(PLS_DA_all_inc,LC_PLS_Meta[, "inc"])
+  OPLS_pre<- ggplot_OPLS(OPLS_DA_all_pre,LC_PLS_Meta[, "pre"])
   
   
   
   
   
   list(PLS_pre=PLS_pre,
-       PLS_inc=PLS_inc
+       PLS_inc=PLS_inc,
+       OPLS_pre=OPLS_pre
        
   )
   
