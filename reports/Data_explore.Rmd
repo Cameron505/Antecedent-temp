@@ -26,6 +26,7 @@ knitr::opts_chunk$set(echo = FALSE,
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
 
   tar_read(GC_volcano)$GC_Volcano
+  tar_read(GC_volcano)$GC_Volcano_I
 
  
 ```
@@ -37,6 +38,7 @@ knitr::opts_chunk$set(echo = FALSE,
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
   
   tar_read(LC_volcano)$LC_Volcano
+tar_read(LC_volcano)$LC_Volcano_I
   
   
 ```

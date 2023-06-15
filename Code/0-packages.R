@@ -16,6 +16,7 @@ library(trelliscopejs)
 # library(devtools)
 # install_github("vqv/ggbiplot")
 #install_github("haozhu233/kableExtra")
+#webshot::install_phantomjs()
 
 # custom ggplot theme
 

@@ -147,11 +147,13 @@ process_GC_volcano= function(GC_data,GC_fdata){
   
   GC_Volcano_I<- plot(statResAnova, plot_type= 'volcano', title_lab="GC volcano",interactive = TRUE)
   GC_Volcano<- plot(statResAnova, plot_type= 'volcano', title_lab="GC volcano")
-  
+  VI<-knit_print(GC_Volcano_I)
   
   list(metab_final = metab_final,
        emeta=emeta,
-       GC_Volcano=GC_Volcano)
+       GC_Volcano=GC_Volcano,
+       GC_Volcano_I=GC_Volcano_I,
+       VI=VI)
 }
 
 GC_process_PCA= function(GC_processed){
@@ -373,7 +375,9 @@ process_LC_volcano= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
   
   list(metab_final = metab_final,
        LC_meta=LC_meta,
-       LC_Volcano=LC_Volcano
+       LC_Volcano=LC_Volcano,
+       LC_Volcano_I=LC_Volcano_I
+       
        )
   
 }
