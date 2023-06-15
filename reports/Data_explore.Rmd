@@ -92,7 +92,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
 
-  tar_read(Lipid_PCA)$gg_pca_pre
+  tar_read(gg_Lipid)$gg_pca_pre
   tar_read(gg_Lipid_PLS)$PLS_pre
 
  
@@ -104,7 +104,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
   
-  tar_read(Lipid_PCA)$gg_pca_inc
+  tar_read(gg_Lipid)$gg_pca_inc
   tar_read(gg_Lipid_PLS)$PLS_inc
   
   
