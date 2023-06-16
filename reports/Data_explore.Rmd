@@ -4,7 +4,6 @@ output:
   github_document:
   html_preview: true
   always_allow_html: true
-  
 date: "2023-05-03"
 ---
 
@@ -14,6 +13,43 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE
                       )
 ```
+## Anova significant metabolites PCA
+
+<details>
+  <summary>click to open</summary>
+
+#### GC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  tar_read(gg_GC_PCA)$gg_pca_pre_Sig
+  tar_read(gg_GC_PCA)$gg_pca_inc_Sig
+ 
+```
+```{r , fig.height=5, fig.width=5, out.width="100%"}
+  tar_read(gg_GC_PCA)$permanova_GC_sig
+ 
+```
+
+#### LC:
+
+
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  tar_read(gg_LC_PCA)$gg_pca_pre_Sig
+  tar_read(gg_LC_PCA)$gg_pca_inc_Sig
+  
+  
+```
+```{r , fig.height=5, fig.width=5, out.width="100%"}
+  tar_read(gg_LC_PCA)$permanova_LC_sig
+ 
+```
+
+
+</details>
+
+
+
 
 ## Volcano
 
@@ -26,8 +62,6 @@ knitr::opts_chunk$set(echo = FALSE,
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
 
   tar_read(GC_volcano)$GC_Volcano
-  tar_read(GC_volcano)$GC_Volcano_I
-
  
 ```
 
@@ -38,7 +72,6 @@ knitr::opts_chunk$set(echo = FALSE,
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
   
   tar_read(LC_volcano)$LC_Volcano
-tar_read(LC_volcano)$LC_Volcano_I
   
   
 ```

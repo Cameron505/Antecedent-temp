@@ -79,17 +79,12 @@ process_GC= function(GC_data,GC_fdata){
   metab_final <- normalize_global(metab_filter, subset_fn = "all", norm_fn = "mean", apply_norm = TRUE, 
                                   backtransform = TRUE)
 
-  
-  
-  statResAnova <- imd_anova(metab_final, test_method = "anova")
-  
-  GC_Volcano<- plot(statResAnova, plot_type= 'volcano', title_lab="GC volcano")
-  
+
   
   
   list(metab_final = metab_final,
-       emeta=emeta,
-       GC_Volcano=GC_Volcano)
+       emeta=emeta
+       )
 }
 
 process_GC_volcano= function(GC_data,GC_fdata){
@@ -147,16 +142,22 @@ process_GC_volcano= function(GC_data,GC_fdata){
   
   GC_Volcano_I<- plot(statResAnova, plot_type= 'volcano', title_lab="GC volcano",interactive = TRUE)
   GC_Volcano<- plot(statResAnova, plot_type= 'volcano', title_lab="GC volcano")
-  VI<-knit_print(GC_Volcano_I)
+  VI<-print(GC_Volcano_I)
   
+  GC_Sig_metab<-statResAnova%>%
+    filter(`P_value_A_-2_vs_-6`< 0.05)%>%
+    mutate(Keep= 'Y')
+  
+ # ,`Fold_change_-2_vs_-6`>1 |`Fold_change_-2_vs_-6`< -1 
   list(metab_final = metab_final,
        emeta=emeta,
        GC_Volcano=GC_Volcano,
        GC_Volcano_I=GC_Volcano_I,
-       VI=VI)
+       VI=VI,
+       GC_Sig_metab=GC_Sig_metab)
 }
 
-GC_process_PCA= function(GC_processed){
+GC_process_PCA= function(GC_processed,GC_volcano){
   
   GC_data_composite = GC_processed$metab_final$e_data %>%
     pivot_longer(cols=Wein_1_B_2_3:Wein_36_Pre_2_1, names_to= "Sample.ID")%>%
@@ -165,6 +166,7 @@ GC_process_PCA= function(GC_processed){
     mutate_if(is.character, ~na_if(., ''))%>%
     mutate(Main.class = if_else(grepl("Unknown", Metabolites), "unknown", Main.class))%>%
     mutate(Main.class = if_else(grepl("NA", Main.class), "unknown", Main.class))
+  
   
   GC_short<-GC_data_composite %>%
     group_by(Sample.ID,Main.class,pre,inc)%>%
@@ -177,7 +179,30 @@ GC_process_PCA= function(GC_processed){
     pivot_wider(names_from = Main.class,values_from = abund)
   
   
+  GC_Long2<-GC_data_composite %>%
+    group_by(Sample.ID,Metabolites,pre,inc)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(abund, total)) %>% 
+    filter(Metabolites!="")
+    
+  GC_data_composite_sig<-GC_Long2%>%
+    left_join(GC_volcano$GC_Sig_metab, by="Metabolites")%>%
+    filter(Keep=='Y')%>%
+    select(-c('Count_-2':Keep))%>%
+    pivot_wider(names_from = Metabolites,values_from = relabund)
   
+  
+  num_sig= GC_data_composite_sig%>%
+    dplyr::select(c(`2-phenylacetamide`:`nonanoic acid`))
+  
+  grp_sig=GC_data_composite_sig%>%
+    dplyr::select(-c(`2-phenylacetamide`:`nonanoic acid`))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_GC_sig = prcomp(num_sig, scale.=T)
   
   num= GC_short%>%
     dplyr::select(c("Alcohols and polyols":unknown))
@@ -206,7 +231,12 @@ GC_process_PCA= function(GC_processed){
        grp2=grp2,
        pca_GC2=pca_GC2,
        GC_data_composite=GC_data_composite,
-       GC_short=GC_short)
+       GC_short=GC_short,
+       num_sig=num_sig,
+       grp_sig=grp_sig,
+       pca_GC_sig=pca_GC_sig,
+       GC_data_composite_sig=GC_data_composite_sig
+       )
   
 }
 
@@ -284,7 +314,9 @@ process_LC= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
   metab_final <- normalize_global(metab_filter, subset_fn = "all", norm_fn = "mean", apply_norm = TRUE, 
                                   backtransform = TRUE)
 
+  statResAnova <- imd_anova(metab_final, test_method = "anova")
   
+
   
   
   list(metab_final = metab_final,
@@ -372,17 +404,23 @@ process_LC_volcano= function(LC_POS_data,LC_fdata,LC_neg_data,LC_neg_fdata){
   LC_Volcano_I<- plot(statResAnova, plot_type= 'volcano', title_lab="LC volcano", interactive=TRUE)
   LC_Volcano<- plot(statResAnova, plot_type= 'volcano', title_lab="LC volcano")
   
+  LC_Sig_metab<-statResAnova%>%
+    filter(`P_value_A_-2_vs_-6`< 0.05)%>%
+    mutate(Keep= 'Y')
+  
+  
   
   list(metab_final = metab_final,
        LC_meta=LC_meta,
        LC_Volcano=LC_Volcano,
-       LC_Volcano_I=LC_Volcano_I
+       LC_Volcano_I=LC_Volcano_I,
+       LC_Sig_metab=LC_Sig_metab
        
        )
   
 }
 
-LC_process_PCA= function(LC_processed){
+LC_process_PCA= function(LC_processed,LC_volcano){
   
   LC_data_composite = LC_processed$metab_final$e_data %>%
     pivot_longer(cols=Pre_6_3:E_6_2, names_to= "Sample.ID")%>%
@@ -401,6 +439,33 @@ LC_process_PCA= function(LC_processed){
     dplyr::select(-c(relabund, total)) %>% 
     filter(Main.class!="")%>%
     pivot_wider(names_from = Main.class,values_from = abund)
+  
+  
+  LC_Long2<-LC_data_composite %>%
+    group_by(Sample.ID,Name2,pre,inc)%>%
+    dplyr::summarise(abund=sum(value,na.rm=TRUE))%>%
+    ungroup %>%
+    dplyr::mutate(total = sum(abund,na.rm=TRUE),
+                  relabund  = (abund/total)*100)%>%
+    dplyr::select(-c(abund, total)) %>% 
+    filter(Name2!="")
+  
+  LC_data_composite_sig<-LC_Long2%>%
+    left_join(LC_volcano$LC_Sig_metab, by="Name2")%>%
+    filter(Keep=='Y')%>%
+    select(-c('Count_-2':Keep))%>%
+    pivot_wider(names_from = Name2,values_from = relabund)
+  
+  
+  num_sig= LC_data_composite_sig%>%
+    dplyr::select(c(`13-HODE_neg`:`Unknown 131_neg` ))
+  
+  grp_sig=LC_data_composite_sig%>%
+    dplyr::select(-c(`13-HODE_neg`:`Unknown 131_neg`))%>%
+    dplyr::mutate(row = row_number())
+  
+  pca_LC_sig = prcomp(num_sig, scale.=T)
+  
   
   
   
@@ -431,7 +496,12 @@ LC_process_PCA= function(LC_processed){
        grp2=grp2,
        pca_LC2=pca_LC2,
        LC_data_composite=LC_data_composite,
-       LC_short=LC_short
+       LC_short=LC_short,
+       LC_data_composite_sig=LC_data_composite_sig,
+       pca_LC_sig=pca_LC_sig,
+       grp_sig=grp_sig,
+       num_sig=num_sig
+       
        )
  
   

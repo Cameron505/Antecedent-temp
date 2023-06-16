@@ -26,15 +26,13 @@ FTICR_Lipid|stem|FTICR_Lipid|0|skipped
 LC_POS_data|stem|LC_POS_data|0|skipped
 Lipid_fdata|stem|Lipid_fdata|0|skipped
 GC_processed|stem|GC_processed|0|skipped
-GC_volcano|stem|GC_volcano|0|started
-GC_volcano|stem|GC_volcano|0|built
+GC_volcano|stem|GC_volcano|0|skipped
 respiration_processed|stem|respiration_processed|0|skipped
 gg_MicrobialBiomass|stem|gg_MicrobialBiomass|0|skipped
 gg_nutrients|stem|gg_nutrients|0|skipped
 FTICR_processed|stem|FTICR_processed|0|skipped
 LC_processed|stem|LC_processed|0|skipped
-LC_volcano|stem|LC_volcano|0|started
-LC_volcano|stem|LC_volcano|0|built
+LC_volcano|stem|LC_volcano|0|skipped
 Lipid_processed|stem|Lipid_processed|0|skipped
 gg_GC|stem|gg_GC|0|skipped
 GC_PCA|stem|GC_PCA|0|skipped
@@ -74,5 +72,4 @@ report3|stem|report3|0|skipped
 report2|stem|report2|0|skipped
 report4|stem|report4|0|skipped
 report5|stem|report5|0|skipped
-report6|stem|report6|0|started
-report6|stem|report6|0|built
+report6|stem|report6|0|skipped

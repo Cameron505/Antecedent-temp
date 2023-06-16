@@ -1008,6 +1008,7 @@ plot_GC = function(GC_processed){
   
   
   
+  
   fit_aov = function(LASTRES){
     
     a = aov(value ~ pre, data = LASTRES)
@@ -1153,6 +1154,46 @@ plot_GC_PCA = function(GC_PCA){
             data = GC_PCA$GC_short, na.rm=T) %>%
     knitr::kable(caption="Permanova results saccharides")
   
+  permanova_GC_sig = 
+    adonis2(GC_PCA$GC_data_composite_sig %>% dplyr::select(`2-phenylacetamide`:`nonanoic acid`) ~ pre * inc, 
+            data = GC_PCA$GC_data_composite_sig, na.rm=T) %>%
+    knitr::kable(caption="Permanova results significant compounds only")
+  
+  Scale_inc= scale_color_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
+  
+  
+  gg_pca_pre_Sig=
+    ggbiplot(GC_PCA$pca_GC_sig,obs.scale = 1, var.scale = 1,
+             groups = as.character(GC_PCA$grp_sig$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    labs(shape="",
+         title = "GC-significant metabolites (ANOVA)",
+         subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
+  
+  
+  gg_pca_inc_Sig=
+    ggbiplot(GC_PCA$pca_GC_sig,obs.scale = 1, var.scale = 1,
+             groups = as.character(GC_PCA$grp_sig$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(shape=as.character(GC_PCA$grp_sig$pre),
+                   color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    labs(shape="",
+         title = "GC-significant metabolites (ANOVA)",
+         subtitle = "separation by inc")+
+    Scale_inc+
+    theme_CKM()
+  
+  
+  
+  
   gg_pca_pre1=
     ggbiplot(GC_PCA$pca_GC,obs.scale = 1, var.scale = 1,
              groups = as.character(GC_PCA$grp$pre), 
@@ -1167,6 +1208,7 @@ plot_GC_PCA = function(GC_PCA){
          title = "GC-all samples",
          subtitle = "separation by pre")+
     scale_colour_manual(values=cbPalette2)+
+    Scale_inc+
     theme_CKM()
   
   gg_pca_pre2=
@@ -1229,7 +1271,10 @@ plot_GC_PCA = function(GC_PCA){
         permanova_GC_all= permanova_GC_all,
         gg_pca_pre2=gg_pca_pre2,
         gg_pca_inc2=gg_pca_inc2,
-        permanova_GC_all2= permanova_GC_all2
+        permanova_GC_all2= permanova_GC_all2,
+        gg_pca_pre_Sig=gg_pca_pre_Sig,
+        gg_pca_inc_Sig=gg_pca_inc_Sig,
+        permanova_GC_sig=permanova_GC_sig
        
   )
   
@@ -1538,6 +1583,47 @@ plot_LC_PCA = function(LC_PCA){
             data = LC_PCA$LC_short, na.rm=T) %>%
     knitr::kable(caption="Permanova results saccharides")
   
+  Scale_inc= scale_color_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
+  
+  permanova_LC_sig = 
+    adonis2(LC_PCA$LC_data_composite_sig %>% dplyr::select(`13-HODE_neg`:`Unknown 131_neg`) ~ pre * inc, 
+            data = LC_PCA$LC_data_composite_sig, na.rm=T) %>%
+    knitr::kable(caption="Permanova results significant compounds only")
+  
+  
+  gg_pca_pre_Sig=
+    ggbiplot(LC_PCA$pca_LC_sig,obs.scale = 1, var.scale = 1,
+             groups = as.character(LC_PCA$grp_sig$pre), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(#shape = groups,
+                 color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    labs(shape="",
+         title = "LC-significant metabolites (ANOVA)",
+         subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2)+
+    theme_CKM()
+  
+  
+  gg_pca_inc_Sig=
+    ggbiplot(LC_PCA$pca_LC_sig,obs.scale = 1, var.scale = 1,
+             groups = as.character(LC_PCA$grp_sig$inc), 
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
+    geom_point(size=3,stroke=1, alpha = 1,
+               aes(shape=as.character(LC_PCA$grp_sig$pre),
+                   color = groups))+
+    #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
+    labs(shape="",
+         title = "LC-significant metabolites (ANOVA)",
+         subtitle = "separation by inc")+
+    Scale_inc+
+    theme_CKM()
+  
+  
+  
+  
+  
   gg_pca_pre1=
     ggbiplot(LC_PCA$pca_LC,obs.scale = 1, var.scale = 1,
              groups = as.character(LC_PCA$grp$pre), 
@@ -1614,7 +1700,10 @@ plot_LC_PCA = function(LC_PCA){
         permanova_LC_all= permanova_LC_all,
         gg_pca_pre2=gg_pca_pre2,
         gg_pca_inc2=gg_pca_inc2,
-        permanova_LC_all2= permanova_LC_all2
+        permanova_LC_all2= permanova_LC_all2,
+        gg_pca_pre_Sig=gg_pca_pre_Sig,
+        gg_pca_inc_Sig=gg_pca_inc_Sig,
+        permanova_LC_sig=permanova_LC_sig
         
   )
   

@@ -421,6 +421,29 @@ click to open
     ## |pre:inc  |  5| 0.0004945| 0.0465342| 0.3730168|  0.941|
     ## |Residual | 22| 0.0058335| 0.5489041|        NA|     NA|
     ## |Total    | 33| 0.0106275| 1.0000000|        NA|     NA|
+    ## 
+    ## $gg_pca_pre_Sig
+
+![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-2-5.png)<!-- -->
+
+    ## 
+    ## $gg_pca_inc_Sig
+
+![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-2-6.png)<!-- -->
+
+    ## 
+    ## $permanova_GC_sig
+    ## 
+    ## 
+    ## Table: Permanova results significant compounds only
+    ## 
+    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
+    ## |:--------|--:|---------:|---------:|--------:|------:|
+    ## |pre      |  1| 0.0014341| 0.1722985| 7.519439|  0.001|
+    ## |inc      |  5| 0.0014313| 0.1719666| 1.500991|  0.088|
+    ## |pre:inc  |  5| 0.0012621| 0.1516327| 1.323509|  0.152|
+    ## |Residual | 22| 0.0041957| 0.5041023|       NA|     NA|
+    ## |Total    | 33| 0.0083231| 1.0000000|       NA|     NA|
 
 </details>
 </details>
@@ -1095,6 +1118,29 @@ click to open
     ## |pre:inc  |  5| 0.0012138| 0.1778652| 1.840855|  0.105|
     ## |Residual | 23| 0.0030331| 0.4444564|       NA|     NA|
     ## |Total    | 34| 0.0068243| 1.0000000|       NA|     NA|
+    ## 
+    ## $gg_pca_pre_Sig
+
+![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-4-5.png)<!-- -->
+
+    ## 
+    ## $gg_pca_inc_Sig
+
+![](GC_LC_Lipids_files/figure-gfm/unnamed-chunk-4-6.png)<!-- -->
+
+    ## 
+    ## $permanova_LC_sig
+    ## 
+    ## 
+    ## Table: Permanova results significant compounds only
+    ## 
+    ## |         | Df|  SumOfSqs|        R2|        F| Pr(>F)|
+    ## |:--------|--:|---------:|---------:|--------:|------:|
+    ## |pre      |  1| 0.0023887| 0.1496193| 7.120665|  0.001|
+    ## |inc      |  5| 0.0033118| 0.2074340| 1.974436|  0.012|
+    ## |pre:inc  |  5| 0.0025492| 0.1596711| 1.519810|  0.079|
+    ## |Residual | 23| 0.0077157| 0.4832756|       NA|     NA|
+    ## |Total    | 34| 0.0159654| 1.0000000|       NA|     NA|
 
 </details>
 </details>
@@ -1459,7 +1505,7 @@ click to open
 Session Info
 </summary>
 
-Date run: 2023-06-15
+Date run: 2023-06-16
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
