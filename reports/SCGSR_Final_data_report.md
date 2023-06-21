@@ -1,6 +1,6 @@
 SCGSR final report
 ================
-2023-05-03
+2023-06-21
 
 ## Sample Summary
 
@@ -35,7 +35,8 @@ Respiration measurements were taken daily during the incubation using a
 Li-850 bench top respiration unit. Below are the respiration rates for
 each sample, as well as the calculates total C respired. Linear mixed
 effects model showed significant respiration variation by incubation and
-pre incubation temperatures
+pre incubation temperatures. An asterisks indicates a significant (p\<=
+0.05, ANOVA) difference in pre-incubation temperature.
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
@@ -52,8 +53,8 @@ click to open
 
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
 free primary amines, phosphate, Total reducing sugars. Below are the
-concentration data. An asterisks indicates a significant (p\<= 0.05)
-difference in pre-incubation temperature.
+concentration data. An asterisks indicates a significant (p\<= 0.05,
+ANOVA) difference in pre-incubation temperature.
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
@@ -71,8 +72,8 @@ click to open
 
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
 free primary amines, phosphate, Total reducing sugars. Below is the
-concentration data.An asterisks indicates a significant (p\<= 0.05)
-difference in pre-incubation temperature.
+concentration data.An asterisks indicates a significant (p\<=
+0.05,ANOVA) difference in pre-incubation temperature.
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
@@ -939,7 +940,7 @@ NA
 Session Info
 </summary>
 
-Date run: 2023-06-20
+Date run: 2023-06-21
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

@@ -101,361 +101,36 @@ click to open
 <summary>
 click to open
 </summary>
+
 ![](FTICR_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2
-</th>
-<th style="text-align:right;">
--6
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;">
-405
-</td>
-<td style="text-align:right;">
-196
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;">
-76
-</td>
-<td style="text-align:right;">
-59
-</td>
-</tr>
-</tbody>
-</table>
+
+| Class              |  -2 |  -6 |
+|:-------------------|----:|----:|
+| aliphatic          | 405 | 196 |
+| aromatic           |  21 |   3 |
+| condensed aromatic |  16 |   3 |
+| unsaturated/lignin |  76 |  59 |
+
 ![](FTICR_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
-Pre
-</th>
-<th style="text-align:right;">
-2
-</th>
-<th style="text-align:right;">
-4
-</th>
-<th style="text-align:right;">
-6
-</th>
-<th style="text-align:right;">
-8
-</th>
-<th style="text-align:right;">
-10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;">
-27
-</td>
-<td style="text-align:right;">
-57
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:right;">
-19
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-</tbody>
-</table>
+
+| Class              | Pre |   2 |   4 |   6 |   8 |  10 |
+|:-------------------|----:|----:|----:|----:|----:|----:|
+| aliphatic          |  27 |  57 |  14 |   9 |  12 |   9 |
+| aromatic           |   7 |   3 |   1 |  NA |   1 |  NA |
+| condensed aromatic |   3 |   6 |  NA |  NA |  NA |  NA |
+| unsaturated/lignin |  14 |  19 |   3 |   1 |   2 |   2 |
 
 ![](FTICR_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
 
     ## NULL
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2_Pre
-</th>
-<th style="text-align:right;">
--6_Pre
-</th>
-<th style="text-align:right;">
--2_2
-</th>
-<th style="text-align:right;">
--6_2
-</th>
-<th style="text-align:right;">
--2_4
-</th>
-<th style="text-align:right;">
--6_4
-</th>
-<th style="text-align:right;">
--2_6
-</th>
-<th style="text-align:right;">
--2_8
-</th>
-<th style="text-align:right;">
--2_10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;">
-23
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-56
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-19
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-</tbody>
-</table>
+| Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -2_8 | -2_10 |
+|:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|------:|
+| aliphatic          |     23 |      1 |   56 |    1 |   14 |   NA |    9 |   12 |     9 |
+| aromatic           |      6 |      1 |    3 |   NA |    1 |   NA |   NA |    1 |    NA |
+| condensed aromatic |      3 |     NA |    6 |   NA |   NA |   NA |   NA |   NA |    NA |
+| unsaturated/lignin |      9 |      2 |   19 |   NA |    1 |    2 |    1 |    2 |     2 |
+
 </details>
 </details>
 
@@ -478,393 +153,42 @@ click to open
 <summary>
 click to open
 </summary>
+
 ![](FTICR_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
+|:---------|----:|----------:|----------:|----------:|--------:|
+| pre      |   1 | 0.2991305 | 0.0437799 | 9.3601645 |   0.002 |
+| inc      |   5 | 0.0098561 | 0.0014425 | 0.0616820 |   0.995 |
+| pre:inc  |   5 | 0.0361773 | 0.0052948 | 0.2264067 |   0.952 |
+| Residual | 203 | 6.4874389 | 0.9494828 |        NA |      NA |
+| Total    | 214 | 6.8326028 | 1.0000000 |        NA |      NA |
+
 Permanova results: axis class all
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.2991305
-</td>
-<td style="text-align:right;">
-0.0437799
-</td>
-<td style="text-align:right;">
-9.3601645
-</td>
-<td style="text-align:right;">
-0.002
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0098561
-</td>
-<td style="text-align:right;">
-0.0014425
-</td>
-<td style="text-align:right;">
-0.0616820
-</td>
-<td style="text-align:right;">
-0.995
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0361773
-</td>
-<td style="text-align:right;">
-0.0052948
-</td>
-<td style="text-align:right;">
-0.2264067
-</td>
-<td style="text-align:right;">
-0.952
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-203
-</td>
-<td style="text-align:right;">
-6.4874389
-</td>
-<td style="text-align:right;">
-0.9494828
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-214
-</td>
-<td style="text-align:right;">
-6.8326028
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
+
 ![](FTICR_files/figure-gfm/unnamed-chunk-7-4.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-7-5.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0004596 | 0.0321579 | 10.58298 |   0.001 |
+| inc      |   5 | 0.0066832 | 0.4676090 | 30.77754 |   0.001 |
+| pre:inc  |   5 | 0.0029803 | 0.2085238 | 13.72482 |   0.001 |
+| Residual |  96 | 0.0041692 | 0.2917093 |       NA |      NA |
+| Total    | 107 | 0.0142922 | 1.0000000 |       NA |      NA |
+
 Permanova results: Axis class Polar only
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0004596
-</td>
-<td style="text-align:right;">
-0.0321579
-</td>
-<td style="text-align:right;">
-10.58298
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0066832
-</td>
-<td style="text-align:right;">
-0.4676090
-</td>
-<td style="text-align:right;">
-30.77754
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0029803
-</td>
-<td style="text-align:right;">
-0.2085238
-</td>
-<td style="text-align:right;">
-13.72482
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-96
-</td>
-<td style="text-align:right;">
-0.0041692
-</td>
-<td style="text-align:right;">
-0.2917093
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-107
-</td>
-<td style="text-align:right;">
-0.0142922
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
+
 ![](FTICR_files/figure-gfm/unnamed-chunk-7-6.png)<!-- -->![](FTICR_files/figure-gfm/unnamed-chunk-7-7.png)<!-- -->
-<table>
-<caption>
+
+|          |  Df |  SumOfSqs |        R2 |          F | Pr(\>F) |
+|:---------|----:|----------:|----------:|-----------:|--------:|
+| pre      |   1 | 0.0050061 | 0.1717359 | 26.4653827 |   0.001 |
+| inc      |   5 | 0.0052433 | 0.1798715 |  5.5438239 |   0.001 |
+| pre:inc  |   5 | 0.0009308 | 0.0319305 |  0.9841303 |   0.429 |
+| Residual |  95 | 0.0179699 | 0.6164622 |         NA |      NA |
+| Total    | 106 | 0.0291500 | 1.0000000 |         NA |      NA |
+
 Permanova results: Axis class Non-Polar only
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-SumOfSqs
-</th>
-<th style="text-align:right;">
-R2
-</th>
-<th style="text-align:right;">
-F
-</th>
-<th style="text-align:right;">
-Pr(\>F)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-pre
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0050061
-</td>
-<td style="text-align:right;">
-0.1717359
-</td>
-<td style="text-align:right;">
-26.4653827
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0052433
-</td>
-<td style="text-align:right;">
-0.1798715
-</td>
-<td style="text-align:right;">
-5.5438239
-</td>
-<td style="text-align:right;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-pre:inc
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.0009308
-</td>
-<td style="text-align:right;">
-0.0319305
-</td>
-<td style="text-align:right;">
-0.9841303
-</td>
-<td style="text-align:right;">
-0.429
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Residual
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:right;">
-0.0179699
-</td>
-<td style="text-align:right;">
-0.6164622
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total
-</td>
-<td style="text-align:right;">
-106
-</td>
-<td style="text-align:right;">
-0.0291500
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
 
 ![](FTICR_files/figure-gfm/unnamed-chunk-7-8.png)<!-- -->
 
@@ -878,7 +202,7 @@ NA
 Session Info
 </summary>
 
-Date run: 2023-06-12
+Date run: 2023-06-21
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)

@@ -3037,9 +3037,9 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     dplyr::summarise(counts = n())%>%
     pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
     select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
-    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature")%>%
-    kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
-    kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
+    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature")
+    #kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
+    #kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
   
   
     
@@ -3302,9 +3302,9 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     dplyr::summarise(counts = n())%>%
     pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
     select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
-    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature polar")%>%
-    kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
-    kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
+    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature polar")
+    #kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")
+    #kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
   
   
   
@@ -3561,9 +3561,9 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     dplyr::summarise(counts = n())%>%
     pivot_wider(names_from = c(pre,inc), values_from = counts)%>%
     select(c(Class, `-2_Pre`, `-6_Pre`,`-2_2`, `-6_2`, `-2_4`, `-6_4`, `-2_6`, `-6_6`, `-2_8`, `-6_8`, `-2_10`, `-6_10`))%>%
-    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature nonpolar")%>%
-    kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")%>%
-    kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
+    knitr::kable(caption = "Unique between preincubation temperatures at each incubation temperature nonpolar")
+    #kableExtra::column_spec(c(3,5,7,9,11,13), italic = T,border_right = T,width = "4em")
+    #kableExtra::column_spec(c(2,4,6,8,10,12), width = "3em",background = "lightgrey")
   
   
   
@@ -3663,11 +3663,11 @@ plot_FTICR_permanova = function(FTICR_relabund){
     knitr::kable(caption = "Permanova results: axis class all")
   permanova_fticr_polar = 
     adonis2(FTICR_relabund$relabund_wide_p %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
-            data = FTICR_relabund$relabund_wide_p) %>%
-    knitr::kable(caption = "Permanova results: Axis class Polar only")
+            data = FTICR_relabund$relabund_wide_p, na.rm=T) %>%
+   knitr::kable(caption = "Permanova results: Axis class Polar only")
   permanova_fticr_nonpolar = 
     adonis2(FTICR_relabund$relabund_wide_np %>% dplyr::select(aliphatic:`condensed aromatic`) ~ pre * inc, 
-            data = FTICR_relabund$relabund_wide_np) %>%
+            data = FTICR_relabund$relabund_wide_np, na.rm=T)%>%
     knitr::kable(caption = "Permanova results: Axis class Non-Polar only")
 
   permanova_fticr_all_with_polar = 
