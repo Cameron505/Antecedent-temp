@@ -21,10 +21,6 @@ knitr::opts_chunk$set(echo = FALSE,
   <summary>click to open</summary>
 Soils from northwest Alaska were homogenized and pre-incubated at -2 and -6 degrees Celsius for three months after which they were incubated at 2,4,6,8,10 degrees Celsius for one week. After the week long incubation soils were extracted using 0.5M K2SO4, and chloroform extracted to measure microbial biomass and nutrient concentrations. Sub-samples were also sent to PNNL for MPLEx (Methanol chloroform extraction) to provide more comprehensive analysis of the molecular composition of organic matter using FT-ICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also performed to ascertain if there were any significant shifts in microbial biomass.
 
-```{r analyte-completion, eval= TRUE}
-tar_read(sample_key) %>% knitr::kable()
-```
-
 </details>
 
 ---
@@ -33,18 +29,10 @@ tar_read(sample_key) %>% knitr::kable()
 
 <details>
   <summary>click to open</summary>
-Respiration measurements were taken daily during the incubation using a Li-850 bench top respiration unit. Below are the respiration rates for each sample, as well as the calculates total C respired.  
+Respiration measurements were taken daily during the incubation using a Li-850 bench top respiration unit. Below are the respiration rates for each sample, as well as the calculates total C respired.  Linear mixed effects model showed significant respiration variation by incubation and pre incubation temperatures
 
 ```{r , fig.height=6, fig.width=9}
 tar_read(gg_respiration)$gg_N_Legend
-
-"Linear mixed effects model. JD2 is incubation day,Inc_temp is incubation temperature, pre_inc is the pre incubation temperature "
-
-tar_read(Stats_Table)$"Respiration statistics: anova(lme(Res ~ JD2 + Inc_temp + pre_inc,random = ~1|Sample_ID))"
-
-"ANOVA results comparing total respiration at the end of incubation.pre_inc is the pre incubation temperature, Inc_temp is the incubation temperature"
-
-tar_read(Stats_Table)$LastRES_aov
 ```
 
 </details>
@@ -62,7 +50,6 @@ tar_read(gg_nutrients)$`Total reducing sugars`
 ```
 ```{r , fig.height=12, fig.width=12}
 tar_read(gg_nutrients)$`Nutrient combined`
-tar_read(Stats_Table)$all_aov3
 ```
 
 </details>
@@ -77,7 +64,6 @@ Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free prima
 
 ```{r , fig.height=6, fig.width=9}
 tar_read(gg_MicrobialBiomass)$"Total Biomass"
-tar_read(Stats_Table)$all_aov4
 ```
 
 </details>
@@ -89,43 +75,24 @@ tar_read(Stats_Table)$all_aov4
 <details>
   <summary>click to open</summary>
   
-  Below is the relative quantification of compounds identified by gas chromatography within the MPLEx extracts.Little to no variation was identified that corresponds to the more broad metrics above in the soil nutrient section. The majority of compounds measured were unidentified.  
+  Below is the relative quantification of compounds identified by gas chromatography within the MPLEx extracts.Little to no variation was identified that corresponds to the more broad metrics above in the soil nutrient section. The majority of compounds measured were unidentified.  Volcano plot can be used to identify the compounds that are significantly greater between pre incubation temperature (p<0.05, ANOVA). After which we used a PCA to visualize separation between the pre incubation temperatures across significantly different compounds. PERMANOVA results are displayed in the table below the PCAs to show variation between treatments. 
   
-  
-<details>
-  <summary>click to open</summary>
 
-```{r , fig.height=15, fig.width=20}
-tar_read(gg_GC)$GC
-tar_read(gg_GC)$GC_sac
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
+
+  tar_read(GC_volcano)$GC_Volcano
+ 
 ```
 
-<details>
-  <summary>click to open ANOVA table</summary>
-```{r , fig.height=15, fig.width=20}
-tar_read(gg_GC)$StatsGC
-```
-</details>
-</details>
-
-#### PCA
-<details>
-  <summary>click to open</summary>
-
-
-```{r , fig.height=6, fig.width=9}
-NULL
-tar_read(gg_GC_PCA)$gg_pca_pre1
-tar_read(gg_GC_PCA)$gg_pca_inc1
-tar_read(gg_GC_PCA)$permanova_GC_all
-NULL
-tar_read(gg_GC_PCA)$gg_pca_pre2
-tar_read(gg_GC_PCA)$gg_pca_inc2
-tar_read(gg_GC_PCA)$permanova_GC_all2
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+tar_read(gg_GC_PCA)$gg_pca_pre_Sig
+  tar_read(gg_GC_PCA)$gg_pca_inc_Sig
 ```
 
-</details>
-
+```{r , fig.height=5, fig.width=5, out.width="100%"}
+  tar_read(gg_GC_PCA)$permanova_GC_sig
+ 
+```
 
 
 </details>
@@ -137,46 +104,26 @@ tar_read(gg_GC_PCA)$permanova_GC_all2
 <details>
   <summary>click to open</summary>
   
-   Below is the relative quantification of compounds identified by liquid chromatography within the MPLEx extracts.Little to no variation was identified that corresponds to the more broad metrics above in the soil nutrient section. The majority of compounds measured were unidentified.  
+   Below is the relative quantification of compounds identified by liquid chromatography within the MPLEx extracts.Little to no variation was identified that corresponds to the more broad metrics above in the soil nutrient section. The majority of compounds measured were unidentified.  Volcano plot can be used to identify the compounds that are significantly greater between pre incubation temperature (p<0.05, ANOVA). After which we used a PCA to visualize separation between the pre incubation temperatures across significantly different compounds. PERMANOVA results are displayed in the table below the PCAs to show variation between treatments. 
    
- <details>
-  <summary>click to open</summary>
-
-```{r , fig.height=15, fig.width=20}
-tar_read(gg_LC)$LC_pos
-tar_read(gg_LC)$LC_neg
-tar_read(gg_LC)$LC_pos_sac
-tar_read(gg_LC)$LC_neg_sac
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="100%"}
+  
+  tar_read(LC_volcano)$LC_Volcano
+  
+  
 ```
-
-
-<details>
-  <summary>click to open ANOVA table</summary>
-
-```{r , fig.height=15, fig.width=20}
-tar_read(gg_LC)$StatsLC
+   
+   
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  tar_read(gg_LC_PCA)$gg_pca_pre_Sig
+  tar_read(gg_LC_PCA)$gg_pca_inc_Sig
+  
+  
 ```
-</details>
-</details>
-#### PCA
-<details>
-  <summary>click to open</summary>
-
-
-```{r , fig.height=6, fig.width=9}
-NULL
-tar_read(gg_LC_PCA)$gg_pca_pre1
-tar_read(gg_LC_PCA)$gg_pca_inc1
-tar_read(gg_LC_PCA)$permanova_LC_all
-NULL
-tar_read(gg_LC_PCA)$gg_pca_pre2
-tar_read(gg_LC_PCA)$gg_pca_inc2
-tar_read(gg_LC_PCA)$permanova_LC_all2
+```{r , fig.height=5, fig.width=5, out.width="100%"}
+  tar_read(gg_LC_PCA)$permanova_LC_sig
+ 
 ```
-
-</details>
-
-
 
 </details>
 
@@ -188,28 +135,9 @@ tar_read(gg_LC_PCA)$permanova_LC_all2
 <details>
   <summary>click to open</summary>
   
- Lipid analysis was done via liquid chrometography on MEPLEx extracts. Some variation was identified between pre-incubation temperatures, though little was biologically significant. Conclusion that small changes in biomass were present but not significant. A big missing piece to this analysis would be community composition.
+ Lipid analysis was done via liquid chrometography on MEPLEx extracts. Some variation was identified between pre-incubation temperatures, though little was biologically significant. Conclusion that small changes in biomass were present but not significant. A big missing piece to this analysis would be community composition.Little no no variation was observed within this data set. PCAs below show little to no seperation between incubation and pre incubation temperatures. 
  
-<details>
-  <summary>click to open</summary>
-```{r , fig.height=6, fig.width=9}
 
-tar_read(gg_Lipid)$Lipid_pos2
-tar_read(gg_Lipid)$Lipid_neg2
-
-```
-
-<details>
-  <summary>click to open ANOVA table</summary>
-```{r , fig.height=6, fig.width=9}
-tar_read(gg_Lipid)$StatsLipid
-```
-</details>
-
-</details>
-
-<details>
-  <summary>click to open</summary>
 ```{r , fig.height=6, fig.width=9}
 NULL
 tar_read(gg_Lipid)$gg_pca_pre
@@ -225,7 +153,7 @@ tar_read(gg_Lipid)$gg_pca_inc_neg
 tar_read(gg_Lipid)$permanova_Lipid_all3
 
 ```
-</details>
+
 
 
 
@@ -241,8 +169,6 @@ FTICR was performed on MEPLEx extracts to gain a qualitative understanding of th
 
 ### FTICR  Van krevelen diagrams:
 
-<details>
-  <summary>click to open</summary>
   
 ```{r , fig.height=9, fig.width=9}
 ggExtra::ggMarginal(gg_FTICR_vk$gg_vk_polar_nonpolar, groupColour = TRUE, groupFill = TRUE, alpha = 0.1)
@@ -251,33 +177,18 @@ ggExtra::ggMarginal(gg_FTICR_vk$gg_vk_polar_nonpolar, groupColour = TRUE, groupF
 
 ```{r , fig.height=9, fig.width=9}
 tar_read(gg_FTICR_vk)$gg_vk_domains
-tar_read(gg_FTICR_vk)$gg_vk_all
-tar_read(gg_FTICR_vk)$gg_vk_all_pre
 
 ```
-</details>
+
 
 ### FTICR  Common vs unique peaks by treatment:
 
-<details>
-  <summary>click to open</summary>
+
 
 #### All
 
-<details>
-  <summary>click to open</summary>
 
 ```{r , fig.height=6, fig.width=6}
-NULL
-tar_read(gg_FTICR_unique)$gg_unique_pre
-tar_read(gg_FTICR_unique)$gg_common_unique
-tar_read(gg_FTICR_unique)$fticr_unique_summary
-NULL
-tar_read(gg_FTICR_unique)$gg_common_unique_inc
-tar_read(gg_FTICR_unique)$fticr_unique_summary_inc
-NULL
-tar_read(gg_FTICR_unique)$gg_common_unique_inc_pre
-tar_read(gg_FTICR_unique)$fticr_unique_summary_inc_pre
 NULL
 tar_read(gg_FTICR_unique)$gg_common_unique_sep_inc_pre
 tar_read(gg_FTICR_unique)$gg_common_unique_sep_inc_pre_seperated
@@ -285,26 +196,14 @@ tar_read(gg_FTICR_unique)$fticr_unique_summary_sep_inc_pre
   
 ```
 
-</details>
 
 
 
 #### Polar
 
-<details>
-  <summary>click to open</summary>
+
 
 ```{r , fig.height=6, fig.width=6}
-NULL
-tar_read(gg_FTICR_unique_polar)$gg_unique_pre
-tar_read(gg_FTICR_unique_polar)$gg_common_unique
-tar_read(gg_FTICR_unique_polar)$fticr_unique_summary
-NULL
-tar_read(gg_FTICR_unique_polar)$gg_common_unique_inc
-tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_inc
-NULL
-tar_read(gg_FTICR_unique_polar)$gg_common_unique_inc_pre
-tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_inc_pre
 NULL
 tar_read(gg_FTICR_unique_polar)$gg_common_unique_sep_inc_pre
 tar_read(gg_FTICR_unique_polar)$gg_common_unique_sep_inc_pre_seperated
@@ -314,24 +213,14 @@ tar_read(gg_FTICR_unique_polar)$fticr_unique_summary_sep_inc_pre
 
 ```
 
-</details>
+
 
 #### Non-Polar
 
-<details>
-  <summary>click to open</summary>
+
 
 ```{r , fig.height=6, fig.width=6}
-NULL
-tar_read(gg_FTICR_unique_nonpolar)$gg_unique_pre
-tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique
-tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary
-NULL
-tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_inc
-tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_inc
-NULL
-tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_inc_pre
-tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_inc_pre
+
 NULL
 tar_read(gg_FTICR_unique_nonpolar)$gg_common_unique_sep_inc_pre
 tar_read(gg_FTICR_unique_nonpolar)$ gg_common_unique_sep_inc_pre_seperated 
@@ -342,70 +231,43 @@ tar_read(gg_FTICR_unique_nonpolar)$fticr_unique_summary_sep_inc_pre
 ```
 
 
-</details>
 
-</details>
+### FTICR  relative abundance and PCAs:
 
-### FTICR  Permanova results and PCAs:
-
-<details>
-  <summary>click to open</summary>
   
 #### Relative Abundance
 
-<details>
-  <summary>click to open</summary>
 
 ```{r , fig.height=6, fig.width=9}
 NULL
 tar_read(gg_FTICR_relabund)$relabund
-tar_read(FTICR_relabund)$Total_Relabund_aov
 NULL
 tar_read(gg_FTICR_relabund)$relabund_p
-tar_read(FTICR_relabund)$Polar_Relabund_aov
 NULL
 tar_read(gg_FTICR_relabund)$relabund_np
-tar_read(FTICR_relabund)$NonPolar_Relabund_aov
 ```
 
-</details>
+
 
 #### PCA results:
 
-<details>
-  <summary>click to open</summary>
-
-
-```{r , fig.height=6, fig.width=6}
-NULL
-tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar
-tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar_pre
-tar_read(gg_FTICR_PCA)$gg_pca_polar_nonpolar_inc
-tar_read(gg_FTICR_permanova)$permanova_fticr_all_with_polar
-tar_read(gg_FTICR_permanova)$permanova_fticr_all
-NULL
-
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_polar
    tar_read(gg_FTICR_PCA)$gg_pca_by_inc_polar
-   tar_read(gg_FTICR_permanova)$permanova_fticr_polar
-   NULL
-   
-  tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
-  tar_read(gg_FTICR_PCA)$gg_pca_by_inc_nonpolar
-  tar_read(gg_FTICR_permanova)$permanova_fticr_nonpolar
-  NULL
-  
-  
-  tar_read(gg_FTICR_PCA)$gg_pca_polarVnonpolar_pre
-  tar_read(gg_FTICR_PCA)$gg_pca_polarVnonpolar_inc
-  tar_read(gg_FTICR_permanova)$permanova_fticr_PolarSeperations
-  
 ```
 
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+   tar_read(gg_FTICR_permanova)$permanova_fticr_polar
+```
 
-</details>
-
-</details>
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
+  tar_read(gg_FTICR_PCA)$gg_pca_by_inc_nonpolar
+  
+```
+```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+  tar_read(gg_FTICR_permanova)$permanova_fticr_nonpolar
+```
 
 </details>
 
