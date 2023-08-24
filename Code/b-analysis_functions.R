@@ -1154,10 +1154,7 @@ plot_GC_PCA = function(GC_PCA){
             data = GC_PCA$GC_short, na.rm=T) %>%
     knitr::kable(caption="Permanova results saccharides")
   
-  permanova_GC_sig = 
-    adonis2(GC_PCA$GC_data_composite_sig %>% dplyr::select(`2-phenylacetamide`:`nonanoic acid`) ~ pre * inc, 
-            data = GC_PCA$GC_data_composite_sig, na.rm=T) %>%
-    knitr::kable(caption="Permanova results significant compounds only")
+  
   
   Scale_inc= scale_color_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
   
@@ -1273,8 +1270,7 @@ plot_GC_PCA = function(GC_PCA){
         gg_pca_inc2=gg_pca_inc2,
         permanova_GC_all2= permanova_GC_all2,
         gg_pca_pre_Sig=gg_pca_pre_Sig,
-        gg_pca_inc_Sig=gg_pca_inc_Sig,
-        permanova_GC_sig=permanova_GC_sig
+        gg_pca_inc_Sig=gg_pca_inc_Sig
        
   )
   
@@ -1789,6 +1785,40 @@ plot_LC_PLS= function(LC_PCA){
   )
   
 }
+
+
+
+
+plot_LC_GC_PCA = function(gg_LC_PCA,gg_GC_PCA){
+  
+  
+  gg_LC_PCA$gg_pca_pre_Sig
+  gg_GC_PCA$gg_pca_pre_Sig
+  
+  Nutrient_legend = get_legend(gg_GC_PCA$gg_pca_pre_Sig+ guides(color = guide_legend(nrow = 1)) +
+                                 theme(legend.position = "bottom"))
+  gg_Ncombine= plot_grid(
+    gg_LC_PCA$gg_pca_pre_Sig + theme(legend.position="none"),
+    gg_GC_PCA$gg_pca_pre_Sig + theme(legend.position="none"),
+    align = 'vh',
+    labels = c("A", "B"),
+    label_y= 0.93,
+    hjust = -1,
+    nrow = 1
+  )
+  gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
+  
+  
+list(gg_PCA_Legend=gg_PCA_Legend
+        
+  )
+  
+}
+
+
+
+
+
 
 ###Lipid
 

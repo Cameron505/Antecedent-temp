@@ -196,10 +196,10 @@ GC_process_PCA= function(GC_processed,GC_volcano){
   
   
   num_sig= GC_data_composite_sig%>%
-    dplyr::select(c(`2-phenylacetamide`:`nonanoic acid`))
+    dplyr::select(c(`2-phenylacetamide`:`Unknown 174`))
   
   grp_sig=GC_data_composite_sig%>%
-    dplyr::select(-c(`2-phenylacetamide`:`nonanoic acid`))%>%
+    dplyr::select(-c(`2-phenylacetamide`:`Unknown 174`))%>%
     dplyr::mutate(row = row_number())
   
   pca_GC_sig = prcomp(num_sig, scale.=T)

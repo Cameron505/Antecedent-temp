@@ -69,6 +69,11 @@ list(
   tar_target(gg_LC_PCA, plot_LC_PCA(LC_PCA)),
   tar_target(gg_LC_PLS, plot_LC_PLS(LC_PCA)),
   
+  
+  tar_target(gg_LC_GC_PLS, plot_LC_GC_PCA(gg_LC_PCA,gg_GC_PCA)),
+  
+  
+  
   #Lipid analysis
   tar_target(Lipid_POS_data_read,"Data/lipids/Lipid_POS_data.csv", format="file"),
   tar_target(Lipid_POS_data, read.csv(Lipid_POS_data_read)),

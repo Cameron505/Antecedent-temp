@@ -11,13 +11,15 @@ library(knitr)
 library(agricolae)
 library(pmartR)
 library(trelliscopejs)
-
+library(ropls)
 # to install {ggbiplot}:
 # library(devtools)
 # install_github("vqv/ggbiplot")
 #install_github("haozhu233/kableExtra")
 #webshot::install_phantomjs()
-
+#if (!require("BiocManager", quietly = TRUE))
+#install.packages("BiocManager")
+#BiocManager::install("ropls")
 # custom ggplot theme
 
 cbPalette <- c("#888888","#FF1493","#00FFFF" , "#117733", "#332288", "#AA4499", 

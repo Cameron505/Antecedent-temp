@@ -107,7 +107,7 @@ tar_read(gg_GC_PCA)$gg_pca_pre2
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
 tar_read(gg_LC_PCA)$gg_pca_pre1
 tar_read(gg_LC_PCA)$gg_pca_pre2
-
+tar_read(gg_LC_GC_PLS)$gg_PCA_Legend
 ```
 
 </details>
@@ -177,6 +177,7 @@ tar_read(gg_FTICR_relabund)$relabund
 ```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_polar
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
+  tar_read(gg_FTICR_PCA)$gg_PCA_Legend
 ```
 
 </details>

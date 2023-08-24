@@ -140,7 +140,7 @@ PCAs. The majority of compounds measured were unidentified.
 
 #### PCA
 
-<img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-6-1.png" width="50%" /><img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-6-2.png" width="50%" />
+<img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-6-1.png" width="50%" /><img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-6-2.png" width="50%" /><img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-6-3.png" width="50%" />
 
 </details>
 
@@ -189,8 +189,8 @@ compounds. The PCA with both layers showed no separation based on pre
 incubation and incubation temperature. When looking at non-polar layer
 PCA we see a separation between the mild and moderate freeze driven by
 the aromatics, and condensed aromatics in the mild freeze samples. The
-pre incubation explains \~17% of the variation while the incubation
-explains \~18% of the variation (PERMANOVA, F \> 5.54, p = 0.001).
+pre incubation explains ~17% of the variation while the incubation
+explains ~18% of the variation (PERMANOVA, F \> 5.54, p = 0.001).
 
 #### FTICR Van krevelen diagrams:
 
@@ -219,7 +219,7 @@ Unique between preincubation temperatures at each incubation temperature
 
 #### PCA results:
 
-<img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" /><img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" />
+<img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" /><img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" /><img src="SCGSR_Final_data_report2_files/figure-gfm/unnamed-chunk-13-3.png" width="50%" />
 
 </details>
 
@@ -232,7 +232,7 @@ Unique between preincubation temperatures at each incubation temperature
 Session Info
 </summary>
 
-Date run: 2023-06-21
+Date run: 2023-08-17
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -252,49 +252,73 @@ Date run: 2023-06-21
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] trelliscopejs_0.2.6 pmartR_2.3.0        agricolae_1.3-5    
-    ##  [4] knitr_1.42          nlme_3.1-162        cowplot_1.1.1      
-    ##  [7] ggpubr_0.6.0        janitor_2.2.0       pracma_2.4.2       
-    ## [10] reshape2_1.4.4      ggbiplot_0.55       scales_1.2.1.9000  
-    ## [13] plyr_1.8.8          vegan_2.6-4         lattice_0.20-45    
-    ## [16] permute_0.9-7       lubridate_1.9.2     forcats_1.0.0      
-    ## [19] stringr_1.5.0       dplyr_1.1.1         purrr_1.0.1        
-    ## [22] readr_2.1.4         tidyr_1.3.0         tibble_3.2.1       
-    ## [25] ggplot2_3.4.1       tidyverse_2.0.0     tarchetypes_0.7.6  
-    ## [28] targets_0.14.3     
+    ##  [1] ropls_1.30.0        trelliscopejs_0.2.6 pmartR_2.4.0       
+    ##  [4] agricolae_1.3-6     knitr_1.43          nlme_3.1-162       
+    ##  [7] cowplot_1.1.1       ggpubr_0.6.0        janitor_2.2.0      
+    ## [10] pracma_2.4.2        reshape2_1.4.4      ggbiplot_0.55      
+    ## [13] scales_1.2.1        plyr_1.8.8          vegan_2.6-4        
+    ## [16] lattice_0.20-45     permute_0.9-7       lubridate_1.9.2    
+    ## [19] forcats_1.0.0       stringr_1.5.0       dplyr_1.1.2        
+    ## [22] purrr_1.0.1         readr_2.1.4         tidyr_1.3.0        
+    ## [25] tibble_3.2.1        ggplot2_3.4.1       tidyverse_2.0.0    
+    ## [28] tarchetypes_0.7.7   targets_1.2.0      
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] colorspace_2.1-0        ggsignif_0.6.4          ellipsis_0.3.2         
-    ##  [4] mclust_6.0.0            snakecase_0.11.0        base64enc_0.1-3        
-    ##  [7] fs_1.6.2                rstudioapi_0.14         farver_2.1.1           
-    ## [10] listenv_0.9.0           furrr_0.3.1             fansi_1.0.4            
-    ## [13] codetools_0.2-19        splines_4.2.3           jsonlite_1.8.4         
-    ## [16] broom_1.0.4             cluster_2.1.4           shiny_1.7.4            
-    ## [19] httr_1.4.6              compiler_4.2.3          backports_1.4.1        
-    ## [22] lazyeval_0.2.2          Matrix_1.5-4            fastmap_1.1.1          
-    ## [25] cli_3.6.0               later_1.3.0             htmltools_0.5.4        
-    ## [28] prettyunits_1.1.1       tools_4.2.3             igraph_1.4.1           
-    ## [31] gtable_0.3.3            glue_1.6.2              tinytex_0.45           
-    ## [34] Rcpp_1.0.10             carData_3.0-5           vctrs_0.6.0            
-    ## [37] iterators_1.0.14        autocogs_0.1.4          xfun_0.38              
-    ## [40] globals_0.16.2          ps_1.7.2                timechange_0.2.0       
-    ## [43] mime_0.12               miniUI_0.1.1.1          lifecycle_1.0.3        
-    ## [46] rstatix_0.7.2           future_1.32.0           MASS_7.3-60            
-    ## [49] DistributionUtils_0.6-0 hms_1.1.3               promises_1.2.0.1       
-    ## [52] parallel_4.2.3          yaml_2.3.7              labelled_2.11.0        
-    ## [55] ggExtra_0.10.0          stringi_1.7.12          highr_0.10             
-    ## [58] klaR_1.7-2              AlgDesign_1.2.1         foreach_1.5.2          
-    ## [61] checkmate_2.2.0         rlang_1.1.0             pkgconfig_2.0.3        
-    ## [64] evaluate_0.21           labeling_0.4.2          htmlwidgets_1.6.2      
-    ## [67] processx_3.8.0          tidyselect_1.2.0        parallelly_1.35.0      
-    ## [70] magrittr_2.0.3          R6_2.5.1                generics_0.1.3         
-    ## [73] base64url_1.4           combinat_0.0-8          pillar_1.9.0           
-    ## [76] haven_2.5.2             withr_2.5.0             mgcv_1.8-42            
-    ## [79] abind_1.4-5             crayon_1.5.2            car_3.1-2              
-    ## [82] questionr_0.7.8         utf8_1.2.3              plotly_4.10.2.9000     
-    ## [85] rmarkdown_2.21          tzdb_0.3.0              future.callr_0.8.1     
-    ## [88] progress_1.2.2          data.table_1.14.8       callr_3.7.3            
-    ## [91] webshot_0.5.4           digest_0.6.31           xtable_1.8-4           
-    ## [94] httpuv_1.6.9            munsell_0.5.0           viridisLite_0.4.2
+    ##   [1] backports_1.4.1             qqman_0.1.8                
+    ##   [3] igraph_1.5.0                splines_4.2.3              
+    ##   [5] AlgDesign_1.2.1             listenv_0.9.0              
+    ##   [7] GenomeInfoDb_1.34.9         digest_0.6.33              
+    ##   [9] foreach_1.5.2               htmltools_0.5.5            
+    ##  [11] fansi_1.0.4                 magrittr_2.0.3             
+    ##  [13] checkmate_2.2.0             base64url_1.4              
+    ##  [15] cluster_2.1.4               tzdb_0.4.0                 
+    ##  [17] limma_3.54.2                globals_0.16.2             
+    ##  [19] matrixStats_1.0.0           timechange_0.2.0           
+    ##  [21] prettyunits_1.1.1           colorspace_2.1-0           
+    ##  [23] haven_2.5.3                 xfun_0.39                  
+    ##  [25] callr_3.7.3                 crayon_1.5.2               
+    ##  [27] RCurl_1.98-1.12             jsonlite_1.8.7             
+    ##  [29] iterators_1.0.14            glue_1.6.2                 
+    ##  [31] gtable_0.3.3                zlibbioc_1.44.0            
+    ##  [33] XVector_0.38.0              webshot_0.5.5              
+    ##  [35] DelayedArray_0.24.0         questionr_0.7.8            
+    ##  [37] car_3.1-2                   BiocGenerics_0.44.0        
+    ##  [39] abind_1.4-5                 rstatix_0.7.2              
+    ##  [41] miniUI_0.1.1.1              Rcpp_1.0.11                
+    ##  [43] MultiDataSet_1.26.0         xtable_1.8-4               
+    ##  [45] progress_1.2.2              mclust_6.0.0               
+    ##  [47] stats4_4.2.3                calibrate_1.7.7            
+    ##  [49] ellipsis_0.3.2              farver_2.1.1               
+    ##  [51] pkgconfig_2.0.3             utf8_1.2.3                 
+    ##  [53] labeling_0.4.2              tidyselect_1.2.0           
+    ##  [55] rlang_1.1.1                 later_1.3.1                
+    ##  [57] munsell_0.5.0               tools_4.2.3                
+    ##  [59] cli_3.6.1                   generics_0.1.3             
+    ##  [61] broom_1.0.5                 evaluate_0.21              
+    ##  [63] fastmap_1.1.1               yaml_2.3.7                 
+    ##  [65] processx_3.8.2              fs_1.6.2                   
+    ##  [67] future.callr_0.8.1          future_1.33.0              
+    ##  [69] mime_0.12                   ggExtra_0.10.0             
+    ##  [71] compiler_4.2.3              rstudioapi_0.15.0          
+    ##  [73] ggsignif_0.6.4              klaR_1.7-2                 
+    ##  [75] stringi_1.7.12              highr_0.10                 
+    ##  [77] ps_1.7.5                    Matrix_1.6-0               
+    ##  [79] vctrs_0.6.3                 pillar_1.9.0               
+    ##  [81] lifecycle_1.0.3             furrr_0.3.1                
+    ##  [83] combinat_0.0-8              data.table_1.14.8          
+    ##  [85] bitops_1.0-7                httpuv_1.6.11              
+    ##  [87] GenomicRanges_1.50.2        R6_2.5.1                   
+    ##  [89] promises_1.2.0.1            IRanges_2.32.0             
+    ##  [91] parallelly_1.36.0           codetools_0.2-19           
+    ##  [93] MASS_7.3-58.2               SummarizedExperiment_1.28.0
+    ##  [95] withr_2.5.0                 S4Vectors_0.36.2           
+    ##  [97] autocogs_0.1.4              GenomeInfoDbData_1.2.9     
+    ##  [99] mgcv_1.8-42                 parallel_4.2.3             
+    ## [101] hms_1.1.3                   MultiAssayExperiment_1.24.0
+    ## [103] labelled_2.12.0             rmarkdown_2.23             
+    ## [105] snakecase_0.11.0            MatrixGenerics_1.10.0      
+    ## [107] carData_3.0-5               DistributionUtils_0.6-0    
+    ## [109] Biobase_2.58.0              shiny_1.7.4.1              
+    ## [111] base64enc_0.1-3
 
 </details>
