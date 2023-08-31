@@ -1,6 +1,9 @@
 ---
 title: "SCGSR final report"
-output: pdf_document
+output: 
+  github_document:
+  html_preview: true
+  always_allow_html: true
           
 date: "2023-06-21"
 ---

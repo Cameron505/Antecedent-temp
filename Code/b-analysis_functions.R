@@ -17,12 +17,13 @@ names(inc.lab) <- c("2","4","6","8","10")
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ), nrow=1)+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette2)+
-    ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
+    ylab(expression(paste( "Respiration (",mu,"g-C ",hour^-1, ")")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
-    ggtitle("Soil Respiration")
+    ggtitle("Soil Respiration")+
+    theme_CKM()
   
   gg_cumres =
     respiration_processed %>%
@@ -37,12 +38,13 @@ names(inc.lab) <- c("2","4","6","8","10")
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
-    ggtitle("Cumulative Soil Respiration")
+    ggtitle("Cumulative Soil Respiration")+
+    theme_CKM()
   
   gg_Avgres =
     respiration_processed %>%
@@ -56,12 +58,13 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_regline_equation(label.y=c(110,120), size=2)+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette2)+
-    ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
+    ylab(expression(paste( "Respiration (",mu,"g-C ",hour^-1, ")")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
-    ggtitle("Average Soil Respiration")
+    ggtitle("Average Soil Respiration")+
+    theme_CKM()
   
   gg_Avgcumres =
     respiration_processed %>%
@@ -75,12 +78,13 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_regline_equation(label.y=c(245,265), size=2)+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     xlab("incubation day")+
     labs(color='pre_inc temp') +
-    ggtitle("Average Cumulative Soil Respiration")
+    ggtitle("Average Cumulative Soil Respiration")+
+    theme_CKM()
   
   
   
@@ -118,15 +122,16 @@ names(inc.lab) <- c("2","4","6","8","10")
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation "),fill="none")+
     geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=6, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette2,labels=c('-2 °C', '-6 °C'))+
     ylab(expression(paste( "Total respired C (",mu,"g-C)")))+
     xlab("Incubation Temp. (°C)")+
     labs(color='pre-incubation temp') +
-    ggtitle("Cumulative respiration")
+    ggtitle("Cumulative respiration")+
+    theme_CKM()
   
   respiration_legend = get_legend(gg_CumresLastday+ guides(color = guide_legend(nrow = 1)) +
                                  theme(legend.position = "bottom"))
@@ -302,15 +307,16 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Ammonium")
+    ggtitle("Ammonium")+
+    theme_CKM()
   
   gg_NH4_2 =
     nutrients_data %>%
@@ -324,17 +330,18 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(5.3,5.8), size=2)+
     stat_regline_equation(label.y=c(5.5,6.1), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Ammonium")
+    ggtitle("Ammonium")+
+    theme_CKM()
 
   
   #Calulating P-value between lines
@@ -364,15 +371,16 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Nitrate")
+    ggtitle("Nitrate")+
+    theme_CKM()
   #y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
   
   gg_NO3_2 =
@@ -387,18 +395,19 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(33,35), size=2)+
     stat_regline_equation(label.y=c(34,36), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Nitrate")
+    ggtitle("Nitrate")+
+    theme_CKM()
   #Calulating P-value between lines
   lm1 = lm(NO3 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
   lm2 = lm(NO3 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
@@ -421,15 +430,16 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Total free primary amines")
+    ggtitle("Total free primary amines")+
+    theme_CKM()
   #y = bquote(atop('Total free primary amines-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
   
   gg_TFPA_2 =
@@ -444,17 +454,18 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(130,138), size=2)+
     stat_regline_equation(label.y=c(134,142), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Total free primary amines")
+    ggtitle("Total free primary amines")+
+    theme_CKM()
   
   gg_TRS =
     nutrients_data %>%
@@ -468,15 +479,16 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Total reducing sugars")
+    ggtitle("Total reducing sugars")+
+    theme_CKM()
   #y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
   
   
@@ -492,17 +504,18 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(0.55,0.61), size=2)+
     stat_regline_equation(label.y=c(0.58,0.64), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Total reducing sugars")
+    ggtitle("Total reducing sugars")+
+    theme_CKM()
   
   #Calulating P-value between lines
   lm1 = lm(TRS ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
@@ -526,16 +539,17 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Phosphate")
+    ggtitle("Phosphate")+
+    theme_CKM()
   #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
   gg_PO4_2 =
     nutrients_data %>%
@@ -549,10 +563,10 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(0.55,0.61), size=2)+
@@ -560,7 +574,8 @@ nutrients_data_long = nutrients_data %>%
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
     labs(color='pre_inc temp') +
-    ggtitle("Phosphate")
+    ggtitle("Phosphate")+
+    theme_CKM()
   #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
   
   
@@ -573,7 +588,7 @@ nutrients_data_long = nutrients_data %>%
     gg_PO4 + theme(legend.position="none"),
     align = 'vh',
     labels = c("A", "B", "C", "D"),
-    label_x= 0.1,
+    label_x= 0.09,
     hjust = -1,
     nrow = 2
   )
@@ -657,15 +672,16 @@ plot_MicrobialBiomass = function(nutrients_data){
                   alpha = 0.2,
                   aes(group = interaction(Inc_temp, pre_inc)))+
      geom_point(position = position_dodge(width = 1), size = 3)+
-     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+     guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 850, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass C")
+    ggtitle("Microbial biomass C")+
+     theme_CKM()
    #y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1 ~ dry ~ soil*')'))))+
    
    
@@ -685,15 +701,16 @@ plot_MicrobialBiomass = function(nutrients_data){
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
+    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
     geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette)+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass N")
+    ggtitle("Microbial biomass N")+
+    theme_CKM()
   #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
   
   
@@ -724,7 +741,8 @@ plot_MicrobialBiomass = function(nutrients_data){
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass C")
+    ggtitle("Microbial biomass C")+
+    theme_CKM()
   #y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1 ~ dry ~ soil*')'))))+
   
   #Calulating P-value between lines
@@ -761,7 +779,8 @@ plot_MicrobialBiomass = function(nutrients_data){
     labs(x = "Incubation Temp. (°C)", 
          y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
     labs(color='pre_inc temp') +
-    ggtitle("Microbial biomass N")
+    ggtitle("Microbial biomass N")+
+    theme_CKM()
   #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
   
   #Calulating P-value between lines
@@ -1807,6 +1826,7 @@ plot_LC_GC_PCA = function(gg_LC_PCA,gg_GC_PCA){
     nrow = 1
   )
   gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
+  ggsave("Graphs/GC_LC_PCA.png", gg_PCA_Legend)
   
   
 list(gg_PCA_Legend=gg_PCA_Legend
@@ -3026,6 +3046,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_wrap(~inc)+
     labs(title = "Unique peaks at each inc")+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     theme_CKM()
   
   gg_common_sep_inc_pre = 
@@ -3044,6 +3065,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre)+
     labs(title = "Unique peaks by pre separated by incubation temp first")+
+    scale_colour_manual(values=cbPalette, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     guides(alpha= FALSE)+
     theme_CKM()
   
@@ -3056,6 +3078,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
     labs(title = "Unique peaks by pre separated by incubation temp first")+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     guides(alpha= FALSE)+
     theme_CKM()
   
@@ -3839,6 +3862,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
          title = "FTICR-Polar",
          subtitle = "separation by pre")+
     theme_CKM()+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     theme(legend.background = element_rect(fill = "white"),
           legend.margin=margin(t=-55))
     NULL
@@ -3856,6 +3880,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labs(shape="",
          title = "FTICR-Non-Polar",
          subtitle = "separation by pre")+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
     theme_CKM()+
     NULL
   
@@ -3908,7 +3933,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
   )
   gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
   
-  
+  ggsave("Graphs/FTICR_PCA.png",gg_PCA_Legend)
   
   list(
        gg_pca_polar_nonpolar= gg_pca_polar_nonpolar,

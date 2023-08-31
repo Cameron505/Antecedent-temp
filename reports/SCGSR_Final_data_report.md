@@ -4,11 +4,6 @@ SCGSR final report
 
 ## Sample Summary
 
-<details>
-<summary>
-click to open
-</summary>
-
 Soils from northwest Alaska were homogenized and pre-incubated at -2 and
 -6 degrees Celsius for three months after which they were incubated at
 2,4,6,8,10 degrees Celsius for one week. After the week long incubation
@@ -20,16 +15,9 @@ matter using FT-ICR, NMR, GC-MS and LC-MS techniques. Lipidomics were
 also performed to ascertain if there were any significant shifts in
 microbial biomass.
 
-</details>
-
 ------------------------------------------------------------------------
 
 ## Respiration Results
-
-<details>
-<summary>
-click to open
-</summary>
 
 Respiration measurements were taken daily during the incubation using a
 Li-850 bench top respiration unit. Below are the respiration rates for
@@ -40,16 +28,9 @@ pre incubation temperatures. An asterisks indicates a significant (p\<=
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-</details>
-
 ------------------------------------------------------------------------
 
 ## Soil Nutrients
-
-<details>
-<summary>
-click to open
-</summary>
 
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
 free primary amines, phosphate, Total reducing sugars. Below are the
@@ -59,16 +40,9 @@ ANOVA) difference in pre-incubation temperature.
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-</details>
-
 ------------------------------------------------------------------------
 
 ## Microbial Biomass
-
-<details>
-<summary>
-click to open
-</summary>
 
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total
 free primary amines, phosphate, Total reducing sugars. Below is the
@@ -77,16 +51,9 @@ concentration data.An asterisks indicates a significant (p\<=
 
 ![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-</details>
-
 ------------------------------------------------------------------------
 
 ## GC-MS
-
-<details>
-<summary>
-click to open
-</summary>
 
 Below is the relative quantification of compounds identified by gas
 chromatography within the MPLEx extracts.Little to no variation was
@@ -103,26 +70,11 @@ variation between treatments.
 
 <img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-6-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-6-2.png" width="50%" />
 
-|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
-|:---------|----:|----------:|----------:|---------:|--------:|
-| pre      |   1 | 0.0014341 | 0.1722985 | 7.519439 |   0.001 |
-| inc      |   5 | 0.0014313 | 0.1719666 | 1.500991 |   0.088 |
-| pre:inc  |   5 | 0.0012621 | 0.1516327 | 1.323509 |   0.152 |
-| Residual |  22 | 0.0041957 | 0.5041023 |       NA |      NA |
-| Total    |  33 | 0.0083231 | 1.0000000 |       NA |      NA |
-
-Permanova results significant compounds only
-
-</details>
+    ## NULL
 
 ------------------------------------------------------------------------
 
 ## LC-MS
-
-<details>
-<summary>
-click to open
-</summary>
 
 Below is the relative quantification of compounds identified by liquid
 chromatography within the MPLEx extracts.Little to no variation was
@@ -141,24 +93,17 @@ variation between treatments.
 
 |          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
 |:---------|----:|----------:|----------:|---------:|--------:|
-| pre      |   1 | 0.0023887 | 0.1496193 | 7.120665 |   0.001 |
-| inc      |   5 | 0.0033118 | 0.2074340 | 1.974436 |   0.012 |
-| pre:inc  |   5 | 0.0025492 | 0.1596711 | 1.519810 |   0.079 |
-| Residual |  23 | 0.0077157 | 0.4832756 |       NA |      NA |
-| Total    |  34 | 0.0159654 | 1.0000000 |       NA |      NA |
+| pre      |   1 | 0.0025136 | 0.1534787 | 7.235920 |   0.001 |
+| inc      |   5 | 0.0032903 | 0.2009044 | 1.894371 |   0.015 |
+| pre:inc  |   5 | 0.0025839 | 0.1577713 | 1.487660 |   0.098 |
+| Residual |  23 | 0.0079896 | 0.4878455 |       NA |      NA |
+| Total    |  34 | 0.0163774 | 1.0000000 |       NA |      NA |
 
 Permanova results significant compounds only
-
-</details>
 
 ------------------------------------------------------------------------
 
 ## Lipids
-
-<details>
-<summary>
-click to open
-</summary>
 
 Lipid analysis was done via liquid chrometography on MEPLEx extracts.
 Some variation was identified between pre-incubation temperatures,
@@ -166,11 +111,9 @@ though little was biologically significant. Conclusion that small
 changes in biomass were present but not significant. A big missing piece
 to this analysis would be community composition.Little no no variation
 was observed within this data set. PCAs below show little to no
-seperation between incubation and pre incubation temperatures.
+separation between incubation and pre incubation temperatures.
 
-    ## NULL
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-2.png" width="50%" />
 
 |          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
 |:---------|----:|----------:|----------:|---------:|--------:|
@@ -182,9 +125,7 @@ seperation between incubation and pre incubation temperatures.
 
 Permanova results all
 
-    ## NULL
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->
+<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" />
 
 |          |  Df |  SumOfSqs |        R2 |         F | Pr(\>F) |
 |:---------|----:|----------:|----------:|----------:|--------:|
@@ -196,9 +137,7 @@ Permanova results all
 
 Permanova results pos
 
-    ## NULL
-
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-11-6.png)<!-- -->
+<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-2.png" width="50%" />
 
 |          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
 |:---------|----:|----------:|----------:|---------:|--------:|
@@ -210,16 +149,9 @@ Permanova results pos
 
 Permanova results neg
 
-</details>
-
 ------------------------------------------------------------------------
 
 ## FT-MS (FT-ICR)
-
-<details>
-<summary>
-click to open
-</summary>
 
 FTICR was performed on MEPLEx extracts to gain a qualitative
 understanding of the changes in organic matter composition after the
@@ -230,9 +162,9 @@ production of new organic compounds.
 
 ### FTICR Van krevelen diagrams:
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ### FTICR Common vs unique peaks by treatment:
 
@@ -240,707 +172,90 @@ production of new organic compounds.
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
     ## NULL
 
-<table>
-<caption>
+| Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -2_10 | -6_10 |
+|:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|------:|
+| aliphatic          |    313 |    114 |  465 |   49 |  402 |   56 |  408 |   46 |  520 |   14 |   566 |    60 |
+| aromatic           |     34 |     13 |   18 |   16 |   21 |   14 |   13 |   18 |   48 |    3 |    21 |    35 |
+| condensed aromatic |     15 |      2 |   27 |    3 |   NA |   18 |    9 |    3 |   25 |   NA |     7 |     9 |
+| unsaturated/lignin |     85 |     79 |   86 |   54 |   69 |   42 |   57 |   27 |  166 |    9 |    69 |    75 |
+
 Unique between preincubation temperatures at each incubation temperature
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2_Pre
-</th>
-<th style="text-align:right;">
--6_Pre
-</th>
-<th style="text-align:right;">
--2_2
-</th>
-<th style="text-align:right;">
--6_2
-</th>
-<th style="text-align:right;">
--2_4
-</th>
-<th style="text-align:right;">
--6_4
-</th>
-<th style="text-align:right;">
--2_6
-</th>
-<th style="text-align:right;">
--6_6
-</th>
-<th style="text-align:right;">
--2_8
-</th>
-<th style="text-align:right;">
--6_8
-</th>
-<th style="text-align:right;">
--2_10
-</th>
-<th style="text-align:right;">
--6_10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-313
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-114
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-465
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-49
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-402
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-56
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-408
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-46
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-520
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-14
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-566
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-60
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-34
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-13
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-18
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-16
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-21
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-14
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-13
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-18
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-48
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-21
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-35
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-15
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-2
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-27
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-NA
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-18
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-9
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-25
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-7
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-85
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-79
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-86
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-54
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-69
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-42
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-57
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-27
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-166
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-9
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-69
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-75
-</td>
-</tr>
-</tbody>
-</table>
 
 #### Polar
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
     ## NULL
 
-<table>
-<caption>
+| Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -2_10 | -6_10 |
+|:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|------:|
+| aliphatic          |    100 |    126 |  122 |   50 |   67 |   74 |   57 |   63 |  265 |   13 |    46 |   105 |
+| aromatic           |     28 |     14 |   10 |   17 |   12 |   14 |    8 |   20 |   42 |    3 |    10 |    38 |
+| condensed aromatic |     13 |      3 |   18 |    3 |   NA |   18 |    7 |    3 |   24 |   NA |     4 |    10 |
+| unsaturated/lignin |     67 |     84 |   42 |   60 |   45 |   43 |   31 |   28 |  142 |    9 |    28 |    84 |
+
 Unique between preincubation temperatures at each incubation temperature
 polar
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2_Pre
-</th>
-<th style="text-align:right;">
--6_Pre
-</th>
-<th style="text-align:right;">
--2_2
-</th>
-<th style="text-align:right;">
--6_2
-</th>
-<th style="text-align:right;">
--2_4
-</th>
-<th style="text-align:right;">
--6_4
-</th>
-<th style="text-align:right;">
--2_6
-</th>
-<th style="text-align:right;">
--6_6
-</th>
-<th style="text-align:right;">
--2_8
-</th>
-<th style="text-align:right;">
--6_8
-</th>
-<th style="text-align:right;">
--2_10
-</th>
-<th style="text-align:right;">
--6_10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-100
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-126
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-122
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-50
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-67
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-74
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-57
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-63
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-265
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-13
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-46
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-105
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-28
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-14
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-10
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-17
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-12
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-14
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-8
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-20
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-42
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-10
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-38
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-13
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-18
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-NA
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-18
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-7
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-24
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-4
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-67
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-84
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-42
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-60
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-45
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-43
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-31
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-28
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-142
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-9
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-28
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-84
-</td>
-</tr>
-</tbody>
-</table>
 
 #### Non-Polar
 
     ## NULL
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
     ## NULL
 
-<table>
-<caption>
+| Class              | -2_Pre | -6_Pre | -2_2 | -6_2 | -2_4 | -6_4 | -2_6 | -6_6 | -2_8 | -6_8 | -2_10 | -6_10 |
+|:-------------------|-------:|-------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|------:|------:|
+| aliphatic          |    272 |     34 |  456 |   15 |  445 |   13 |  449 |    3 |  411 |    8 |   633 |     3 |
+| aromatic           |     13 |      1 |   13 |    1 |   14 |   NA |   10 |   NA |   11 |    1 |    20 |    NA |
+| condensed aromatic |      5 |     NA |   11 |   NA |    2 |   NA |    3 |   NA |    4 |   NA |     4 |    NA |
+| unsaturated/lignin |     49 |     20 |  111 |    3 |   77 |    6 |  102 |   NA |   68 |    2 |   116 |     1 |
+
 Unique between preincubation temperatures at each incubation temperature
 nonpolar
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:right;">
--2_Pre
-</th>
-<th style="text-align:right;">
--6_Pre
-</th>
-<th style="text-align:right;">
--2_2
-</th>
-<th style="text-align:right;">
--6_2
-</th>
-<th style="text-align:right;">
--2_4
-</th>
-<th style="text-align:right;">
--6_4
-</th>
-<th style="text-align:right;">
--2_6
-</th>
-<th style="text-align:right;">
--6_6
-</th>
-<th style="text-align:right;">
--2_8
-</th>
-<th style="text-align:right;">
--6_8
-</th>
-<th style="text-align:right;">
--2_10
-</th>
-<th style="text-align:right;">
--6_10
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-aliphatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-272
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-34
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-456
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-15
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-445
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-13
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-449
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-411
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-8
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-633
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-aromatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-13
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-1
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-13
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-1
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-14
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-10
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-11
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-1
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-20
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-condensed aromatic
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-5
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-11
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-2
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-3
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-4
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-4
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unsaturated/lignin
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-49
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-20
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-111
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-3
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-77
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-6
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-102
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-NA
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-68
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-2
-</td>
-<td style="text-align:right;width: 3em; background-color: lightgrey !important;">
-116
-</td>
-<td style="text-align:right;width: 4em; font-style: italic;border-right:1px solid;">
-1
-</td>
-</tr>
-</tbody>
-</table>
 
 ### FTICR relative abundance and PCAs:
 
 #### Relative Abundance
 
-    ## NULL
+![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-22-2.png)<!-- -->![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-22-3.png)<!-- -->
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-24-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-24-2.png" width="50%" />
 
-    ## NULL
+|          |  Df |  SumOfSqs |        R2 |        F | Pr(\>F) |
+|:---------|----:|----------:|----------:|---------:|--------:|
+| pre      |   1 | 0.0004596 | 0.0321579 | 10.58298 |   0.001 |
+| inc      |   5 | 0.0066832 | 0.4676090 | 30.77754 |   0.001 |
+| pre:inc  |   5 | 0.0029803 | 0.2085238 | 13.72482 |   0.001 |
+| Residual |  96 | 0.0041692 | 0.2917093 |       NA |      NA |
+| Total    | 107 | 0.0142922 | 1.0000000 |       NA |      NA |
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->
+Permanova results: Axis class Polar only
 
-    ## NULL
+<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-26-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-26-2.png" width="50%" />
 
-![](SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-17-3.png)<!-- -->
+|          |  Df |  SumOfSqs |        R2 |          F | Pr(\>F) |
+|:---------|----:|----------:|----------:|-----------:|--------:|
+| pre      |   1 | 0.0050061 | 0.1717359 | 26.4653827 |   0.001 |
+| inc      |   5 | 0.0052433 | 0.1798715 |  5.5438239 |   0.001 |
+| pre:inc  |   5 | 0.0009308 | 0.0319305 |  0.9841303 |   0.429 |
+| Residual |  95 | 0.0179699 | 0.6164622 |         NA |      NA |
+| Total    | 106 | 0.0291500 | 1.0000000 |         NA |      NA |
 
-#### PCA results:
-
-<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-18-2.png" width="50%" />
-
-<img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-1.png" width="50%" /><img src="SCGSR_Final_data_report_files/figure-gfm/unnamed-chunk-20-2.png" width="50%" />
-
-</details>
+Permanova results: Axis class Non-Polar only
 
 ------------------------------------------------------------------------
 
 ## Session Info
 
-<details>
-<summary>
-Session Info
-</summary>
-
-Date run: 2023-06-21
+Date run: 2023-08-25
 
     ## R version 4.2.3 (2023-03-15 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -960,49 +275,82 @@ Date run: 2023-06-21
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] trelliscopejs_0.2.6 pmartR_2.3.0        agricolae_1.3-5    
-    ##  [4] knitr_1.42          nlme_3.1-162        cowplot_1.1.1      
-    ##  [7] ggpubr_0.6.0        janitor_2.2.0       pracma_2.4.2       
-    ## [10] reshape2_1.4.4      ggbiplot_0.55       scales_1.2.1.9000  
-    ## [13] plyr_1.8.8          vegan_2.6-4         lattice_0.20-45    
-    ## [16] permute_0.9-7       lubridate_1.9.2     forcats_1.0.0      
-    ## [19] stringr_1.5.0       dplyr_1.1.1         purrr_1.0.1        
-    ## [22] readr_2.1.4         tidyr_1.3.0         tibble_3.2.1       
-    ## [25] ggplot2_3.4.1       tidyverse_2.0.0     tarchetypes_0.7.6  
-    ## [28] targets_0.14.3     
+    ##  [1] ropls_1.30.0        trelliscopejs_0.2.6 pmartR_2.4.0       
+    ##  [4] agricolae_1.3-6     knitr_1.43          nlme_3.1-162       
+    ##  [7] cowplot_1.1.1       ggpubr_0.6.0        janitor_2.2.0      
+    ## [10] pracma_2.4.2        reshape2_1.4.4      ggbiplot_0.55      
+    ## [13] scales_1.2.1        plyr_1.8.8          vegan_2.6-4        
+    ## [16] lattice_0.20-45     permute_0.9-7       lubridate_1.9.2    
+    ## [19] forcats_1.0.0       stringr_1.5.0       dplyr_1.1.2        
+    ## [22] purrr_1.0.1         readr_2.1.4         tidyr_1.3.0        
+    ## [25] tibble_3.2.1        ggplot2_3.4.1       tidyverse_2.0.0    
+    ## [28] tarchetypes_0.7.7   targets_1.2.0      
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] colorspace_2.1-0        ggsignif_0.6.4          ellipsis_0.3.2         
-    ##  [4] mclust_6.0.0            snakecase_0.11.0        base64enc_0.1-3        
-    ##  [7] fs_1.6.2                rstudioapi_0.14         farver_2.1.1           
-    ## [10] listenv_0.9.0           furrr_0.3.1             fansi_1.0.4            
-    ## [13] codetools_0.2-19        splines_4.2.3           jsonlite_1.8.4         
-    ## [16] broom_1.0.4             cluster_2.1.4           shiny_1.7.4            
-    ## [19] httr_1.4.6              compiler_4.2.3          backports_1.4.1        
-    ## [22] lazyeval_0.2.2          Matrix_1.5-4            fastmap_1.1.1          
-    ## [25] cli_3.6.0               later_1.3.0             htmltools_0.5.4        
-    ## [28] prettyunits_1.1.1       tools_4.2.3             igraph_1.4.1           
-    ## [31] gtable_0.3.3            glue_1.6.2              Rcpp_1.0.10            
-    ## [34] carData_3.0-5           vctrs_0.6.0             iterators_1.0.14       
-    ## [37] autocogs_0.1.4          xfun_0.38               globals_0.16.2         
-    ## [40] ps_1.7.2                timechange_0.2.0        mime_0.12              
-    ## [43] miniUI_0.1.1.1          lifecycle_1.0.3         rstatix_0.7.2          
-    ## [46] future_1.32.0           MASS_7.3-60             DistributionUtils_0.6-0
-    ## [49] hms_1.1.3               promises_1.2.0.1        parallel_4.2.3         
-    ## [52] yaml_2.3.7              labelled_2.11.0         ggExtra_0.10.0         
-    ## [55] stringi_1.7.12          highr_0.10              klaR_1.7-2             
-    ## [58] AlgDesign_1.2.1         foreach_1.5.2           checkmate_2.2.0        
-    ## [61] rlang_1.1.0             pkgconfig_2.0.3         evaluate_0.21          
-    ## [64] labeling_0.4.2          htmlwidgets_1.6.2       processx_3.8.0         
-    ## [67] tidyselect_1.2.0        parallelly_1.35.0       magrittr_2.0.3         
-    ## [70] R6_2.5.1                generics_0.1.3          base64url_1.4          
-    ## [73] combinat_0.0-8          pillar_1.9.0            haven_2.5.2            
-    ## [76] withr_2.5.0             mgcv_1.8-42             abind_1.4-5            
-    ## [79] crayon_1.5.2            car_3.1-2               questionr_0.7.8        
-    ## [82] utf8_1.2.3              plotly_4.10.2.9000      rmarkdown_2.21         
-    ## [85] tzdb_0.3.0              future.callr_0.8.1      progress_1.2.2         
-    ## [88] data.table_1.14.8       callr_3.7.3             webshot_0.5.4          
-    ## [91] digest_0.6.31           xtable_1.8-4            httpuv_1.6.9           
-    ## [94] munsell_0.5.0           viridisLite_0.4.2
-
-</details>
+    ##   [1] readxl_1.4.3                backports_1.4.1            
+    ##   [3] qqman_0.1.8                 systemfonts_1.0.4          
+    ##   [5] igraph_1.5.0                lazyeval_0.2.2             
+    ##   [7] splines_4.2.3               AlgDesign_1.2.1            
+    ##   [9] listenv_0.9.0               GenomeInfoDb_1.34.9        
+    ##  [11] digest_0.6.33               foreach_1.5.2              
+    ##  [13] htmltools_0.5.5             fansi_1.0.4                
+    ##  [15] magrittr_2.0.3              checkmate_2.2.0            
+    ##  [17] base64url_1.4               cluster_2.1.4              
+    ##  [19] tzdb_0.4.0                  limma_3.54.2               
+    ##  [21] globals_0.16.2              matrixStats_1.0.0          
+    ##  [23] timechange_0.2.0            prettyunits_1.1.1          
+    ##  [25] colorspace_2.1-0            textshaping_0.3.6          
+    ##  [27] haven_2.5.3                 xfun_0.39                  
+    ##  [29] callr_3.7.3                 crayon_1.5.2               
+    ##  [31] RCurl_1.98-1.12             jsonlite_1.8.7             
+    ##  [33] Exact_3.2                   iterators_1.0.14           
+    ##  [35] glue_1.6.2                  gtable_0.3.3               
+    ##  [37] zlibbioc_1.44.0             XVector_0.38.0             
+    ##  [39] webshot_0.5.5               DelayedArray_0.24.0        
+    ##  [41] questionr_0.7.8             car_3.1-2                  
+    ##  [43] BiocGenerics_0.44.0         abind_1.4-5                
+    ##  [45] mvtnorm_1.2-2               rstatix_0.7.2              
+    ##  [47] miniUI_0.1.1.1              Rcpp_1.0.11                
+    ##  [49] MultiDataSet_1.26.0         viridisLite_0.4.2          
+    ##  [51] xtable_1.8-4                progress_1.2.2             
+    ##  [53] proxy_0.4-27                mclust_6.0.0               
+    ##  [55] stats4_4.2.3                htmlwidgets_1.6.2          
+    ##  [57] httr_1.4.6                  calibrate_1.7.7            
+    ##  [59] ellipsis_0.3.2              farver_2.1.1               
+    ##  [61] pkgconfig_2.0.3             utf8_1.2.3                 
+    ##  [63] polynom_1.4-1               labeling_0.4.2             
+    ##  [65] tidyselect_1.2.0            rlang_1.1.1                
+    ##  [67] later_1.3.1                 cellranger_1.1.0           
+    ##  [69] munsell_0.5.0               tools_4.2.3                
+    ##  [71] cli_3.6.1                   generics_0.1.3             
+    ##  [73] broom_1.0.5                 evaluate_0.21              
+    ##  [75] fastmap_1.1.1               ragg_1.2.5                 
+    ##  [77] yaml_2.3.7                  processx_3.8.2             
+    ##  [79] fs_1.6.2                    future.callr_0.8.1         
+    ##  [81] rootSolve_1.8.2.3           future_1.33.0              
+    ##  [83] mime_0.12                   ggExtra_0.10.0             
+    ##  [85] compiler_4.2.3              rstudioapi_0.15.0          
+    ##  [87] plotly_4.10.2               e1071_1.7-13               
+    ##  [89] ggsignif_0.6.4              klaR_1.7-2                 
+    ##  [91] DescTools_0.99.49           stringi_1.7.12             
+    ##  [93] highr_0.10                  ps_1.7.5                   
+    ##  [95] Matrix_1.6-0                vctrs_0.6.3                
+    ##  [97] pillar_1.9.0                lifecycle_1.0.3            
+    ##  [99] furrr_0.3.1                 combinat_0.0-8             
+    ## [101] PNWColors_0.1.0             data.table_1.14.8          
+    ## [103] bitops_1.0-7                lmom_2.9                   
+    ## [105] httpuv_1.6.11               GenomicRanges_1.50.2       
+    ## [107] R6_2.5.1                    promises_1.2.0.1           
+    ## [109] gld_2.6.6                   IRanges_2.32.0             
+    ## [111] parallelly_1.36.0           codetools_0.2-19           
+    ## [113] boot_1.3-28.1               MASS_7.3-58.2              
+    ## [115] SummarizedExperiment_1.28.0 withr_2.5.0                
+    ## [117] S4Vectors_0.36.2            autocogs_0.1.4             
+    ## [119] GenomeInfoDbData_1.2.9      expm_0.999-7               
+    ## [121] mgcv_1.8-42                 parallel_4.2.3             
+    ## [123] hms_1.1.3                   MultiAssayExperiment_1.24.0
+    ## [125] labelled_2.12.0             class_7.3-21               
+    ## [127] rmarkdown_2.23              snakecase_0.11.0           
+    ## [129] MatrixGenerics_1.10.0       carData_3.0-5              
+    ## [131] DistributionUtils_0.6-0     Biobase_2.58.0             
+    ## [133] shiny_1.7.4.1               base64enc_0.1-3
