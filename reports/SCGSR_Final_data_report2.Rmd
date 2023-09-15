@@ -48,7 +48,7 @@ tar_read(gg_respiration)$gg_N_Legend
   <summary>click to open</summary>
 Soil K2SO4 extracts were utilized to measure ammonium, Nitrate, Total free primary amines, phosphate, Total reducing sugars. Below are the concentration data. An asterisks indicates a significant (p<= 0.05, ANOVA) difference in pre-incubation temperature. Overall ANOVA showed that TRS changed significantly due to pre-incubation, incubation temperature, and the interaction (ANOVA, p < 0.001). Pre-incubated moderate freeze soil TRS concentrations remained similar to non-incubated soils which had significantly higher concentrations than pre-incubated mild freeze soils (ANOVA, f = 18.18, p < 0.013). Though there was a trend for pre-incubated and incubated soils to have increased concentrations of all N forms (Ammonium, Nitrate, and TFPA) when compared to non-incubated soils, the pre-incubation temperatures showed no significant differences after the incubation (ANOVA, p> 0.0696405). Pre-incubation and incubation temperatures had little to no effect on phosphate concentrations in incubated soils (ANOVA, p > 0.49)
 
-```{r , fig.height=6, fig.width=8}
+```{r , fig.height=3, fig.width=3}
 tar_read(gg_nutrients)$`Total reducing sugars`
 ```
 ```{r , fig.height=12, fig.width=12}
@@ -65,7 +65,7 @@ tar_read(gg_nutrients)$`Nutrient combined`
   <summary>click to open</summary>
 Microbial biomass C and N was measures to identify changes in biomass through the incubation. An asterisks indicates a significant (p<= 0.05) difference in pre-incubation temperature.Overall, MBC following the incubation was significantly greater in soils that experienced the moderate freeze compared to mild freeze (ANOVA, f = 5.19, p = 0.0138), whereas incubation temperature and interaction did not affect MBC significantly (ANOVA, p > 0.071). For soils that experienced moderate freeze, post-incubation MBC remained more or less unchanged compared to T0 (Dunnett, p > 0.25). On the other hand, soils that experienced mild freeze had numerically lower MBC compared to T0; however, these values were highly variable and therefore not significant overall (Dunnett, p > 0.25). 
 
-```{r , fig.height=6, fig.width=9}
+```{r , fig.height=6, fig.width=6}
 tar_read(gg_MicrobialBiomass)$"Total Biomass"
 ```
 
@@ -155,7 +155,7 @@ ggExtra::ggMarginal(gg_FTICR_vk$gg_vk_polar_nonpolar, groupColour = TRUE, groupF
 
 
 #### Unique peaks at each incubation temperature
-```{r , fig.height=5, fig.width=9, out.width="100%"}
+```{r , fig.height=9, fig.width=9, out.width="100%"}
 tar_read(gg_FTICR_unique)$gg_common_unique_sep_inc_pre
 tar_read(gg_FTICR_unique)$gg_common_unique_sep_inc_pre_seperated
 tar_read(gg_FTICR_unique)$fticr_unique_summary_sep_inc_pre
@@ -165,7 +165,7 @@ tar_read(gg_FTICR_unique)$fticr_unique_summary_sep_inc_pre
 #### Relative Abundance of each molecular class
 
 
-```{r , fig.height=6, fig.width=9}
+```{r , fig.height=9, fig.width=9}
 tar_read(gg_FTICR_relabund)$relabund
 ```
 
@@ -174,7 +174,7 @@ tar_read(gg_FTICR_relabund)$relabund
 #### PCA results:
 
 
-```{r , fig.height=5, fig.width=5, results='hide', fig.show="hold", out.width="50%"}
+```{r , fig.height=9, fig.width=9, results='hide', fig.show="hold", out.width="50%"}
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_polar
   tar_read(gg_FTICR_PCA)$gg_pca_by_pre_nonpolar
   tar_read(gg_FTICR_PCA)$gg_PCA_Legend

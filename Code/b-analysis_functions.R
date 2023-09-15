@@ -14,15 +14,16 @@ names(inc.lab) <- c("2","4","6","8","10")
     #stat_cor(label.y=c(90,100), size=2)+
     #stat_regline_equation(label.y=c(110,120), size=2)+
     #geom_text(data = res_lm , aes(y = 300, label = p.value))+
+    scale_y_continuous(expand=c(0,0),oob=rescale_none)+
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ), nrow=1)+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C ",hour^-1, ")")))+
-    xlab("incubation day")+
-    labs(color='pre_inc temp') +
-    ggtitle("Soil Respiration")+
+    xlab("Incubation day")+
+    labs(color='Pre-incubation') +
+    ggtitle("Soil respiration")+
     theme_CKM()
   
   gg_cumres =
@@ -38,12 +39,12 @@ names(inc.lab) <- c("2","4","6","8","10")
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
-    xlab("incubation day")+
-    labs(color='pre_inc temp') +
-    ggtitle("Cumulative Soil Respiration")+
+    xlab("Incubation day")+
+    labs(color='Pre-incubation') +
+    ggtitle("Cumulative soil respiration")+
     theme_CKM()
   
   gg_Avgres =
@@ -58,12 +59,12 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_regline_equation(label.y=c(110,120), size=2)+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C ",hour^-1, ")")))+
-    xlab("incubation day")+
-    labs(color='pre_inc temp') +
-    ggtitle("Average Soil Respiration")+
+    xlab("Incubation day")+
+    labs(color='Pre-incubation') +
+    ggtitle("Average soil respiration")+
     theme_CKM()
   
   gg_Avgcumres =
@@ -78,12 +79,12 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_regline_equation(label.y=c(245,265), size=2)+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
-    xlab("incubation day")+
-    labs(color='pre_inc temp') +
-    ggtitle("Average Cumulative Soil Respiration")+
+    xlab("Incubation day")+
+    labs(color='Pre-incubation') +
+    ggtitle("Average cumulative soil respiration")+
     theme_CKM()
   
   
@@ -118,34 +119,37 @@ names(inc.lab) <- c("2","4","6","8","10")
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
+                 width=0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation "),fill="none")+
+    scale_y_continuous(expand=c(0,0),limits=c(50,375),oob=rescale_none)+
     geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=6, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette2,labels=c('-2 °C', '-6 °C'))+
     ylab(expression(paste( "Total respired C (",mu,"g-C)")))+
-    xlab("Incubation Temp. (°C)")+
-    labs(color='pre-incubation temp') +
+    xlab("Incubation temp. (°C)")+
+    labs(color='Pre-incubation') +
     ggtitle("Cumulative respiration")+
     theme_CKM()
   
   respiration_legend = get_legend(gg_CumresLastday+ guides(color = guide_legend(nrow = 1)) +
                                  theme(legend.position = "bottom"))
 S<-ggplot() + theme_void()
-SS<-plot_grid(gg_CumresLastday + theme(legend.position="none"),S,
+SS<-plot_grid(gg_CumresLastday,S,
           nrow=1)
   gg_Ncombine= plot_grid(
     gg_res + theme(legend.position="none"),
-    SS,
+    gg_CumresLastday,
     align="none",
     rel_widths= c(2,1),
     labels = c("A", "B"),
     #label_x= 0.1,
     hjust = -1,
+    vjust= 1,
     ncol = 1
   )
   
@@ -303,20 +307,21 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Ammonium")+
-    theme_CKM()
+    theme_CKM4()
   
   gg_NH4_2 =
     nutrients_data %>%
@@ -326,22 +331,23 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(5.3,5.8), size=2)+
     stat_regline_equation(label.y=c(5.5,6.1), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Ammonium")+
-    theme_CKM()
+    theme_CKM4()
 
   
   #Calulating P-value between lines
@@ -367,20 +373,21 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Nitrate")+
-    theme_CKM()
+    theme_CKM4()
   #y = bquote('Nitrate ('*mu*'g '*NO[3]^"-"~-N~g^-1 ~ dry ~ soil*')'))+
   
   gg_NO3_2 =
@@ -391,23 +398,23 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(33,35), size=2)+
     stat_regline_equation(label.y=c(34,36), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Nitrate")+
-    theme_CKM()
+    theme_CKM4()
   #Calulating P-value between lines
   lm1 = lm(NO3 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
   lm2 = lm(NO3 ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-2"))
@@ -426,20 +433,21 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Total free primary amines")+
-    theme_CKM()
+    theme_CKM4()
   #y = bquote(atop('Total free primary amines-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
   
   gg_TFPA_2 =
@@ -450,22 +458,23 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(130,138), size=2)+
     stat_regline_equation(label.y=c(134,142), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Total free primary amines")+
-    theme_CKM()
+    theme_CKM4()
   
   gg_TRS =
     nutrients_data %>%
@@ -475,20 +484,22 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Total reducing sugars")+
-    theme_CKM()
+    theme_CKM()+
+    theme(legend.position = c(0.8, 0.8))
   #y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
   
   
@@ -500,20 +511,21 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(0.55,0.61), size=2)+
     stat_regline_equation(label.y=c(0.58,0.64), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Total reducing sugars")+
     theme_CKM()
   
@@ -535,21 +547,21 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Phosphate")+
-    theme_CKM()
+    theme_CKM4()
   #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
   gg_PO4_2 =
     nutrients_data %>%
@@ -559,23 +571,23 @@ nutrients_data_long = nutrients_data %>%
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
-                 alpha = 0.2,
+                 position = position_dodge(width = 0.6), 
+                 alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
-    
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(0.55,0.61), size=2)+
     stat_regline_equation(label.y=c(0.58,0.64), size=2)+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Phosphate")+
-    theme_CKM()
+    theme_CKM4()
   #y = bquote('Phosphate ('*mu*'g '*PO[4]^"3-"~-P~g^-1 ~ dry ~ soil*')'))+
   
   
@@ -668,18 +680,20 @@ plot_MicrobialBiomass = function(nutrients_data){
      geom_boxplot(show.legend = F, 
                   outlier.colour = NULL,
                   outlier.fill = NULL,
-                  position = position_dodge(width = 1), 
+                  position = position_dodge(width = 0.6), 
                   alpha = 0.2,
+                  width=0.5,
                   aes(group = interaction(Inc_temp, pre_inc)))+
-     geom_point(position = position_dodge(width = 1), size = 3)+
-     guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+     geom_point(position = position_dodge(width = 0.6), size = 3)+
+     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+     geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 850, label = asterisk), size=8, color="black")+
     theme_light()+
-     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Microbial biomass C")+
      theme_CKM()
    #y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1 ~ dry ~ soil*')'))))+
@@ -697,18 +711,20 @@ plot_MicrobialBiomass = function(nutrients_data){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
+                 width=0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
-    guides(color=guide_legend(title="Pre-Incubation"),fill="none")+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time Zero","Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Microbial biomass N")+
     theme_CKM()
   #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
@@ -727,10 +743,10 @@ plot_MicrobialBiomass = function(nutrients_data){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(810,830), size=2)+
@@ -738,9 +754,9 @@ plot_MicrobialBiomass = function(nutrients_data){
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Microbial biomass C")+
     theme_CKM()
   #y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1 ~ dry ~ soil*')'))))+
@@ -765,10 +781,10 @@ plot_MicrobialBiomass = function(nutrients_data){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc_temp, pre_inc)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-Incubation (°C)"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(130,140), size=2)+
@@ -776,9 +792,9 @@ plot_MicrobialBiomass = function(nutrients_data){
     theme_light()+
     scale_colour_manual(values=cbPalette)+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
-    labs(x = "Incubation Temp. (°C)", 
+    labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
-    labs(color='pre_inc temp') +
+    labs(color='Pre-incubation') +
     ggtitle("Microbial biomass N")+
     theme_CKM()
   #y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1 ~ dry ~ soil*')'))))+
@@ -803,9 +819,9 @@ plot_MicrobialBiomass = function(nutrients_data){
     labels = c("A", "B", "C"),
     label_x= 0.1,
     hjust = -1,
-    nrow = 1
+    ncol = 1
   )
-  gg_Biomass_Legend=plot_grid(gg_Biomasscombine,biomass_legend, ncol=1, rel_heights =c(1,0.1))
+  gg_Biomass_Legend=plot_grid(gg_Biomasscombine,biomass_legend, ncol=1, rel_heights =c(1,0.05))
   
   list("Microbial biomass carbon" = gg_MBC,
        "Microbial biomass nitrogen" = gg_MBN,
@@ -1089,13 +1105,13 @@ plot_GC = function(GC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
       facet_trelliscope(~ Metabolites , nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "GC compounds")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("GC compounds")
   
   GC<-Means%>%
@@ -1105,13 +1121,13 @@ plot_GC = function(GC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("GC known compounds")
   
   GC_sac<-GC_Saccharides%>%
@@ -1121,13 +1137,13 @@ plot_GC = function(GC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("GC Saccharides only")
   
   
@@ -1138,13 +1154,13 @@ plot_GC = function(GC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("GC unknown compounds")
   
   
@@ -1181,16 +1197,16 @@ plot_GC_PCA = function(GC_PCA){
   gg_pca_pre_Sig=
     ggbiplot(GC_PCA$pca_GC_sig,obs.scale = 1, var.scale = 1,
              groups = as.character(GC_PCA$grp_sig$pre), 
-             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
-    geom_point(size=3,stroke=1, alpha = 1,
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0, varname.adjust = 1, varname.size = 4) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
                aes(#shape = groups,
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     labs(shape="",
-         title = "GC-significant metabolites (ANOVA)",
-         subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)+
-    theme_CKM()
+         title = "GC-significant metabolites")+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
+    theme_CKM3()
   
   
   gg_pca_inc_Sig=
@@ -1204,6 +1220,8 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-significant metabolites (ANOVA)",
          subtitle = "separation by inc")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     Scale_inc+
     theme_CKM()
   
@@ -1223,7 +1241,8 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-all samples",
          subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
   
@@ -1240,7 +1259,8 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-saccharides only",
          subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM()
   
   
@@ -1257,6 +1277,7 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-all samples",
          subtitle = "separation by inc")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
   
@@ -1273,6 +1294,7 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-saccharides only",
          subtitle = "separation by inc")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
   
@@ -1451,13 +1473,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
       facet_trelliscope(~ Metabolite + MODE, nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "LC compounds")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC")
     
     
@@ -1471,13 +1493,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC_pos known compound means")
   
   LC_pos_sac<-Means_sac%>%
@@ -1488,13 +1510,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC_pos saccharides")
   
   
@@ -1506,13 +1528,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC_pos unknown compounds")
   
   
@@ -1525,13 +1547,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC_neg known compound means")
   
   LC_neg_sac<-Means_sac%>%
@@ -1542,13 +1564,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 3)+
+    geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC_neg saccharides")
   
   
@@ -1560,13 +1582,13 @@ plot_LC = function(LC_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("LC_neg unknown compounds")
   
   
@@ -1609,16 +1631,16 @@ plot_LC_PCA = function(LC_PCA){
   gg_pca_pre_Sig=
     ggbiplot(LC_PCA$pca_LC_sig,obs.scale = 1, var.scale = 1,
              groups = as.character(LC_PCA$grp_sig$pre), 
-             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
-    geom_point(size=3,stroke=1, alpha = 1,
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0, varname.adjust = 1, varname.size = 4) +
+    geom_point(size=3,stroke=1, alpha = 0.5,
                aes(#shape = groups,
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     labs(shape="",
-         title = "LC-significant metabolites (ANOVA)",
-         subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)+
-    theme_CKM()
+         title = "LC-significant metabolites")+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
+    theme_CKM3()
   
   
   gg_pca_inc_Sig=
@@ -1632,6 +1654,7 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-significant metabolites (ANOVA)",
          subtitle = "separation by inc")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
   
@@ -1652,7 +1675,8 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-all samples",
          subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM()
   
   gg_pca_pre2=
@@ -1668,7 +1692,8 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-saccharides only",
          subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM()
   
   
@@ -1685,6 +1710,7 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-all samples",
          subtitle = "separation by pre inc")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
   
@@ -1701,6 +1727,7 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-saccharides only",
          subtitle = "separation by inc")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
   
@@ -1814,21 +1841,21 @@ plot_LC_GC_PCA = function(gg_LC_PCA,gg_GC_PCA){
   gg_LC_PCA$gg_pca_pre_Sig
   gg_GC_PCA$gg_pca_pre_Sig
   
-  Nutrient_legend = get_legend(gg_GC_PCA$gg_pca_pre_Sig+ guides(color = guide_legend(nrow = 1)) +
-                                 theme(legend.position = "bottom"))
+  Nutrient_legend = get_legend(gg_GC_PCA$gg_pca_pre_Sig+  theme(legend.position = "bottom"))
   gg_Ncombine= plot_grid(
-    gg_LC_PCA$gg_pca_pre_Sig + theme(legend.position="none"),
     gg_GC_PCA$gg_pca_pre_Sig + theme(legend.position="none"),
+    gg_LC_PCA$gg_pca_pre_Sig + theme(legend.position="none"),
     align = 'vh',
     labels = c("A", "B"),
     label_y= 0.93,
     hjust = -1,
+    vjust=10,
     nrow = 1
   )
-  gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
-  ggsave("Graphs/GC_LC_PCA.png", gg_PCA_Legend)
+  gg_PCA_Legend=plot_grid(gg_Ncombine,NULL,Nutrient_legend, ncol=1, rel_heights =c(1,-0.25,0.1))
+  ggsave("Graphs/GC_LC_PCA.png", gg_PCA_Legend, width=12, height=8)
   
-  
+
 list(gg_PCA_Legend=gg_PCA_Legend
         
   )
@@ -1875,7 +1902,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "Lipid-all samples",
          subtitle = "separation by pre inc")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     theme_CKM()
   
   gg_pca_inc=
@@ -1892,7 +1919,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "Lipid-all samples",
          subtitle = "separation by inc")+
     Scale_inc+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     theme_CKM()
   
   
@@ -1909,7 +1936,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "Lipid-positive mode",
          subtitle = "separation by pre inc")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     theme_CKM()
   
   gg_pca_inc_pos=
@@ -1926,7 +1953,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "Lipid-positive mode",
          subtitle = "separation by inc pos")+
     Scale_inc+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     theme_CKM()
   
   
@@ -1945,7 +1972,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "Lipid-negative mode",
          subtitle = "separation by pre inc")+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     theme_CKM()
   
   gg_pca_inc_neg=
@@ -2008,13 +2035,13 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc, Pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_trelliscope(~ Lipid + MODE, nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "Lipids")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2)+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     ggtitle("Lipids")
   
   Lipid_pos<-Means%>%
@@ -2025,10 +2052,10 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc, Pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
@@ -2044,10 +2071,10 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc, Pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
@@ -2105,10 +2132,10 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc, Pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
@@ -2123,10 +2150,10 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(Inc, Pre)))+
-    geom_point(position = position_dodge(width = 1), size = 1.5)+
+    geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Lipid, scales="free")+
     theme_light()+
     scale_colour_manual(values=cbPalette2)+
@@ -2769,33 +2796,33 @@ plot_FTICR_NOSC = function(FTICR_processed){
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
     ggtitle("All NOSC")
-    #geom_point(position = position_dodge(width = 1), size = 3)
+    #geom_point(position = position_dodge(width = 0.6), size = 3)
   gg_nosc_polar<- fticr_Nosc%>%
     filter(Polar=='polar')%>%
     ggplot(aes(x=inc,y=NOSC, color=pre))+
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
     ggtitle("polar NOSC")
-  #geom_point(position = position_dodge(width = 1), size = 3)
+  #geom_point(position = position_dodge(width = 0.6), size = 3)
   gg_nosc_nonpolar<- fticr_Nosc%>%
     filter(Polar=='nonpolar')%>%
     ggplot(aes(x=inc,y=NOSC, color=pre))+
     geom_boxplot(show.legend = F, 
                  outlier.colour = NULL,
                  outlier.fill = NULL,
-                 position = position_dodge(width = 1), 
+                 position = position_dodge(width = 0.6), 
                  alpha = 0.2,
                  aes(group = interaction(inc, pre)))+
     ggtitle("nonpolar NOSC")
-  #geom_point(position = position_dodge(width = 1), size = 3)
+  #geom_point(position = position_dodge(width = 0.6), size = 3)
   
   
   list(gg_nosc=gg_nosc,
@@ -3046,7 +3073,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_wrap(~inc)+
     labs(title = "Unique peaks at each inc")+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
     theme_CKM()
   
   gg_common_sep_inc_pre = 
@@ -3056,6 +3083,17 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     labs(title = "common peaks")+
     theme_CKM()
   
+  
+  
+  
+  
+  
+  
+  
+  
+    inc.lab<-c("Pre","2 °C","4 °C","6 °C","8 °C","10 °C")
+    names(inc.lab) <- c("Pre","2","4","6","8","10")
+    
   gg_common_unique_sep_inc_pre_separated = 
     FTICR_inc_unique_by_pre %>%
     mutate(inc = factor(inc, levels=c("Pre","2","4","6","8","10")),
@@ -3063,11 +3101,12 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     filter(n == 1)%>%
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
-    facet_wrap(~inc+pre)+
+    facet_wrap(~inc+pre,labeller = labeller(inc =inc.lab ))+
     labs(title = "Unique peaks by pre separated by incubation temp first")+
-    scale_colour_manual(values=cbPalette, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
-    guides(alpha= FALSE)+
-    theme_CKM()
+    scale_colour_manual(values=cbPalette, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none")+
+    theme_CKM2()+
+    theme(legend.position="top")
   
   gg_common_unique_sep_inc_pre = 
     FTICR_inc_unique_by_pre %>%
@@ -3076,11 +3115,12 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     filter(n == 1)%>%
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
-    facet_wrap(~inc)+
+    facet_wrap(~inc,labeller = labeller(inc =inc.lab ))+
     labs(title = "Unique peaks by pre separated by incubation temp first")+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
-    guides(alpha= FALSE)+
-    theme_CKM()
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    guides(color=guide_legend(title="Pre-incubation", override.aes = list(size = 3, alpha=1)),fill="none", alpha=F)+
+    theme_CKM2()+
+    theme(legend.position="top")
   
   fticr_unique_summary_sep_inc_pre = 
     FTICR_inc_unique_by_pre %>% 
@@ -3828,8 +3868,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     xlim(-4,4)+
     ylim(-3.5,3.5)+
     labs(shape="",
-         title = "FTICR-all samples",
-         subtitle = "separation by pre")+
+         title = "FTICR-all samples")+
     theme_CKM()
   
   gg_pca_polar_nonpolar_inc = 
@@ -3851,37 +3890,35 @@ plot_FTICR_PCA = function(FTICR_relabund){
   gg_pca_by_pre_polar = 
     ggbiplot(pca_polar$pca_int, obs.scale = 1, var.scale = 1,
              groups = as.character(pca_polar$grp$pre), 
-             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
-    geom_point(size=3,stroke=1, alpha = 0.5,
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0, varname.adjust = 1, varname.size = 5) +
+    geom_point(size=2,stroke=1, alpha = 0.5,
                aes(#shape = groups,
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
-    xlim(-4,4)+
-    ylim(-3.5,3.5)+
+    xlim(-5,5)+
+    ylim(-4,4)+
     labs(shape="",
-         title = "FTICR-Polar",
-         subtitle = "separation by pre")+
-    theme_CKM()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
-    theme(legend.background = element_rect(fill = "white"),
-          legend.margin=margin(t=-55))
-    NULL
+         title = "FTICR-Polar")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    theme_CKM3()+
+  NULL
   
   gg_pca_by_pre_nonpolar = 
     ggbiplot(pca_nonpolar$pca_int, obs.scale = 1, var.scale = 1,
              groups = as.character(pca_nonpolar$grp$pre), 
-             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0) +
-    geom_point(size=3,stroke=1, alpha = 0.5,
+             ellipse = TRUE, circle = FALSE, var.axes = TRUE, alpha = 0, varname.adjust = 1, varname.size = 5) +
+    geom_point(size=2,stroke=1, alpha = 0.5,
                aes(#shape = groups,
                  color = groups))+
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
-    xlim(-4,4)+
-    ylim(-3.5,3.5)+
+    xlim(-5,5)+
+    ylim(-4,4)+
     labs(shape="",
-         title = "FTICR-Non-Polar",
-         subtitle = "separation by pre")+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild", "Moderate"))+
-    theme_CKM()+
+         title = "FTICR-Non-Polar")+
+    guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    theme_CKM3()+
     NULL
   
   
@@ -3920,8 +3957,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     theme_CKM()+
     NULL
   
-  Nutrient_legend = get_legend(gg_pca_by_pre_polar+ guides(color = guide_legend(nrow = 1)) +
-                                 theme(legend.position = "bottom"))
+  Nutrient_legend = get_legend(gg_pca_by_pre_polar + theme(legend.position = "bottom"))
   gg_Ncombine= plot_grid(
     gg_pca_by_pre_polar + theme(legend.position="none"),
     gg_pca_by_pre_nonpolar + theme(legend.position="none"),
@@ -3929,11 +3965,12 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labels = c("A", "B"),
     label_y= 0.93,
     hjust = -1,
+    vjust= 12,
     nrow = 1
   )
-  gg_PCA_Legend=plot_grid(gg_Ncombine,Nutrient_legend, ncol=1, rel_heights =c(1,0.03))
+  gg_PCA_Legend=plot_grid(gg_Ncombine,NULL,Nutrient_legend, ncol=1, rel_heights =c(1,-0.25,0.1), rel_widths = c(1,1))
   
-  ggsave("Graphs/FTICR_PCA.png",gg_PCA_Legend)
+  ggsave("Graphs/FTICR_PCA.png",gg_PCA_Legend, width=12, height=8)
   
   list(
        gg_pca_polar_nonpolar= gg_pca_polar_nonpolar,
