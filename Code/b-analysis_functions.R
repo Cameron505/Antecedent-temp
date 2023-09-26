@@ -153,7 +153,7 @@ SS<-plot_grid(gg_CumresLastday,S,
     ncol = 1
   )
   
-  gg_N_Legend=plot_grid(gg_Ncombine,respiration_legend, ncol=1, rel_heights =c(1,0.08))
+  gg_N_Legend=gg_Ncombine
   
   
   list(#"Respiration" = gg_res,
@@ -167,6 +167,7 @@ SS<-plot_grid(gg_CumresLastday,S,
 
 plot_nutrients = function(nutrients_data){
   
+  summary(nutrients_data)
   
   inc.lab<-c("2 °C","4 °C","6 °C","8 °C","10 °C")
   names(inc.lab) <- c("2","4","6","8","10")
@@ -299,6 +300,12 @@ nutrients_data_long = nutrients_data %>%
   
   nutrients_data[nutrients_data == "none"] <- "T0"
   
+  
+ RDS<- nutrients_data%>%
+    select(Inc_temp,pre_inc,TRS)%>%
+   group_by(Inc_temp)%>%
+    summarize(M=mean(TRS, na.rm = T), SD= sd(TRS))
+  
   gg_NH4 =
     nutrients_data %>%
     mutate(Inc_temp = factor(Inc_temp, levels=c("T0","Pre","-2","-6","2","4","6","8","10")),
@@ -312,7 +319,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=8, color="black")+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -335,7 +342,7 @@ nutrients_data_long = nutrients_data %>%
                  alpha = 0.2, width= 0.5,
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(5.3,5.8), size=2)+
@@ -378,7 +385,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=8, color="black")+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -403,7 +410,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(33,35), size=2)+
     stat_regline_equation(label.y=c(34,36), size=2)+
@@ -438,7 +445,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=8, color="black")+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -463,7 +470,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(130,138), size=2)+
     stat_regline_equation(label.y=c(134,142), size=2)+
@@ -489,7 +496,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -498,8 +505,8 @@ nutrients_data_long = nutrients_data %>%
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='Pre-incubation') +
     ggtitle("Total reducing sugars")+
-    theme_CKM()+
-    theme(legend.position = c(0.8, 0.8))
+    theme_CKM5()+
+    theme(legend.position = c(0.8, 0.65))
   #y = bquote('Total reducing sugars-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
   
   
@@ -516,7 +523,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(0.55,0.61), size=2)+
     stat_regline_equation(label.y=c(0.58,0.64), size=2)+
@@ -527,7 +534,7 @@ nutrients_data_long = nutrients_data %>%
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
     labs(color='Pre-incubation') +
     ggtitle("Total reducing sugars")+
-    theme_CKM()
+    theme_CKM5()
   
   #Calulating P-value between lines
   lm1 = lm(TRS ~ Inc_temp,data=subset(nutrients_data2,nutrients_data2$pre_inc=="-6"))
@@ -552,7 +559,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -576,7 +583,7 @@ nutrients_data_long = nutrients_data %>%
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
@@ -686,7 +693,7 @@ plot_MicrobialBiomass = function(nutrients_data){
                   aes(group = interaction(Inc_temp, pre_inc)))+
      geom_point(position = position_dodge(width = 0.6), size = 3)+
      guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-     geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 850, label = asterisk), size=8, color="black")+
     theme_light()+
      scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -717,7 +724,7 @@ plot_MicrobialBiomass = function(nutrients_data){
                  aes(group = interaction(Inc_temp, pre_inc)))+
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
-    geom_vline(xintercept=2.5, linetype="dotted", color= "red", size= 1.5)+
+    geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=8, color="black")+
     theme_light()+
     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
@@ -1087,6 +1094,22 @@ plot_GC = function(GC_processed){
     replace_na(list(Known="Known"))%>%
     left_join(GC_lm, by= c("Metabolites","pre"))
   
+  AAA<-Means_all%>%
+    filter(Known== "Known")%>%
+    distinct(Metabolites)%>%
+    mutate(n= count(Metabolites))%>%
+    summarise(S=sum(n$freq))
+  
+  AAA2<-Means_all%>%
+    filter(Known== "Unkown")%>%
+    distinct(Metabolites)%>%
+    mutate(n= count(Metabolites))%>%
+    summarise(S=sum(n$freq))
+  
+  AAA
+  AAA2
+  AAA/(AAA+AAA2)
+  
   Means<- GC_data_composite %>%
     filter(!row_number() %in% c(2959:11390))
   Means_unknown<- GC_data_composite %>%
@@ -1190,7 +1213,8 @@ plot_GC_PCA = function(GC_PCA){
     knitr::kable(caption="Permanova results saccharides")
   
   
-  
+  adonis2(GC_PCA$GC_data_composite_sig %>% dplyr::select(`2-phenylacetamide`:`Unknown 174`) ~ pre * inc, 
+          data = GC_PCA$GC_data_composite_sig)
   Scale_inc= scale_color_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","10"))
   
   
@@ -1447,7 +1471,21 @@ plot_LC = function(LC_processed){
     replace_na(list(Known="Known"))%>%
     left_join(LC_lm, by= c("Metabolite","pre")) 
   
+  AAA<-Means_all%>%
+    filter(Known== "Known")%>%
+    distinct(Metabolite)%>%
+    mutate(n= count(Metabolite))%>%
+    summarise(S=sum(n$freq))
   
+  AAA2<-Means_all%>%
+    filter(Known== "Unkown")%>%
+    distinct(Metabolite)%>%
+    mutate(n= count(Metabolite))%>%
+    summarise(S=sum(n$freq))
+  
+  AAA
+  AAA2
+  AAA/(AAA+AAA2)
   
   
   Means<-LC_data_composite %>%
@@ -3348,6 +3386,16 @@ plot_FTICR_unique_polar = function(FTICR_processed){
   
   FTICR_inc_unique_by_pre<- rbind(FTICR2,FTICR4,FTICR6,FTICR8,FTICR10,FTICRpre)
   
+  FTICR_inc_unique_by_pre%>%
+    filter(n == 1) %>%
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(Class) %>% 
+    dplyr::summarise(counts = n())
+  
+  1088/(216+103+663+1088)
+  
+  
+  
   gg_unique_sep_inc_pre =
     FTICR_inc_unique_by_pre %>% filter(n == 1) %>% 
     gg_vankrev(aes(x = OC, y = HC, color = pre))+
@@ -3606,6 +3654,17 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
   FTICR10<- Filter_unique_FTICR(10)
   
   FTICR_inc_unique_by_pre<- rbind(FTICR2,FTICR4,FTICR6,FTICR8,FTICR10,FTICRpre)
+  
+  FTICR_inc_unique_by_pre%>%
+    filter(n == 1) %>%
+    left_join(fticr_meta %>% dplyr::select(formula, Class)) %>% 
+    group_by(Class) %>% 
+    dplyr::summarise(counts = n())
+  
+  2742/(84+29+555+2742)
+  
+  
+  
   
   gg_unique_sep_inc_pre =
     FTICR_inc_unique_by_pre %>% filter(n == 1) %>% 
