@@ -95,15 +95,15 @@ theme_CKM3 <- function() {  # this for all the elements common across plots
 }
 theme_CKM4 <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
-    theme(legend.text = element_text(size = 18),
-          legend.title = element_text(size=18),
+    theme(legend.text = element_text(size = 22),
+          legend.title = element_text(size=24),
           legend.key.size = unit(1.5, 'lines'),
           legend.background = element_rect(colour = NA),
           panel.border = element_rect(color="black",size=2, fill = NA),
           
-          plot.title = element_text(hjust = 0, size = 14),
-          axis.text = element_text(size = 12, color = "black"),
-          axis.title = element_text(size = 14, face = "bold", color = "black"),
+          plot.title = element_text(hjust = 0, size = 20),
+          axis.text = element_text(size = 16, color = "black"),
+          axis.title = element_text(size = 18, face = "bold", color = "black"),
           
           # formatting for facets
           panel.background = element_blank(),

@@ -18,7 +18,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     ylab(expression(paste( "Respiration (",mu,"g-C",day^-1, ")")))+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ), nrow=1)+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C ",hour^-1, ")")))+
     xlab("Incubation day")+
@@ -39,7 +39,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     xlab("Incubation day")+
@@ -59,7 +59,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_regline_equation(label.y=c(110,120), size=2)+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C ",hour^-1, ")")))+
     xlab("Incubation day")+
@@ -79,7 +79,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     stat_regline_equation(label.y=c(245,265), size=2)+
     facet_wrap(~Inc_temp,labeller = labeller(Inc_temp =inc.lab ))+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette2)+
     ylab(expression(paste( "Respiration (",mu,"g-C)")))+
     xlab("Incubation day")+
@@ -128,7 +128,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     scale_y_continuous(expand=c(0,0),limits=c(50,375),oob=rescale_none)+
     geom_text(data = rescum_aov, aes(y = 350, label = asterisk), size=6, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette2,labels=c('-2 °C', '-6 °C'))+
     ylab(expression(paste( "Total respired C (",mu,"g-C)")))+
     xlab("Incubation temp. (°C)")+
@@ -322,7 +322,7 @@ nutrients_data_long = nutrients_data %>%
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "NH4"), aes(y = 5, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
@@ -348,7 +348,7 @@ nutrients_data_long = nutrients_data %>%
     stat_cor(label.y=c(5.3,5.8), size=2)+
     stat_regline_equation(label.y=c(5.5,6.1), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NH[4]^"+"~-N~'('*mu*'g '*g^-1~ dry ~ soil*')'))+
@@ -388,7 +388,7 @@ nutrients_data_long = nutrients_data %>%
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "NO3"), aes(y = 30, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
@@ -415,7 +415,7 @@ nutrients_data_long = nutrients_data %>%
     stat_cor(label.y=c(33,35), size=2)+
     stat_regline_equation(label.y=c(34,36), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*NO[3]^"-"~-N~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
@@ -448,7 +448,7 @@ nutrients_data_long = nutrients_data %>%
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "TFPA"), aes(y = 130, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
@@ -475,7 +475,7 @@ nutrients_data_long = nutrients_data %>%
     stat_cor(label.y=c(130,138), size=2)+
     stat_regline_equation(label.y=c(134,142), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('TFPA-Leucine equiv.',paste('(nMol' ~g^-1 ~ dry ~ soil*')'))))+
@@ -499,7 +499,7 @@ nutrients_data_long = nutrients_data %>%
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "TRS"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
@@ -528,7 +528,7 @@ nutrients_data_long = nutrients_data %>%
     stat_cor(label.y=c(0.55,0.61), size=2)+
     stat_regline_equation(label.y=c(0.58,0.64), size=2)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote('TRS-glucose equiv. ('*mu*'Mol' ~g^-1 ~ dry ~ soil*')'))+
@@ -562,7 +562,7 @@ nutrients_data_long = nutrients_data %>%
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "PO4"), aes(y = 0.54, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(' '*PO[4]^"3-"~-P~'('*mu*'g '~g^-1 ~ dry ~ soil*')'))+
@@ -585,7 +585,7 @@ nutrients_data_long = nutrients_data %>%
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     stat_smooth(method= "lm")+
     stat_cor(label.y=c(0.55,0.61), size=2)+
@@ -696,7 +696,7 @@ plot_MicrobialBiomass = function(nutrients_data){
      geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "MBC"), aes(y = 850, label = asterisk), size=8, color="black")+
     theme_light()+
-     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('Microbial biomass', paste('('*mu*'g C'~g^-1~ dry ~ soil*')'))))+
@@ -727,7 +727,7 @@ plot_MicrobialBiomass = function(nutrients_data){
     geom_vline(xintercept=2.5, linetype="dotted", color= "black", size= 1.5)+
     geom_text(data = all_aov %>% filter(analyte == "MBN"), aes(y = 125, label = asterisk), size=8, color="black")+
     theme_light()+
-    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("T0","-2","-6"), labels=c("Time zero","Mild frozen", "Moderate frozen"))+
     scale_fill_manual(values=cbPalette,labels=c('T0','-2 °C', '-6 °C'))+
     labs(x = "Incubation temp. (°C)", 
          y = bquote(atop('Microbial biomass',paste( '('*mu*'g N'~g^-1~ dry ~ soil*')'))))+
@@ -1134,7 +1134,7 @@ plot_GC = function(GC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
       facet_trelliscope(~ Metabolites , nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "GC compounds")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("GC compounds")
   
   GC<-Means%>%
@@ -1150,7 +1150,7 @@ plot_GC = function(GC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("GC known compounds")
   
   GC_sac<-GC_Saccharides%>%
@@ -1166,7 +1166,7 @@ plot_GC = function(GC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("GC Saccharides only")
   
   
@@ -1183,7 +1183,7 @@ plot_GC = function(GC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolites, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("GC unknown compounds")
   
   
@@ -1228,7 +1228,7 @@ plot_GC_PCA = function(GC_PCA){
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     labs(shape="",
          title = "GC-significant metabolites")+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM3()
   
@@ -1245,7 +1245,7 @@ plot_GC_PCA = function(GC_PCA){
          title = "GC-significant metabolites (ANOVA)",
          subtitle = "separation by inc")+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     Scale_inc+
     theme_CKM()
   
@@ -1265,7 +1265,7 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-all samples",
          subtitle = "separation by pre")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     Scale_inc+
     theme_CKM()
@@ -1283,7 +1283,7 @@ plot_GC_PCA = function(GC_PCA){
     labs(shape="",
          title = "GC-saccharides only",
          subtitle = "separation by pre")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM()
   
@@ -1517,7 +1517,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
       facet_trelliscope(~ Metabolite + MODE, nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "LC compounds")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC")
     
     
@@ -1537,7 +1537,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC_pos known compound means")
   
   LC_pos_sac<-Means_sac%>%
@@ -1554,7 +1554,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC_pos saccharides")
   
   
@@ -1572,7 +1572,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC_pos unknown compounds")
   
   
@@ -1591,7 +1591,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC_neg known compound means")
   
   LC_neg_sac<-Means_sac%>%
@@ -1608,7 +1608,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 3)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC_neg saccharides")
   
   
@@ -1626,7 +1626,7 @@ plot_LC = function(LC_processed){
     geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_wrap(~Metabolite, scales="free")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("LC_neg unknown compounds")
   
   
@@ -1676,7 +1676,7 @@ plot_LC_PCA = function(LC_PCA){
     #scale_shape_manual(values = c(21, 22, 19), name = "", guide = "none")+
     labs(shape="",
          title = "LC-significant metabolites")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM3()
   
@@ -1713,7 +1713,7 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-all samples",
          subtitle = "separation by pre")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM()
   
@@ -1730,7 +1730,7 @@ plot_LC_PCA = function(LC_PCA){
     labs(shape="",
          title = "LC-saccharides only",
          subtitle = "separation by pre")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
     theme_CKM()
   
@@ -1940,7 +1940,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "Lipid-all samples",
          subtitle = "separation by pre inc")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM()
   
   gg_pca_inc=
@@ -1957,7 +1957,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "Lipid-all samples",
          subtitle = "separation by inc")+
     Scale_inc+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM()
   
   
@@ -1974,7 +1974,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "Lipid-positive mode",
          subtitle = "separation by pre inc")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM()
   
   gg_pca_inc_pos=
@@ -1991,7 +1991,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
          title = "Lipid-positive mode",
          subtitle = "separation by inc pos")+
     Scale_inc+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM()
   
   
@@ -2010,7 +2010,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     labs(shape="",
          title = "Lipid-negative mode",
          subtitle = "separation by pre inc")+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM()
   
   gg_pca_inc_neg=
@@ -2079,7 +2079,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
     geom_point(position = position_dodge(width = 0.6), size = 1.5)+
     facet_trelliscope(~ Lipid + MODE, nrow = 2, ncol = 7, width = 300, path = "rmarkdown_files", name = "Lipids")+
     theme_light()+
-     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     ggtitle("Lipids")
   
   Lipid_pos<-Means%>%
@@ -3111,7 +3111,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.90, show.legend = FALSE)+
     facet_wrap(~inc)+
     labs(title = "Unique peaks at each inc")+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM()
   
   gg_common_sep_inc_pre = 
@@ -3141,7 +3141,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre,labeller = labeller(inc =inc.lab ))+
     labs(title = "Unique peaks by pre separated by incubation temp first")+
-    scale_colour_manual(values=cbPalette, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
     theme_CKM2()+
     theme(legend.position="top")
@@ -3155,7 +3155,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc,labeller = labeller(inc =inc.lab ))+
     labs(title = "Unique peaks by pre separated by incubation temp first")+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation", override.aes = list(size = 3, alpha=1)),fill="none", alpha=F)+
     theme_CKM2()+
     theme(legend.position="top")
@@ -3959,7 +3959,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labs(shape="",
          title = "FTICR-Polar")+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM3()+
   NULL
   
@@ -3976,7 +3976,7 @@ plot_FTICR_PCA = function(FTICR_relabund){
     labs(shape="",
          title = "FTICR-Non-Polar")+
     guides(color=guide_legend(title="Pre-incubation"),fill="none", alpha=F)+
-    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild freeze", "Moderate freeze"))+
+    scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     theme_CKM3()+
     NULL
   
