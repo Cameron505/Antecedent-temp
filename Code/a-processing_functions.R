@@ -16,7 +16,7 @@ process_respiration = function(respiration_data){
            JD2 = (as.numeric(JD)-317),
            Res2=Res * 24) %>%
     group_by(Sample_ID,Inc_temp,pre_inc) %>%
-    dplyr::summarise(val=cumtrapz(JD2,Res),Res, JD2)
+    dplyr::summarise(val=cumtrapz(JD2,Res),Res, JD2,Date)
   
 
 }
@@ -979,7 +979,6 @@ FTICR_relabund_fun = function(FTICR_processed){
   )
   
 }
-
 
 FTICR_relabund_fun_Filter = function(FTICR_processed){
   

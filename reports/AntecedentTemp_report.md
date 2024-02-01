@@ -17,45 +17,45 @@ also sent to PNNL for more comprehensive analysis of organic matter
 using FTICR, NMR, GC-MS and LC-MS techniques. Lipidomics were also
 performed to ascertain if there were any significant shifts lipids.
 
-| Replicate | Pre.incubation | Incubation.ID | Incubation.temperauture | ID              | UUID                                 | X   |
-|----------:|---------------:|:--------------|------------------------:|:----------------|:-------------------------------------|:----|
-|         1 |             -2 | A             |                       2 | A-2-1           | 8656c258-a0e4-4755-81ed-f1d862112621 | NA  |
-|         2 |             -2 | A             |                       2 | A-2-2           | 04cbe581-cd60-44ff-8322-e3c9d0f83b9b | NA  |
-|         3 |             -2 | A             |                       2 | A-2-3           | 5476356e-c64f-4057-80c1-f75c811fd36e | NA  |
-|         1 |             -6 | A             |                       2 | A-6-1           | 23e00139-06b9-4e24-9999-02f36c313389 | NA  |
-|         2 |             -6 | A             |                       2 | A-6-2           | 0377bae3-d808-4dde-a8a3-9b68d5ef26de | NA  |
-|         3 |             -6 | A             |                       2 | A-6-3           | 537028bc-b721-4650-9b07-7e9a120a86d5 | NA  |
-|         1 |             -2 | B             |                       4 | B-2-1           | 440dba45-293d-4a1b-bd7e-25ab39357fa2 | NA  |
-|         2 |             -2 | B             |                       4 | B-2-2           | 8245ad28-be7f-4252-a46d-5fd861c420f5 | NA  |
-|         3 |             -2 | B             |                       4 | B-2-3           | 1d3baff5-e4c8-4a89-a6c1-8cff831fec47 | NA  |
-|         1 |             -6 | B             |                       4 | B-6-1           | a045cdb7-4657-4366-ab08-a49b9c9780ae | NA  |
-|         2 |             -6 | B             |                       4 | B-6-2           | ed8616cf-0423-43c6-a1dd-ec97431309c9 | NA  |
-|         3 |             -6 | B             |                       4 | B-6-3           | 44e660ac-df81-410a-b264-e345291f1872 | NA  |
-|         1 |             -2 | C             |                       6 | C-2-1           | dd528c4e-3d60-40c8-b3a6-accce911cbf9 | NA  |
-|         2 |             -2 | C             |                       6 | C-2-2           | 3efde34c-2e51-4560-bfcb-164de36e563e | NA  |
-|         3 |             -2 | C             |                       6 | C-2-3           | 96d60bed-37ab-4d96-818d-e43353b81425 | NA  |
-|         1 |             -6 | C             |                       6 | C-6-1           | d8d73f99-589b-4559-97b6-107d71c0688c | NA  |
-|         2 |             -6 | C             |                       6 | C-6-2           | fce12027-06e4-41d8-9c98-645c90cdf058 | NA  |
-|         3 |             -6 | C             |                       6 | C-6-3           | 580e2f97-ae86-4b45-ae91-5f8be28d57f1 | NA  |
-|         1 |             -2 | D             |                       8 | D-2-1           | a3edfe91-4286-4ded-9d74-6e59008a0f0b | NA  |
-|         2 |             -2 | D             |                       8 | D-2-2           | 587708ea-5a51-49ee-b7b2-aaff43016145 | NA  |
-|         3 |             -2 | D             |                       8 | D-2-3           | 571d8331-5027-49c6-9ee0-362ed7654dc5 | NA  |
-|         1 |             -6 | D             |                       8 | D-6-1           | 48c5aae9-6684-4f19-bea2-28698eed6d5b | NA  |
-|         2 |             -6 | D             |                       8 | D-6-2           | dc8d0e75-f57d-4236-9ef5-523c6bd7e2e1 | NA  |
-|         3 |             -6 | D             |                       8 | D-6-3           | da4b7b0d-51ea-43e9-9db0-768352f0dc52 | NA  |
-|         1 |             -2 | E             |                      10 | E-2-1           | 51bdcfb0-b98e-4b6d-9271-f857553c99ee | NA  |
-|         2 |             -2 | E             |                      10 | E-2-2           | 1c00ea1c-ab85-41b9-9713-7f74f1aaa2fb | NA  |
-|         3 |             -2 | E             |                      10 | E-2-3           | 4270be4e-67fc-4f42-811c-bb85d271bf86 | NA  |
-|         1 |             -6 | E             |                      10 | E-6-1           | a5f82baa-555e-48ef-bc79-8febae160345 | NA  |
-|         2 |             -6 | E             |                      10 | E-6-2           | 3bac6092-7564-4731-8411-8b5f2df33f3f | NA  |
-|         3 |             -6 | E             |                      10 | E-6-3           | cefe1d73-c95e-430f-a38a-130e61f11fc9 | NA  |
-|         1 |             -2 | Pre           |                      -2 | Pre-2-1         | 0301b210-e061-4847-8236-55b4604e86b9 | NA  |
-|         2 |             -2 | Pre           |                      -2 | Pre-2-2         | d07b9001-0b93-4a1a-92b7-70b238a58a2c | NA  |
-|         3 |             -2 | Pre           |                      -2 | Pre-2-3         | 392fb7a7-e664-482e-90e7-87a2b5fbaa6e | NA  |
-|         1 |             -6 | Pre           |                      -6 | Pre-6-1         | 504ecbd1-d7bc-4c8f-9ec9-1d345bff218d | NA  |
-|         2 |             -6 | Pre           |                      -6 | Pre-6-2         | a389c91b-9593-4b0f-84e7-b911e099c3e3 | NA  |
-|         3 |             -6 | Pre           |                      -6 | Pre-6-3         | dec78bde-1a26-4368-a537-5b480888b90b | NA  |
-|        NA |             NA |               |                      NA | Source material | e6b98a07-c63b-47a7-b872-e99320205b34 | NA  |
+| Replicate | Date       | Pre.incubation | Incubation.ID | Incubation.temperauture | ID              | UUID                                 |
+|----------:|:-----------|---------------:|:--------------|:------------------------|:----------------|:-------------------------------------|
+|         1 | 11/18/2022 |             -2 | A             | 2                       | A-2-1           | 8656c258-a0e4-4755-81ed-f1d862112621 |
+|         2 | 11/18/2022 |             -2 | A             | 2                       | A-2-2           | 04cbe581-cd60-44ff-8322-e3c9d0f83b9b |
+|         3 | 11/18/2022 |             -2 | A             | 2                       | A-2-3           | 5476356e-c64f-4057-80c1-f75c811fd36e |
+|         1 | 11/18/2022 |             -6 | A             | 2                       | A-6-1           | 23e00139-06b9-4e24-9999-02f36c313389 |
+|         2 | 11/18/2022 |             -6 | A             | 2                       | A-6-2           | 0377bae3-d808-4dde-a8a3-9b68d5ef26de |
+|         3 | 11/18/2022 |             -6 | A             | 2                       | A-6-3           | 537028bc-b721-4650-9b07-7e9a120a86d5 |
+|         1 | 11/18/2022 |             -2 | B             | 4                       | B-2-1           | 440dba45-293d-4a1b-bd7e-25ab39357fa2 |
+|         2 | 11/18/2022 |             -2 | B             | 4                       | B-2-2           | 8245ad28-be7f-4252-a46d-5fd861c420f5 |
+|         3 | 11/18/2022 |             -2 | B             | 4                       | B-2-3           | 1d3baff5-e4c8-4a89-a6c1-8cff831fec47 |
+|         1 | 11/18/2022 |             -6 | B             | 4                       | B-6-1           | a045cdb7-4657-4366-ab08-a49b9c9780ae |
+|         2 | 11/18/2022 |             -6 | B             | 4                       | B-6-2           | ed8616cf-0423-43c6-a1dd-ec97431309c9 |
+|         3 | 11/18/2022 |             -6 | B             | 4                       | B-6-3           | 44e660ac-df81-410a-b264-e345291f1872 |
+|         1 | 11/18/2022 |             -2 | C             | 6                       | C-2-1           | dd528c4e-3d60-40c8-b3a6-accce911cbf9 |
+|         2 | 11/18/2022 |             -2 | C             | 6                       | C-2-2           | 3efde34c-2e51-4560-bfcb-164de36e563e |
+|         3 | 11/18/2022 |             -2 | C             | 6                       | C-2-3           | 96d60bed-37ab-4d96-818d-e43353b81425 |
+|         1 | 11/18/2022 |             -6 | C             | 6                       | C-6-1           | d8d73f99-589b-4559-97b6-107d71c0688c |
+|         2 | 11/18/2022 |             -6 | C             | 6                       | C-6-2           | fce12027-06e4-41d8-9c98-645c90cdf058 |
+|         3 | 11/18/2022 |             -6 | C             | 6                       | C-6-3           | 580e2f97-ae86-4b45-ae91-5f8be28d57f1 |
+|         1 | 11/18/2022 |             -2 | D             | 8                       | D-2-1           | a3edfe91-4286-4ded-9d74-6e59008a0f0b |
+|         2 | 11/18/2022 |             -2 | D             | 8                       | D-2-2           | 587708ea-5a51-49ee-b7b2-aaff43016145 |
+|         3 | 11/18/2022 |             -2 | D             | 8                       | D-2-3           | 571d8331-5027-49c6-9ee0-362ed7654dc5 |
+|         1 | 11/18/2022 |             -6 | D             | 8                       | D-6-1           | 48c5aae9-6684-4f19-bea2-28698eed6d5b |
+|         2 | 11/18/2022 |             -6 | D             | 8                       | D-6-2           | dc8d0e75-f57d-4236-9ef5-523c6bd7e2e1 |
+|         3 | 11/18/2022 |             -6 | D             | 8                       | D-6-3           | da4b7b0d-51ea-43e9-9db0-768352f0dc52 |
+|         1 | 11/18/2022 |             -2 | E             | 10                      | E-2-1           | 51bdcfb0-b98e-4b6d-9271-f857553c99ee |
+|         2 | 11/18/2022 |             -2 | E             | 10                      | E-2-2           | 1c00ea1c-ab85-41b9-9713-7f74f1aaa2fb |
+|         3 | 11/18/2022 |             -2 | E             | 10                      | E-2-3           | 4270be4e-67fc-4f42-811c-bb85d271bf86 |
+|         1 | 11/18/2022 |             -6 | E             | 10                      | E-6-1           | a5f82baa-555e-48ef-bc79-8febae160345 |
+|         2 | 11/18/2022 |             -6 | E             | 10                      | E-6-2           | 3bac6092-7564-4731-8411-8b5f2df33f3f |
+|         3 | 11/18/2022 |             -6 | E             | 10                      | E-6-3           | cefe1d73-c95e-430f-a38a-130e61f11fc9 |
+|         1 | 11/13/2022 |             -2 | Pre           | Pre                     | Pre-2-1         | 0301b210-e061-4847-8236-55b4604e86b9 |
+|         2 | 11/13/2022 |             -2 | Pre           | Pre                     | Pre-2-2         | d07b9001-0b93-4a1a-92b7-70b238a58a2c |
+|         3 | 11/13/2022 |             -2 | Pre           | Pre                     | Pre-2-3         | 392fb7a7-e664-482e-90e7-87a2b5fbaa6e |
+|         1 | 11/13/2022 |             -6 | Pre           | Pre                     | Pre-6-1         | 504ecbd1-d7bc-4c8f-9ec9-1d345bff218d |
+|         2 | 11/13/2022 |             -6 | Pre           | Pre                     | Pre-6-2         | a389c91b-9593-4b0f-84e7-b911e099c3e3 |
+|         3 | 11/13/2022 |             -6 | Pre           | Pre                     | Pre-6-3         | dec78bde-1a26-4368-a537-5b480888b90b |
+|        NA |            |             NA |               |                         | Source material | e6b98a07-c63b-47a7-b872-e99320205b34 |
 
 </details>
 
@@ -594,13 +594,14 @@ nutrients had no significant variation.
 Session Info
 </summary>
 
-Date run: 2023-10-17
+Date run: 2024-02-01
 
-    ## R version 4.2.3 (2023-03-15 ucrt)
+    ## R version 4.3.2 (2023-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 19045)
+    ## Running under: Windows 11 x64 (build 22621)
     ## 
     ## Matrix products: default
+    ## 
     ## 
     ## locale:
     ## [1] LC_COLLATE=English_United States.utf8 
@@ -609,85 +610,73 @@ Date run: 2023-10-17
     ## [4] LC_NUMERIC=C                          
     ## [5] LC_TIME=English_United States.utf8    
     ## 
+    ## time zone: America/Los_Angeles
+    ## tzcode source: internal
+    ## 
     ## attached base packages:
     ## [1] grid      stats     graphics  grDevices utils     datasets  methods  
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] ropls_1.30.0        trelliscopejs_0.2.6 pmartR_2.4.0       
-    ##  [4] agricolae_1.3-6     knitr_1.43          nlme_3.1-162       
+    ##  [1] ropls_1.34.0        trelliscopejs_0.2.6 pmartR_2.4.1       
+    ##  [4] agricolae_1.3-7     knitr_1.45          nlme_3.1-163       
     ##  [7] cowplot_1.1.1       ggpubr_0.6.0        janitor_2.2.0      
-    ## [10] pracma_2.4.2        reshape2_1.4.4      ggbiplot_0.55      
-    ## [13] scales_1.2.1        plyr_1.8.8          vegan_2.6-4        
-    ## [16] lattice_0.20-45     permute_0.9-7       lubridate_1.9.2    
-    ## [19] forcats_1.0.0       stringr_1.5.0       dplyr_1.1.2        
-    ## [22] purrr_1.0.1         readr_2.1.4         tidyr_1.3.0        
-    ## [25] tibble_3.2.1        ggplot2_3.4.1       tidyverse_2.0.0    
-    ## [28] tarchetypes_0.7.7   targets_1.2.0      
+    ## [10] pracma_2.4.4        reshape2_1.4.4      ggbiplot_0.55      
+    ## [13] scales_1.3.0        plyr_1.8.9          vegan_2.6-4        
+    ## [16] lattice_0.21-9      permute_0.9-7       lubridate_1.9.3    
+    ## [19] forcats_1.0.0       stringr_1.5.1       dplyr_1.1.4        
+    ## [22] purrr_1.0.2         readr_2.1.4         tidyr_1.3.0        
+    ## [25] tibble_3.2.1        ggplot2_3.4.4       tidyverse_2.0.0    
+    ## [28] tarchetypes_0.7.9   targets_1.3.2      
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] readxl_1.4.3                backports_1.4.1            
-    ##   [3] qqman_0.1.8                 igraph_1.5.0               
-    ##   [5] splines_4.2.3               AlgDesign_1.2.1            
-    ##   [7] listenv_0.9.0               GenomeInfoDb_1.34.9        
-    ##   [9] digest_0.6.33               foreach_1.5.2              
-    ##  [11] htmltools_0.5.5             fansi_1.0.4                
-    ##  [13] magrittr_2.0.3              checkmate_2.2.0            
-    ##  [15] base64url_1.4               cluster_2.1.4              
-    ##  [17] tzdb_0.4.0                  limma_3.54.2               
-    ##  [19] globals_0.16.2              matrixStats_1.0.0          
-    ##  [21] timechange_0.2.0            prettyunits_1.1.1          
-    ##  [23] colorspace_2.1-0            haven_2.5.3                
-    ##  [25] xfun_0.39                   callr_3.7.3                
-    ##  [27] crayon_1.5.2                RCurl_1.98-1.12            
-    ##  [29] jsonlite_1.8.7              Exact_3.2                  
-    ##  [31] iterators_1.0.14            glue_1.6.2                 
-    ##  [33] gtable_0.3.3                zlibbioc_1.44.0            
-    ##  [35] XVector_0.38.0              webshot_0.5.5              
-    ##  [37] DelayedArray_0.24.0         questionr_0.7.8            
-    ##  [39] car_3.1-2                   BiocGenerics_0.44.0        
-    ##  [41] abind_1.4-5                 mvtnorm_1.2-2              
-    ##  [43] rstatix_0.7.2               miniUI_0.1.1.1             
-    ##  [45] Rcpp_1.0.11                 MultiDataSet_1.26.0        
-    ##  [47] xtable_1.8-4                progress_1.2.2             
-    ##  [49] proxy_0.4-27                mclust_6.0.0               
-    ##  [51] stats4_4.2.3                httr_1.4.6                 
-    ##  [53] calibrate_1.7.7             ellipsis_0.3.2             
-    ##  [55] farver_2.1.1                pkgconfig_2.0.3            
-    ##  [57] utf8_1.2.3                  polynom_1.4-1              
-    ##  [59] labeling_0.4.2              tidyselect_1.2.0           
-    ##  [61] rlang_1.1.1                 later_1.3.1                
-    ##  [63] cellranger_1.1.0            munsell_0.5.0              
-    ##  [65] tools_4.2.3                 cli_3.6.1                  
-    ##  [67] generics_0.1.3              broom_1.0.5                
-    ##  [69] evaluate_0.21               fastmap_1.1.1              
-    ##  [71] yaml_2.3.7                  processx_3.8.2             
-    ##  [73] fs_1.6.2                    future.callr_0.8.1         
-    ##  [75] rootSolve_1.8.2.3           future_1.33.0              
-    ##  [77] mime_0.12                   compiler_4.2.3             
-    ##  [79] rstudioapi_0.15.0           e1071_1.7-13               
-    ##  [81] ggsignif_0.6.4              klaR_1.7-2                 
-    ##  [83] DescTools_0.99.49           stringi_1.7.12             
-    ##  [85] highr_0.10                  ps_1.7.5                   
-    ##  [87] Matrix_1.6-0                vctrs_0.6.3                
-    ##  [89] pillar_1.9.0                lifecycle_1.0.3            
-    ##  [91] furrr_0.3.1                 combinat_0.0-8             
-    ##  [93] data.table_1.14.8           bitops_1.0-7               
-    ##  [95] lmom_2.9                    httpuv_1.6.11              
-    ##  [97] GenomicRanges_1.50.2        R6_2.5.1                   
-    ##  [99] promises_1.2.0.1            gld_2.6.6                  
-    ## [101] IRanges_2.32.0              parallelly_1.36.0          
-    ## [103] codetools_0.2-19            boot_1.3-28.1              
-    ## [105] MASS_7.3-58.2               SummarizedExperiment_1.28.0
-    ## [107] withr_2.5.0                 S4Vectors_0.36.2           
-    ## [109] autocogs_0.1.4              GenomeInfoDbData_1.2.9     
-    ## [111] expm_0.999-7                mgcv_1.8-42                
-    ## [113] parallel_4.2.3              hms_1.1.3                  
-    ## [115] MultiAssayExperiment_1.24.0 labelled_2.12.0            
-    ## [117] class_7.3-21                rmarkdown_2.23             
-    ## [119] snakecase_0.11.0            MatrixGenerics_1.10.0      
-    ## [121] carData_3.0-5               DistributionUtils_0.6-0    
-    ## [123] Biobase_2.58.0              shiny_1.7.4.1              
-    ## [125] base64enc_0.1-3
+    ##  [1] bitops_1.0-7                polynom_1.4-1              
+    ##  [3] MultiDataSet_1.30.0         rlang_1.1.2                
+    ##  [5] magrittr_2.0.3              snakecase_0.11.1           
+    ##  [7] matrixStats_1.2.0           compiler_4.3.2             
+    ##  [9] mgcv_1.9-0                  callr_3.7.3                
+    ## [11] vctrs_0.6.4                 pkgconfig_2.0.3            
+    ## [13] crayon_1.5.2                fastmap_1.1.1              
+    ## [15] XVector_0.42.0              backports_1.4.1            
+    ## [17] labeling_0.4.3              utf8_1.2.4                 
+    ## [19] rmarkdown_2.25              tzdb_0.4.0                 
+    ## [21] ps_1.7.5                    MultiAssayExperiment_1.28.0
+    ## [23] xfun_0.41                   zlibbioc_1.48.0            
+    ## [25] GenomeInfoDb_1.38.5         jsonlite_1.8.8             
+    ## [27] progress_1.2.2              highr_0.10                 
+    ## [29] DelayedArray_0.28.0         broom_1.0.5                
+    ## [31] parallel_4.3.2              prettyunits_1.2.0          
+    ## [33] cluster_2.1.4               R6_2.5.1                   
+    ## [35] DistributionUtils_0.6-1     stringi_1.8.2              
+    ## [37] limma_3.58.1                car_3.1-2                  
+    ## [39] GenomicRanges_1.54.1        Rcpp_1.0.11                
+    ## [41] SummarizedExperiment_1.32.0 iterators_1.0.14           
+    ## [43] base64enc_0.1-3             IRanges_2.36.0             
+    ## [45] Matrix_1.6-1.1              splines_4.3.2              
+    ## [47] igraph_1.5.1                timechange_0.2.0           
+    ## [49] tidyselect_1.2.0            rstudioapi_0.15.0          
+    ## [51] abind_1.4-5                 yaml_2.3.7                 
+    ## [53] AlgDesign_1.2.1             codetools_0.2-19           
+    ## [55] processx_3.8.2              Biobase_2.62.0             
+    ## [57] withr_2.5.2                 evaluate_0.23              
+    ## [59] mclust_6.0.1                pillar_1.9.0               
+    ## [61] MatrixGenerics_1.14.0       carData_3.0-5              
+    ## [63] checkmate_2.3.0             foreach_1.5.2              
+    ## [65] stats4_4.3.2                generics_0.1.3             
+    ## [67] RCurl_1.98-1.14             hms_1.1.3                  
+    ## [69] S4Vectors_0.40.2            munsell_0.5.0              
+    ## [71] calibrate_1.7.7             base64url_1.4              
+    ## [73] glue_1.6.2                  tools_4.3.2                
+    ## [75] data.table_1.14.8           webshot_0.5.5              
+    ## [77] ggsignif_0.6.4              fs_1.6.3                   
+    ## [79] colorspace_2.1-0            GenomeInfoDbData_1.2.11    
+    ## [81] cli_3.6.1                   fansi_1.0.5                
+    ## [83] S4Arrays_1.2.0              gtable_0.3.4               
+    ## [85] autocogs_0.1.4              rstatix_0.7.2              
+    ## [87] digest_0.6.33               BiocGenerics_0.48.1        
+    ## [89] SparseArray_1.2.3           farver_2.1.1               
+    ## [91] htmltools_0.5.7             lifecycle_1.0.4            
+    ## [93] statmod_1.5.0               qqman_0.1.9                
+    ## [95] MASS_7.3-60
 
 </details>

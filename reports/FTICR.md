@@ -202,13 +202,14 @@ Permanova results: Axis class Non-Polar only
 Session Info
 </summary>
 
-Date run: 2023-10-17
+Date run: 2024-01-30
 
-    ## R version 4.2.3 (2023-03-15 ucrt)
+    ## R version 4.3.2 (2023-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 19045)
+    ## Running under: Windows 11 x64 (build 22621)
     ## 
     ## Matrix products: default
+    ## 
     ## 
     ## locale:
     ## [1] LC_COLLATE=English_United States.utf8 
@@ -217,87 +218,77 @@ Date run: 2023-10-17
     ## [4] LC_NUMERIC=C                          
     ## [5] LC_TIME=English_United States.utf8    
     ## 
+    ## time zone: America/Los_Angeles
+    ## tzcode source: internal
+    ## 
     ## attached base packages:
     ## [1] grid      stats     graphics  grDevices utils     datasets  methods  
     ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] ropls_1.30.0        trelliscopejs_0.2.6 pmartR_2.4.0       
-    ##  [4] agricolae_1.3-6     knitr_1.43          nlme_3.1-162       
+    ##  [1] ropls_1.34.0        trelliscopejs_0.2.6 pmartR_2.4.1       
+    ##  [4] agricolae_1.3-7     knitr_1.45          nlme_3.1-163       
     ##  [7] cowplot_1.1.1       ggpubr_0.6.0        janitor_2.2.0      
-    ## [10] pracma_2.4.2        reshape2_1.4.4      ggbiplot_0.55      
-    ## [13] scales_1.2.1        plyr_1.8.8          vegan_2.6-4        
-    ## [16] lattice_0.20-45     permute_0.9-7       lubridate_1.9.2    
-    ## [19] forcats_1.0.0       stringr_1.5.0       dplyr_1.1.2        
-    ## [22] purrr_1.0.1         readr_2.1.4         tidyr_1.3.0        
-    ## [25] tibble_3.2.1        ggplot2_3.4.1       tidyverse_2.0.0    
-    ## [28] tarchetypes_0.7.7   targets_1.2.0      
+    ## [10] pracma_2.4.4        reshape2_1.4.4      ggbiplot_0.55      
+    ## [13] scales_1.3.0        plyr_1.8.9          vegan_2.6-4        
+    ## [16] lattice_0.21-9      permute_0.9-7       lubridate_1.9.3    
+    ## [19] forcats_1.0.0       stringr_1.5.1       dplyr_1.1.4        
+    ## [22] purrr_1.0.2         readr_2.1.4         tidyr_1.3.0        
+    ## [25] tibble_3.2.1        ggplot2_3.4.4       tidyverse_2.0.0    
+    ## [28] tarchetypes_0.7.9   targets_1.3.2      
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] readxl_1.4.3                backports_1.4.1            
-    ##   [3] qqman_0.1.8                 systemfonts_1.0.4          
-    ##   [5] igraph_1.5.0                splines_4.2.3              
-    ##   [7] AlgDesign_1.2.1             listenv_0.9.0              
-    ##   [9] GenomeInfoDb_1.34.9         digest_0.6.33              
-    ##  [11] foreach_1.5.2               htmltools_0.5.5            
-    ##  [13] fansi_1.0.4                 magrittr_2.0.3             
-    ##  [15] checkmate_2.2.0             base64url_1.4              
-    ##  [17] cluster_2.1.4               tzdb_0.4.0                 
-    ##  [19] limma_3.54.2                globals_0.16.2             
-    ##  [21] matrixStats_1.0.0           timechange_0.2.0           
-    ##  [23] prettyunits_1.1.1           colorspace_2.1-0           
-    ##  [25] textshaping_0.3.6           haven_2.5.3                
-    ##  [27] xfun_0.39                   callr_3.7.3                
-    ##  [29] crayon_1.5.2                RCurl_1.98-1.12            
-    ##  [31] jsonlite_1.8.7              Exact_3.2                  
-    ##  [33] iterators_1.0.14            glue_1.6.2                 
-    ##  [35] gtable_0.3.3                zlibbioc_1.44.0            
-    ##  [37] XVector_0.38.0              webshot_0.5.5              
-    ##  [39] DelayedArray_0.24.0         questionr_0.7.8            
-    ##  [41] car_3.1-2                   BiocGenerics_0.44.0        
-    ##  [43] abind_1.4-5                 mvtnorm_1.2-2              
-    ##  [45] rstatix_0.7.2               miniUI_0.1.1.1             
-    ##  [47] Rcpp_1.0.11                 MultiDataSet_1.26.0        
-    ##  [49] xtable_1.8-4                progress_1.2.2             
-    ##  [51] proxy_0.4-27                mclust_6.0.0               
-    ##  [53] stats4_4.2.3                httr_1.4.6                 
-    ##  [55] calibrate_1.7.7             ellipsis_0.3.2             
-    ##  [57] farver_2.1.1                pkgconfig_2.0.3            
-    ##  [59] utf8_1.2.3                  polynom_1.4-1              
-    ##  [61] labeling_0.4.2              tidyselect_1.2.0           
-    ##  [63] rlang_1.1.1                 later_1.3.1                
-    ##  [65] cellranger_1.1.0            munsell_0.5.0              
-    ##  [67] tools_4.2.3                 cli_3.6.1                  
-    ##  [69] generics_0.1.3              broom_1.0.5                
-    ##  [71] evaluate_0.21               fastmap_1.1.1              
-    ##  [73] ragg_1.2.5                  yaml_2.3.7                 
-    ##  [75] processx_3.8.2              fs_1.6.2                   
-    ##  [77] future.callr_0.8.1          rootSolve_1.8.2.3          
-    ##  [79] future_1.33.0               mime_0.12                  
-    ##  [81] ggExtra_0.10.0              compiler_4.2.3             
-    ##  [83] rstudioapi_0.15.0           e1071_1.7-13               
-    ##  [85] ggsignif_0.6.4              klaR_1.7-2                 
-    ##  [87] DescTools_0.99.49           stringi_1.7.12             
-    ##  [89] highr_0.10                  ps_1.7.5                   
-    ##  [91] Matrix_1.6-0                vctrs_0.6.3                
-    ##  [93] pillar_1.9.0                lifecycle_1.0.3            
-    ##  [95] furrr_0.3.1                 combinat_0.0-8             
-    ##  [97] data.table_1.14.8           bitops_1.0-7               
-    ##  [99] lmom_2.9                    httpuv_1.6.11              
-    ## [101] GenomicRanges_1.50.2        R6_2.5.1                   
-    ## [103] promises_1.2.0.1            gld_2.6.6                  
-    ## [105] IRanges_2.32.0              parallelly_1.36.0          
-    ## [107] codetools_0.2-19            boot_1.3-28.1              
-    ## [109] MASS_7.3-58.2               SummarizedExperiment_1.28.0
-    ## [111] withr_2.5.0                 S4Vectors_0.36.2           
-    ## [113] autocogs_0.1.4              GenomeInfoDbData_1.2.9     
-    ## [115] expm_0.999-7                mgcv_1.8-42                
-    ## [117] parallel_4.2.3              hms_1.1.3                  
-    ## [119] MultiAssayExperiment_1.24.0 labelled_2.12.0            
-    ## [121] class_7.3-21                rmarkdown_2.23             
-    ## [123] snakecase_0.11.0            MatrixGenerics_1.10.0      
-    ## [125] carData_3.0-5               DistributionUtils_0.6-0    
-    ## [127] Biobase_2.58.0              shiny_1.7.4.1              
-    ## [129] base64enc_0.1-3
+    ##   [1] rstudioapi_0.15.0           jsonlite_1.8.8             
+    ##   [3] MultiAssayExperiment_1.28.0 magrittr_2.0.3             
+    ##   [5] farver_2.1.1                rmarkdown_2.25             
+    ##   [7] fs_1.6.3                    zlibbioc_1.48.0            
+    ##   [9] vctrs_0.6.4                 RCurl_1.98-1.14            
+    ##  [11] MultiDataSet_1.30.0         base64enc_0.1-3            
+    ##  [13] rstatix_0.7.2               webshot_0.5.5              
+    ##  [15] htmltools_0.5.7             S4Arrays_1.2.0             
+    ##  [17] progress_1.2.2              polynom_1.4-1              
+    ##  [19] broom_1.0.5                 SparseArray_1.2.3          
+    ##  [21] qqman_0.1.9                 igraph_1.5.1               
+    ##  [23] mime_0.12                   lifecycle_1.0.4            
+    ##  [25] iterators_1.0.14            pkgconfig_2.0.3            
+    ##  [27] Matrix_1.6-1.1              R6_2.5.1                   
+    ##  [29] fastmap_1.1.1               GenomeInfoDbData_1.2.11    
+    ##  [31] MatrixGenerics_1.14.0       shiny_1.8.0                
+    ##  [33] snakecase_0.11.1            digest_0.6.33              
+    ##  [35] colorspace_2.1-0            S4Vectors_0.40.2           
+    ##  [37] ps_1.7.5                    GenomicRanges_1.54.1       
+    ##  [39] base64url_1.4               labeling_0.4.3             
+    ##  [41] fansi_1.0.5                 timechange_0.2.0           
+    ##  [43] abind_1.4-5                 mgcv_1.9-0                 
+    ##  [45] compiler_4.3.2              withr_2.5.2                
+    ##  [47] backports_1.4.1             carData_3.0-5              
+    ##  [49] highr_0.10                  ggsignif_0.6.4             
+    ##  [51] MASS_7.3-60                 DelayedArray_0.28.0        
+    ##  [53] tools_4.3.2                 httpuv_1.6.12              
+    ##  [55] glue_1.6.2                  callr_3.7.3                
+    ##  [57] promises_1.2.1              checkmate_2.3.0            
+    ##  [59] cluster_2.1.4               generics_0.1.3             
+    ##  [61] gtable_0.3.4                tzdb_0.4.0                 
+    ##  [63] data.table_1.14.8           hms_1.1.3                  
+    ##  [65] car_3.1-2                   utf8_1.2.4                 
+    ##  [67] XVector_0.42.0              BiocGenerics_0.48.1        
+    ##  [69] foreach_1.5.2               pillar_1.9.0               
+    ##  [71] ggExtra_0.10.1              limma_3.58.1               
+    ##  [73] later_1.3.1                 splines_4.3.2              
+    ##  [75] AlgDesign_1.2.1             tidyselect_1.2.0           
+    ##  [77] miniUI_0.1.1.1              IRanges_2.36.0             
+    ##  [79] SummarizedExperiment_1.32.0 stats4_4.3.2               
+    ##  [81] xfun_0.41                   Biobase_2.62.0             
+    ##  [83] statmod_1.5.0               matrixStats_1.2.0          
+    ##  [85] stringi_1.8.2               yaml_2.3.7                 
+    ##  [87] evaluate_0.23               codetools_0.2-19           
+    ##  [89] DistributionUtils_0.6-1     cli_3.6.1                  
+    ##  [91] xtable_1.8-4                munsell_0.5.0              
+    ##  [93] processx_3.8.2              Rcpp_1.0.11                
+    ##  [95] GenomeInfoDb_1.38.5         parallel_4.3.2             
+    ##  [97] ellipsis_0.3.2              autocogs_0.1.4             
+    ##  [99] prettyunits_1.2.0           mclust_6.0.1               
+    ## [101] calibrate_1.7.7             bitops_1.0-7               
+    ## [103] crayon_1.5.2                rlang_1.1.2
 
 </details>

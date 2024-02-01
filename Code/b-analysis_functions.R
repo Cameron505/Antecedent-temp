@@ -1025,7 +1025,6 @@ LastRES_aov = summary(aov(val~pre_inc+Inc_temp, data=LASTRES))
   
 }
 
-
 ### GC
 
 plot_GC = function(GC_processed){
@@ -1422,8 +1421,6 @@ GC_PLS_DATA<- GC_PCA$GC_short%>%
   
 }
 
-
-
 ###LC
 
 plot_LC = function(LC_processed){
@@ -1792,7 +1789,8 @@ plot_LC_PCA = function(LC_PCA){
 plot_LC_PLS= function(LC_PCA){
   library(ropls)
   ##Data reorganization
-  nameH<-c(1:35)
+  nameH<-c(1:34)
+  
   LC_PLS_DATA<- LC_PCA$LC_short%>%
     select(Amines:unknown)%>%
     as.data.frame()
@@ -1870,9 +1868,6 @@ plot_LC_PLS= function(LC_PCA){
   
 }
 
-
-
-
 plot_LC_GC_PCA = function(gg_LC_PCA,gg_GC_PCA){
   
   
@@ -1899,11 +1894,6 @@ list(gg_PCA_Legend=gg_PCA_Legend
   )
   
 }
-
-
-
-
-
 
 ###Lipid
 
@@ -2249,7 +2239,7 @@ plot_Lipid = function(Lipid_processed,Lipid_PCA){
 plot_Lipid_PLS= function(Lipid_PCA){
   library(ropls)
   ##Data reorganization
-  nameH<-c(1:36)
+  nameH<-c(1:35)
   Lipid_PLS_DATA<- Lipid_PCA$Lipid_short%>%
     select(Glycerolipid:Sphingolipid)%>%
     as.data.frame()
@@ -2321,6 +2311,7 @@ plot_Lipid_PLS= function(Lipid_PCA){
   
 }
 
+###FTICR
 
 plot_FTICR = function(FTICR_processed){
   
@@ -2745,7 +2736,6 @@ plot_FTICR = function(FTICR_processed){
   
 }
 
-
 plot_FTICR_vk = function(FTICR_processed){
   
   fticr_meta  = FTICR_processed$fticr_meta_combined
@@ -2818,7 +2808,6 @@ plot_FTICR_vk = function(FTICR_processed){
   
 }
 
-
 plot_FTICR_NOSC = function(FTICR_processed){
   
   fticr_meta  = FTICR_processed$fticr_meta_combined
@@ -2872,7 +2861,6 @@ plot_FTICR_NOSC = function(FTICR_processed){
   )
   
 }
-
 
 plot_FTICR_unique_all = function(FTICR_processed){
   fticr_meta  = FTICR_processed$fticr_meta_combined
@@ -3743,7 +3731,6 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
   
 }
 
-
 plot_FTICR_relabund = function(FTICR_relabund){
   
   
@@ -3853,7 +3840,6 @@ plot_FTICR_permanova = function(FTICR_relabund){
   )
   
 }
-
 
 plot_FTICR_PCA = function(FTICR_relabund){
 
