@@ -1,7 +1,3 @@
-
-
-
-
 Lip<-Lipid_PCA$Lipid_data_composite %>%
   separate_wider_delim(Name2, "__", names=c("Lipid","MODE"))%>%
   mutate(Inc = replace(Inc, Inc == "T0", "Pre"))%>%
