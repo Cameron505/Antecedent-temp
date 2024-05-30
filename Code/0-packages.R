@@ -37,9 +37,7 @@ Scale_inc= scale_color_manual(values=cbPalette2,limits=c("Pre","2","4","6","8","
 theme_CKM <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 12),
-          legend.key.size = unit(1.5, 'lines'),
-          legend.background = element_rect(colour = NA),
-          panel.border = element_rect(color="black",size=2, fill = NA),
+          
           
           plot.title = element_text(hjust = 0, size = 14),
           axis.text = element_text(size = 14, color = "black"),
@@ -57,9 +55,6 @@ theme_CKM <- function() {  # this for all the elements common across plots
 theme_CKM2 <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 12),
-          legend.key.size = unit(1.5, 'lines'),
-          legend.background = element_rect(colour = NA),
-          panel.border = element_rect(color="black",size=2, fill = NA),
           
           plot.title = element_text(hjust = 0, size = 14),
           axis.text = element_text(size = 12, color = "black"),
@@ -78,9 +73,6 @@ theme_CKM3 <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 16),
           legend.title = element_text(size = 18),
-          legend.key.size = unit(1.5, 'lines'),
-          legend.background = element_rect(colour = NA),
-          panel.border = element_rect(color="black",size=2, fill = NA),
           
           plot.title = element_text(hjust = 0, size = 14),
           axis.text = element_text(size = 14, color = "black"),
@@ -99,9 +91,7 @@ theme_CKM4 <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 22),
           legend.title = element_text(size=24),
-          legend.key.size = unit(1.5, 'lines'),
-          legend.background = element_rect(colour = NA),
-          panel.border = element_rect(color="black",size=2, fill = NA),
+          
           
           plot.title = element_text(hjust = 0, size = 20),
           axis.text = element_text(size = 16, color = "black"),
@@ -120,9 +110,7 @@ theme_CKM5 <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
     theme(legend.text = element_text(size = 10),
           legend.title = element_text(size=12),
-          legend.key.size = unit(1.5, 'lines'),
-          legend.background = element_rect(colour = NA),
-          panel.border = element_rect(color="black",size=2, fill = NA),
+        
           
           plot.title = element_text(hjust = 0, size = 14),
           axis.text = element_text(size = 12, color = "black"),
