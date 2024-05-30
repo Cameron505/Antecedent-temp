@@ -96,7 +96,7 @@ names(inc.lab) <- c("2","4","6","8","10")
     a = aov(val ~ pre_inc, data = LASTRES)
     broom::tidy(a) %>% 
       filter(term == "pre_inc") %>% 
-      dplyr::select(`p.value`) %>% 
+      dplyr::select(`p.value`, statistic) %>% 
       mutate(asterisk = case_when(`p.value` <= 0.05 ~ "*"))
     
   }  
@@ -156,6 +156,15 @@ SS<-plot_grid(gg_CumresLastday,S,
   gg_N_Legend=gg_Ncombine
   
   
+  
+  Check<-respiration_processed %>%
+    filter(JD2==min(JD2)) %>%
+    group_by(pre_inc)%>%
+    summarise(mean_value = mean(Res, na.rm = TRUE)*90)
+  
+  
+  
+  
   list(#"Respiration" = gg_res,
         gg_N_Legend=gg_N_Legend,
        "Average Respiration" = gg_Avgres,
@@ -188,6 +197,23 @@ nutrients_data_long = nutrients_data %>%
     pivot_longer(cols= NH4:MBN,
                  names_to= "analyte",
                  values_to= "conc")
+
+Check<-nutrients_data_long %>%
+  filter(analyte=="TRS", Incubation.ID=="Pre")%>%
+  group_by(pre_inc)%>%
+  select(-ID)%>%
+  mutate(ID=c(1,2,3))%>%
+  pivot_wider(names_from = pre_inc, values_from = conc)
+
+
+Check2<-Check%>%
+  mutate(DIF=`-6`-`-2`)%>%
+  summarize(mean2= mean(`-2`)*180, mean6= mean(`-6`)*180, meanD=mean(DIF)*180)
+
+
+
+
+
 
   all_aov = 
     nutrients_data_long %>% 
