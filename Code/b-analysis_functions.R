@@ -3154,7 +3154,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre,labeller = labeller(inc =inc.lab ))+
-    labs(title = "Unique peaks by pre separated by incubation temp first")+
+    labs(title = "Unique peaks")+
     scale_colour_manual(values=cbPalette, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation"),fill="none")+
     theme_CKM2()+
@@ -3168,7 +3168,7 @@ FTICRpre<- Filter_unique_FTICR("Pre")
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc,labeller = labeller(inc =inc.lab ))+
-    labs(title = "Unique peaks by pre separated by incubation temp first")+
+    labs(title = "Unique peaks")+
     scale_colour_manual(values=cbPalette2, breaks=c("-2","-6"), labels=c("Mild frozen", "Moderate frozen"))+
     guides(color=guide_legend(title="Pre-incubation", override.aes = list(size = 3, alpha=1)),fill="none", alpha=F)+
     theme_CKM2()+
@@ -3433,7 +3433,7 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre)+
-    labs(title = "Unique peaks by pre separated by inc first")+
+    labs(title = "Unique peaks")+
     guides(alpha= FALSE)+
     theme_CKM()
   
@@ -3445,7 +3445,7 @@ plot_FTICR_unique_polar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Polar: Unique peaks by pre separated by inc first")+
+    labs(title = "Polar: Unique peaks")+
     guides(alpha= FALSE)+
     theme_CKM()
   
@@ -3703,7 +3703,7 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc+pre)+
-    labs(title = "Unique peaks by pre separated by inc first")+
+    labs(title = "Unique peaks")+
     guides(alpha= FALSE)+
     theme_CKM()
   
@@ -3715,7 +3715,7 @@ plot_FTICR_unique_nonpolar = function(FTICR_processed){
     gg_vankrev(aes(x = OC, y = HC, color=pre, alpha=0.7))+
     stat_ellipse(level = 0.75, show.legend = FALSE)+
     facet_wrap(~inc)+
-    labs(title = "Non Polar: Unique peaks by pre separated by inc first")+
+    labs(title = "Non Polar: Unique peaks")+
     guides(alpha= FALSE)+
     theme_CKM()
   

@@ -23,6 +23,7 @@ tar_option_set(
 source("Code/0-packages.R")
 source("Code/a-processing_functions.R")
 source("Code/b-analysis_functions.R")
+source("Code/c-manuscript_figures.R")
 source("Code/fticr/b-functions_analysis.R")
 
 
@@ -121,11 +122,20 @@ list(
   tar_target(gg_FTICR_PCA_filter_N2N6_2, plot_FTICR_PCA_filter_N2N6_2(FTICR_relabund_filter_N2N6_2)),
   tar_target(gg_FTICR_PLS, plot_FTICR_PLS(FTICR_relabund)),
   
-  # analysis - graphs
   tar_target(gg_respiration, plot_respiration(respiration_processed)),
   tar_target(gg_nutrients, plot_nutrients(nutrients_data)),
   tar_target(gg_MicrobialBiomass, plot_MicrobialBiomass(nutrients_data)),
   tar_target(Stats_Table, Print_stats(nutrients_data,respiration_processed)),
+  
+  
+  # Manuscript figures
+  tar_target(gg_respiration_MS, plot_respiration_MS(respiration_processed)),
+  tar_target(gg_nutrients_MS, plot_nutrients_MS(nutrients_data)),
+  tar_target(gg_MicrobialBiomass_MS, plot_MicrobialBiomass_MS(nutrients_data)),
+  tar_target(gg_FTICR_PCA_MS, plot_FTICR_PCA_MS(FTICR_relabund)),
+  tar_target(gg_LC_GC_PLS_MS, plot_LC_GC_PCA_MS(gg_LC_PCA,gg_GC_PCA)),
+  tar_target(gg_FTICR_unique_MS, plot_FTICR_unique_all_MS(FTICR_processed)),
+  
   
   #reports
   tar_render(report, path = "reports/AntecedentTemp_report.Rmd"),
@@ -133,5 +143,6 @@ list(
   tar_render(report3, path = "reports/FTICR.Rmd"),
   tar_render(report4, path = "reports/SCGSR_Final_data_report.Rmd"),
   tar_render(report5, path = "reports/SCGSR_Final_data_report2.Rmd"),
-  tar_render(report6, path = "reports/Data_explore.Rmd")
+  tar_render(report6, path = "reports/Data_explore.Rmd"),
+  tar_render(report7, path = "reports/Manuscript_figures.Rmd")
 )
