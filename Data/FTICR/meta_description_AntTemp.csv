@@ -1,0 +1,4 @@
+Column ID,Name of the column in metadata
+CoreID1,ID provided by EMSL (There is a different name ID sheet for lipid layer and metabolite layer)
+pre,pre incubation temperature in degree C 
+inc,Incubation temperatur in degree C
